@@ -1,0 +1,3 @@
+[submodule "mcp-knowledge-graph"]
+	path = mcp-knowledge-graph
+	url = https://github.com/henryhawke/mcp-titan.git
