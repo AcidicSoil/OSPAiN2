@@ -11,6 +11,7 @@ import InsightsIcon from "@mui/icons-material/Insights";
 import WorkIcon from "@mui/icons-material/Work";
 import HomeIcon from "@mui/icons-material/Home";
 import BugReportIcon from "@mui/icons-material/BugReport";
+import ExtensionIcon from "@mui/icons-material/Extension";
 
 import ToolCallMonitor from "../rate-limit/ToolCallMonitor";
 
@@ -39,6 +40,11 @@ const Sidebar = ({ isOpen }: SidebarProps) => {
       path: "/knowledge-graph",
       label: "Knowledge Graph",
       icon: <StorageIcon />,
+    },
+    {
+      path: "/component-manager",
+      label: "Component Manager",
+      icon: <ExtensionIcon />,
     },
     {
       path: "/progress-dashboard",

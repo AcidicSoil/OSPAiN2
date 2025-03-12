@@ -6,23 +6,7 @@
  */
 
 import { EventEmitter } from "events";
-
-export interface LogEntry {
-  id: string;
-  timestamp: Date;
-  level: "debug" | "info" | "warn" | "error";
-  message: string;
-  source: string;
-  metadata?: Record<string, any>;
-}
-
-export interface DebugSessionInfo {
-  id: string;
-  startTime: Date;
-  endTime?: Date;
-  logs: LogEntry[];
-  tags: string[];
-}
+import { LogEntry, DebugSessionInfo, LogFilter } from "../types/debug";
 
 // Define console method types for proper typing
 type ConsoleMethod = (...data: any[]) => void;
@@ -32,7 +16,7 @@ class DebugMcpService extends EventEmitter {
   private interceptingConsole: boolean = false;
   private originalConsole: Record<string, ConsoleMethod> = {};
   private currentSession: DebugSessionInfo | null = null;
-  private sessions: DebugSessionInfo[] = [];
+  private sessions: Map<string, DebugSessionInfo> = new Map();
   private maxLogsPerSession: number = 1000;
   private sessionArchiveSize: number = 10;
   private logListeners: Array<(log: LogEntry) => void> = [];
@@ -40,7 +24,7 @@ class DebugMcpService extends EventEmitter {
 
   private constructor() {
     super();
-    this.loadSessions();
+    this.loadFromStorage();
   }
 
   /**
@@ -150,7 +134,7 @@ class DebugMcpService extends EventEmitter {
     // Create log entry
     const log: LogEntry = {
       id: `log-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
-      timestamp: new Date(),
+      timestamp: Date.now(),
       level,
       message: args
         .map((arg) => {
@@ -184,7 +168,7 @@ class DebugMcpService extends EventEmitter {
     this.notifyLogListeners(log);
 
     // Save sessions
-    this.saveSessions();
+    this.saveToStorage();
   }
 
   /**
@@ -199,7 +183,7 @@ class DebugMcpService extends EventEmitter {
 
     const log: LogEntry = {
       id: `log-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
-      timestamp: new Date(),
+      timestamp: Date.now(),
       level,
       message,
       source: "custom",
@@ -208,7 +192,7 @@ class DebugMcpService extends EventEmitter {
 
     this.currentSession.logs.push(log);
     this.notifyLogListeners(log);
-    this.saveSessions();
+    this.saveToStorage();
   }
 
   /**
@@ -217,27 +201,30 @@ class DebugMcpService extends EventEmitter {
   public startNewSession(tags: string[] = []): DebugSessionInfo {
     // End current session if one exists
     if (this.currentSession) {
-      this.currentSession.endTime = new Date();
+      this.currentSession.endTime = Date.now();
     }
 
     // Create new session
     const newSession: DebugSessionInfo = {
       id: `session-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
-      startTime: new Date(),
+      startTime: Date.now(),
       logs: [],
       tags,
     };
 
     this.currentSession = newSession;
-    this.sessions.push(newSession);
+    this.sessions.set(newSession.id, newSession);
 
     // Trim sessions if we exceed the maximum
-    if (this.sessions.length > this.sessionArchiveSize) {
-      this.sessions = this.sessions.slice(-this.sessionArchiveSize);
+    if (this.sessions.size > this.sessionArchiveSize) {
+      const oldestSession = Array.from(this.sessions.values())[0];
+      if (oldestSession) {
+        this.sessions.delete(oldestSession.id);
+      }
     }
 
     this.emit("sessionStarted", newSession);
-    this.saveSessions();
+    this.saveToStorage();
 
     return newSession;
   }
@@ -248,10 +235,10 @@ class DebugMcpService extends EventEmitter {
   public endCurrentSession(): void {
     if (!this.currentSession) return;
 
-    this.currentSession.endTime = new Date();
+    this.currentSession.endTime = Date.now();
     this.emit("sessionEnded", this.currentSession);
     this.currentSession = null;
-    this.saveSessions();
+    this.saveToStorage();
   }
 
   /**
@@ -265,7 +252,14 @@ class DebugMcpService extends EventEmitter {
    * Get all debug sessions
    */
   public getSessions(): DebugSessionInfo[] {
-    return this.sessions;
+    return Array.from(this.sessions.values());
+  }
+
+  /**
+   * Get a specific debug session
+   */
+  public getSession(sessionId: string): DebugSessionInfo | undefined {
+    return this.sessions.get(sessionId);
   }
 
   /**
@@ -276,7 +270,7 @@ class DebugMcpService extends EventEmitter {
     // For now, we'll just simulate this connection
     this.addLogEntry("info", "Debug MCP Service initialized", {
       version: "1.0.0",
-      timestamp: new Date(),
+      timestamp: Date.now(),
     });
   }
 
@@ -326,7 +320,7 @@ class DebugMcpService extends EventEmitter {
   /**
    * Save sessions to local storage
    */
-  private saveSessions(): void {
+  private saveToStorage(): void {
     try {
       localStorage.setItem("debugSessions", JSON.stringify(this.sessions));
     } catch (e) {
@@ -337,26 +331,29 @@ class DebugMcpService extends EventEmitter {
   /**
    * Load sessions from local storage
    */
-  private loadSessions(): void {
+  private loadFromStorage(): void {
     try {
       const savedSessions = localStorage.getItem("debugSessions");
       if (savedSessions) {
         const parsed = JSON.parse(savedSessions);
 
         // Convert string dates back to Date objects
-        this.sessions = parsed.map((session: any) => ({
-          ...session,
-          startTime: new Date(session.startTime),
-          endTime: session.endTime ? new Date(session.endTime) : undefined,
-          logs: session.logs.map((log: any) => ({
-            ...log,
-            timestamp: new Date(log.timestamp),
-          })),
-        }));
+        parsed.forEach((session: any) => {
+          const sessionInfo: DebugSessionInfo = {
+            ...session,
+            startTime: new Date(session.startTime),
+            endTime: session.endTime ? new Date(session.endTime) : undefined,
+            logs: session.logs.map((log: any) => ({
+              ...log,
+              timestamp: new Date(log.timestamp),
+            })),
+          };
+          this.sessions.set(sessionInfo.id, sessionInfo);
+        });
       }
     } catch (e) {
       // Silent fail - local storage may be disabled or corrupted
-      this.sessions = [];
+      this.sessions.clear();
     }
   }
 
@@ -372,19 +369,12 @@ class DebugMcpService extends EventEmitter {
   /**
    * Get logs filtered by various criteria
    */
-  public getLogs(filter?: {
-    level?: "debug" | "info" | "warn" | "error";
-    source?: string;
-    sessionId?: string;
-    search?: string;
-    from?: Date;
-    to?: Date;
-  }): LogEntry[] {
+  public getLogs(filter?: LogFilter): LogEntry[] {
     let logs: LogEntry[] = [];
 
     // If sessionId provided, get logs from that session
     if (filter?.sessionId) {
-      const session = this.sessions.find((s) => s.id === filter.sessionId);
+      const session = this.sessions.get(filter.sessionId);
       if (session) {
         logs = [...session.logs];
       }
@@ -392,7 +382,7 @@ class DebugMcpService extends EventEmitter {
       // Otherwise, get logs from current session or all sessions
       logs = this.currentSession
         ? [...this.currentSession.logs]
-        : this.sessions.flatMap((s) => s.logs);
+        : Array.from(this.sessions.values()).flatMap((s) => s.logs);
     }
 
     // Apply filters
@@ -416,19 +406,64 @@ class DebugMcpService extends EventEmitter {
         );
       }
 
-      if (filter.from) {
-        const fromDate = filter.from;
+      if (filter.startTime) {
+        const fromDate = filter.startTime;
         logs = logs.filter((log) => log.timestamp >= fromDate);
       }
 
-      if (filter.to) {
-        const toDate = filter.to;
+      if (filter.endTime) {
+        const toDate = filter.endTime;
         logs = logs.filter((log) => log.timestamp <= toDate);
       }
     }
 
     // Sort by timestamp (newest first)
-    return logs.sort((a, b) => b.timestamp.getTime() - a.timestamp.getTime());
+    return logs.sort((a, b) => b.timestamp - a.timestamp);
+  }
+
+  /**
+   * Add a log to a specific session
+   */
+  public addLog(
+    sessionId: string,
+    level: LogEntry["level"],
+    message: string,
+    source: string,
+    metadata?: Record<string, any>
+  ) {
+    const session = this.sessions.get(sessionId);
+    if (session) {
+      const log: LogEntry = {
+        id: crypto.randomUUID(),
+        timestamp: Date.now(),
+        level,
+        message,
+        source,
+        metadata,
+      };
+      session.logs.push(log);
+
+      // Trim logs if we exceed the maximum
+      if (session.logs.length > this.maxLogsPerSession) {
+        session.logs = session.logs.slice(-this.maxLogsPerSession);
+      }
+    }
+  }
+
+  /**
+   * Clear a specific session
+   */
+  public clearSession(sessionId: string) {
+    this.sessions.delete(sessionId);
+    this.saveToStorage();
+  }
+
+  /**
+   * Clear all sessions
+   */
+  public clearAllSessions() {
+    this.sessions.clear();
+    this.saveToStorage();
   }
 }
 

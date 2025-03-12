@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Source the jq_windows fix script
+source "/c/Users/comfy/OSPAiN2/development-modes/fix_jq_windows.sh"
+
+
 #=====================================================================
 # GitHub Connection Tester - OSPAiN2 Project
 # 

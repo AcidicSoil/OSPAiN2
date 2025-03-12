@@ -11,6 +11,7 @@ OSPAiN₂ is a comprehensive frontend UI for the Ollama Ecosystem, designed to p
 - **Agent Components**: Built-in support for PydanticAI and SmolAgents integration
 - **Fine-Tuning Tools**: Train and refine models to your specific needs
 - **Distributed Computing Support**: Leverage multiple devices for computation when needed
+- **Component Evaluation Framework**: Systematically evaluate and absorb external components into the ecosystem
 
 ## Agent Components
 
@@ -21,6 +22,17 @@ OSPAiN₂ includes specialized components for working with intelligent agents:
 - **AgentTaskPlanner**: Create and execute structured plans with SmolAgents technology
 
 These components follow our chemical theme and integrate seamlessly with the Ollama ecosystem.
+
+## Component Evaluation Framework
+
+The project includes a structured approach to evaluate and integrate external components:
+
+- **Metrics-Based Evaluation**: Score components on performance, quality, integration, UX, and maintenance
+- **Automated Absorption**: Auto-absorb high-scoring components, reject low-scoring ones
+- **Component Registry**: Track evaluations, statistics, and component relationships
+- **React Integration**: Evaluate components with included React hooks and testing utilities
+
+For more details, see the [Component Evaluation Framework documentation](./docs/component_evaluation.md).
 
 ## Technical Stack
 
@@ -61,6 +73,24 @@ OSPAiN₂/
 2. Install dependencies with `npm install`
 3. Run the development server with `npm start`
 4. Build for production with `npm run build`
+
+## Development Tools
+
+### Browser Tools Integration
+
+OSPAiN₂ integrates with Browser Tools MCP to enhance development workflow:
+
+- **Console Monitoring**: Capture and analyze browser console logs directly in Cursor IDE
+- **Network Analysis**: Track XHR requests and responses during development
+- **Screenshot Capture**: Easily take and share screenshots for collaboration
+- **DOM Inspection**: Analyze selected DOM elements
+- **Auditing Tools**: Run accessibility, performance, SEO, and best practices audits
+
+To use Browser Tools:
+
+1. Install the [Browser Tools Chrome Extension](https://github.com/AgentDeskAI/browser-tools-mcp)
+2. Run the Browser Tools server using `start-browser-tools.bat` (Windows) or `start-browser-tools.sh` (Linux/Mac)
+3. Connect to the MCP server from Cursor IDE (configured in `.cursor/mcp.json`)
 
 ## Philosophy
 

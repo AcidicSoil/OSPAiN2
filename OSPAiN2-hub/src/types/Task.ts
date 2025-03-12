@@ -56,6 +56,8 @@ export interface Task {
   workerId?: string; // ID of worker processing this task
   progress?: number; // Progress percentage (0-100)
   result?: any; // Task result data
+  processingTime?: number; // Time taken to process the task in milliseconds
+  dueDate?: Date; // When the task is due to be completed
 }
 
 /**

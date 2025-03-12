@@ -32,25 +32,50 @@ if not exist "OSPAiN2-hub" (
 echo Starting OSPAiN2 server...
 echo.
 
+:: Check if package.json exists
+cd OSPAiN2-hub
+if not exist "package.json" (
+    echo Error: package.json not found in OSPAiN2-hub directory.
+    exit /b 1
+)
+
+:: Check if we're using Next.js by looking for .next directory or next.config.js
+set NEXT_JS=false
+if exist ".next" set NEXT_JS=true
+if exist "next.config.js" set NEXT_JS=true
+
 :: Check if we should run in development mode
 if "%1"=="dev" (
     echo Running in development mode...
-    cd OSPAiN2-hub
-    npm run dev
-) else (
-    :: Check if the project has been built
-    if not exist "OSPAiN2-hub/.next" (
-        echo Building OSPAiN2 for the first time...
-        cd OSPAiN2-hub
-        call npm install
-        call npm run build
+    
+    if "%NEXT_JS%"=="true" (
+        echo Detected Next.js project, using dev command...
+        npm run dev
     ) else (
-        echo Using existing build...
-        cd OSPAiN2-hub
+        echo Using React start command...
+        npm start
+    )
+) else (
+    :: Check if dependencies are installed
+    if not exist "node_modules" (
+        echo Installing dependencies for the first time...
+        call npm install
+    ) else (
+        echo Using existing dependencies...
     )
     
-    :: Start the server
-    npm start
+    :: If Next.js, check for build
+    if "%NEXT_JS%"=="true" (
+        if not exist ".next" (
+            echo Building Next.js project...
+            call npm run build
+        )
+        echo Starting Next.js server...
+        npm start
+    ) else (
+        echo Starting React development server...
+        npm start
+    )
 )
 
 :: Script should not reach here unless server crashed

@@ -30,25 +30,53 @@ fi
 echo "Starting OSPAiN2 server..."
 echo
 
+# Change to hub directory
+cd OSPAiN2-hub
+
+# Check if package.json exists
+if [ ! -f "package.json" ]; then
+    echo "Error: package.json not found in OSPAiN2-hub directory."
+    exit 1
+fi
+
+# Check if we're using Next.js by looking for .next directory or next.config.js
+NEXT_JS=false
+if [ -d ".next" ] || [ -f "next.config.js" ]; then
+    NEXT_JS=true
+fi
+
 # Check if we should run in development mode
 if [ "$1" == "dev" ]; then
     echo "Running in development mode..."
-    cd OSPAiN2-hub
-    npm run dev
-else
-    # Check if the project has been built
-    if [ ! -d "OSPAiN2-hub/.next" ]; then
-        echo "Building OSPAiN2 for the first time..."
-        cd OSPAiN2-hub
-        npm install
-        npm run build
+    
+    if [ "$NEXT_JS" == "true" ]; then
+        echo "Detected Next.js project, using dev command..."
+        npm run dev
     else
-        echo "Using existing build..."
-        cd OSPAiN2-hub
+        echo "Using React start command..."
+        npm start
+    fi
+else
+    # Check if dependencies are installed
+    if [ ! -d "node_modules" ]; then
+        echo "Installing dependencies for the first time..."
+        npm install
+    else
+        echo "Using existing dependencies..."
     fi
     
-    # Start the server
-    npm start
+    # If Next.js, check for build
+    if [ "$NEXT_JS" == "true" ]; then
+        if [ ! -d ".next" ]; then
+            echo "Building Next.js project..."
+            npm run build
+        fi
+        echo "Starting Next.js server..."
+        npm start
+    else
+        echo "Starting React development server..."
+        npm start
+    fi
 fi
 
 # Script should not reach here unless server crashed

@@ -6,6 +6,11 @@ interface TaskStatusDistributionProps {
   tasks: Task[];
 }
 
+interface TaskData {
+  status: string;
+  count: number;
+}
+
 /**
  * Task Status Distribution Component
  *
@@ -71,7 +76,7 @@ const TaskStatusDistribution: React.FC<TaskStatusDistributionProps> = ({
 
     // Generate the pie chart
     const pie = d3
-      .pie<any>()
+      .pie<TaskData>()
       .value((d) => d.count)
       .sort(null); // Don't sort to preserve status order
 
@@ -79,7 +84,7 @@ const TaskStatusDistribution: React.FC<TaskStatusDistributionProps> = ({
 
     // Define arc generator
     const arc = d3
-      .arc()
+      .arc<d3.PieArcDatum<TaskData>>()
       .innerRadius(0) // No inner radius (classic pie chart)
       .outerRadius(radius);
 
@@ -89,7 +94,7 @@ const TaskStatusDistribution: React.FC<TaskStatusDistributionProps> = ({
       .data(data_ready)
       .enter()
       .append("path")
-      .attr("d", arc as any)
+      .attr("d", arc)
       .attr("fill", (d) => colorScale(d.data.status))
       .attr("stroke", "white")
       .style("stroke-width", "2px")

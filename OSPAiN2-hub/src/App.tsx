@@ -14,6 +14,7 @@ import ProgressDashboard from "./pages/ProgressDashboard";
 import { RateLimitProvider } from "./context/RateLimitContext";
 import { WorkerDemo } from "./pages/WorkerDemo";
 import DebugDashboard from "./pages/DebugDashboard";
+import ComponentManagerPage from "./pages/ComponentManagerPage";
 
 /**
  * Main App Component
@@ -47,6 +48,7 @@ const App: React.FC = () => {
           <Route path="worker-demo" element={<WorkerDemo />} />
           <Route path="settings" element={<Settings />} />
           <Route path="debug" element={<DebugDashboard />} />
+          <Route path="component-manager" element={<ComponentManagerPage />} />
         </Route>
       </Routes>
     </RateLimitProvider>

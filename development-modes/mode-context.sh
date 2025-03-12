@@ -1,8 +1,41 @@
 #!/bin/bash
+
+# Source the jq_windows fix script
+source "/c/Users/comfy/OSPAiN2/development-modes/fix_jq_windows.sh"
+
 #
 # Mode Context Script
 # Outputs the current development mode context
 #
+
+# Function to handle jq syntax issues in Windows
+jq_windows() {
+  if [[ "$(uname -s)" == *"MINGW"* ]] || [[ "$(uname -s)" == *"MSYS"* ]]; then
+    # Special handling for Windows Git Bash
+    local filter="$1"
+    shift
+    filter=$(echo "$filter" | sed 's/'''/\\'''/g')
+    if [ -n "$1" ]; then
+      local tmpfile=$(mktemp -t jq_windows_XXXXXX)
+      cat "$1" > "$tmpfile"
+      jq "$filter" "$tmpfile"
+      local result=$?
+      rm -f "$tmpfile"
+      return $result
+    else
+      local tmpfile=$(mktemp -t jq_windows_XXXXXX)
+      cat > "$tmpfile"
+      jq "$filter" "$tmpfile"
+      local result=$?
+      rm -f "$tmpfile"
+      return $result
+    fi
+  else
+    # Just use regular jq on non-Windows systems
+    jq "$@"
+  fi
+}
+
 
 SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
 CONTEXT_JS="$SCRIPT_DIR/mode-context.js"

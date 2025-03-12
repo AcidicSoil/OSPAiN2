@@ -5,7 +5,7 @@
  * Provides filtering, searching, and visualization of log data.
  */
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import {
   Box,
   Typography,
@@ -25,6 +25,7 @@ import {
   Menu,
   Tooltip,
   CircularProgress,
+  useTheme,
 } from "@mui/material";
 import {
   Refresh as RefreshIcon,
@@ -38,11 +39,13 @@ import {
   Close as CloseIcon,
   Fullscreen as FullscreenIcon,
   FullscreenExit as FullscreenExitIcon,
+  BugReport as BugReportIcon,
+  Info as InfoIcon,
+  Warning as WarningIcon,
+  Error as ErrorIcon,
 } from "@mui/icons-material";
-import DebugMcpService, {
-  LogEntry,
-  DebugSessionInfo,
-} from "../../services/DebugMcpService";
+import DebugMcpService from "../../services/DebugMcpService";
+import { LogEntry, DebugSessionInfo } from "../../types/debug";
 
 interface DebugConsoleProps {
   height?: string | number;
@@ -65,6 +68,8 @@ export const DebugConsole: React.FC<DebugConsoleProps> = ({
   maxLogs = 100,
   filter: initialFilter,
 }) => {
+  const theme = useTheme();
+
   // State
   const [logs, setLogs] = useState<LogEntry[]>([]);
   const [sessions, setSessions] = useState<DebugSessionInfo[]>([]);
@@ -80,6 +85,37 @@ export const DebugConsole: React.FC<DebugConsoleProps> = ({
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const logContainerRef = useRef<HTMLDivElement>(null);
 
+  // Function declarations
+  const refreshLogs = useCallback(async () => {
+    if (activeSessionId) {
+      const sessionLogs = await DebugMcpService.getLogs({
+        sessionId: activeSessionId,
+      });
+      setLogs(
+        sessionLogs
+          .filter(
+            (log: LogEntry) =>
+              (!filter.level || log.level === filter.level) &&
+              (!filter.source || log.source === filter.source) &&
+              (!filter.search ||
+                log.message.toLowerCase().includes(filter.search.toLowerCase()))
+          )
+          .slice(0, maxLogs)
+      );
+    } else {
+      setLogs([]);
+    }
+  }, [activeSessionId, filter, maxLogs]);
+
+  const refreshSessionsAndLogs = useCallback(async () => {
+    const sessions = await DebugMcpService.getSessions();
+    setSessions(sessions);
+    if (sessions.length > 0 && !activeSessionId) {
+      setActiveSessionId(sessions[0].id);
+    }
+    await refreshLogs();
+  }, [activeSessionId, refreshLogs]);
+
   // Initialize on component mount
   useEffect(() => {
     if (autoStart) {
@@ -90,7 +126,7 @@ export const DebugConsole: React.FC<DebugConsoleProps> = ({
     refreshSessionsAndLogs();
 
     // Set up log listener
-    const unsubscribe = DebugMcpService.onLog((log) => {
+    const unsubscribe = DebugMcpService.onLog((log: LogEntry) => {
       setLogs((prevLogs) => {
         const newLogs = [log, ...prevLogs];
         return newLogs.slice(0, maxLogs);
@@ -103,12 +139,12 @@ export const DebugConsole: React.FC<DebugConsoleProps> = ({
         DebugMcpService.shutdown();
       }
     };
-  }, [autoStart, maxLogs]);
+  }, [autoStart, maxLogs, isRunning, refreshSessionsAndLogs]);
 
   // Apply filter effect
   useEffect(() => {
     refreshLogs();
-  }, [filter, activeSessionId]);
+  }, [filter, activeSessionId, refreshLogs]);
 
   // When running state changes
   useEffect(() => {
@@ -117,7 +153,7 @@ export const DebugConsole: React.FC<DebugConsoleProps> = ({
     } else if (!isRunning) {
       refreshSessionsAndLogs();
     }
-  }, [isRunning]);
+  }, [isRunning, refreshSessionsAndLogs]);
 
   // Scroll to bottom on new logs if scrolled to bottom
   useEffect(() => {
@@ -130,45 +166,6 @@ export const DebugConsole: React.FC<DebugConsoleProps> = ({
       }
     }
   }, [logs]);
-
-  // Refresh sessions and logs
-  const refreshSessionsAndLogs = () => {
-    const allSessions = DebugMcpService.getSessions();
-    setSessions(allSessions);
-
-    const currentSession = DebugMcpService.getCurrentSession();
-    if (currentSession) {
-      setActiveSessionId(currentSession.id);
-    } else if (allSessions.length > 0) {
-      setActiveSessionId(allSessions[0].id);
-    }
-
-    refreshLogs();
-  };
-
-  // Refresh logs based on current filter and session
-  const refreshLogs = () => {
-    const filterOptions: any = {};
-
-    if (filter.level) {
-      filterOptions.level = filter.level as "debug" | "info" | "warn" | "error";
-    }
-
-    if (filter.source) {
-      filterOptions.source = filter.source;
-    }
-
-    if (filter.search) {
-      filterOptions.search = filter.search;
-    }
-
-    if (activeSessionId) {
-      filterOptions.sessionId = activeSessionId;
-    }
-
-    const filteredLogs = DebugMcpService.getLogs(filterOptions);
-    setLogs(filteredLogs.slice(0, maxLogs));
-  };
 
   // Start a new debug session
   const startNewSession = () => {
@@ -256,14 +253,46 @@ export const DebugConsole: React.FC<DebugConsoleProps> = ({
   };
 
   // Render log timestamp
-  const renderTimestamp = (timestamp: Date) => {
-    return timestamp.toLocaleTimeString(undefined, {
-      hour: "2-digit",
-      minute: "2-digit",
-      second: "2-digit",
-      fractionalSecondDigits: 3,
-    });
+  const renderTimestamp = (timestamp: number) => {
+    return new Date(timestamp).toLocaleTimeString();
   };
+
+  const renderLogLevel = (level: LogEntry["level"]) => {
+    switch (level) {
+      case "debug":
+        return <BugReportIcon sx={{ color: theme.palette.info.main }} />;
+      case "info":
+        return <InfoIcon sx={{ color: theme.palette.success.main }} />;
+      case "warn":
+        return <WarningIcon sx={{ color: theme.palette.warning.main }} />;
+      case "error":
+        return <ErrorIcon sx={{ color: theme.palette.error.main }} />;
+    }
+  };
+
+  const renderLogEntry = (l: LogEntry) => (
+    <Box
+      key={l.id}
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        p: 1,
+        borderBottom: 1,
+        borderColor: "divider",
+        "&:hover": {
+          bgcolor: "action.hover",
+        },
+      }}
+    >
+      {renderLogLevel(l.level)}
+      <Box sx={{ ml: 1, flex: 1 }}>
+        <Typography variant="caption" color="textSecondary">
+          {renderTimestamp(l.timestamp)}
+        </Typography>
+        <Typography variant="body2">{l.message}</Typography>
+      </Box>
+    </Box>
+  );
 
   return (
     <Paper

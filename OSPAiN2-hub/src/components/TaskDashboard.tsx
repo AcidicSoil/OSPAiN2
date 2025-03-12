@@ -1,20 +1,57 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback, useMemo } from "react";
 import { TaskType, TaskPriority, TaskStatus, Task } from "../types/Task";
 import taskQueue from "../services/TaskQueue";
 import workerManager from "../services/WorkerManager";
+import { toast } from "react-toastify";
+import { VirtualizedTaskList } from "./VirtualizedTaskList";
+import { TaskDetails } from "./TaskDetails";
+import TaskStatistics from "./visualization/TaskStatistics";
+import { Box, Tabs, Tab, Paper } from "@mui/material";
 
 interface TaskDashboardProps {
   refreshInterval?: number; // in milliseconds
 }
 
+interface TabPanelProps {
+  children?: React.ReactNode;
+  index: number;
+  value: number;
+}
+
+function TabPanel(props: TabPanelProps) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`task-tabpanel-${index}`}
+      aria-labelledby={`task-tab-${index}`}
+      {...other}
+    >
+      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
+    </div>
+  );
+}
+
+function a11yProps(index: number) {
+  return {
+    id: `task-tab-${index}`,
+    "aria-controls": `task-tabpanel-${index}`,
+  };
+}
+
 /**
  * Dashboard component for monitoring and managing the task system
+ * Implements local-first task management with error handling and state persistence
  */
 export const TaskDashboard: React.FC<TaskDashboardProps> = ({
   refreshInterval = 2000,
 }) => {
   // State for tasks and worker stats
   const [tasks, setTasks] = useState<Task[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [workerStats, setWorkerStats] = useState<{
     total: number;
     active: number;
@@ -34,88 +71,91 @@ export const TaskDashboard: React.FC<TaskDashboardProps> = ({
     tag?: string;
   }>({});
 
-  // Initialize services
+  // Memoized refresh functions
+  const refreshTasks = useCallback(async () => {
+    try {
+      setError(null);
+      const updatedTasks = await taskQueue.getAllTasks();
+      setTasks(updatedTasks);
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : "Failed to fetch tasks";
+      setError(errorMessage);
+      toast.error(errorMessage);
+    }
+  }, []);
+
+  const refreshWorkerStats = useCallback(async () => {
+    try {
+      const stats = await workerManager.getStatus();
+      setWorkerStats({
+        total: stats.totalWorkers,
+        active: stats.activeWorkers,
+        idle: stats.idleWorkers,
+        status: stats.status,
+      });
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : "Failed to fetch worker stats";
+      toast.error(errorMessage);
+    }
+  }, []);
+
+  // Initialize services and set up event listeners
   useEffect(() => {
+    let isSubscribed = true;
+
+    const initialize = async () => {
+      try {
+        setIsLoading(true);
+        await Promise.all([refreshTasks(), refreshWorkerStats()]);
+      } catch (err) {
+        const errorMessage =
+          err instanceof Error ? err.message : "Failed to initialize dashboard";
+        setError(errorMessage);
+        toast.error(errorMessage);
+      } finally {
+        if (isSubscribed) {
+          setIsLoading(false);
+        }
+      }
+    };
+
     // Subscribe to task queue events
-    const handleTaskUpdated = () => refreshTasks();
+    const handleTaskUpdated = () => {
+      if (isSubscribed) {
+        refreshTasks();
+      }
+    };
     taskQueue.on("taskUpdated", handleTaskUpdated);
 
     // Subscribe to worker manager events
-    const handleStatusChanged = () => refreshWorkerStats();
+    const handleStatusChanged = () => {
+      if (isSubscribed) {
+        refreshWorkerStats();
+      }
+    };
     workerManager.on("statusChanged", handleStatusChanged);
 
     // Set up periodic refresh
     const intervalId = setInterval(() => {
-      refreshTasks();
-      refreshWorkerStats();
+      if (isSubscribed) {
+        refreshTasks();
+        refreshWorkerStats();
+      }
     }, refreshInterval);
 
-    // Initial load
-    refreshTasks();
-    refreshWorkerStats();
+    // Initialize
+    initialize();
 
-    // Cleanup
+    // Cleanup function
     return () => {
+      isSubscribed = false;
       clearInterval(intervalId);
       taskQueue.off("taskUpdated", handleTaskUpdated);
       workerManager.off("statusChanged", handleStatusChanged);
     };
-  }, [refreshInterval]);
-
-  // Refresh task list
-  const refreshTasks = async () => {
-    let filteredTasks = await taskQueue.getAllTasks();
-
-    // Apply filters
-    if (taskFilter.status) {
-      filteredTasks = filteredTasks.filter(
-        (task: Task) => task.status === taskFilter.status
-      );
-    }
-
-    if (taskFilter.type) {
-      filteredTasks = filteredTasks.filter(
-        (task: Task) => task.type === taskFilter.type
-      );
-    }
-
-    if (taskFilter.priority) {
-      filteredTasks = filteredTasks.filter(
-        (task: Task) => task.priority === taskFilter.priority
-      );
-    }
-
-    if (taskFilter.tag) {
-      filteredTasks = filteredTasks.filter(
-        (task: Task) => task.tags && task.tags.includes(taskFilter.tag!)
-      );
-    }
-
-    // Sort tasks by priority and creation date
-    filteredTasks.sort((a: Task, b: Task) => {
-      // First, sort by priority (higher priority first)
-      if (a.priority !== b.priority) {
-        return a.priority - b.priority;
-      }
-
-      // Then, sort by creation date (oldest first for same priority)
-      return a.createdAt.getTime() - b.createdAt.getTime();
-    });
-
-    setTasks(filteredTasks);
-  };
-
-  // Refresh worker stats
-  const refreshWorkerStats = async () => {
-    const stats = workerManager.getStatus();
-
-    setWorkerStats({
-      total: stats.totalWorkers,
-      active: stats.activeWorkers,
-      idle: stats.idleWorkers,
-      status: workerManager.getRunningStatus() ? "running" : "stopped",
-    });
-  };
+  }, [refreshInterval, refreshTasks, refreshWorkerStats]);
 
   // Handle starting worker manager
   const handleStartWorkers = async () => {
@@ -157,122 +197,148 @@ export const TaskDashboard: React.FC<TaskDashboardProps> = ({
     setSelectedTaskId(taskId === selectedTaskId ? null : taskId);
   };
 
-  // Render task status badge
-  const renderStatusBadge = (status: TaskStatus) => {
-    let colorClass = "";
+  // Memoized filtered tasks
+  const filteredTasks = useMemo(() => {
+    return tasks
+      .filter((task) => {
+        if (taskFilter.status && task.status !== taskFilter.status)
+          return false;
+        if (taskFilter.type && task.type !== taskFilter.type) return false;
+        if (taskFilter.priority && task.priority !== taskFilter.priority)
+          return false;
+        if (
+          taskFilter.tag &&
+          (!task.tags || !task.tags.includes(taskFilter.tag))
+        )
+          return false;
+        return true;
+      })
+      .sort((a, b) => {
+        // Sort by priority first
+        if (a.priority !== b.priority) {
+          return a.priority - b.priority;
+        }
+        // Then by creation date
+        return (
+          new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+        );
+      });
+  }, [tasks, taskFilter]);
 
-    switch (status) {
-      case TaskStatus.PENDING:
-        colorClass = "bg-yellow-100 text-yellow-800";
-        break;
-      case TaskStatus.RUNNING:
-        colorClass = "bg-blue-100 text-blue-800";
-        break;
-      case TaskStatus.COMPLETED:
-        colorClass = "bg-green-100 text-green-800";
-        break;
-      case TaskStatus.FAILED:
-        colorClass = "bg-red-100 text-red-800";
-        break;
-      case TaskStatus.CANCELLED:
-        colorClass = "bg-gray-100 text-gray-800";
-        break;
-      case TaskStatus.RETRY:
-        colorClass = "bg-purple-100 text-purple-800";
-        break;
-    }
+  // Memoized badge rendering functions
+  const renderStatusBadge = useMemo(() => {
+    return (status: TaskStatus) => {
+      let colorClass = "";
+      switch (status) {
+        case TaskStatus.PENDING:
+          colorClass = "bg-yellow-100 text-yellow-800";
+          break;
+        case TaskStatus.RUNNING:
+          colorClass = "bg-blue-100 text-blue-800";
+          break;
+        case TaskStatus.COMPLETED:
+          colorClass = "bg-green-100 text-green-800";
+          break;
+        case TaskStatus.FAILED:
+          colorClass = "bg-red-100 text-red-800";
+          break;
+        case TaskStatus.CANCELLED:
+          colorClass = "bg-gray-100 text-gray-800";
+          break;
+        case TaskStatus.RETRY:
+          colorClass = "bg-purple-100 text-purple-800";
+          break;
+      }
+      return (
+        <span
+          className={`px-2 py-1 rounded-full text-xs font-medium ${colorClass}`}
+        >
+          {status}
+        </span>
+      );
+    };
+  }, []);
 
-    return (
-      <span
-        className={`px-2 py-1 rounded-full text-xs font-medium ${colorClass}`}
-      >
-        {status}
-      </span>
-    );
-  };
+  const renderPriorityBadge = useMemo(() => {
+    return (priority: TaskPriority) => {
+      let label = "";
+      let colorClass = "";
+      switch (priority) {
+        case TaskPriority.CRITICAL:
+          label = "Critical";
+          colorClass = "bg-red-100 text-red-800";
+          break;
+        case TaskPriority.HIGH:
+          label = "High";
+          colorClass = "bg-orange-100 text-orange-800";
+          break;
+        case TaskPriority.MEDIUM:
+          label = "Medium";
+          colorClass = "bg-yellow-100 text-yellow-800";
+          break;
+        case TaskPriority.LOW:
+          label = "Low";
+          colorClass = "bg-green-100 text-green-800";
+          break;
+        case TaskPriority.BACKGROUND:
+          label = "Background";
+          colorClass = "bg-gray-100 text-gray-800";
+          break;
+      }
+      return (
+        <span
+          className={`px-2 py-1 rounded-full text-xs font-medium ${colorClass}`}
+        >
+          {label}
+        </span>
+      );
+    };
+  }, []);
 
-  // Render priority badge
-  const renderPriorityBadge = (priority: TaskPriority) => {
-    let label = "";
-    let colorClass = "";
+  const renderTypeBadge = useMemo(() => {
+    return (type: TaskType) => {
+      let label = "";
+      let colorClass = "";
+      switch (type) {
+        case TaskType.MODEL_REQUEST:
+          label = "Model";
+          colorClass = "bg-indigo-100 text-indigo-800";
+          break;
+        case TaskType.EMBEDDINGS:
+          label = "Embeddings";
+          colorClass = "bg-purple-100 text-purple-800";
+          break;
+        case TaskType.FILE_OPERATION:
+          label = "File";
+          colorClass = "bg-blue-100 text-blue-800";
+          break;
+        case TaskType.DATA_PROCESSING:
+          label = "Data";
+          colorClass = "bg-green-100 text-green-800";
+          break;
+        case TaskType.EXTERNAL_API:
+          label = "API";
+          colorClass = "bg-yellow-100 text-yellow-800";
+          break;
+        case TaskType.CUSTOM:
+          label = "Custom";
+          colorClass = "bg-gray-100 text-gray-800";
+          break;
+      }
+      return (
+        <span
+          className={`px-2 py-1 rounded-full text-xs font-medium ${colorClass}`}
+        >
+          {label}
+        </span>
+      );
+    };
+  }, []);
 
-    switch (priority) {
-      case TaskPriority.CRITICAL:
-        label = "Critical";
-        colorClass = "bg-red-100 text-red-800";
-        break;
-      case TaskPriority.HIGH:
-        label = "High";
-        colorClass = "bg-orange-100 text-orange-800";
-        break;
-      case TaskPriority.MEDIUM:
-        label = "Medium";
-        colorClass = "bg-yellow-100 text-yellow-800";
-        break;
-      case TaskPriority.LOW:
-        label = "Low";
-        colorClass = "bg-green-100 text-green-800";
-        break;
-      case TaskPriority.BACKGROUND:
-        label = "Background";
-        colorClass = "bg-gray-100 text-gray-800";
-        break;
-    }
-
-    return (
-      <span
-        className={`px-2 py-1 rounded-full text-xs font-medium ${colorClass}`}
-      >
-        {label}
-      </span>
-    );
-  };
-
-  // Render task type badge
-  const renderTypeBadge = (type: TaskType) => {
-    let label = "";
-    let colorClass = "";
-
-    switch (type) {
-      case TaskType.MODEL_REQUEST:
-        label = "Model";
-        colorClass = "bg-indigo-100 text-indigo-800";
-        break;
-      case TaskType.EMBEDDINGS:
-        label = "Embeddings";
-        colorClass = "bg-purple-100 text-purple-800";
-        break;
-      case TaskType.FILE_OPERATION:
-        label = "File";
-        colorClass = "bg-blue-100 text-blue-800";
-        break;
-      case TaskType.DATA_PROCESSING:
-        label = "Data";
-        colorClass = "bg-green-100 text-green-800";
-        break;
-      case TaskType.EXTERNAL_API:
-        label = "API";
-        colorClass = "bg-yellow-100 text-yellow-800";
-        break;
-      case TaskType.CUSTOM:
-        label = "Custom";
-        colorClass = "bg-gray-100 text-gray-800";
-        break;
-    }
-
-    return (
-      <span
-        className={`px-2 py-1 rounded-full text-xs font-medium ${colorClass}`}
-      >
-        {label}
-      </span>
-    );
-  };
-
-  // Format date
-  const formatDate = (date: Date) => {
-    return new Date(date).toLocaleString();
-  };
+  // Memoized date formatter
+  const formatDate = useMemo(() => {
+    return (date: Date) => new Date(date).toLocaleString();
+  }, []);
 
   // Find selected task
   const selectedTask = selectedTaskId
@@ -284,387 +350,192 @@ export const TaskDashboard: React.FC<TaskDashboardProps> = ({
   // Potential solutions: react-window, react-virtualized, or custom implementation with intersection observer.
 
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold mb-6">Task Dashboard</h1>
-
-      {/* Worker Stats */}
-      <div className="bg-white rounded-lg shadow p-4 mb-6">
-        <h2 className="text-lg font-semibold mb-2">Worker Status</h2>
-        <div className="flex space-x-4 mb-4">
-          <div className="flex-1 bg-gray-50 p-3 rounded-lg">
-            <div className="text-sm text-gray-500">Total Workers</div>
-            <div className="text-2xl font-semibold">{workerStats.total}</div>
-          </div>
-          <div className="flex-1 bg-gray-50 p-3 rounded-lg">
-            <div className="text-sm text-gray-500">Active Workers</div>
-            <div className="text-2xl font-semibold">{workerStats.active}</div>
-          </div>
-          <div className="flex-1 bg-gray-50 p-3 rounded-lg">
-            <div className="text-sm text-gray-500">Idle Workers</div>
-            <div className="text-2xl font-semibold">{workerStats.idle}</div>
-          </div>
-          <div className="flex-1 bg-gray-50 p-3 rounded-lg">
-            <div className="text-sm text-gray-500">Status</div>
-            <div className="text-2xl font-semibold capitalize">
-              {workerStats.status}
+    <div className="p-4 bg-white rounded-lg shadow">
+      {isLoading ? (
+        <div className="flex items-center justify-center h-64">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+        </div>
+      ) : error ? (
+        <div className="flex flex-col items-center justify-center h-64">
+          <div className="text-red-500 mb-4">{error}</div>
+          <button
+            onClick={() => {
+              setIsLoading(true);
+              setError(null);
+              Promise.all([refreshTasks(), refreshWorkerStats()]).finally(() =>
+                setIsLoading(false)
+              );
+            }}
+            className="px-4 py-2 bg-primary text-white rounded hover:bg-primary-dark transition-colors"
+          >
+            Retry
+          </button>
+        </div>
+      ) : (
+        <>
+          {/* Worker Controls */}
+          <div className="mb-6 flex items-center justify-between">
+            <div className="flex items-center space-x-4">
+              <h2 className="text-xl font-semibold">Task Dashboard</h2>
+              <div className="flex items-center space-x-2">
+                <span className="text-sm text-gray-600">Workers:</span>
+                <span
+                  className={`px-2 py-1 rounded text-sm ${
+                    workerStats.status === "running"
+                      ? "bg-green-100 text-green-800"
+                      : workerStats.status === "stopped"
+                      ? "bg-red-100 text-red-800"
+                      : "bg-yellow-100 text-yellow-800"
+                  }`}
+                >
+                  {workerStats.status}
+                </span>
+              </div>
+              <div className="text-sm text-gray-600">
+                {workerStats.active}/{workerStats.total} active
+              </div>
+            </div>
+            <div className="flex items-center space-x-2">
+              <button
+                onClick={handleStartWorkers}
+                disabled={workerStats.status === "running"}
+                className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              >
+                Start Workers
+              </button>
+              <button
+                onClick={handleStopWorkers}
+                disabled={workerStats.status === "stopped"}
+                className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              >
+                Stop Workers
+              </button>
             </div>
           </div>
-        </div>
-        <div className="flex space-x-2">
-          <button
-            onClick={handleStartWorkers}
-            disabled={
-              workerStats.status === "running" ||
-              workerStats.status === "starting"
-            }
-            className="px-4 py-2 bg-green-600 text-white rounded-lg disabled:bg-green-300"
-          >
-            Start Workers
-          </button>
-          <button
-            onClick={handleStopWorkers}
-            disabled={
-              workerStats.status === "stopped" ||
-              workerStats.status === "stopping"
-            }
-            className="px-4 py-2 bg-red-600 text-white rounded-lg disabled:bg-red-300"
-          >
-            Stop Workers
-          </button>
-        </div>
-      </div>
 
-      {/* Task Filters */}
-      <div className="bg-white rounded-lg shadow p-4 mb-6">
-        <h2 className="text-lg font-semibold mb-2">Filters</h2>
-        <div className="grid grid-cols-4 gap-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Status
-            </label>
+          {/* Task Filters */}
+          <div className="mb-6 grid grid-cols-4 gap-4">
             <select
-              className="w-full p-2 border rounded-lg"
               value={taskFilter.status || ""}
               onChange={(e) =>
                 setTaskFilter({
                   ...taskFilter,
-                  status: e.target.value
-                    ? (e.target.value as TaskStatus)
-                    : undefined,
+                  status: e.target.value as TaskStatus,
                 })
               }
+              className="form-select"
             >
-              <option value="">All</option>
+              <option value="">All Statuses</option>
               {Object.values(TaskStatus).map((status) => (
                 <option key={status} value={status}>
                   {status}
                 </option>
               ))}
             </select>
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Type
-            </label>
             <select
-              className="w-full p-2 border rounded-lg"
               value={taskFilter.type || ""}
               onChange={(e) =>
                 setTaskFilter({
                   ...taskFilter,
-                  type: e.target.value
-                    ? (e.target.value as TaskType)
-                    : undefined,
+                  type: e.target.value as TaskType,
                 })
               }
+              className="form-select"
             >
-              <option value="">All</option>
+              <option value="">All Types</option>
               {Object.values(TaskType).map((type) => (
                 <option key={type} value={type}>
                   {type}
                 </option>
               ))}
             </select>
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Priority
-            </label>
             <select
-              className="w-full p-2 border rounded-lg"
               value={taskFilter.priority || ""}
               onChange={(e) =>
                 setTaskFilter({
                   ...taskFilter,
-                  priority: e.target.value
-                    ? (Number(e.target.value) as TaskPriority)
-                    : undefined,
+                  priority: Number(e.target.value) as TaskPriority,
                 })
               }
+              className="form-select"
             >
-              <option value="">All</option>
-              {Object.entries(TaskPriority)
-                .filter(([key]) => isNaN(Number(key))) // Filter out numeric keys
-                .map(([key, value]) => (
-                  <option key={key} value={value}>
-                    {key}
+              <option value="">All Priorities</option>
+              {Object.values(TaskPriority)
+                .filter((p) => !isNaN(Number(p)))
+                .map((priority) => (
+                  <option key={priority} value={priority}>
+                    P{priority}
                   </option>
                 ))}
             </select>
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Tag
-            </label>
             <input
               type="text"
-              className="w-full p-2 border rounded-lg"
               value={taskFilter.tag || ""}
               onChange={(e) =>
-                setTaskFilter({
-                  ...taskFilter,
-                  tag: e.target.value || undefined,
-                })
+                setTaskFilter({ ...taskFilter, tag: e.target.value })
               }
-              placeholder="Filter by tag"
+              placeholder="Filter by tag..."
+              className="form-input"
             />
           </div>
-        </div>
-        <div className="mt-3">
-          <button
-            onClick={() => setTaskFilter({})}
-            className="px-3 py-1 bg-gray-200 text-gray-700 rounded"
-          >
-            Clear Filters
-          </button>
-        </div>
-      </div>
 
-      {/* Task List */}
-      <div className="bg-white rounded-lg shadow overflow-hidden mb-6">
-        <h2 className="text-lg font-semibold p-4 border-b">
-          Tasks ({tasks.length})
-        </h2>
-
-        {tasks.length === 0 ? (
-          <div className="p-6 text-center text-gray-500">
-            No tasks found matching the current filters.
-          </div>
-        ) : (
+          {/* Task List Header */}
           <div className="overflow-x-auto">
-            <table className="min-w-full divide-y divide-gray-200">
-              <thead className="bg-gray-50">
-                <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <div className="min-w-full">
+              <div className="bg-gray-50 border-b border-gray-200">
+                <div className="flex">
+                  <div className="flex-1 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     ID
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  </div>
+                  <div className="flex-1 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Type
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  </div>
+                  <div className="flex-1 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Status
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  </div>
+                  <div className="flex-1 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Priority
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  </div>
+                  <div className="flex-1 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Progress
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  </div>
+                  <div className="flex-1 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Created
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  </div>
+                  <div className="flex-1 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Actions
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
-                {tasks.map((task) => (
-                  <tr
-                    key={task.id}
-                    className={`hover:bg-gray-50 cursor-pointer ${
-                      selectedTaskId === task.id ? "bg-blue-50" : ""
-                    }`}
-                    onClick={() => handleSelectTask(task.id)}
-                  >
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <span className="text-sm font-mono text-gray-900">
-                        {task.id.substring(0, 8)}...
-                      </span>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      {renderTypeBadge(task.type)}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      {renderStatusBadge(task.status)}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      {renderPriorityBadge(task.priority)}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="w-full bg-gray-200 rounded-full h-2.5">
-                        <div
-                          className="bg-blue-600 h-2.5 rounded-full"
-                          style={{ width: `${task.progress || 0}%` }}
-                        ></div>
-                      </div>
-                      <span className="text-xs text-gray-500">
-                        {task.progress || 0}%
-                      </span>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                      {formatDate(task.createdAt)}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                      {task.status === TaskStatus.PENDING ||
-                      task.status === TaskStatus.RUNNING ? (
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            handleCancelTask(task.id);
-                          }}
-                          className="text-red-600 hover:text-red-900 mr-2"
-                        >
-                          Cancel
-                        </button>
-                      ) : null}
-
-                      {task.status === TaskStatus.FAILED ||
-                      task.status === TaskStatus.CANCELLED ? (
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            handleRetryTask(task.id);
-                          }}
-                          className="text-blue-600 hover:text-blue-900"
-                        >
-                          Retry
-                        </button>
-                      ) : null}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        )}
-      </div>
-
-      {/* Task Details */}
-      {selectedTask && (
-        <div className="bg-white rounded-lg shadow p-4">
-          <div className="flex justify-between items-center mb-4">
-            <h2 className="text-lg font-semibold">Task Details</h2>
-            <button
-              onClick={() => setSelectedTaskId(null)}
-              className="text-gray-500 hover:text-gray-700"
-            >
-              Close
-            </button>
-          </div>
-
-          <div className="grid grid-cols-2 gap-4 mb-4">
-            <div>
-              <div className="text-sm font-medium text-gray-500">ID</div>
-              <div className="font-mono">{selectedTask.id}</div>
-            </div>
-            <div>
-              <div className="text-sm font-medium text-gray-500">Type</div>
-              <div>{renderTypeBadge(selectedTask.type)}</div>
-            </div>
-            <div>
-              <div className="text-sm font-medium text-gray-500">Status</div>
-              <div>{renderStatusBadge(selectedTask.status)}</div>
-            </div>
-            <div>
-              <div className="text-sm font-medium text-gray-500">Priority</div>
-              <div>{renderPriorityBadge(selectedTask.priority)}</div>
-            </div>
-            <div>
-              <div className="text-sm font-medium text-gray-500">Created</div>
-              <div>{formatDate(selectedTask.createdAt)}</div>
-            </div>
-            <div>
-              <div className="text-sm font-medium text-gray-500">Attempts</div>
-              <div>
-                {selectedTask.attempts} / {selectedTask.maxAttempts}
+                  </div>
+                </div>
               </div>
+
+              {/* Virtualized Task List */}
+              <VirtualizedTaskList
+                tasks={filteredTasks}
+                selectedTaskId={selectedTaskId}
+                onSelectTask={handleSelectTask}
+                onCancelTask={handleCancelTask}
+                onRetryTask={handleRetryTask}
+                renderTypeBadge={renderTypeBadge}
+                renderStatusBadge={renderStatusBadge}
+                renderPriorityBadge={renderPriorityBadge}
+                formatDate={formatDate}
+              />
             </div>
           </div>
 
-          {selectedTask.tags && selectedTask.tags.length > 0 && (
-            <div className="mb-4">
-              <div className="text-sm font-medium text-gray-500 mb-1">Tags</div>
-              <div className="flex flex-wrap gap-1">
-                {selectedTask.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </div>
+          {/* Task Details */}
+          {selectedTask && (
+            <TaskDetails
+              task={selectedTask}
+              onRetry={handleRetryTask}
+              onCancel={handleCancelTask}
+              renderTypeBadge={renderTypeBadge}
+              renderStatusBadge={renderStatusBadge}
+              renderPriorityBadge={renderPriorityBadge}
+              formatDate={formatDate}
+            />
           )}
-
-          {selectedTask.error && (
-            <div className="mb-4">
-              <div className="text-sm font-medium text-gray-500 mb-1">
-                Error
-              </div>
-              <div className="p-3 bg-red-50 text-red-700 rounded font-mono text-sm overflow-auto max-h-36">
-                {typeof selectedTask.error === "string"
-                  ? selectedTask.error
-                  : selectedTask.error instanceof Error
-                  ? selectedTask.error.message
-                  : "Unknown error"}
-              </div>
-            </div>
-          )}
-
-          <div>
-            <div className="text-sm font-medium text-gray-500 mb-1">
-              Task Data
-            </div>
-            <pre className="p-3 bg-gray-50 rounded font-mono text-sm overflow-auto max-h-96">
-              {JSON.stringify(selectedTask.data, null, 2)}
-            </pre>
-          </div>
-
-          {selectedTask.result && (
-            <div className="mt-4">
-              <div className="text-sm font-medium text-gray-500 mb-1">
-                Result
-              </div>
-              <pre className="p-3 bg-gray-50 rounded font-mono text-sm overflow-auto max-h-96">
-                {JSON.stringify(selectedTask.result, null, 2)}
-              </pre>
-            </div>
-          )}
-
-          <div className="mt-4 flex space-x-2">
-            {(selectedTask.status === TaskStatus.FAILED ||
-              selectedTask.status === TaskStatus.CANCELLED) && (
-              <button
-                onClick={() => handleRetryTask(selectedTask.id)}
-                className="px-4 py-2 bg-blue-600 text-white rounded-lg"
-              >
-                Retry Task
-              </button>
-            )}
-
-            {(selectedTask.status === TaskStatus.PENDING ||
-              selectedTask.status === TaskStatus.RUNNING) && (
-              <button
-                onClick={() => handleCancelTask(selectedTask.id)}
-                className="px-4 py-2 bg-red-600 text-white rounded-lg"
-              >
-                Cancel Task
-              </button>
-            )}
-          </div>
-        </div>
+        </>
       )}
     </div>
   );

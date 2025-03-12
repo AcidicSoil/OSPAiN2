@@ -4,6 +4,15 @@
     "version": "1.0.0",
     "description": "Interconnected Ollama-based applications and tools"
   },
+  "mcp_servers": [
+    {
+      "name": "Browser Tools MCP",
+      "description": "Monitor browser logs, capture screenshots, and run audits directly from Cursor",
+      "command": "npx @agentdeskai/browser-tools-mcp@1.2.0",
+      "url": "http://localhost:8587/",
+      "autostart": false
+    }
+  ],
   "ecosystem": {
     "core_components": {
       "ollama_tag_cli": {

@@ -1,0 +1,105 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Enhanced Project Governance Framework
+
+Highest priority: Maintain system integrity while accelerating development through structured AI collaboration!
+
+## Decision Management
+- Use predefined decision trees for common scenarios:
+  - error :: follow error-handling tree → @tool-call-error-handler.mdc
+  - ambiguity :: evaluate options against project priorities
+  - uncertainty :: document 3 possible approaches before choosing path
+- Document decision criteria in `@decision-logs.mdc` for future reference
+- Escalation threshold: 3 failed resolution attempts → request human intervention
+
+## Version Control Integration
+- Commit message format: `[MODE][TASK-ID] Brief description of changes`
+- Branch naming: `[mode]-[task-id]-[brief-descriptor]`
+- Pull request template:
+  ```
+  Changes: [Summary of changes]
+  Task Reference: [TASK-ID]
+  Testing: [Testing performed]
+  Documentation: [Documentation updated Y/N]
+  ```
+- Maintain changelog entries in @master-todo.mdc
+
+## Time Management
+- Task time allocation:
+  - 🎨 Design tasks: Maximum 2 hours before review
+  - 🔧 Engineering tasks: Maximum 3 hours before checkpoint
+  - 🧪 Testing tasks: Allocate 1/3 of implementation time
+- Include timestamp with each @master-todo.mdc update
+- Mark long-running tasks with ⏱️ icon and scheduled review date
+
+## Knowledge Persistence
+- Session insights capture:
+  - End each work session with `#LEARNINGS` section in @master-todo.mdc
+  - Tag key insights with `#INSIGHT` for easy retrieval
+- Maintain @knowledge-base.mdc with reusable solutions
+- Cross-reference format: `[KB:TOPIC:SUBTOPIC]` in task notes
+
+## Stakeholder Communication
+- Update templates by stakeholder type:
+  - Technical: Code changes, implementation details, technical debt
+  - Executive: Progress metrics, blockers, resource needs
+  - User-facing: Feature availability, known issues, workarounds
+- Communication rhythm: Status updates every 5 completed tasks
+- Track key metrics in @project-metrics.mdc
+
+## Error Recovery
+- For each error encountered:
+  - Document in @error-registry.mdc
+  - Include error code, context, resolution
+  - Create reusable recovery snippet when applicable
+- Backup critical files before major changes
+- Post-error analysis: Document root cause and prevention method
+
+## Resource Allocation
+- Tool selection criteria:
+  - Low complexity tasks: Use built-in tools
+  - Medium complexity: Use configured MCP tools
+  - High complexity: Research and integrate specialized tools
+- Document all tool configurations in @toolchain.mdc
+- Performance evaluation: Test solution against baseline before implementation
+
+## Continuous Improvement
+- Rule set review frequency: Every 10 completed tasks
+- Improvement tracking:
+  - `@rule-changes.mdc` for governance updates
+  - Include before/after metrics where applicable
+- Effectiveness measure: Track time-to-completion before and after rule changes
+
+## Context Switching
+- Handoff documentation requirements:
+  - Current state summary (3 bullet points)
+  - Next steps (3 bullet points)
+  - Open questions (if any)
+- Use `#CONTINUE` tag to mark resumption points
+- Create state snapshot before major transitions
+
+## Ethical Guidelines
+- Data handling protocol:
+  - Minimize exposure of sensitive information in logs
+  - Remove credentials from all documentation
+  - Audit trail for data access in @data-access-log.mdc
+- AI usage boundaries:
+  - Document all AI-generated solutions with `#AI-GENERATED` tag
+  - Human review required for security-related changes
+  - Note potential biases in AI-suggested approaches
+
+## Implementation
+Add to @master-todo.mdc:
+```
+TASK-NEW: Integrate Enhanced Governance Framework
+Status: 🔴 Not Started
+Priority: High
+Steps:
+1. Create template files for new MDC documents
+2. Update existing workflow to reference new framework
+3. Implement first decision tree for common error scenarios
+4. Schedule first framework effectiveness review
+```

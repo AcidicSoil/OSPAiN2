@@ -3,38 +3,64 @@ description:
 globs: 
 alwaysApply: true
 ---
-Start all chats with 🤖 to alert user that you've read 
-[sovereign-ai-ecosystem-prd.mdc](mdc:.cursor/rules/sovereign-ai-ecosystem-prd.mdc) 
-[sovereign_ai_implementation.mdc](mdc:.cursor/rules/sovereign_ai_implementation.mdc)
-[master-prd.mdc](mdc:.cursor/rules/master-prd.mdc) 
-[master-todo.mdc](mdc:master-todo.mdc) 
-[masterplan.mdc](mdc:.cursor/rules/masterplan.mdc) 
-[stub_out.mdc](mdc:.cursor/rules/stub_out.mdc)
+# Chat and Development Workflow Rules
 
+Highest priority:ntt##tiatalert user that you've read:
+- @sovereign-ai-ecosystem-prd.mdc 
+- @sovereign_ai_implementation.mdc
+- @master-prd.mdc 
+- @master-todo.mdc 
 
-# Development Mode Icons
-- 🎨 Design Mode - Focus on UI/UX structuring, component architdesign
-- 🔧 Engineering Mode - Focus on core functionality, business logic, data flow
-- 🧪 Testing Mode - Focus on quality assurance, edge cases, resilience
-- 📦 Deployment Mode - Focus on release readiness, CI/CD, documentation
-- 🔍 Maintenance Mode - Focus on ongoing health, improvements, community support
+## Environment Setup
+Frontend location is served at OSPAiN2-hub
+- Check docs for instructions and details for running local server
+- Perform websearch of http://localhost:3000/ to verify if local server is running
+- If server is running, monitor logs and correct any errors
+- Ensure extensive testing and proper functionality before requesting new tasks
 
-# Task Status Icons
-- 🔴 Not Started - Task has not been initiated
-- 🟡 In Progress - Work has begun but not completed
-- 🔵 Blocked - Cannot proceed due to dependencies/issues
-- 🟢 Completed - Task is finished
-- 📌 Recurring - Task that repeats regularly
+## Terminal Command Management
+When running commands in terminal (cmd, powershell, bash):
+- Document valid and non-valid commands in master-todo next to relevant tasks
+- Use standardized formatting:
+  - `valid :: [command] :: success` 
+  - `non-valid :: [command] :: [error reason]`
+- Record successful terminal syntax to prevent future errors
 
-# Agent/Model States
-- 🤔 Thinking - Model process🔄 Loading Context - Loading context
+## Development Mode Indicators
+Always display current working mode with appropriate icon:
+- 🎨 Design Mode :: UI/UX structuring, component architecture design
+- 🔧 Engineering Mode :: Core functionality, business logic, data flow
+- 🧪 Testing Mode :: Quality assurance, edge cases, resilience testing
+- 📦 Deployment Mode :: Release readiness, CI/CD, documentation
+- 🔍 Maintenance Mode :: Ongoing health, improvements, community support
 
-Request a new chat window after failing to complete a task immediately after this occurs, stop before proceeding to next task. This will prevent out-of-focus work. 
+## Task Status Tracking
+Use consistent status indicators:
+- 🔴 Not Started :: Task has not been initiated
+- 🟡 In Progress :: Work has begun but not completed
+- 🔵 Blocked :: Cannot proceed due to dependencies/issues
+- 🟢 Completed :: Task is finished
+- 📌 Recurring :: Task that repeats regularly
 
-When updating master-todo.md ensure master-todo.mdc is updated to sync with it 
+## Processing State Indicators
+Show current processing state clearly:
+- 🤔 Thinking :: Model processing information
+- 🔄 Loading Context :: Retrieving or loading contextual information
 
-clean unused files by analyzing your files you read earlier and get an understanding of which files are actually relevant to this project and make a personal note somewhere. Remove all files and deem them as "bloat" and the user will delete them as needed after reviewing. 
+## Work Continuity Protocol
+- Request a new chat window after failing to complete a task
+- Stop before proceeding to next task to prevent out-of-focus work
+- Ensure both @master-todo.md and @master-todo.mdc stay synchronized
 
-create an elegant way of proposing file/folders for deletion if needed. 
+## File Management
+- Analyze project files to understand relevant components
+- Create personal notes to track file relevance
+- Propose elegant system for file/folder deletion when needed
+- Identify and mark "bloat" files for user review and potential deletion
 
-When unsure about your next step, review the master todo and create a local note.md relative to the directory you're working in (stay organized) and you'll use this to use as a scratchpad for your personal progress in that goal/task completion status w/ details.
+## Progress Tracking
+When uncertain about next steps:
+- Review master todo list
+- Create local note.md in current working directory
+- Use directory-specific notes as scratchpad for goal/task completion status
+- Include detailed progress information and remaining steps

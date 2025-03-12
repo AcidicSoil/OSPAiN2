@@ -11,6 +11,7 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import HistoryIcon from "@mui/icons-material/History";
 import CodeIcon from "@mui/icons-material/Code";
 import InsightsIcon from "@mui/icons-material/Insights";
+import ExtensionIcon from "@mui/icons-material/Extension";
 
 /**
  * Dashboard Component
@@ -184,6 +185,17 @@ const Dashboard = () => {
             <h3 className="font-medium mb-1">Knowledge Graph</h3>
             <p className="text-sm text-gray-600 dark:text-gray-400">
               Browse connected knowledge
+            </p>
+          </Link>
+
+          <Link
+            to="/component-manager"
+            className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow hover:shadow-md transition-shadow flex flex-col items-center text-center"
+          >
+            <ExtensionIcon className="text-amber-600 dark:text-amber-400 text-3xl mb-3" />
+            <h3 className="font-medium mb-1">Component Manager</h3>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              Evaluate and absorb components
             </p>
           </Link>
 

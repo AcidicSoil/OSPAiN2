@@ -7,23 +7,29 @@ We've successfully implemented a CLI tool for sending prompts to Cursor IDE chat
 ## Completed Tasks
 
 1. **Project Structure**
+
    - Created a TypeScript-based CLI project structure
    - Set up proper configuration files (tsconfig.json, package.json, etc.)
    - Implemented a modular architecture with clear separation of concerns
 
 2. **Core Functionality**
+
    - Implemented WebSocket communication with Cursor IDE
    - Created command-line interface using Commander.js
    - Added support for sending prompts, interactive chat, and file-based input
    - Implemented configuration management
+   - Added Component Evaluation Framework for assessing external components
 
 3. **Documentation**
+
    - Created comprehensive README with installation and usage instructions
    - Added detailed documentation for MCP integration
    - Created UI mockups for the CLI tool
    - Added terminal-specific usage guide
+   - Documented Component Evaluation Framework metrics and process
 
 4. **Development Environment**
+
    - Set up TypeScript configuration
    - Added ESLint and Prettier for code quality
    - Created Jest configuration for testing
@@ -37,22 +43,27 @@ We've successfully implemented a CLI tool for sending prompts to Cursor IDE chat
 ## Next Steps
 
 1. **Core Functionality Enhancements**
+
    - Implement response streaming from Cursor IDE
    - Add proper error handling for WebSocket disconnections
    - Implement reconnection strategies
    - Add support for multiple concurrent chat windows
+   - Enhance Component Evaluation with automated testing features
 
 2. **Testing**
+
    - Add unit tests for all commands
    - Implement integration tests for end-to-end validation
    - Add test coverage reporting
 
 3. **Documentation**
+
    - Create comprehensive documentation for MCP protocol
    - Add more examples and use cases
    - Create video tutorials for usage
 
 4. **User Experience**
+
    - Implement auto-completion for commands
    - Add support for custom themes in terminal output
    - Create a configuration wizard for first-time setup
@@ -65,11 +76,13 @@ We've successfully implemented a CLI tool for sending prompts to Cursor IDE chat
 ## Lessons Learned
 
 1. **WebSocket Communication**
+
    - Importance of proper connection management
    - Need for reconnection strategies
    - Value of clear message formats
 
 2. **CLI Design**
+
    - Keep commands simple and intuitive
    - Provide helpful error messages
    - Include comprehensive help documentation
@@ -81,4 +94,14 @@ We've successfully implemented a CLI tool for sending prompts to Cursor IDE chat
 
 ## Conclusion
 
-The Cursor CLI project provides a solid foundation for terminal-to-IDE integration, enabling users to leverage Cursor IDE's AI features directly from the command line. With the completed tasks and planned enhancements, this tool will significantly improve developer productivity and workflow integration. 
+The Cursor CLI project provides a solid foundation for terminal-to-IDE integration, enabling users to leverage Cursor IDE's AI features directly from the command line. With the completed tasks and planned enhancements, this tool will significantly improve developer productivity and workflow integration.
+
+## Documentation Sections
+
+- [Installation Guide](./docs/installation.md)
+- [Usage Guide](./docs/usage.md)
+- [API Reference](./docs/api.md)
+- [MCP Integration](./docs/mcp-integration.md)
+- [UI Mockups](./docs/ui-mockup.md)
+- [Component Evaluation Framework](./docs/component_evaluation.md)
+- [Terminal Usage](./docs/terminal.md)

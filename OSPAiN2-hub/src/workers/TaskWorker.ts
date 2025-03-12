@@ -1,4 +1,8 @@
+/* eslint-disable no-restricted-globals */
 import { WorkerMessageType, TaskType } from "../types/Task";
+
+// Ensure TypeScript recognizes this as a worker
+declare const self: Worker;
 
 // Worker context - not exposed to global scope
 let workerId: string | null = null;
