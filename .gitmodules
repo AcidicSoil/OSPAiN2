@@ -1,3 +1,6 @@
 [submodule "mcp-knowledge-graph"]
 	path = mcp-knowledge-graph
 	url = https://github.com/henryhawke/mcp-titan.git
+[submodule "ollama-schematics-ui"]
+	path = ollama-schematics-ui
+	url = ./ollama-schematics-ui
