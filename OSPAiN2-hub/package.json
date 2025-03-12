@@ -1,0 +1,60 @@
+{
+  "name": "ospain2-hub",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/icons-material": "^5.16.14",
+    "@mui/material": "^5.16.14",
+    "ajv": "8.11.0",
+    "ajv-keywords": "5.1.0",
+    "axios": "^1.6.5",
+    "d3": "^7.8.5",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-markdown": "^9.0.1",
+    "react-router-dom": "^6.30.0",
+    "react-syntax-highlighter": "^15.5.0",
+    "react-toastify": "^10.0.6",
+    "uuid": "^11.1.0",
+    "zustand": "^4.4.7"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@types/d3": "^7.4.3",
+    "@types/node": "^20.11.17",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@types/react-syntax-highlighter": "^15.5.11",
+    "@types/uuid": "^10.0.0",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.3",
+    "react-scripts": "5.0.1",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.3.3"
+  }
+}
