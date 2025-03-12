@@ -1,0 +1,480 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+---
+description: 
+globs: 
+alwaysApply: true
+---
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Sovereign AI: Implementation Guide
+
+## Translating Mindset to Action
+
+This document serves as a practical translation of the [Sovereign AI Mindset](mdc:mindset.md) into specific technical approaches and implementation guidelines for the Ollama ecosystem. While our mindset document explains *why* we build the way we do, this guide outlines *how* we do it.
+
+## Knowledge Graph Integration
+- Use Knowledge Graph MCP Server for semantic understanding
+- Implement context-aware decision making
+- Store and retrieve semantic embeddings
+- Track relationships between concepts
+
+## Architecture
+```mermaid
+graph TD
+    A[Input Processing] --> B[Context Engine]
+    B --> C[Knowledge Graph]
+    C --> D[Decision Making]
+    D --> E[Action Generation]
+```
+
+## Configuration
+```json
+{
+  "knowledgeGraph": {
+    "serverUrl": "http://localhost:3005",
+    "maxCacheSize": 1000,
+    "refreshInterval": 300000
+  }
+}
+```
+
+## Implementation Details
+1. Connect to Knowledge Graph server
+2. Process input through context engine
+3. Generate semantic embeddings
+4. Make context-aware decisions
+5. Execute planned actions
+
+## Technical Architecture
+
+### 1. Local-First Infrastructure
+
+#### Model Serving Layer
+- Implement a lightweight model server that supports:
+  - Dynamic model loading/unloading based on usage patterns
+  - Memory-efficient runtime with adaptive resource allocation
+  - Seamless switching between models based on task requirements
+  - Resource monitoring with graceful degradation under pressure
+  - Hardware acceleration detection and utilization (CUDA, ROCm, Metal, DirectML)
+
+```typescript
+// Example implementation pattern
+class ModelServer {
+  private activeModels: Map<string, Model> = new Map();
+  private usageStats: Map<string, { lastUsed: number, useCount: number }> = new Map();
+  
+  async getModel(modelId: string, task: Task): Promise<Model> {
+    // If model is loaded, update stats and return
+    if (this.activeModels.has(modelId)) {
+      this.updateUsageStats(modelId);
+      return this.activeModels.get(modelId)!;
+    }
+    
+    // Check available resources
+    const availableResources = this.getAvailableResources();
+    if (needsResourceReclamation(availableResources)) {
+      await this.reclaimResources();
+    }
+    
+    // Load and return model
+    const model = await this.loadModel(modelId, task);
+    this.activeModels.set(modelId, model);
+    this.updateUsageStats(modelId);
+    return model;
+  }
+  
+  private async reclaimResources(): Promise<void> {
+    // Unload least recently used models
+    const modelsToUnload = this.identifyModelsToUnload();
+    for (const modelId of modelsToUnload) {
+      await this.unloadModel(modelId);
+    }
+  }
+}
+```
+
+#### Cache Layer
+- Implement multi-level caching strategy:
+  - L1: In-memory cache for frequent requests and responses
+  - L2: Disk-based cache for persistence across sessions
+  - L3: Semantic cache that recognizes similar (not just identical) requests
+
+```typescript
+interface CacheItem {
+  key: string;
+  value: any;
+  semanticKey?: number[]; // Vector representation for similarity matching
+  timestamp: number;
+  accessCount: number;
+}
+
+class MultiLevelCache {
+  private memoryCache: Map<string, CacheItem> = new Map();
+  private diskCache: DiskCache;
+  private semanticCache: SemanticCache;
+  
+  async get(key: string, semanticQuery?: string): Promise<any> {
+    // Exact match check in memory
+    if (this.memoryCache.has(key)) {
+      const item = this.memoryCache.get(key)!;
+      this.updateStats(item);
+      return item.value;
+    }
+    
+    // Exact match check in disk cache
+    const diskItem = await this.diskCache.get(key);
+    if (diskItem) {
+      this.promoteToMemory(diskItem);
+      return diskItem.value;
+    }
+    
+    // Semantic match if query provided
+    if (semanticQuery) {
+      const similarItem = await this.semanticCache.findSimilar(semanticQuery);
+      if (similarItem && similarItem.similarity > SIMILARITY_THRESHOLD) {
+        return similarItem.value;
+      }
+    }
+    
+    return null;
+  }
+}
+```
+
+### 2. Knowledge Management System
+
+#### Integrated Context System
+- Implement a unified context manager that integrates:
+  - Tag system with hierarchical organization
+  - Conversation history with automatic summarization
+  - Scratchpad entries with semantic connections
+  - Document repository with chunking and embedding
+
+```typescript
+class ContextManager {
+  private tagStore: TagStore;
+  private conversationHistory: ConversationHistory;
+  private scratchpad: Scratchpad;
+  private documentRepository: DocumentRepository;
+  
+  async retrieveContextForQuery(query: string, options: ContextOptions): Promise<Context> {
+    const context = new Context();
+    
+    // Determine relevant sources based on query analysis
+    const { useTags, useConversations, useScratchpad, useDocuments } = this.analyzeQueryNeeds(query);
+    
+    // Parallel retrieval from all relevant sources
+    const retrievalPromises = [];
+    
+    if (useTags) {
+      retrievalPromises.push(this.retrieveFromTags(query, options)
+        .then(results => context.addTagResults(results)));
+    }
+    
+    if (useConversations) {
+      retrievalPromises.push(this.retrieveFromConversations(query, options)
+        .then(results => context.addConversationResults(results)));
+    }
+    
+    // Add other sources similarly...
+    
+    await Promise.all(retrievalPromises);
+    
+    // Post-process to eliminate redundancy and organize by relevance
+    return context.optimize(options.maxContextSize);
+  }
+  
+  private analyzeQueryNeeds(query: string): SourceSelection {
+    // Determine which sources are most relevant for this query
+    // This could use a small classifier model or heuristics
+  }
+}
+```
+
+#### Embeddings Generation
+- Create a local embeddings service that:
+  - Uses small, efficient embedding models
+  - Processes content in batches for efficiency
+  - Caches embedding results to avoid regeneration
+  - Auto-scales with available resources
+
+```typescript
+class LocalEmbeddingService {
+  private embeddingModel: EmbeddingModel;
+  private embeddingCache: Map<string, number[]> = new Map();
+  
+  constructor() {
+    // Load the smallest model that provides good performance
+    this.embeddingModel = new EmbeddingModel('all-MiniLM-L6-v2');
+  }
+  
+  async getEmbeddings(texts: string[]): Promise<number[][]> {
+    // Process in optimal batch sizes for hardware
+    const batchSize = this.determineBatchSize();
+    const results: number[][] = [];
+    
+    for (let i = 0; i < texts.length; i += batchSize) {
+      const batch = texts.slice(i, i + batchSize);
+      const batchResults = await this.processBatch(batch);
+      results.push(...batchResults);
+    }
+    
+    return results;
+  }
+  
+  private async processBatch(texts: string[]): Promise<number[][]> {
+    // Check cache first
+    const results: number[][] = [];
+    const uncachedTexts: string[] = [];
+    const uncachedIndices: number[] = [];
+    
+    texts.forEach((text, index) => {
+      const normalized = this.normalizeText(text);
+      const cached = this.embeddingCache.get(normalized);
+      
+      if (cached) {
+        results[index] = cached;
+      } else {
+        uncachedTexts.push(normalized);
+        uncachedIndices.push(index);
+      }
+    });
+    
+    // Generate embeddings for uncached texts
+    if (uncachedTexts.length > 0) {
+      const embeddings = await this.embeddingModel.embed(uncachedTexts);
+      
+      // Update cache and results
+      uncachedTexts.forEach((text, i) => {
+        const embedding = embeddings[i];
+        this.embeddingCache.set(text, embedding);
+        results[uncachedIndices[i]] = embedding;
+      });
+    }
+    
+    return results;
+  }
+}
+```
+
+### 3. Local Fine-Tuning System
+
+#### Data Collection Pipeline
+- Implement automated data harvesting from:
+  - Conversation history with quality filtering
+  - User feedback on model responses
+  - Specific training examples provided by users
+  - External sources with permission
+
+```typescript
+class TrainingDataCollector {
+  private conversationHistory: ConversationHistory;
+  private qualityThreshold = 0.8; // Configurable
+  
+  async collectTrainingData(options: CollectionOptions): Promise<TrainingDataset> {
+    const dataset = new TrainingDataset();
+    
+    // Get conversations matching criteria
+    const conversations = await this.conversationHistory.getConversations(
+      options.startDate,
+      options.endDate,
+      options.tags
+    );
+    
+    // Process each conversation into training pairs
+    for (const conversation of conversations) {
+      const pairs = this.extractTrainingPairs(conversation);
+      
+      // Filter by quality
+      const qualityPairs = pairs.filter(pair => {
+        return this.assessQuality(pair) >= this.qualityThreshold;
+      });
+      
+      dataset.addPairs(qualityPairs);
+    }
+    
+    // Apply preprocessing and augmentation
+    return dataset.preprocess().augment(options.augmentationFactor);
+  }
+  
+  private extractTrainingPairs(conversation: Conversation): TrainingPair[] {
+    // Extract instruction-response pairs from conversation
+    const pairs: TrainingPair[] = [];
+    
+    for (let i = 0; i < conversation.messages.length - 1; i++) {
+      if (conversation.messages[i].role === 'user' && 
+          conversation.messages[i+1].role === 'assistant') {
+        pairs.push({
+          instruction: conversation.messages[i].content,
+          response: conversation.messages[i+1].content,
+          metadata: {
+            timestamp: conversation.messages[i].timestamp,
+            conversationId: conversation.id,
+            tags: conversation.tags
+          }
+        });
+      }
+    }
+    
+    return pairs;
+  }
+}
+```
+
+#### Fine-Tuning Orchestrator
+- Create a system that:
+  - Manages fine-tuning jobs on local hardware
+  - Provides progress monitoring and estimated completion
+  - Handles model versioning with metadata
+  - Supports various fine-tuning techniques (LoRA, QLoRA, etc.)
+
+```typescript
+class FineTuningOrchestrator {
+  private modelRepository: ModelRepository;
+  private activeJobs: Map<string, FineTuningJob> = new Map();
+  
+  async startFineTuning(config: FineTuningConfig): Promise<string> {
+    // Validate config
+    this.validateConfig(config);
+    
+    // Prepare resources
+    await this.prepareResources(config);
+    
+    // Create and start job
+    const jobId = uuidv4();
+    const job = new FineTuningJob(config, this.modelRepository);
+    
+    this.activeJobs.set(jobId, job);
+    job.onComplete(() => this.handleJobCompletion(jobId));
+    job.onError((error) => this.handleJobError(jobId, error));
+    
+    await job.start();
+    return jobId;
+  }
+  
+  getJobStatus(jobId: string): JobStatus {
+    if (!this.activeJobs.has(jobId)) {
+      return { status: 'not_found' };
+    }
+    
+    const job = this.activeJobs.get(jobId)!;
+    return {
+      status: job.status,
+      progress: job.progress,
+      eta: job.estimatedTimeRemaining,
+      logs: job.recentLogs,
+      metrics: job.currentMetrics
+    };
+  }
+  
+  async cancelJob(jobId: string): Promise<boolean> {
+    if (!this.activeJobs.has(jobId)) {
+      return false;
+    }
+    
+    const job = this.activeJobs.get(jobId)!;
+    await job.cancel();
+    this.activeJobs.delete(jobId);
+    return true;
+  }
+}
+```
+
+### 4. Distributed Computing Support
+
+#### Resource Manager
+- Create a system that:
+  - Discovers available compute resources on the network
+  - Allocates tasks based on resource capabilities
+  - Monitors resource usage and health
+  - Handles failover and recovery
+
+```typescript
+class ResourceManager {
+  private resources: ComputeResource[] = [];
+  private resourceStatus: Map<string, ResourceStatus> = new Map();
+  
+  async discoverResources(): Promise<void> {
+    // Local resources
+    const localResources = await this.detectLocalResources();
+    this.addResources(localResources);
+    
+    // Network resources (if enabled)
+    if (config.enableNetworkDiscovery) {
+      const networkResources = await this.discoverNetworkResources();
+      this.addResources(networkResources);
+    }
+  }
+  
+  async allocateTask(task: ComputeTask): Promise<TaskAllocation> {
+    // Find available resources that meet requirements
+    const eligibleResources = this.findEligibleResources(task);
+    
+    if (eligibleResources.length === 0) {
+      throw new Error('No eligible resources available for task');
+    }
+    
+    // Sort by efficiency for this task
+    const sortedResources = this.sortByEfficiency(eligibleResources, task);
+    const selectedResource = sortedResources[0];
+    
+    // Reserve the resource
+    await this.reserveResource(selectedResource.id, task);
+    
+    return {
+      resourceId: selectedResource.id,
+      allocation: this.calculateAllocation(selectedResource, task),
+      estimatedStartTime: this.estimateStartTime(selectedResource)
+    };
+  }
+}
+```
+
+## Implementation Priorities
+
+To align with our mindset, implementation should follow this priority sequence:
+
+1. **Foundation**: Build the local model serving infrastructure first
+2. **Knowledge**: Implement the unified context system next
+3. **Learning**: Create the data collection and fine-tuning pipelines
+4. **Optimization**: Develop the caching and resource management systems
+5. **Distribution**: Add support for multi-device computation
+
+## Integration with Ollama Ecosystem
+
+Each component should integrate with existing Ollama ecosystem tools:
+
+- **Tag System**: The context manager should leverage the existing tag system
+- **Titan Memory**: Use for embedding generation and semantic search
+- **Conversation History**: Source of training data and context
+- **Scratchpad**: Capture development ideas and feature requests
+
+## Performance Benchmarks
+
+Implementation should target these minimum performance metrics:
+
+- **Response Time**: < 1 second for cached responses, < 3 seconds for new queries
+- **Context Retrieval**: < 500ms for relevant context lookup
+- **Fine-Tuning**: Support overnight training on consumer hardware
+- **Resource Usage**: Adapt to available resources without manual configuration
+
+## Practical Development Guidelines
+
+When implementing features, follow these practices:
+
+1. **Start simple**: Begin with the simplest implementation that works
+2. **Test locally**: Ensure everything works without external dependencies
+3. **Optimize incrementally**: Improve performance based on actual usage patterns
+4. **Measure improvement**: Track metrics to validate enhancements
+5. **Document design decisions**: Explain why implementation choices were made
+
+## Conclusion
+
+By following these guidelines, we translate our Sovereign AI mindset into a concrete technical implementation that delivers on the promise of unlimited creative potential through local, self-controlled AI systems. 

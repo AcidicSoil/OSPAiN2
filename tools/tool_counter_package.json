@@ -1,0 +1,32 @@
+{
+  "name": "ospain2-tool-counter",
+  "version": "1.0.0",
+  "description": "Tool call counter for managing Cursor IDE API usage and preventing rate-limit errors",
+  "main": "tool_call_counter.js",
+  "bin": {
+    "tool-counter": "./tool_counter_cli.js"
+  },
+  "scripts": {
+    "start": "node tool_counter_cli.js",
+    "build": "tsc",
+    "simulate": "node tool_counter_cli.js simulate",
+    "reset": "node tool_counter_cli.js reset",
+    "stats": "node tool_counter_cli.js stats"
+  },
+  "dependencies": {
+    "robotjs": "^0.6.0",
+    "jimp": "^0.22.10"
+  },
+  "optionalDependencies": {
+    "screenshot-desktop": "^1.15.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.9.0",
+    "typescript": "^5.2.2"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "license": "MIT",
+  "keywords": ["cursor", "toolcall", "ratelimit", "counter", "api", "ospain2"]
+}

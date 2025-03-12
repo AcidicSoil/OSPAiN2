@@ -1,0 +1,18 @@
+[Unit]
+Description=OSPAiN2 Server
+After=network.target
+
+[Service]
+Type=simple
+User=%i
+WorkingDirectory=/c%3A/Users/comfy/OSPAiN2/OSPAiN2-hub
+ExecStart=/usr/bin/npm start
+Restart=on-failure
+RestartSec=10
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=ospain2
+Environment=NODE_ENV=production
+
+[Install]
+WantedBy=multi-user.target 

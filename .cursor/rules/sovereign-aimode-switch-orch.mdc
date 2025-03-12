@@ -1,0 +1,12 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Mode Orchestration Rule
+- Define clear transition protocols between modes
+- Preserve context during mode transitions
+- Optimize AI resources based on active mode
+- Cache mode-specific resources proactively
+- Implement progressive context loading
+- Track mode effectiveness metrics

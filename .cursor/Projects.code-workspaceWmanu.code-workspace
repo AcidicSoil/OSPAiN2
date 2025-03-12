@@ -1,0 +1,14 @@
+{
+  "folders": [
+    {
+      "path": ".."
+    },
+    {
+      "path": "../OpenManus"
+    }
+  ],
+  "settings": {
+    "continue.enableQuickActions": true,
+    "CodeGPT.apiKey": "CodeGPT Plus Beta"
+  }
+}

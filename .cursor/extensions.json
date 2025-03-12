@@ -1,0 +1,31 @@
+{
+  "recommendations": [
+    // TypeScript and React Development
+    "dsznajder.es7-react-js-snippets",
+    "zardoy.ts-essential-plugins",
+    "esbenp.prettier-vscode",
+    "wix.vscode-import-cost",
+    "planbcoding.vscode-react-refactor",
+    // Docker Development
+    "docker.docker-ai-tools",
+    "ms-azuretools.vscode-docker",
+    "ms-vscode-remote.remote-containers",
+    // State Management and Data
+    "mryechkin.highlight-imports",
+    "bradlc.vscode-tailwindcss",
+    "Prisma.prisma",
+    // Prompt Engineering Tools
+    "github.copilot-chat",
+    "github.copilot",
+    // Development Workflow Rules
+    ".cursor/rules/laser-focus.mdc",
+    ".cursor/rules/dont-reply-back.mdc",
+    // Utilities
+    "streetsidesoftware.code-spell-checker",
+    "eamodio.gitlens",
+    "usernamehw.errorlens",
+    "dbaeumer.vscode-eslint",
+    "mutantdino.resourcemonitor"
+  ],
+  "unwantedRecommendations": []
+}

@@ -1,0 +1,59 @@
+# 🧪 Testing Mode
+
+_Focus: Quality assurance, edge cases, resilience_
+
+## Objectives
+
+- Ensure application reliability and stability
+- Identify and resolve defects early
+- Validate business requirements
+- Verify system performance under various conditions
+- Ensure security and data integrity
+
+## Activities
+
+- Unit test development
+- Integration test construction
+- End-to-end test scenarios
+- Performance benchmarking
+- Security testing procedures
+- Accessibility compliance validation
+- Cross-browser compatibility testing
+- Stress/load testing strategies
+- Edge case identification
+- Regression testing
+- User acceptance testing
+
+## Deliverables
+
+- Comprehensive test suites
+- Test coverage reports
+- Bug reports and severity assessment
+- Performance test results
+- Security vulnerability assessment
+- Compatibility matrices
+- Test automation frameworks
+- Test documentation
+
+## Tools & Resources
+
+- Testing frameworks (Jest, Mocha, Cypress)
+- Performance testing tools
+- Security scanners
+- Accessibility checkers
+- Browser testing platforms
+- CI/CD integration for tests
+- Test data generators
+
+## Transition Criteria
+
+- Required test coverage achieved
+- Critical bugs fixed
+- Performance requirements met
+- Security vulnerabilities addressed
+- Accessibility compliance verified
+- Regression tests passing
+
+## Notes
+
+<!-- Add any project-specific testing considerations, test strategies, or quality standards here -->

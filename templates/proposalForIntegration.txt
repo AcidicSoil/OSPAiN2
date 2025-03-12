@@ -1,0 +1,8 @@
+https://create.t3.gg/en/introduction | Introduction • Create T3 App
+https://docs.volta.sh/guide/ | Introduction | Volta
+https://node-llama-cpp.withcat.ai/guide/ | Getting Started | node-llama-cpp
+https://huggingface.co/bartowski/Qwen_QwQ-32B-GGUF/blob/main/Qwen_QwQ-32B-Q6_K.gguf | Qwen_QwQ-32B-Q6_K.gguf · bartowski/Qwen_QwQ-32B-GGUF at main
+https://github.com/x1xhlol/system-prompts-and-models-of-ai-tools | x1xhlol/system-prompts-and-models-of-ai-tools
+https://github.com/microsoft/PromptWizard | microsoft/PromptWizard: Task-Aware Agent-driven Prompt Optimization Framework
+https://github.com/potpie-ai/potpie | potpie-ai/potpie: Prompt-To-Agent : Create custom engineering agents for your codebase
+https://github.com/ManimCommunity/manim | ManimCommunity/manim: A community-maintained Python framework for creating mathematical animations.

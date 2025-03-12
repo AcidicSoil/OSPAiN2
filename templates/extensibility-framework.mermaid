@@ -1,0 +1,44 @@
+flowchart TD
+    subgraph CoreSystem["Core System"]
+        ExtRegistry["Extension Registry"]
+        PluginLoader["Plugin Loader"]
+        EventBus["Event Bus"]
+        StateManager["State Manager"]
+    end
+    
+    subgraph CLIEngine["CLI Engine"]
+        CommandRegistry["Command Registry"]
+        OptionParser["Option Parser"]
+        HelpGenerator["Help Generator"]
+        ExtensionHooks["Extension Hooks"]
+    end
+    
+    subgraph NewFeatures["Feature Modules"]
+        SelfHealing["Self-Healing Module"]
+        ResearchEngine["Research Engine"]
+        DarkForge["Dark Forge Module"]
+        GameElements["Gameification Elements"]
+        VisEngine["Visualization Engine"]
+        ModelOptimizer["Model Optimizer"]
+    end
+    
+    subgraph IntegrationLayer["Integration Layer"]
+        ManifestSystem["Module Manifest System"]
+        VersionControl["Version Compatibility"]
+        CapabilityAPI["Capability API"]
+        HookSystem["Hook System"]
+    end
+    
+    CoreSystem -- "Registers" --> IntegrationLayer
+    CLIEngine -- "Discovers" --> IntegrationLayer
+    NewFeatures -- "Implements" --> IntegrationLayer
+    
+    ExtRegistry -- "Manages" --> PluginLoader
+    PluginLoader -- "Loads" --> NewFeatures
+    NewFeatures -- "Publishes to" --> EventBus
+    NewFeatures -- "Uses" --> StateManager
+    
+    CommandRegistry -- "Registers" --> NewFeatures
+    NewFeatures -- "Extends" --> HelpGenerator
+    NewFeatures -- "Adds" --> OptionParser
+    ExtensionHooks -- "Provides" --> NewFeatures

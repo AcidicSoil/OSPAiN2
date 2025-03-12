@@ -1,0 +1,37 @@
+flowchart TD
+    subgraph ExtensibilityCore["Extensibility Core"]
+        Registry["Central Registry"]
+        ModuleLoader["Module Loader"]
+        EventSystem["Event System"]
+        ServiceLocator["Service Locator"]
+        ExtensionAPI["Extension API"]
+    end
+    
+    subgraph SystemLayers["System Layers"]
+        Frontend["Frontend Layer"]
+        Backend["Backend Layer"]
+        AIInfra["AI Infrastructure"]
+        AgentFramework["Agent Framework"]
+        ContinuitySystem["Continuity System"]
+        DevTools["Development Tools"]
+        MobileSupport["Mobile Support"]
+    end
+    
+    subgraph ExtensionPoints["Extension Points"]
+        FrontendExt["UI Components\nReact Hooks\nState Management"]
+        BackendExt["API Routes\nMiddleware\nData Handlers"]
+        AIInfraExt["Model Pipelines\nInference Adapters\nPrompt Templates"]
+        AgentExt["Agent Types\nWorkflows\nToolsets"]
+        ContinuityExt["State Handlers\nKnowledge Processors\nDecision Rules"]
+        DevToolsExt["IDE Integrations\nDebug Tools\nAnalytics"]
+        MobileExt["Mobile UI\nOffline Features\nSync Handlers"]
+    end
+    
+    ExtensibilityCore -- "Manages" --> SystemLayers
+    SystemLayers -- "Exposes" --> ExtensionPoints
+    
+    Registry -- "Tracks All Extensions" --> ExtensionPoints
+    ModuleLoader -- "Loads Extensions into" --> SystemLayers
+    EventSystem -- "Provides Communication Between" --> ExtensionPoints
+    ServiceLocator -- "Allows Discovery of" --> ExtensionPoints
+    ExtensionAPI -- "Standardizes" --> ExtensionPoints

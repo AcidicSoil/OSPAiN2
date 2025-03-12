@@ -1,0 +1,26 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+Highest priority is keeping the frontend up and running! So do whatever it takes if it's not currently running and free from errors.
+Enter relevant mode for the issue at hand (example:: engineering mode :: implementing full functionality between backend & frontend)
+See [sovereign-ai-ecosystem-mindmap.svg](mdc:templates/sovereign-ai-ecosystem-mindmap.svg) & [sovereign_ai_implementation.mdc](mdc:.cursor/rules/sovereign_ai_implementation.mdc) for our philosophy and guidelines
+utilize MCP tools to monitor console logs
+
+
+Make a note in our master-todo first then attempt to resolve users request, if no request explictily by user,
+see [master-todo.mdc](mdc:master-todo.mdc) read understand all the moving parts, proceed until all task are completed 100%. If a task shows signs of manual overrides or it could slow us down, move to next task. When a task is finished completely, make a note in our master-todo.md updating the master-todo as you go with details of our progress.
+Task Implementation Attempt Threshold: 5
+If attempt threshold is exceeded, attempt a work-around solution and make a note in our master-todo steps to implement the correct way. 
+MCP toolbox
+#include useful MCP tools for model to call
+create test for functions and test edge cases
+
+[tool-call-error-handler.mdc](mdc:.cursor/rules/tool-call-error-handler.mdc)
+[tool-call-optimization.mdc](mdc:.cursor/rules/tool-call-optimization.mdc)
+[sovereign-ai-ecosystem-prd.mdc](mdc:.cursor/rules/sovereign-ai-ecosystem-prd.mdc)
+[sovereign_ai_implementation.mdc](mdc:.cursor/rules/sovereign_ai_implementation.mdc)
+[master-prd.mdc](mdc:Projects/Projects/Projects/master-prd.mdc)
+
+all proposals will go into master-todo.md automatically without asking user 

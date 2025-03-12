@@ -1,0 +1,28 @@
+AI Coding Project Consolidated Documentation
+App Overview
+Our AI coding project is designed to streamline and assist the development process using artificial intelligence. The application acts as an intelligent assistant that helps users generate code, manage project documentation, and navigate through a structured development environment. It integrates code suggestions, automated testing, and contextual help to make coding faster and more efficient.
+
+User Flow
+When a user arrives at the landing page, they are greeted with a clean and intuitive interface that prompts them to either sign in or register. Upon logging in, the user is directed to a central dashboard where they can start a new project or review existing ones. The dashboard provides clear navigation to a coding workspace, detailed project documentation, and an integrated testing suite. Users move seamlessly from one section to another—from project setup and code generation to testing and final deployment—ensuring that every step of the development process is covered without gaps.
+
+Tech Stack & APIs
+The project leverages a modern tech stack that includes React for a responsive and dynamic frontend. On the backend, Node.js serves as the primary server environment while Python is used for AI processing. Supabase is integrated for database management, authentication, and storage using PostgreSQL, ensuring robust and secure data handling. The app also utilizes several APIs, including code completion and testing APIs, with all dependencies managed through npm and pip. Documentation links for these APIs are maintained for easy reference.
+
+Core Features
+The core features of the application are:
+
+Intelligent code generation and suggestions
+Integrated project documentation mapping
+A user-friendly, interactive coding environment
+Step-by-step guidance for project setup, development, testing, and deployment
+Real-time collaboration and progress tracking
+Secure integration with version control systems
+In-Scope & Out-of-Scope
+The scope of this project includes everything required to provide a full pipeline for AI-driven coding assistance. This encompasses project planning, code generation, detailed documentation, integrated testing, and deployment support. However, the project specifically excludes features unrelated to core coding assistance, such as non-development related utilities, extensive hardware-level configuration, or functionalities that extend beyond AI-guided coding support.
+
+Frontend Guidelines
+The user interface is designed to be simple, modern, and accessible. The design principles focus on consistency and ease of use. A well-defined color palette, carefully selected fonts, and consistent iconography work together to create a visually appealing and trustworthy application. Every UI element is crafted to be intuitive, ensuring that users feel confident navigating the app on any device.
+
+Backend Structure
+The backend is structured around Supabase, which provides a powerful combination of PostgreSQL for database management, built-in authentication, and scalable file storage. SQL queries are written in a clear, modular fashion to facilitate maintenance and future updates. The system is built with security in mind, employing robust authentication protocols and error handling to ensure reliable data transactions. This modular design supports easy upgrades and effective troubleshooting, ensuring the backend remains as efficient and scalable as the rest of the application.
+

@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700">
+  <!-- Background -->
+  <rect width="1000" height="700" fill="#f8f9fa" />
+  
+  <!-- Central Node -->
+  <circle cx="500" cy="350" r="70" fill="#4a86e8" />
+  <text x="500" y="350" text-anchor="middle" fill="white" font-family="Arial" font-size="16" font-weight="bold">Sovereign AI
+    <tspan x="500" y="370">Ecosystem</tspan>
+  </text>
+  
+  <!-- Core System Branch -->
+  <path d="M 500 280 Q 350 200 200 200" stroke="#5c6bc0" stroke-width="2" fill="none" />
+  <circle cx="200" cy="200" r="50" fill="#5c6bc0" />
+  <text x="200" y="195" text-anchor="middle" fill="white" font-family="Arial" font-size="14" font-weight="bold">Core System</text>
+  <text x="200" y="215" text-anchor="middle" fill="white" font-family="Arial" font-size="12">Management</text>
+  
+  <!-- Core System Children -->
+  <path d="M 175 155 L 100 100" stroke="#7986cb" stroke-width="2" fill="none" />
+  <circle cx="100" cy="100" r="40" fill="#7986cb" />
+  <text x="100" y="100" text-anchor="middle" fill="white" font-family="Arial" font-size="12" font-weight="bold">Tag System</text>
+  
+  <path d="M 200 150 L 200 80" stroke="#7986cb" stroke-width="2" fill="none" />
+  <circle cx="200" cy="80" r="40" fill="#7986cb" />
+  <text x="200" y="80" text-anchor="middle" fill="white" font-family="Arial" font-size="12" font-weight="bold">Task Manager</text>
+  
+  <path d="M 225 155 L 300 100" stroke="#7986cb" stroke-width="2" fill="none" />
+  <circle cx="300" cy="100" r="40" fill="#7986cb" />
+  <text x="300" y="95" text-anchor="middle" fill="white" font-family="Arial" font-size="12" font-weight="bold">Agent</text>
+  <text x="300" y="110" text-anchor="middle" fill="white" font-family="Arial" font-size="12" font-weight="bold">Coordinator</text>
+  
+  <!-- AI Integration Branch -->
+  <path d="M 560 305 Q 700 250 800 200" stroke="#43a047" stroke-width="2" fill="none" />
+  <circle cx="800" cy="200" r="50" fill="#43a047" />
+  <text x="800" y="195" text-anchor="middle" fill="white" font-family="Arial" font-size="14" font-weight="bold">AI Integration</text>
+  <text x="800" y="215" text-anchor="middle" fill="white" font-family="Arial" font-size="12">Layer</text>
+  
+  <!-- AI Integration Children -->
+  <path d="M 775 155 L 700 100" stroke="#66bb6a" stroke-width="2" fill="none" />
+  <circle cx="700" cy="100" r="40" fill="#66bb6a" />
+  <text x="700" y="95" text-anchor="middle" fill="white" font-family="Arial" font-size="12" font-weight="bold">PyDanticAI</text>
+  <text x="700" y="110" text-anchor="middle" fill="white" font-family="Arial" font-size="12" font-weight="bold">Validation</text>
+  
+  <path d="M 825 155 L 900 100" stroke="#66bb6a" stroke-width="2" fill="none" />
+  <circle cx="900" cy="100" r="40" fill="#66bb6a" />
+  <text x="900" y="95" text-anchor="middle" fill="white" font-family="Arial" font-size="12" font-weight="bold">SmolagentsAI</text>
+  <text x="900" y="110" text-anchor="middle" fill="white" font-family="Arial" font-size="12" font-weight="bold">Orchestration</text>
+  
+  <path d="M 800 250 L 800 320" stroke="#66bb6a" stroke-width="2" fill="none" />
+  <circle cx="800" cy="320" r="40" fill="#66bb6a" />
+  <text x="800" y="315" text-anchor="middle" fill="white" font-family="Arial" font-size="12" font-weight="bold">Agent</text>
+  <text x="800" y="330" text-anchor="middle" fill="white" font-family="Arial" font-size="12" font-weight="bold">Runner</text>
+  
+  <!-- CLI Interface Branch -->
+  <path d="M 450 395 Q 350 450 250 500" stroke="#ef6c00" stroke-width="2" fill="none" />
+  <circle cx="250" cy="500" r="50" fill="#ef6c00" />
+  <text x="250" y="495" text-anchor="middle" fill="white" font-family="Arial" font-size="14" font-weight="bold">CLI Interface</text>
+  <text x="250" y="515" text-anchor="middle" fill="white" font-family="Arial" font-size="12">& Commands</text>
+  
+  <!-- CLI Interface Children -->
+  <path d="M 250 550 L 150 580" stroke="#ff8f00" stroke-width="2" fill="none" />
+  <circle cx="150" cy="580" r="40" fill="#ff8f00" />
+  <text x="150" y="575" text-anchor="middle" fill="white" font-family="Arial" font-size="12" font-weight="bold">Task & Tag</text>
+  <text x="150" y="590" text-anchor="middle" fill="white" font-family="Arial" font-size="12" font-weight="bold">Commands</text>
+  
+  <path d="M 250 550 L 250 620" stroke="#ff8f00" stroke-width="2" fill="none" />
+  <circle cx="250" cy="620" r="40" fill="#ff8f00" />
+  <text x="250" y="615" text-anchor="middle" fill="white" font-family="Arial" font-size="12" font-weight="bold">Agent</text>
+  <text x="250" y="630" text-anchor="middle" fill="white" font-family="Arial" font-size="12" font-weight="bold">Commands</text>
+  
+  <path d="M 250 550 L 350 580" stroke="#ff8f00" stroke-width="2" fill="none" />
+  <circle cx="350" cy="580" r="40" fill="#ff8f00" />
+  <text x="350" y="575" text-anchor="middle" fill="white" font-family="Arial" font-size="12" font-weight="bold">Workflow</text>
+  <text x="350" y="590" text-anchor="middle" fill="white" font-family="Arial" font-size="12" font-weight="bold">Commands</text>
+  
+  <!-- IDE Integration Branch -->
+  <path d="M 550 395 Q 650 450 750 500" stroke="#0097a7" stroke-width="2" fill="none" />
+  <circle cx="750" cy="500" r="50" fill="#0097a7" />
+  <text x="750" y="495" text-anchor="middle" fill="white" font-family="Arial" font-size="14" font-weight="bold">IDE</text>
+  <text x="750" y="515" text-anchor="middle" fill="white" font-family="Arial" font-size="12">Integration</text>
+  
+  <!-- IDE Integration Children -->
+  <path d="M 750 550 L 650 580" stroke="#00acc1" stroke-width="2" fill="none" />
+  <circle cx="650" cy="580" r="40" fill="#00acc1" />
+  <text x="650" y="575" text-anchor="middle" fill="white" font-family="Arial" font-size="12" font-weight="bold">Code</text>
+  <text x="650" y="590" text-anchor="middle" fill="white" font-family="Arial" font-size="12" font-weight="bold">Generation</text>
+  
+  <path d="M 750 550 L 750 620" stroke="#00acc1" stroke-width="2" fill="none" />
+  <circle cx="750" cy="620" r="40" fill="#00acc1" />
+  <text x="750" y="615" text-anchor="middle" fill="white" font-family="Arial" font-size="12" font-weight="bold">Project</text>
+  <text x="750" y="630" text-anchor="middle" fill="white" font-family="Arial" font-size="12" font-weight="bold">Management</text>
+  
+  <path d="M 750 550 L 850 580" stroke="#00acc1" stroke-width="2" fill="none" />
+  <circle cx="850" cy="580" r="40" fill="#00acc1" />
+  <text x="850" y="575" text-anchor="middle" fill="white" font-family="Arial" font-size="12" font-weight="bold">Documentation</text>
+  <text x="850" y="590" text-anchor="middle" fill="white" font-family="Arial" font-size="12" font-weight="bold">Generation</text>
+</svg>

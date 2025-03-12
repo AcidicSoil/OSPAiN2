@@ -1,0 +1,20 @@
+{
+  "startup": {
+    "scripts": [
+      {
+        "name": "Mode Synchronization",
+        "path": ".cursor/cursor-mode-sync.js",
+        "description": "Ensures development mode display is synchronized across all components"
+      }
+    ]
+  },
+  "chat": {
+    "onOpen": [
+      {
+        "name": "Update Mode Display",
+        "path": ".cursor/cursor-mode-sync.js",
+        "description": "Updates the chat window to display the correct development mode"
+      }
+    ]
+  }
+}

@@ -1,0 +1,49 @@
+graph TD
+    subgraph Universe["Sovereign AI Development Universe"]
+        SolarSystem1["Core System Solar System"]
+        SolarSystem2["Agent Framework Solar System"]
+        SolarSystem3["AI Infrastructure Solar System"]
+        SolarSystem4["Frontend Solar System"]
+        SolarSystem5["Dark Forge Solar System"]
+    end
+    
+    subgraph SolarSystem1["Core System Solar System"]
+        Planet1["CLI Planet"]
+        Planet2["State Management Planet"]
+        Planet3["Extension Registry Planet"]
+    end
+    
+    subgraph Planet1["CLI Planet"]
+        Moon1["Command Parser Moon"]
+        Moon2["Plugin System Moon"]
+        Moon3["Help Generator Moon"]
+        
+        subgraph Moon1["Command Parser Moon"]
+            Task1["Argument Validation Task"]
+            Task2["Parameter Handling Task"]
+            Task3["Flag Processing Task"]
+        end
+    end
+    
+    subgraph ConstellationView["Cross-System Constellations"]
+        Constellation1["Data Flow Constellation"]
+        Constellation2["Security Constellation"]
+        Constellation3["Performance Constellation"]
+    end
+    
+    Constellation1 -. "Connects" .-> Planet1
+    Constellation1 -. "Connects" .-> Planet2
+    Constellation2 -. "Connects" .-> Planet3
+    Constellation2 -. "Connects" .-> SolarSystem5
+    
+    classDef system fill:#3949AB,stroke:#1A237E,color:white
+    classDef planet fill:#00897B,stroke:#004D40,color:white
+    classDef moon fill:#FFA000,stroke:#FF6F00,color:white
+    classDef task fill:#D81B60,stroke:#880E4F,color:white
+    classDef constellation fill:#8E24AA,stroke:#4A148C,color:white
+    
+    class SolarSystem1,SolarSystem2,SolarSystem3,SolarSystem4,SolarSystem5 system
+    class Planet1,Planet2,Planet3 planet
+    class Moon1,Moon2,Moon3 moon
+    class Task1,Task2,Task3 task
+    class Constellation1,Constellation2,Constellation3 constellation

@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Development Mode Context</title>
+    <style>
+      .mode-context-container {
+        font-family:
+          -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+          'Open Sans', 'Helvetica Neue', sans-serif;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 12px;
+        border-radius: 8px;
+        border-left: 4px solid #3498db;
+        background-color: #f8f9fa;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .mode-context-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid #e1e4e8;
+      }
+
+      .mode-emoji {
+        font-size: 24px;
+        margin-right: 10px;
+      }
+
+      .mode-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: #24292e;
+        margin: 0;
+      }
+
+      .mode-focus {
+        margin: 0 0 15px 0;
+        color: #586069;
+        font-style: italic;
+      }
+
+      .mode-section {
+        margin-bottom: 15px;
+      }
+
+      .mode-section-title {
+        font-size: 14px;
+        font-weight: 600;
+        margin: 0 0 5px 0;
+        color: #24292e;
+      }
+
+      .mode-list {
+        margin: 0;
+        padding-left: 20px;
+      }
+
+      .mode-list li {
+        margin-bottom: 3px;
+        color: #444d56;
+      }
+
+      .mode-footer {
+        font-size: 12px;
+        color: #6a737d;
+        margin-top: 10px;
+        text-align: right;
+        font-style: italic;
+      }
+
+      /* Mode-specific colors */
+      .mode-design {
+        border-left-color: #e84393;
+      }
+
+      .mode-engineering {
+        border-left-color: #4a69bd;
+      }
+
+      .mode-testing {
+        border-left-color: #6ab04c;
+      }
+
+      .mode-deployment {
+        border-left-color: #f0932b;
+      }
+
+      .mode-maintenance {
+        border-left-color: #8e44ad;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 600px) {
+        .mode-context-container {
+          padding: 10px;
+          border-radius: 6px;
+        }
+
+        .mode-title {
+          font-size: 16px;
+        }
+
+        .mode-emoji {
+          font-size: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Mode Context Template -->
+    <div class="mode-context-container mode-{{MODE_NAME}}">
+      <div class="mode-context-header">
+        <div class="mode-emoji">{{MODE_EMOJI}}</div>
+        <h3 class="mode-title">Mode: {{MODE_NAME_CAPITALIZED}}</h3>
+      </div>
+
+      <p class="mode-focus"><strong>Focus:</strong> {{MODE_FOCUS}}</p>
+
+      <div class="mode-section">
+        <h4 class="mode-section-title">Key Activities</h4>
+        <ul class="mode-list">
+          {{MODE_ACTIVITIES}}
+        </ul>
+      </div>
+
+      <div class="mode-section">
+        <h4 class="mode-section-title">Relevant Files</h4>
+        <ul class="mode-list">
+          {{MODE_FILES}}
+        </ul>
+      </div>
+
+      <div class="mode-section">
+        <h4 class="mode-section-title">Suggested Tools</h4>
+        <ul class="mode-list">
+          {{MODE_TOOLS}}
+        </ul>
+      </div>
+
+      <p class="mode-footer">Current as of {{TIMESTAMP}}</p>
+    </div>
+
+    <!-- JavaScript to fetch and render mode data -->
+    <script>
+      // This would be replaced with actual mode data in production
+      // For now, we just show a placeholder
+      document.addEventListener('DOMContentLoaded', () => {
+        const mode = {
+          name: 'engineering',
+          nameCapitalized: 'Engineering',
+          emoji: '🔧',
+          focus: 'Core functionality, business logic, data flow implementation',
+          activities: [
+            'Implementing core business logic',
+            'Building data processing pipelines',
+            'Optimizing performance bottlenecks',
+            'Structuring code architecture'
+          ],
+          files: ['src/**/*.ts', 'lib/*.js', 'utils/*.js', 'services/*.ts'],
+          tools: ['TypeScript', 'Node.js', 'SQL/NoSQL databases', 'API frameworks']
+        };
+
+        // Replace template variables
+        document.querySelector('.mode-context-container').classList.add(`mode-${mode.name}`);
+        document.querySelector('.mode-emoji').textContent = mode.emoji;
+        document.querySelector('.mode-title').textContent = `Mode: ${mode.nameCapitalized}`;
+        document.querySelector('.mode-focus').innerHTML = `<strong>Focus:</strong> ${mode.focus}`;
+
+        // Generate lists
+        document.querySelector('.mode-list:nth-of-type(1)').innerHTML = mode.activities
+          .map((item) => `<li>${item}</li>`)
+          .join('');
+
+        document.querySelector('.mode-list:nth-of-type(2)').innerHTML = mode.files
+          .map((item) => `<li><code>${item}</code></li>`)
+          .join('');
+
+        document.querySelector('.mode-list:nth-of-type(3)').innerHTML = mode.tools
+          .map((item) => `<li>${item}</li>`)
+          .join('');
+
+        // Set timestamp
+        document.querySelector('.mode-footer').textContent =
+          `Current as of ${new Date().toLocaleString()}`;
+      });
+    </script>
+  </body>
+</html>

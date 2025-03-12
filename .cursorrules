@@ -1,0 +1,528 @@
+# Ollama Ecosystem Project Rules
+
+## Project Context & Instructions
+
+You are working on the Ollama Ecosystem, a collection of interconnected applications and tools that enhance the functionality of Ollama (a local LLM runner). This project emphasizes sovereign AI principles, local-first infrastructure, and efficient development workflows.
+
+During development:
+
+- Follow the sovereign AI mindset of local-first, user-controlled computing
+- Use the Development Mode Framework for structured progress
+- Document all decisions and implementation details
+- Track progress using [X] completed and [ ] pending task markers
+- Update progress after completing milestones
+- Maintain context awareness across mode transitions
+
+## Development Mode Framework
+
+### Mode Switching Commands
+
+- Use `m` command for mode switching (replaces mode-switch)
+- Shorthand completions available:
+  - `des` -> design mode
+  - `eng` -> engineering mode
+  - `test` -> testing mode
+  - `dep` -> deployment mode
+  - `maint` -> maintenance mode
+
+### Mode Indicators
+
+- 🎨 Design Mode - UI/UX structuring, component architecture
+- 🔧 Engineering Mode - Core functionality, business logic
+- 🧪 Testing Mode - Quality assurance, edge cases
+- 📦 Deployment Mode - Release readiness, CI/CD
+- 🔍 Maintenance Mode - Ongoing health, improvements
+
+## Technical Stack & Requirements
+
+- Node.js (18+ LTS)
+- TypeScript (5.0+)
+- React (18+) for front-end applications
+- Express (4.18+) for back-end services
+- Jest for testing
+- Docker for containerization
+- Python (3.9+) for utilities and tools
+- Virtual environment in ./venv for Python tools
+
+## Development Guidelines
+
+### Code Style
+
+- Use TypeScript with strict typing
+- Follow clean code principles
+- Add comprehensive JSDoc comments
+- Use async/await patterns
+- Implement proper error handling
+- Write unit tests (80%+ coverage)
+- Use environment variables
+- Follow Prettier/ESLint configuration
+
+### Local-First Infrastructure
+
+- Implement lightweight model serving
+- Use multi-level caching strategy
+- Maintain local knowledge management
+- Support offline-first development
+- Implement local fine-tuning capabilities
+- Utilize distributed computing when available
+
+### Error Handling
+
+- Use custom error classes
+- Implement comprehensive logging
+- Provide actionable error messages
+- Create recovery mechanisms
+- Log with appropriate context
+- Handle edge cases
+- Implement graceful degradation
+
+### Security
+
+- Validate all inputs
+- Use proper authentication
+- Implement rate limiting
+- Follow least privilege principle
+- Secure sensitive data
+- Regular security audits
+- Protect local model assets
+
+## Tool Call Optimization
+
+### Tool Call Continuation Strategy
+
+- **Never stop before tool call limit**: Continue execution until the maximum 25 tool call limit is reached
+- **Batch operations when possible**: Combine similar operations into single tool calls to maximize efficiency
+- **Prioritize operations**: Execute the most critical operations first in case the limit is reached
+- **Track tool call usage**: Keep count of used tool calls to manage remaining capacity
+- **Use fallback mechanisms**: Have alternative approaches ready when tool call limit is approached
+- **Resume from interruptions**: Design workflows to be resumable from the last successful operation
+- **Document continuation points**: When reaching the limit, clearly document the next steps for a follow-up session
+
+### Mode-Specific Optimization
+
+#### Design Mode
+
+- Batch UI component generation
+- Cache design patterns
+- Optimize for visual feedback
+
+#### Engineering Mode
+
+- Prioritize code analysis
+- Cache common patterns
+- Focus on core functionality
+
+#### Testing Mode
+
+- Batch test generation
+- Cache test templates
+- Optimize coverage analysis
+
+#### Deployment Mode
+
+- Batch documentation updates
+- Optimize build processes
+- Cache deployment configs
+
+#### Maintenance Mode
+
+- Prioritize issue analysis
+- Cache common solutions
+- Optimize monitoring
+
+## Knowledge Management
+
+### Context System
+
+- Maintain hierarchical tag system
+- Track conversation history
+- Integrate with scratchpad
+- Support semantic search
+- Enable cross-mode context preservation
+
+### Documentation
+
+- Keep README files up-to-date
+- Document API endpoints
+- Maintain changelog
+- Update mode-specific guides
+- Document context transitions
+
+## Shell Scripts Guidelines
+
+- Use `m` command for mode switching
+- Support shorthand mode names
+- Make REASON parameter optional
+- Include error handling
+- Support cross-platform compatibility
+- Maintain context across mode switches
+
+## Performance Considerations
+
+- Optimize for local execution
+- Implement proper caching
+- Monitor resource usage
+- Profile critical operations
+- Consider offline capabilities
+- Support distributed computing
+
+## Integration Guidelines
+
+- Define clear API contracts
+- Use versioning for APIs
+- Document integration points
+- Maintain backward compatibility
+- Support local-first operation
+- Enable cross-mode communication
+
+## Development Workflow
+
+1. Start in appropriate mode using `m` command
+2. Follow mode-specific guidelines
+3. Document changes and decisions
+4. Test thoroughly
+5. Update documentation
+6. Track progress
+7. Preserve context during mode transitions
+
+## Best Practices Checklist
+
+- [ ] Requirements fully understood
+- [ ] Mode-specific guidelines followed
+- [ ] Local-first principles applied
+- [ ] Error handling implemented
+- [ ] Tests written
+- [ ] Documentation updated
+- [ ] Security reviewed
+- [ ] Performance optimized
+- [ ] Context preserved
+- [ ] Changes logged
+
+## Tools & Utilities
+
+### TypeScript Development
+
+```bash
+yarn tsc        # TypeScript compilation
+yarn lint       # ESLint checks
+yarn test       # Run tests
+```
+
+### Python Utilities
+
+```bash
+# Screenshot Verification
+venv/bin/python tools/screenshot_utils.py URL [--output OUTPUT] [--width WIDTH] [--height HEIGHT]
+
+# LLM Integration
+venv/bin/python tools/llm_api.py --prompt "Your prompt" --provider {openai|anthropic|azure|deepseek|gemini|local}
+
+# Web Scraping
+venv/bin/python tools/web_scraper.py --max-concurrent 3 URL1 URL2 URL3
+
+# Search Engine
+venv/bin/python tools/search_engine.py "your search keywords"
+```
+
+### LLM Providers
+
+- OpenAI (gpt-4o)
+- Azure OpenAI
+- DeepSeek (deepseek-chat)
+- Anthropic (claude-3-sonnet-20240229)
+- Gemini (gemini-pro)
+- Local LLM (Qwen/Qwen2.5-32B-Instruct-AWQ)
+
+## Progress Tracking & Documentation
+
+### Lessons Learned
+
+Document mistakes, corrections, and important learnings here:
+
+- Include info useful for debugging in program output
+- Read files before editing
+- Use git commit -F for multiline commits
+- Include "[Cursor] " in commit messages and PR titles
+- Handle different character encodings (UTF-8)
+- Add debug info to stderr, keep stdout clean
+- Use current year for recent searches
+
+### Task Progress Template
+
+```markdown
+## Current Task: [Task Name]
+
+Description: [Brief description]
+
+Progress:
+[ ] Subtask 1
+[ ] Subtask 2
+[X] Completed subtask
+
+Notes:
+
+- Important decision points
+- Implementation details
+- Future considerations
+```
+
+## Scratchpad
+
+Use this section for active task planning and notes:
+
+### Current Task
+
+[Task description and planning goes here]
+
+### Todo List
+
+[ ] Task 1
+[ ] Task 2
+
+### Notes & Decisions
+
+- Note 1
+- Note 2
+
+## Code Style Guidelines
+
+- Use TypeScript with strict typing wherever possible
+- Follow clean code principles: clear naming, small functions, DRY
+- Add comprehensive JSDoc comments to all public APIs
+- Use async/await for asynchronous operations
+- Always include proper error handling
+- Write unit tests for all business logic
+- Use environment variables for configuration
+- Follow a consistent code style with Prettier/ESLint
+
+## Tagging System Guidelines
+
+- Respect the tagging structure defined in the tag_system.sh
+- Always back up the tags database before modifications
+- Follow category/tag hierarchy for consistency
+- Use absolute paths whenever possible
+- Validate JSON operations with proper error handling
+- Add meaningful, descriptive content to tags
+
+## Error Handling Approach
+
+- Be defensive: check inputs, validate assumptions
+- Use try/catch blocks for operations that might fail
+- Provide clear error messages that are actionable
+- Create recovery mechanisms wherever possible
+- Log errors with appropriate context
+- Prefer graceful degradation over crashing
+
+## Documentation Requirements
+
+- Keep README files up-to-date
+- Document API endpoints with examples
+- Add usage examples for libraries and tools
+- Include requirements and dependencies
+- Provide troubleshooting guidance
+- Document known limitations
+
+## Performance
+
+- Optimize database queries
+- Implement proper caching strategies
+- Monitor memory usage
+- Profile performance regularly
+- Use appropriate indexing
+
+## Collaboration Guidelines
+
+- Use descriptive commit messages
+- Create focused pull requests
+- Write clear issue descriptions
+- Reference related issues in commits and PRs
+- Follow semantic versioning for releases
+
+## Architecture
+
+- Follow modular design principles
+- Implement clear separation of concerns
+- Use dependency injection where appropriate
+- Keep services stateless when possible
+- Implement proper logging and monitoring
+- Use environment variables for configuration
+
+## Testing
+
+- Include integration tests for API endpoints
+- Maintain test coverage above 80%
+- Use meaningful test descriptions
+- Follow AAA (Arrange-Act-Assert) pattern
+
+## Documentation
+
+- Keep documentation up-to-date
+- Document all configuration options
+- Include examples in documentation
+- Document breaking changes
+- Maintain a changelog
+
+## Documentation Sources
+
+- Use DevDocs.io as the primary documentation source for all technologies
+- URL: https://devdocs.io/
+- Include "devdocs.io" in web searches for documentation
+- Reference the DevDocs rule for detailed usage instructions: [devdocs-source.mdc](mdc:Projects/.cursor/rules/devdocs-source.mdc)
+- Benefits:
+  - Unified documentation source
+  - Consistent interface
+  - Offline access
+  - Searchable with keyboard shortcuts
+  - Regular updates with latest documentation
+
+## Security
+
+- Never commit sensitive data
+- Use proper authentication and authorization
+- Validate all inputs
+- Implement rate limiting where necessary
+
+## Performance
+
+- Optimize database queries
+- Implement proper caching strategies
+- Monitor memory usage
+- Profile performance regularly
+- Use appropriate indexing
+
+## Integration
+
+- Define clear API contracts
+- Use versioning for APIs
+- Implement proper error responses
+- Document all integration points
+- Maintain backward compatibility
+
+## Dependencies
+
+- Keep dependencies up-to-date
+- Audit dependencies regularly
+- Document dependency requirements
+- Use specific versions in package.json
+- Minimize external dependencies
+
+## Deployment
+
+- Use containerization
+- Implement CI/CD pipelines
+- Maintain different environments
+- Use infrastructure as code
+- Implement proper monitoring
+
+## Error Handling
+
+- Use custom error classes
+- Implement proper error logging
+- Return meaningful error messages
+- Handle edge cases
+- Implement proper fallbacks
+
+{
+"name": "ollama-tag-cli",
+"version": "1.0.0",
+"description": "Rules for development in the Ollama Tag CLI project",
+"rules": {
+"development_approach": {
+"laser_focus": "Follow the laser-focus approach: implement working solutions first, document issues for later, move to next priority task",
+"code_style": "Use TypeScript with strict typing wherever possible",
+"error_handling": "Implement proper error handling but don't get stuck debugging minor issues",
+"documentation": "Document as you go, especially decision points and implementation details"
+},
+"typescript_development": {
+"typing": "Use strict typing for all functions and variables",
+"interfaces": "Define clear interfaces for data structures",
+"error_handling": "Implement comprehensive error handling with typed errors",
+"async_patterns": "Use async/await with proper error boundaries"
+},
+"cli_development": {
+"commands": "Use commander.js for command parsing",
+"interaction": "Use inquirer.js for user interaction",
+"output": "Use chalk for styled console output",
+"error_display": "Show clear, actionable error messages"
+},
+"tag_system": {
+"data_structure": "Use efficient data structures for tag storage",
+"validation": "Validate all tag operations",
+"persistence": "Implement reliable data persistence",
+"search": "Optimize tag search operations"
+},
+"testing": {
+"coverage": "Maintain test coverage above 80%",
+"types": "Include unit, integration, and e2e tests",
+"mocking": "Use proper mocking for external dependencies",
+"assertions": "Write clear, specific test assertions"
+}
+},
+"tools": {
+"development": [
+{
+"name": "TypeScript Compiler",
+"command": "yarn tsc",
+"description": "Runs TypeScript compiler with strict mode"
+},
+{
+"name": "ESLint",
+"command": "yarn lint",
+"description": "Lints code according to project rules"
+}
+]
+}
+}
+
+You are an expert in TypeScript, Node.js, WebSockets, and CLI development.
+
+# Project Context
+
+This project is a CLI tool for sending prompts to Cursor IDE chat windows using the Model Context Protocol (MCP). It allows users to send prompts directly from the terminal, interact with chat windows, and configure settings.
+
+# Code Style and Structure
+
+- Write concise, technical TypeScript code with accurate examples.
+- Use functional programming patterns where appropriate.
+- Prefer iteration and modularization over code duplication.
+- Use descriptive variable names.
+- Structure files logically with clear separation of concerns.
+
+# TypeScript Usage
+
+- Use TypeScript for all code with strict typing.
+- Prefer interfaces over types for object definitions.
+- Use proper error handling with typed errors.
+- Implement async/await patterns with proper error boundaries.
+
+# CLI Development
+
+- Use Commander.js for command parsing.
+- Implement comprehensive error handling.
+- Provide helpful error messages.
+- Include detailed help documentation.
+- Support environment variables for configuration.
+
+# WebSocket Communication
+
+- Implement proper connection management.
+- Handle disconnections gracefully.
+- Use proper message formatting.
+- Implement reconnection strategies.
+- Add timeout handling for operations.
+
+# Testing
+
+- Write unit tests for all business logic.
+- Mock external dependencies.
+- Test error conditions thoroughly.
+- Include integration tests for end-to-end validation.
+- Maintain high test coverage.
+
+# Documentation
+
+- Document all public APIs.
+- Include examples in documentation.
+- Document configuration options.
+- Provide troubleshooting guidance.
+- Keep documentation up-to-date.

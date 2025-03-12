@@ -1,0 +1,60 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# DevDocs as Primary Documentation Source
+
+## Purpose
+This rule establishes DevDocs.io as the primary documentation source for the entire Ollama Ecosystem. When researching or looking up documentation for any technology, use DevDocs.io as your first source.
+
+## URL
+https://devdocs.io/
+
+## Benefits
+- Unified documentation source for all technologies
+- Consistent interface for documentation access
+- Offline access to documentation
+- Searchable documentation with keyboard shortcuts
+- Regular updates with latest documentation
+- Comprehensive coverage of programming languages, frameworks, and tools
+
+## Usage Instructions
+1. When needing documentation, first check if the technology is available on DevDocs.io
+2. Use the search functionality to find specific topics
+3. For web searches, include "devdocs.io" in your search query
+4. When using MCP web search tools, prioritize results from DevDocs.io
+5. Reference DevDocs.io URLs in your code comments and documentation
+
+## Available Documentation
+DevDocs.io provides documentation for numerous technologies including:
+
+- JavaScript, TypeScript, Node.js
+- Python, Django, Flask
+- React, Vue, Angular
+- HTML, CSS, DOM
+- SQL, PostgreSQL, MySQL
+- Docker, Kubernetes
+- Git, Bash
+- And many more...
+
+## Integration with Development Workflow
+- Use DevDocs.io for quick reference during development
+- Leverage DevDocs.io keyboard shortcuts for efficient documentation navigation
+- Consider installing the DevDocs desktop app for offline access
+- Use DevDocs.io API for programmatic documentation access when needed
+
+## Example Usage
+When researching React hooks:
+```
+web_search("devdocs.io React hooks useEffect")
+```
+
+When looking up TypeScript interfaces:
+```
+web_search("devdocs.io TypeScript interfaces")
+```
+
+## Related Files
+- [master-todo.md](mdc:Projects/master-todo.md) - Contains the task for implementing this rule
+- [terminal.md](mdc:Projects/terminal.md) - Terminal commands for development 

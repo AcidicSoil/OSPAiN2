@@ -1,0 +1,51 @@
+# 🎨 Design Mode
+
+_Focus: UI/UX structuring, component architecture, visual design_
+
+## Objectives
+
+- Create intuitive and accessible interfaces
+- Establish consistent design patterns
+- Optimize user flows and experiences
+- Ensure visual coherence across the application
+
+## Activities
+
+- Mock UI components and layouts
+- Wireframing and prototyping
+- Frontend component architecture
+- Design system implementation
+- Accessibility considerations
+- Responsive design testing
+- Mock JSON data structures
+- Component state management
+
+## Deliverables
+
+- Design mockups and prototypes
+- Component architecture diagrams
+- UI component specifications
+- Design system documentation
+- Accessibility compliance report
+- Responsive design guidelines
+
+## Tools & Resources
+
+- Figma/Adobe XD for mockups
+- Storybook for component documentation
+- Accessibility testing tools
+- Color contrast analyzers
+- Typography guidelines
+- Grid system specifications
+
+## Transition Criteria
+
+- Design components approved by stakeholders
+- Component architecture documented
+- Accessibility requirements met
+- Responsive design validated
+- Design system integrated
+
+## Notes
+
+<!-- Add any project-specific design considerations, constraints, or references here -->

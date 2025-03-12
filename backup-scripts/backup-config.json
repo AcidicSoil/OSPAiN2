@@ -1,0 +1,49 @@
+{
+  "github": {
+    "backup_branch": "main",
+    "commit_prefix": "[Auto Backup]",
+    "backup_interval": "daily",
+    "repository_url": "https://github.com/AcidicSoil/OSPAiN2.git",
+    "git_user": {
+      "name": "OSPAiN2 Backup",
+      "email": "ospain2-backup@example.com"
+    },
+    "skip_paths": [
+      "node_modules/",
+      "logs/",
+      ".git/",
+      "backup-scripts/backup-log.txt"
+    ],
+    "push_options": {
+      "force": false,
+      "tags": false
+    }
+  },
+  "schedule": {
+    "hourly": {
+      "enabled": false,
+      "minute": 0
+    },
+    "daily": {
+      "enabled": true,
+      "hour": 23,
+      "minute": 0
+    },
+    "weekly": {
+      "enabled": true,
+      "day": "Sunday",
+      "hour": 22,
+      "minute": 0
+    }
+  },
+  "notification": {
+    "enabled": false,
+    "success_message": "OSPAiN2 GitHub backup completed successfully",
+    "error_message": "OSPAiN2 GitHub backup failed"
+  },
+  "logging": {
+    "level": "info",
+    "max_log_files": 10,
+    "max_log_size_kb": 1024
+  }
+}

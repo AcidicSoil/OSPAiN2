@@ -1,0 +1,32 @@
+{
+    "name": "ollama-ecosystem-design-ui",
+    "version": "1.0.0",
+    "description": "Visual System Brainstorming Tool for Ollama Ecosystem Design",
+    "main": "index.html",
+    "scripts": {
+        "start": "python serve.py",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "ollama",
+        "ecosystem",
+        "design",
+        "brainstorming",
+        "visualization",
+        "architecture"
+    ],
+    "author": "Ollama Ecosystem Team",
+    "license": "MIT",
+    "dependencies": {
+        "bootstrap": "^5.3.0-alpha1",
+        "mermaid": "^10.0.2"
+    },
+    "devDependencies": {},
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/yourusername/ollama-ecosystem-design-ui"
+    },
+    "engines": {
+        "node": ">=12.0.0"
+    }
+}

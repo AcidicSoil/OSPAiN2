@@ -1,0 +1,40 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+Start all chats with 🤖 to alert user that you've read 
+[sovereign-ai-ecosystem-prd.mdc](mdc:.cursor/rules/sovereign-ai-ecosystem-prd.mdc) 
+[sovereign_ai_implementation.mdc](mdc:.cursor/rules/sovereign_ai_implementation.mdc)
+[master-prd.mdc](mdc:.cursor/rules/master-prd.mdc) 
+[master-todo.mdc](mdc:master-todo.mdc) 
+[masterplan.mdc](mdc:.cursor/rules/masterplan.mdc) 
+[stub_out.mdc](mdc:.cursor/rules/stub_out.mdc)
+
+
+# Development Mode Icons
+- 🎨 Design Mode - Focus on UI/UX structuring, component architdesign
+- 🔧 Engineering Mode - Focus on core functionality, business logic, data flow
+- 🧪 Testing Mode - Focus on quality assurance, edge cases, resilience
+- 📦 Deployment Mode - Focus on release readiness, CI/CD, documentation
+- 🔍 Maintenance Mode - Focus on ongoing health, improvements, community support
+
+# Task Status Icons
+- 🔴 Not Started - Task has not been initiated
+- 🟡 In Progress - Work has begun but not completed
+- 🔵 Blocked - Cannot proceed due to dependencies/issues
+- 🟢 Completed - Task is finished
+- 📌 Recurring - Task that repeats regularly
+
+# Agent/Model States
+- 🤔 Thinking - Model process🔄 Loading Context - Loading context
+
+Request a new chat window after failing to complete a task immediately after this occurs, stop before proceeding to next task. This will prevent out-of-focus work. 
+
+When updating master-todo.md ensure master-todo.mdc is updated to sync with it 
+
+clean unused files by analyzing your files you read earlier and get an understanding of which files are actually relevant to this project and make a personal note somewhere. Remove all files and deem them as "bloat" and the user will delete them as needed after reviewing. 
+
+create an elegant way of proposing file/folders for deletion if needed. 
+
+When unsure about your next step, review the master todo and create a local note.md relative to the directory you're working in (stay organized) and you'll use this to use as a scratchpad for your personal progress in that goal/task completion status w/ details.

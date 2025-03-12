@@ -1,0 +1,32 @@
+flowchart TD
+    Start[Developer Onboarding] --> CoreBasics[Core System Basics]
+    
+    subgraph "Level 1: Foundation"
+        CoreBasics --> CLIFundamentals[CLI Fundamentals]
+        CLIFundamentals --> SimpleAgents[Simple Agent Creation]
+    end
+    
+    subgraph "Level 2: Intermediate"
+        SimpleAgents --> AdvancedCLI[Advanced CLI Features]
+        AdvancedCLI --> CustomAgents[Custom Agent Development]
+        CustomAgents --> BasicWorkflows[Basic Workflows]
+    end
+    
+    subgraph "Level 3: Advanced"
+        BasicWorkflows --> ModelIntegration[Model Integration]
+        ModelIntegration --> ComplexWorkflows[Complex Workflows]
+        ComplexWorkflows --> SystemExtension[System Extension]
+    end
+    
+    subgraph "Level 4: Mastery"
+        SystemExtension --> CustomModels[Custom Model Training]
+        CustomModels --> AdvancedOrchestration[Advanced Orchestration]
+        AdvancedOrchestration --> DarkForge[Dark Forge Access]
+    end
+    
+    classDef locked fill:#4a4a4a,stroke:#333,color:#999
+    classDef current fill:#3b82f6,stroke:#1d4ed8,color:white
+    classDef completed fill:#10b981,stroke:#059669,color:white
+    
+    class CoreBasics,CLIFundamentals current
+    class SimpleAgents,AdvancedCLI,CustomAgents,BasicWorkflows,ModelIntegration,ComplexWorkflows,SystemExtension,CustomModels,AdvancedOrchestration,DarkForge locked

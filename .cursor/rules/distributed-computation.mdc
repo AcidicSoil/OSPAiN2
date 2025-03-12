@@ -1,0 +1,12 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Distributed Computation Rule
+- Discover available compute resources
+- Allocate tasks based on resource capabilities
+- Monitor resource usage and health
+- Implement efficient data transfer protocols
+- Support resumable operations
+- Handle failover gracefully

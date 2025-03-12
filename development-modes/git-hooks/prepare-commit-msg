@@ -1,0 +1,61 @@
+#!/bin/bash
+#
+# Git pre-commit hook to include the current development mode in commit messages
+# Install this hook by copying to .git/hooks/prepare-commit-msg and making it executable
+#
+
+# Get the commit message file
+COMMIT_MSG_FILE=$1
+COMMIT_SOURCE=$2
+
+# Exit if this is not a user-created commit
+if [ "$COMMIT_SOURCE" = "message" ]; then
+    exit 0
+fi
+
+# Find the development-modes directory
+REPO_ROOT=$(git rev-parse --show-toplevel)
+MODES_DIR="$REPO_ROOT/development-modes"
+CURRENT_MODE_FILE="$MODES_DIR/.current_mode"
+
+# If the current mode file exists and we're in a mode, add it to the commit message
+if [ -f "$CURRENT_MODE_FILE" ]; then
+    CURRENT_MODE=$(cat "$CURRENT_MODE_FILE")
+    
+    # Only add mode if it's not "No active mode"
+    if [ "$CURRENT_MODE" != "No active mode" ]; then
+        # Determine emoji for the mode
+        case "$CURRENT_MODE" in
+            design)
+                EMOJI="🎨"
+                ;;
+            engineering)
+                EMOJI="🔧"
+                ;;
+            testing)
+                EMOJI="🧪"
+                ;;
+            deployment)
+                EMOJI="📦"
+                ;;
+            maintenance)
+                EMOJI="🔍"
+                ;;
+            *)
+                EMOJI=""
+                ;;
+        esac
+        
+        # Read the existing commit message
+        TEMP_MSG=$(cat "$COMMIT_MSG_FILE")
+        
+        # Check if the message already starts with the mode prefix
+        if [[ "$TEMP_MSG" != "[$EMOJI $CURRENT_MODE]"* ]]; then
+            # Add the mode prefix to the commit message
+            MODE_PREFIX="[$EMOJI $CURRENT_MODE] "
+            echo "$MODE_PREFIX$TEMP_MSG" > "$COMMIT_MSG_FILE"
+        fi
+    fi
+fi
+
+exit 0 

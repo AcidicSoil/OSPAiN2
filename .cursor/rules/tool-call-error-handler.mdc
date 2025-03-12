@@ -1,0 +1,117 @@
+# Tool Call Error Handler
+
+This rule provides specific error handling mechanisms for when Cursor IDE approaches the 25 tool call limit.
+
+## Error Detection
+
+Monitor tool call usage and activate these procedures when:
+- Tool call count reaches 20 or higher
+- A complex operation is started with fewer than 5 remaining calls
+- A tool call returns an error related to rate limiting or call limits
+
+## Error Handling Procedure
+
+### 1. Immediate Preservation
+
+When approaching the limit, immediately:
+- Save any unsaved work to files
+- Complete the current logical step
+- Return any partial results obtained
+- Document exact state and progress
+
+### 2. Graceful Continuation
+
+Include this standardized continuation marker:
+
+```
+## CONTINUATION MARKER
+Current operation: [operation name]
+Progress: [percentage or fraction]
+Last completed step: [description]
+Next step: [description]
+Remaining tool calls: approximately [X]/25
+```
+
+### 3. User Action Required
+
+Provide explicit instructions for the user:
+
+```
+### User Action Required
+To continue this operation in a new session:
+1. Copy the CONTINUATION MARKER section above
+2. Start a new chat session
+3. Paste the marker and add: "Please continue from this point"
+```
+
+### 4. Alternative Approaches
+
+Always provide at least one alternative approach:
+
+```
+### Alternative Approaches
+If you prefer not to start a new session:
+- [Manual approach that requires fewer/no tool calls]
+- [Alternative implementation with fewer steps]
+- [Way to complete task outside of Cursor IDE]
+```
+
+## Implementation Examples
+
+### Example 1: File Processing Operation
+
+```
+I've processed 3/5 files successfully.
+
+## CONTINUATION MARKER
+Current operation: Batch file processing
+Progress: 60% (3/5 files)
+Last completed step: Processed file3.txt
+Next step: Begin processing file4.txt
+Remaining tool calls: approximately 2/25
+
+### User Action Required
+To continue this operation in a new session:
+1. Copy the CONTINUATION MARKER section above
+2. Start a new chat session
+3. Paste the marker and add: "Please continue from this point"
+
+### Alternative Approaches
+If you prefer not to start a new session:
+- Run this bash command to process the remaining files: `./process_files.sh file4.txt file5.txt`
+- Process the remaining files manually with the provided scripts
+```
+
+### Example 2: Code Generation
+
+```
+I've generated the base structure and 2/4 main components.
+
+## CONTINUATION MARKER
+Current operation: React component library generation
+Progress: 50% (2/4 components)
+Last completed step: Created Button and Card components
+Next step: Begin creating Table component
+Remaining tool calls: approximately 1/25
+
+### User Action Required
+To continue this operation in a new session:
+1. Copy the CONTINUATION MARKER section above
+2. Start a new chat session 
+3. Paste the marker and add: "Please continue from this point"
+
+### Alternative Approaches
+If you prefer not to start a new session:
+- I can provide the design specification for the remaining components for you to implement
+- You can scaffold the remaining components with `npx generate-react-component Table Modal`
+```
+
+## Integration with Tool Call Optimization
+
+This error handler works in conjunction with the Tool Call Optimization rule to ensure:
+1. Maximum value is delivered within the tool call constraint
+2. Operations can be resumed with minimal friction
+3. Users always have alternative options to proceed
+4. Critical work is never lost due to hitting limits
+
+When both rules are active, prioritize saving work and providing continuation information over completing additional operations that might fail. 

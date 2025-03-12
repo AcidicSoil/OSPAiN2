@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ollama Ecosystem Design Schematics</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Mermaid JS -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.0.2/dist/mermaid.min.js"></script>
+    <!-- Custom CSS -->
+    <link href="styles.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-3 col-lg-2 sidebar">
+                <div class="sidebar-header">
+                    <h3>Ollama Ecosystem</h3>
+                    <p>Design Schematics</p>
+                    <button id="theme-toggle" class="btn btn-sm btn-outline-secondary w-100 mb-3">Toggle Dark
+                        Mode</button>
+                </div>
+                <nav class="sidebar-nav">
+                    <h6 class="nav-section-title">System Architecture</h6>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#" data-diagram="system-architecture">System Overview</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-diagram="physical-deployment">Physical Deployment</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-diagram="development-environment">Dev Environment</a>
+                        </li>
+                    </ul>
+
+                    <h6 class="nav-section-title">Core Components</h6>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-diagram="ollamavoice-architecture">OllamaVoice</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"
+                                data-diagram="ollamahomecontrol-architecture">OllamaHomeControl</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-diagram="ollamahub-architecture">OllamaHub</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-diagram="mobile-client">Mobile Client</a>
+                        </li>
+                    </ul>
+
+                    <h6 class="nav-section-title">Integration</h6>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-diagram="data-flow">Data Flow</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-diagram="resource-management">Resource Management</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-section="integration-points">Integration Points</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="sidebar-footer">
+                    <p>Ollama Ecosystem Framework v1.0</p>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-md-9 col-lg-10 main-content">
+                <div class="diagram-header">
+                    <h2 id="diagram-title">System Architecture Overview</h2>
+                    <p id="diagram-description">This diagram provides an overview of the entire Ollama ecosystem
+                        architecture, showing the interactions between core components.</p>
+
+                    <div class="diagram-controls">
+                        <div class="btn-group me-2">
+                            <button id="zoom-in" class="btn btn-sm btn-outline-primary">Zoom In</button>
+                            <button id="zoom-out" class="btn btn-sm btn-outline-primary">Zoom Out</button>
+                            <button id="reset-zoom" class="btn btn-sm btn-outline-secondary">Reset</button>
+                        </div>
+                        <button id="download-svg" class="btn btn-sm btn-outline-success">Download SVG</button>
+                    </div>
+                </div>
+
+                <div class="diagram-container">
+                    <!-- System Architecture -->
+                    <div id="system-architecture" class="mermaid">
+                        graph TD
+                        User((User)) --> OllamaVoice[OllamaVoice]
+                        User --> OllamaHub[OllamaHub]
+                        User --> HomeControl[OllamaHomeControl]
+
+                        OllamaVoice <--> OllamaHub
+                            OllamaVoice <--> HomeControl
+                                HomeControl <--> OllamaHub
+
+                                    SharedServices[Shared Services] <--> OllamaVoice
+                                        SharedServices <--> OllamaHub
+                                            SharedServices <--> HomeControl
+
+                                                ResourceMgr[Resource Manager] <--> SharedServices
+
+                                                    HomeControl <--> HomeAssist[Home Assistant]
+                                                        HomeAssist <--> SmartDevices[Smart Devices]
+
+                                                            MobileClient[Mobile Client] <--> OllamaVoice
+                                                                MobileClient <--> OllamaHub
+                                                                    MobileClient <--> HomeControl
+                    </div>
+
+                    <!-- OllamaVoice Architecture -->
+                    <div id="ollamavoice-architecture" class="mermaid d-none">
+                        graph TD
+                        AudioInput[Audio Input] --> VAD[Voice Activity Detection]
+                        VAD --> STT[Speech-to-Text]
+                        STT --> IntentProc[Intent Processor]
+                        IntentProc --> ContextMan[Context Manager]
+                        ContextMan --> LLM[LLM Reasoning]
+                        LLM --> Response[Response Generator]
+                        Response --> TTS[Text-to-Speech]
+                        TTS --> AudioOut[Audio Output]
+
+                        ContextMan <--> KB[Knowledge Base]
+                            KB <--> OHub[OllamaHub Integration]
+
+                                IntentProc --> HomeInt[Home Control Integration]
+                                HomeInt <--> HCCommands[Command Router]
+                    </div>
+
+                    <!-- OllamaHomeControl Architecture -->
+                    <div id="ollamahomecontrol-architecture" class="mermaid d-none">
+                        graph TD
+                        Intent[Intent Receiver] --> Parser[Command Parser]
+                        Parser --> DeviceControl[Device Controller]
+                        DeviceControl --> HomeAssistant[Home Assistant API]
+                        HomeAssistant --> Devices[Smart Devices]
+
+                        Parser --> AutomationGen[Automation Generator]
+                        AutomationGen --> AutoMgr[Automation Manager]
+                        AutoMgr --> HomeAssistant
+
+                        DeviceState[Device State Monitor] --> StateDB[(State Database)]
+                        HomeAssistant --> DeviceState
+
+                        HubInt[OllamaHub Integration] <--> DeviceControl
+                            HubInt <--> AutoMgr
+
+                                VoiceInt[OllamaVoice Integration] --> Intent
+                                DeviceControl --> VoiceInt
+                    </div>
+
+                    <!-- OllamaHub Architecture -->
+                    <div id="ollamahub-architecture" class="mermaid d-none">
+                        graph TD
+                        DocImport[Document Import] --> DocProcess[Document Processor]
+                        DocProcess --> VectorDB[(Vector Database)]
+
+                        Query[Query Interface] --> RAG[Retrieval Augmented Generation]
+                        RAG --> ResponseGen[Response Generator]
+
+                        RAG <--> VectorDB
+                            RAG <--> LLM[LLM Engine]
+
+                                ContextTracker[Context Tracker] <--> VectorDB
+                                    ContextTracker <--> ResponseGen
+
+                                        VoiceInt[OllamaVoice Integration] <--> Query
+                                            VoiceInt <--> ResponseGen
+
+                                                HomeInt[Home Control Integration] <--> ContextTracker
+                                                    HomeInt <--> Query
+                    </div>
+
+                    <!-- Mobile Client Architecture -->
+                    <div id="mobile-client" class="mermaid d-none">
+                        graph TD
+                        UI[User Interface] --> VoiceComp[Voice Component]
+                        UI --> HomeComp[Home Control Component]
+                        UI --> HubComp[Knowledge Component]
+
+                        VoiceComp <--> VoiceAPI[OllamaVoice API]
+                            HomeComp <--> HomeAPI[OllamaHomeControl API]
+                                HubComp <--> HubAPI[OllamaHub API]
+
+                                    NotificationService[Notification Service] <--> UI
+
+                                        AuthService[Authentication] <--> VoiceAPI
+                                            AuthService <--> HomeAPI
+                                                AuthService <--> HubAPI
+
+                                                    Cache[(Local Cache)] <--> HubComp
+                                                        Cache <--> HomeComp
+                    </div>
+
+                    <!-- Data Flow Diagram -->
+                    <div id="data-flow" class="mermaid d-none">
+                        sequenceDiagram
+                        participant User
+                        participant OV as OllamaVoice
+                        participant OH as OllamaHub
+                        participant OHC as OllamaHomeControl
+                        participant HA as Home Assistant
+
+                        User->>OV: "Turn on living room lights"
+                        OV->>OV: Process speech to text
+                        OV->>OV: Identify home control intent
+                        OV->>OHC: Send device control intent
+                        OHC->>OH: Request context (room state)
+                        OH-->>OHC: Return context (other devices)
+                        OHC->>HA: Execute device command
+                        HA->>HA: Process command
+                        HA-->>OHC: Command result
+                        OHC-->>OV: Action confirmation
+                        OV-->>User: "Turning on living room lights"
+                    </div>
+
+                    <!-- Resource Management -->
+                    <div id="resource-management" class="mermaid d-none">
+                        graph TD
+                        ResManager[Resource Manager] --> ModelQ[Model Queue]
+                        ResManager --> ResMonitor[Resource Monitor]
+
+                        ModelQ --> ModelExec[Model Executor]
+                        ResMonitor --> ModelExec
+
+                        ModelExec --> VoiceLLM[OllamaVoice LLM]
+                        ModelExec --> RAGLLM[OllamaHub RAG LLM]
+                        ModelExec --> ControlLLM[HomeControl LLM]
+
+                        CacheManager[Cache Manager] <--> VoiceLLM
+                            CacheManager <--> RAGLLM
+                                CacheManager <--> ControlLLM
+
+                                    ModelScheduler[Model Scheduler] --> ModelQ
+
+                                    PriorityManager[Priority Manager] --> ModelScheduler
+
+                                    UserActivity[User Activity Monitor] --> PriorityManager
+                    </div>
+
+                    <!-- Physical Deployment -->
+                    <div id="physical-deployment" class="mermaid d-none">
+                        graph TD
+                        HomeServer[Home Server] --> OllamaVoice
+                        HomeServer --> OllamaHub
+                        HomeServer --> OllamaHomeControl
+
+                        HomeServer --> HomeAssistant[Home Assistant]
+
+                        MobilePhone[Mobile Phone/Tablet] <-.-> HomeServer
+
+                            SmartSpeaker[Smart Speaker] <-.-> HomeServer
+
+                                HomeAssistant <-.-> SmartLights[Smart Lights]
+                                    HomeAssistant <-.-> SmartLocks[Smart Locks]
+                                        HomeAssistant <-.-> Thermostat[Smart Thermostat]
+                                            HomeAssistant <-.-> OtherDevices[Other Smart Devices]
+
+                                                OptionalCloud[Optional Cloud Services] <-.-> HomeServer
+
+                                                    subgraph "Local Network"
+                                                    HomeServer
+                                                    MobilePhone
+                                                    SmartSpeaker
+                                                    HomeAssistant
+                                                    SmartLights
+                                                    SmartLocks
+                                                    Thermostat
+                                                    OtherDevices
+                                                    end
+
+                                                    subgraph "Cloud (Optional)"
+                                                    OptionalCloud
+                                                    end
+                    </div>
+
+                    <!-- Development Environment -->
+                    <div id="development-environment" class="mermaid d-none">
+                        graph TD
+                        GitRepo[Git Repository] --> DevEnviron[Development Environment]
+
+                        DevEnviron --> CodeEditor[Code Editor]
+                        DevEnviron --> TestRunner[Test Runner]
+                        DevEnviron --> DevServer[Development Server]
+
+                        DevEnviron --> DockerEnv[Docker Environment]
+                        DockerEnv --> OllamaVoiceDev[OllamaVoice Container]
+                        DockerEnv --> OllamaHubDev[OllamaHub Container]
+                        DockerEnv --> OllamaHomeControlDev[OllamaHomeControl Container]
+                        DockerEnv --> SharedServicesDev[Shared Services Container]
+
+                        GitRepo --> CI[CI Pipeline]
+                        CI --> Build[Build Process]
+                        CI --> Tests[Automated Tests]
+                        CI --> Deploy[Deployment]
+
+                        UITestEnv[UI Test Environment] <--> DevEnviron
+                            IntegrationTestEnv[Integration Test Environment] <--> DevEnviron
+
+                                DockerEnv <--> MockServices[Mock Services]
+                                    MockServices <--> MockHA[Mock Home Assistant]
+                                        MockServices <--> MockLLM[Mock LLM Service]
+                    </div>
+
+                    <!-- Integration Points Section -->
+                    <div id="integration-points" class="d-none">
+                        <h3>Integration Points Specification</h3>
+
+                        <div class="accordion" id="integrationAccordion">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseOne">
+                                        OllamaVoice to OllamaHomeControl Interface
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse show"
+                                    data-bs-parent="#integrationAccordion">
+                                    <div class="accordion-body">
+                                        <p>This integration point allows OllamaVoice to send device control commands to
+                                            OllamaHomeControl.</p>
+                                        <pre><code class="json">
+{
+    "request_type": "device_control",
+    "intent": {
+        "action": "turn_on | turn_off | adjust | query",
+        "device_type": "light | thermostat | door | speaker | etc",
+        "location": "living_room | kitchen | bedroom | etc",
+        "parameters": {
+            "brightness": 75,
+            "color": "warm_white",
+            "temperature": 72,
+            "volume": 50
+        }
+    },
+    "context": {
+        "user_id": "user_identifier",
+        "conversation_id": "conversation_identifier",
+        "timestamp": "2023-04-15T14:32:10Z"
+    }
+}
+                                        </code></pre>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseTwo">
+                                        OllamaHomeControl to OllamaHub Interface
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse"
+                                    data-bs-parent="#integrationAccordion">
+                                    <div class="accordion-body">
+                                        <p>This integration point allows OllamaHomeControl to access knowledge and
+                                            context from OllamaHub.</p>
+                                        <pre><code class="json">
+{
+    "request_type": "context_query",
+    "query": {
+        "context_type": "device_state | room_state | user_preferences | automation_history",
+        "filters": {
+            "location": "living_room | kitchen | bedroom | etc",
+            "device_type": "light | thermostat | door | speaker | etc",
+            "time_range": {
+                "start": "2023-04-15T10:00:00Z",
+                "end": "2023-04-15T14:00:00Z"
+            }
+        }
+    },
+    "response_format": "detailed | summary",
+    "context": {
+        "user_id": "user_identifier",
+        "request_id": "request_identifier",
+        "timestamp": "2023-04-15T14:32:15Z"
+    }
+}
+                                        </code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+
+</html>

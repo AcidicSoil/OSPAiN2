@@ -1,0 +1,56 @@
+# 🔧 Engineering Mode
+
+_Focus: Core functionality, business logic, data flow_
+
+## Objectives
+
+- Implement robust and efficient business logic
+- Create scalable and maintainable architecture
+- Establish reliable data flows
+- Optimize performance and resource usage
+- Ensure security and data integrity
+
+## Activities
+
+- API architecture and integration
+- State management implementation
+- Data validation and handling
+- Performance optimization
+- Error handling strategies
+- Service worker implementation
+- Authentication/authorization flows
+- Testing infrastructure setup
+- Code modularization
+- Technical debt management
+
+## Deliverables
+
+- Functional application components
+- API documentation
+- Data flow diagrams
+- Performance benchmarks
+- Error handling documentation
+- Security implementation report
+- Code quality metrics
+
+## Tools & Resources
+
+- Code quality tools (ESLint, SonarQube)
+- Performance profiling tools
+- API documentation generators
+- Database design tools
+- State management libraries
+- Authentication/authorization frameworks
+
+## Transition Criteria
+
+- All business requirements implemented
+- Unit tests passing with adequate coverage
+- Code reviews completed
+- Performance benchmarks met
+- Security review completed
+- Documentation updated
+
+## Notes
+
+<!-- Add any project-specific engineering considerations, architecture decisions, or technical constraints here -->

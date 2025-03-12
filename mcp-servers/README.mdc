@@ -1,0 +1,263 @@
+# Ollama Ecosystem MCP Servers
+
+This directory contains Model Context Protocol (MCP) server implementations for the Ollama Ecosystem. These servers enable Claude and other LLMs to interact with your local environment and Ollama installations through standardized Server-Sent Events (SSE) interfaces.
+
+## Servers Overview
+
+| Server | Port | Description | 
+|--------|------|-------------|
+| Prompt Engineering Assistant | 3001 | Provides text summarization capabilities using Ollama models |
+| Docker Integration | 3002 | Enables Docker container management and command execution |
+| Mouse Automation | 3003 | Provides programmatic mouse control to automate UI interactions |
+| Titan Memory | 3004 | Knowledge graph and semantic memory system for the ecosystem |
+
+## Features
+
+- **SSE-based Communication**: All servers use Server-Sent Events for real-time communication with MCP clients
+- **Standardized Protocol**: Follows the MCP specification for tools, resources, and prompts
+- **Modular Architecture**: Each server is independent but shares common code
+- **Extensible Design**: Easily add new tools or capabilities to existing servers
+- **Resilient Operation**: Auto-restart on crash, proper error handling, and connection management
+- **Security Focused**: Configurable security boundaries for each server
+
+## Requirements
+
+- Node.js 16+ (18+ recommended)
+- TypeScript 4.9+
+- Ollama running locally (for Prompt Engineering Assistant)
+- Docker (for Docker Integration)
+- Node-gyp build tools (for Mouse Automation with RobotJS)
+
+## Installation
+
+1. Clone the repository if you haven't already
+   ```bash
+   git clone https://github.com/your-username/ollama-ecosystem.git
+   cd ollama-ecosystem/mcp-servers
+   ```
+
+2. Install dependencies
+   ```bash
+   npm install
+   ```
+
+3. Copy the example environment file and modify as needed
+   ```bash
+   cp .env.example .env
+   ```
+
+4. Build the TypeScript code
+   ```bash
+   npm run build
+   ```
+
+## Starting the Servers
+
+### Start All Servers
+
+```bash
+npm run start:all
+```
+
+### Start Individual Servers
+
+```bash
+# Prompt Engineering Assistant
+npm run start:prompt
+
+# Docker Integration
+npm run start:docker
+
+# Mouse Automation
+npm run start:mouse
+
+# Titan Memory
+npm run start:memory
+```
+
+### Development Mode
+
+For development with auto-reload:
+
+```bash
+# All servers
+npm run dev:all
+
+# Individual servers
+npm run dev:prompt
+npm run dev:docker
+npm run dev:mouse
+npm run dev:memory
+```
+
+## Configuration
+
+Each server can be configured through environment variables in the `.env` file:
+
+### Common Settings
+
+- `VERBOSE`: Enable detailed logging (default: `false`)
+
+### Prompt Engineering Assistant
+
+- `PROMPT_ENGINEERING_PORT`: Port to run on (default: `3001`)
+- `OLLAMA_ENDPOINT`: URL of your Ollama instance (default: `http://localhost:11434`)
+- `OLLAMA_MODEL`: Default Ollama model to use (default: `llama3`)
+
+### Docker Integration
+
+- `DOCKER_INTEGRATION_PORT`: Port to run on (default: `3002`)
+- `ALLOWED_DOCKER_COMMANDS`: Comma-separated list of allowed Docker commands (default: `ls,ps,exec,logs,inspect,stats`)
+
+### Mouse Automation
+
+- `MOUSE_AUTOMATION_PORT`: Port to run on (default: `3003`)
+- `SIMULATION_MODE`: Run in simulation mode without actual mouse movement (default: `false`)
+- `SECURITY_ENABLED`: Enable security checks for mouse actions (default: `true`)
+
+### Titan Memory
+
+- `TITAN_MEMORY_PORT`: Port to run on (default: `3004`)
+- `TITAN_MEMORY_DB_PATH`: Path to the memory database (optional)
+
+## Integration with Claude for Desktop
+
+1. Open Claude for Desktop
+2. Navigate to Settings > MCP Servers
+3. Add each server with its respective name, type (SSE), and URL (e.g., `http://localhost:3001/sse`)
+4. Save settings and restart Claude for Desktop
+
+## Using with Cursor IDE
+
+1. Create or update `.cursor/mcp.json` in your project:
+
+```json
+{
+  "servers": [
+    {
+      "name": "Prompt Engineering Assistant",
+      "type": "sse",
+      "url": "http://localhost:3001/sse"
+    },
+    {
+      "name": "Docker Integration",
+      "type": "sse",
+      "url": "http://localhost:3002/sse"
+    },
+    {
+      "name": "Mouse Automation",
+      "type": "sse",
+      "url": "http://localhost:3003/sse"
+    },
+    {
+      "name": "Titan Memory",
+      "type": "sse",
+      "url": "http://localhost:3004/sse"
+    }
+  ],
+  "tools": [
+    {
+      "name": "summarize_text",
+      "server": "Prompt Engineering Assistant"
+    },
+    {
+      "name": "docker_exec",
+      "server": "Docker Integration"
+    },
+    {
+      "name": "mouse_click",
+      "server": "Mouse Automation"
+    },
+    {
+      "name": "search_memory",
+      "server": "Titan Memory"
+    }
+  ]
+}
+```
+
+2. Restart Cursor or reload the MCP configuration
+
+## API Documentation
+
+### Prompt Engineering Assistant
+
+#### Tool: `summarize_text`
+
+Summarizes text using configurable templates and Ollama models.
+
+**Parameters:**
+- `text` (string, required): The text to summarize
+- `template` (string, optional): Template name to use (`default`, `technical`, `executive`, `bullet`, `tldr`)
+- `max_length` (number, optional): Maximum length of summary (default: 200)
+
+**Response:**
+- String containing the summarized text
+
+### Docker Integration
+
+#### Tool: `docker_exec`
+
+Executes a command in a running Docker container.
+
+**Parameters:**
+- `container` (string, required): Container ID or name
+- `command` (string, required): Command to execute
+- `timeout` (number, optional): Command timeout in milliseconds (default: 10000)
+
+**Response:**
+- String containing the command output
+
+### Mouse Automation
+
+#### Tool: `mouse_click`
+
+Performs a mouse click at the specified coordinates.
+
+**Parameters:**
+- `x` (number, required): X coordinate
+- `y` (number, required): Y coordinate
+- `button` (string, optional): Mouse button to click (default: `left`)
+- `double` (boolean, optional): Whether to perform a double-click (default: `false`)
+
+**Response:**
+- Boolean indicating success
+
+### Titan Memory
+
+#### Tool: `search_memory`
+
+Searches the Titan Memory knowledge graph.
+
+**Parameters:**
+- `query` (string, required): Search query
+- `limit` (number, optional): Maximum number of results (default: 10)
+- `types` (array, optional): Filter by node types (default: [])
+- `include_relations` (boolean, optional): Include relations in results (default: true)
+
+**Response:**
+- Object containing nodes and relations matching the query
+
+## Troubleshooting
+
+### Common Issues
+
+**Server fails to start**
+- Check that the port is not already in use
+- Verify that all dependencies are installed
+- Check the logs for specific error messages
+
+**RobotJS fails to build**
+- Install required build tools: `npm install -g node-gyp`
+- On Windows: `npm install --global --production windows-build-tools`
+- On macOS: `xcode-select --install`
+- Try running in simulation mode: `SIMULATION_MODE=true npm run start:mouse`
+
+**Cannot connect to Ollama**
+- Verify that Ollama is running: `curl http://localhost:11434/api/version`
+- Check that the model is downloaded: `ollama list`
+- Update the `OLLAMA_ENDPOINT` in your `.env` file
+
+## License
+
+MIT 
