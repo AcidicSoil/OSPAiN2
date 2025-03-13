@@ -45,12 +45,14 @@ export interface TodoStats {
   recentlyCompletedTasks: TodoItem[];
   upcomingDeadlines: TodoItem[];
   lastUpdated: Date;
+  recurringTasks: number;
 }
 
-class TodoTrackingService extends EventEmitter {
+class TodoTrackingService {
   private static instance: TodoTrackingService;
-  private todoItems: TodoItem[] = [];
-  private todoStats: TodoStats = {
+  private todoFilePath: string = "/master-todo.mdc";
+  private tasks: TodoItem[] = [];
+  private stats: TodoStats = {
     categories: {},
     overallProgress: 0,
     totalTasks: 0,
@@ -63,61 +65,37 @@ class TodoTrackingService extends EventEmitter {
     recentlyCompletedTasks: [],
     upcomingDeadlines: [],
     lastUpdated: new Date(),
+    recurringTasks: 0,
   };
+  private eventEmitter = new EventEmitter();
   private refreshInterval: NodeJS.Timeout | null = null;
-  private refreshRate: number = 30000; // 30 seconds default
+  private isRefreshing = false;
 
-  private constructor() {
-    super();
-    this.loadInitialData();
-    this.startAutoRefresh();
-  }
-
-  /**
-   * Get the singleton instance of TodoTrackingService
-   */
-  public static getInstance(): TodoTrackingService {
-    if (!TodoTrackingService.instance) {
-      TodoTrackingService.instance = new TodoTrackingService();
+  constructor() {
+    if (TodoTrackingService.instance) {
+      return TodoTrackingService.instance;
     }
-    return TodoTrackingService.instance;
+    TodoTrackingService.instance = this;
+    this.refreshData();
+    this.startRefreshInterval();
   }
 
   /**
-   * Load initial data from master-todo.md or localStorage cache
+   * Start automatic refresh interval
    */
-  private async loadInitialData(): Promise<void> {
-    try {
-      // First try to load from localStorage for immediate display
-      const cachedData = localStorage.getItem("todoTracking");
-      if (cachedData) {
-        const parsed = JSON.parse(cachedData);
-        this.todoStats = parsed.stats;
-        this.todoItems = parsed.items;
-      }
-
-      // Then refresh from the actual file
-      await this.refreshData();
-    } catch (error) {
-      console.error("Error loading todo tracking data:", error);
+  private startRefreshInterval(intervalMs: number = 60000): void {
+    if (this.refreshInterval) {
+      clearInterval(this.refreshInterval);
     }
-  }
-
-  /**
-   * Start auto-refresh of todo data
-   */
-  public startAutoRefresh(intervalMs: number = this.refreshRate): void {
-    this.stopAutoRefresh();
-    this.refreshRate = intervalMs;
     this.refreshInterval = setInterval(() => {
       this.refreshData();
     }, intervalMs);
   }
 
   /**
-   * Stop auto-refresh of todo data
+   * Stop automatic refresh interval
    */
-  public stopAutoRefresh(): void {
+  private stopRefreshInterval(): void {
     if (this.refreshInterval) {
       clearInterval(this.refreshInterval);
       this.refreshInterval = null;
@@ -125,168 +103,389 @@ class TodoTrackingService extends EventEmitter {
   }
 
   /**
-   * Refresh todo data from master-todo.md
+   * Gets the current stats object
    */
-  public async refreshData(): Promise<void> {
+  getStats(): TodoStats {
+    return this.stats;
+  }
+
+  /**
+   * Gets all tasks from the service
+   */
+  getAllTasks(): TodoItem[] {
+    return [...this.tasks];
+  }
+
+  /**
+   * Get a single task by ID
+   */
+  getTaskById(id: string): TodoItem | undefined {
+    return this.tasks.find((task) => task.id === id);
+  }
+
+  /**
+   * Updates an existing task
+   */
+  async updateTask(task: TodoItem): Promise<TodoItem> {
+    const taskIndex = this.tasks.findIndex((t) => t.id === task.id);
+    if (taskIndex === -1) {
+      throw new Error(`Task with ID ${task.id} not found`);
+    }
+
+    // Update the dateUpdated field
+    task.dateUpdated = new Date();
+
+    // Replace the task in the array
+    this.tasks[taskIndex] = task;
+
+    // Sync changes to file
+    await this.syncToFile();
+
+    // Update stats and notify listeners
+    this.calculateStats();
+    this.notifyListeners();
+
+    return task;
+  }
+
+  /**
+   * Creates a new task
+   */
+  async createTask(task: TodoItem): Promise<TodoItem> {
+    // Generate ID if not provided
+    if (!task.id) {
+      task.id = this.generateId();
+    }
+
+    // Set timestamps
+    task.dateCreated = task.dateCreated || new Date();
+    task.dateUpdated = new Date();
+
+    // Add to tasks array
+    this.tasks.push(task);
+
+    // Sync changes to file
+    await this.syncToFile();
+
+    // Update stats and notify listeners
+    this.calculateStats();
+    this.notifyListeners();
+
+    return task;
+  }
+
+  /**
+   * Deletes a task by ID
+   */
+  async deleteTask(id: string): Promise<boolean> {
+    const taskIndex = this.tasks.findIndex((t) => t.id === id);
+    if (taskIndex === -1) {
+      throw new Error(`Task with ID ${id} not found`);
+    }
+
+    // Remove from array
+    this.tasks.splice(taskIndex, 1);
+
+    // Sync changes to file
+    await this.syncToFile();
+
+    // Update stats and notify listeners
+    this.calculateStats();
+    this.notifyListeners();
+
+    return true;
+  }
+
+  /**
+   * Refreshes data from the todo file
+   */
+  async refreshData(): Promise<void> {
+    if (this.isRefreshing) return;
+
+    this.isRefreshing = true;
     try {
-      // In a real implementation, this would read the master-todo.md file
-      // For now, we'll simulate it with some sample data
-      await this.fetchTodoFileContent();
+      // Fetch the todo file
+      const response = await fetch(this.todoFilePath);
+      if (!response.ok) {
+        throw new Error(`Failed to fetch todo file: ${response.statusText}`);
+      }
+
+      const text = await response.text();
+
+      // Parse the todo file
+      this.tasks = this.parseTodoFile(text);
+
+      // Calculate stats
       this.calculateStats();
-      this.emit("todoUpdated", this.todoStats);
-      this.saveToLocalStorage();
+
+      // Update last refresh time
+      this.stats.lastUpdated = new Date();
+
+      // Notify listeners
+      this.notifyListeners();
     } catch (error) {
       console.error("Error refreshing todo data:", error);
+    } finally {
+      this.isRefreshing = false;
     }
   }
 
   /**
-   * Fetch the content of the master-todo.md file
+   * Subscribe to todo updates
    */
-  private async fetchTodoFileContent(): Promise<void> {
-    try {
-      // In a real implementation, this would fetch the actual file
-      // For now, we'll use mock data based on the structure we expect
+  onTodoUpdated(callback: (stats: TodoStats) => void): () => void {
+    this.eventEmitter.on("todoUpdated", callback);
+    return () => {
+      this.eventEmitter.off("todoUpdated", callback);
+    };
+  }
 
-      // Mock implementation for development purposes
-      const response = await fetch("/api/todo");
+  /**
+   * Notify all listeners of updates
+   */
+  private notifyListeners(): void {
+    this.eventEmitter.emit("todoUpdated", this.stats);
+  }
 
-      if (response.ok) {
-        const todoData = await response.json();
-        this.parseTodoData(todoData.content);
-      } else {
-        // If API fails, use mock data
-        this.mockTodoData();
+  /**
+   * Calculate stats from tasks
+   */
+  private calculateStats(): void {
+    const categories: Record<string, TodoCategory> = {};
+    let totalTasks = 0;
+    let completedTasks = 0;
+    let inProgressTasks = 0;
+    let notStartedTasks = 0;
+    let blockedTasks = 0;
+    let recurringTasks = 0;
+    const upcomingDeadlines: TodoItem[] = [];
+
+    // Process all tasks
+    for (const task of this.tasks) {
+      totalTasks++;
+
+      // Update status counts
+      switch (task.status) {
+        case "completed":
+          completedTasks++;
+          break;
+        case "in-progress":
+          inProgressTasks++;
+          break;
+        case "not-started":
+          notStartedTasks++;
+          break;
+        case "blocked":
+          blockedTasks++;
+          break;
+        case "recurring":
+          recurringTasks++;
+          break;
       }
-    } catch (error) {
-      console.error("Error fetching todo file:", error);
-      // Fallback to mock data
-      this.mockTodoData();
+
+      // Process category
+      if (task.category) {
+        if (!categories[task.category]) {
+          categories[task.category] = {
+            name: task.category,
+            priority: 0,
+            progress: 0,
+            totalTasks: 0,
+            completedTasks: 0,
+            inProgressTasks: 0,
+            notStartedTasks: 0,
+            blockedTasks: 0,
+          };
+        }
+
+        const category = categories[task.category];
+        category.totalTasks++;
+
+        // Update category status counts
+        switch (task.status) {
+          case "completed":
+            category.completedTasks++;
+            break;
+          case "in-progress":
+            category.inProgressTasks++;
+            break;
+          case "not-started":
+            category.notStartedTasks++;
+            break;
+          case "blocked":
+            category.blockedTasks++;
+            break;
+        }
+
+        // Calculate category progress
+        category.progress =
+          category.totalTasks > 0
+            ? (category.completedTasks / category.totalTasks) * 100
+            : 0;
+      }
+
+      // Track high priority tasks (P1)
+      if (task.priority === 1) {
+        this.stats.highPriorityTasks++;
+        if (task.status === "completed") {
+          this.stats.highPriorityCompleted++;
+        }
+      }
+
+      // Track recently completed tasks (last 7 days)
+      const oneWeekAgo = new Date();
+      oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+
+      if (task.status === "completed" && task.dateUpdated > oneWeekAgo) {
+        this.stats.recentlyCompletedTasks.push(task);
+      }
+
+      // Check for deadlines (This would use a separate deadline field in a real implementation)
+      // For now, just add high priority in-progress tasks
+      if (task.priority <= 2 && task.status === "in-progress") {
+        upcomingDeadlines.push(task);
+      }
     }
+
+    // Calculate overall progress
+    this.stats.overallProgress =
+      totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
+
+    // Sort recently completed tasks by date (newest first)
+    this.stats.recentlyCompletedTasks.sort(
+      (a, b) => b.dateUpdated.getTime() - a.dateUpdated.getTime()
+    );
+
+    // Update stats
+    this.stats = {
+      categories,
+      overallProgress: this.stats.overallProgress,
+      totalTasks,
+      completedTasks,
+      inProgressTasks,
+      notStartedTasks,
+      blockedTasks,
+      highPriorityTasks: this.stats.highPriorityTasks,
+      highPriorityCompleted: this.stats.highPriorityCompleted,
+      recentlyCompletedTasks: this.stats.recentlyCompletedTasks,
+      upcomingDeadlines,
+      lastUpdated: new Date(),
+      recurringTasks,
+    };
   }
 
   /**
-   * Parse the todo file content and extract todo items
+   * Parse the todo file into tasks
    */
-  private parseTodoData(content: string): void {
-    // Reset the todo items
-    this.todoItems = [];
+  private parseTodoFile(text: string): TodoItem[] {
+    const tasks: TodoItem[] = [];
+    const lines = text.split("\n");
 
-    // Parse the content and extract todo items
-    // This is a simplified implementation
-    const lines = content.split("\n");
-    let currentCategory = "";
-    let currentPriority = 0;
+    let currentTask: Partial<TodoItem> | null = null;
+    let currentSubTasks: Partial<TodoItem>[] = [];
 
     for (let i = 0; i < lines.length; i++) {
       const line = lines[i].trim();
 
-      // Check for category headers
-      if (line.startsWith("##") && !line.startsWith("###")) {
-        currentCategory = line.replace(/^##\s+/, "").trim();
-        if (currentCategory.includes("Priority 1")) {
-          currentPriority = 1;
-        } else if (currentCategory.includes("Priority 2")) {
-          currentPriority = 2;
-        } else if (currentCategory.includes("Priority 3")) {
-          currentPriority = 3;
-        } else if (currentCategory.includes("Priority 4")) {
-          currentPriority = 4;
-        } else {
-          // Try to extract priority from category (P1, P2, etc.)
-          const priorityMatch = currentCategory.match(/\(P(\d+)\)/);
-          if (priorityMatch) {
-            currentPriority = parseInt(priorityMatch[1]);
-          }
-        }
-      }
-
-      // Check for todo items
-      const todoItemMatch = line.match(
-        /^-\s+(\🔴|\🟡|\🔵|\🟢|\📌)\s+(?:\*\*(P\d+)\*\*:)?\s+(.*)/
+      // Task line: - 🔴 [H1] **P1**: Task title
+      const taskMatch = line.match(
+        /^- (🔴|🟡|🔵|🟢|📌) \[(H[123])\] \*\*P([12345])\*\*: (.+)$/
       );
-      if (todoItemMatch) {
-        const status = this.parseStatus(todoItemMatch[1]);
-        const priority = todoItemMatch[2]
-          ? parseInt(todoItemMatch[2].replace("P", ""))
-          : currentPriority;
-        const title = todoItemMatch[3].trim();
+      if (taskMatch) {
+        // Save previous task if exists
+        if (currentTask && currentTask.title) {
+          tasks.push(this.createTaskFromParsed(currentTask, currentSubTasks));
+          currentSubTasks = [];
+        }
 
-        const todoItem: TodoItem = {
-          id: `todo-${this.todoItems.length + 1}`,
-          title,
-          status,
-          priority: priority as 1 | 2 | 3 | 4 | 5,
-          category: currentCategory,
-          tags: [],
+        // Parse new task
+        const [, statusEmoji, horizon, priority, title] = taskMatch;
+
+        currentTask = {
+          id: this.generateId(),
+          title: title.trim(),
+          status: this.emojiToStatus(statusEmoji),
+          priority: parseInt(priority) as 1 | 2 | 3 | 4 | 5,
+          tags: [horizon],
+          category: this.determineCategory(line, lines, i),
           dateCreated: new Date(),
           dateUpdated: new Date(),
         };
 
-        this.todoItems.push(todoItem);
+        // Add description if next lines are indented
+        let description = "";
+        let j = i + 1;
+        while (j < lines.length && lines[j].match(/^\s{2,}/)) {
+          // Skip if it's a subtask
+          if (lines[j].match(/^\s{2,}- \[ \]/)) {
+            break;
+          }
+          if (description) description += "\n";
+          description += lines[j].trim();
+          j++;
+        }
+
+        if (description) {
+          currentTask.description = description;
+        }
+
+        // Look for subtasks
+        while (j < lines.length) {
+          const subtaskMatch = lines[j].match(/^\s{2,}- \[([ xX])\] (.+)$/);
+          if (!subtaskMatch) break;
+
+          const [, statusMark, subtaskTitle] = subtaskMatch;
+
+          currentSubTasks.push({
+            id: this.generateId(),
+            title: subtaskTitle.trim(),
+            status:
+              statusMark.toLowerCase() === "x" ? "completed" : "not-started",
+            priority: currentTask.priority,
+            category: currentTask.category,
+            tags: [...(currentTask.tags || [])],
+            dateCreated: new Date(),
+            dateUpdated: new Date(),
+          });
+
+          j++;
+        }
       }
     }
+
+    // Add the last task if exists
+    if (currentTask && currentTask.title) {
+      tasks.push(this.createTaskFromParsed(currentTask, currentSubTasks));
+    }
+
+    return tasks;
   }
 
   /**
-   * Create mock todo data for development
+   * Creates a TodoItem from parsed task data
    */
-  private mockTodoData(): void {
-    // Create some mock todo items based on the categories in our priority system
-    const categories = [
-      { name: "AI Infrastructure", priority: 1 },
-      { name: "Agent Framework", priority: 1 },
-      { name: "Development Tools", priority: 1 },
-      { name: "Continuity System", priority: 2 },
-      { name: "Mode Orchestration", priority: 2 },
-      { name: "Frontend Implementation", priority: 3 },
-      { name: "Backend Development", priority: 3 },
-      { name: "Mobile Support", priority: 4 },
-      { name: "Security & Compliance", priority: 4 },
-    ];
-
-    const statuses = [
-      "not-started",
-      "in-progress",
-      "blocked",
-      "completed",
-      "recurring",
-    ];
-    const todoItems: TodoItem[] = [];
-
-    // Generate 5-10 tasks per category
-    categories.forEach((category) => {
-      const taskCount = 5 + Math.floor(Math.random() * 5);
-      for (let i = 0; i < taskCount; i++) {
-        const randomStatus = statuses[
-          Math.floor(Math.random() * statuses.length)
-        ] as any;
-        todoItems.push({
-          id: `todo-${todoItems.length + 1}`,
-          title: `${category.name} Task ${i + 1}`,
-          status: randomStatus,
-          priority: category.priority as 1 | 2 | 3 | 4 | 5,
-          category: category.name,
-          tags: [`${category.name.toLowerCase().replace(/\s+/g, "-")}`],
-          dateCreated: new Date(
-            Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000
-          ),
-          dateUpdated: new Date(
-            Date.now() - Math.random() * 7 * 24 * 60 * 60 * 1000
-          ),
-        });
-      }
-    });
-
-    this.todoItems = todoItems;
+  private createTaskFromParsed(
+    task: Partial<TodoItem>,
+    subTasks: Partial<TodoItem>[]
+  ): TodoItem {
+    return {
+      id: task.id || this.generateId(),
+      title: task.title || "",
+      status: task.status || "not-started",
+      priority: task.priority || 3,
+      category: task.category || "Uncategorized",
+      tags: task.tags || [],
+      dateCreated: task.dateCreated || new Date(),
+      dateUpdated: task.dateUpdated || new Date(),
+      description: task.description,
+      subTasks: subTasks.length > 0 ? (subTasks as TodoItem[]) : undefined,
+    };
   }
 
   /**
-   * Parse status emoji into status string
+   * Convert emoji to status
    */
-  private parseStatus(
-    emoji: string
-  ): "not-started" | "in-progress" | "blocked" | "completed" | "recurring" {
+  private emojiToStatus(emoji: string): TodoItem["status"] {
     switch (emoji) {
       case "🔴":
         return "not-started";
@@ -304,171 +503,57 @@ class TodoTrackingService extends EventEmitter {
   }
 
   /**
-   * Calculate statistics based on todo items
+   * Determine category from context
    */
-  private calculateStats(): void {
-    const stats: TodoStats = {
-      categories: {},
-      overallProgress: 0,
-      totalTasks: this.todoItems.length,
-      completedTasks: 0,
-      inProgressTasks: 0,
-      notStartedTasks: 0,
-      blockedTasks: 0,
-      highPriorityTasks: 0,
-      highPriorityCompleted: 0,
-      recentlyCompletedTasks: [],
-      upcomingDeadlines: [],
-      lastUpdated: new Date(),
-    };
-
-    // Process each todo item
-    this.todoItems.forEach((item) => {
-      // Update category stats
-      if (!stats.categories[item.category]) {
-        stats.categories[item.category] = {
-          name: item.category,
-          priority: item.priority,
-          progress: 0,
-          totalTasks: 0,
-          completedTasks: 0,
-          inProgressTasks: 0,
-          notStartedTasks: 0,
-          blockedTasks: 0,
-        };
-      }
-
-      const category = stats.categories[item.category];
-      category.totalTasks++;
-
-      // Update overall counters
-      switch (item.status) {
-        case "completed":
-          stats.completedTasks++;
-          category.completedTasks++;
-          break;
-        case "in-progress":
-          stats.inProgressTasks++;
-          category.inProgressTasks++;
-          break;
-        case "not-started":
-          stats.notStartedTasks++;
-          category.notStartedTasks++;
-          break;
-        case "blocked":
-          stats.blockedTasks++;
-          category.blockedTasks++;
-          break;
-      }
-
-      // Track high priority tasks (P1)
-      if (item.priority === 1) {
-        stats.highPriorityTasks++;
-        if (item.status === "completed") {
-          stats.highPriorityCompleted++;
+  private determineCategory(
+    line: string,
+    lines: string[],
+    currentIndex: number
+  ): string {
+    // Look for section headings above the current line
+    for (let i = currentIndex - 1; i >= 0; i--) {
+      const headerMatch = lines[i].match(/^#{2,3}\s+(.+?)$/);
+      if (headerMatch) {
+        // Skip certain headers that aren't categories
+        const header = headerMatch[1];
+        if (
+          header === "Current Active Tasks" ||
+          header === "Recently Completed Tasks" ||
+          header === "Progress Tracking" ||
+          header === "CURRENT HORIZONS" ||
+          header === "#LEARNINGS"
+        ) {
+          continue;
         }
+        return header;
       }
-
-      // Track recently completed tasks (last 7 days)
-      const oneWeekAgo = new Date();
-      oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
-
-      if (item.status === "completed" && item.dateUpdated > oneWeekAgo) {
-        stats.recentlyCompletedTasks.push(item);
-      }
-    });
-
-    // Calculate progress percentages for each category
-    Object.values(stats.categories).forEach((category) => {
-      category.progress =
-        category.totalTasks > 0
-          ? Math.round((category.completedTasks / category.totalTasks) * 100)
-          : 0;
-    });
-
-    // Calculate overall progress
-    stats.overallProgress =
-      stats.totalTasks > 0
-        ? Math.round((stats.completedTasks / stats.totalTasks) * 100)
-        : 0;
-
-    // Sort recently completed tasks by date (newest first)
-    stats.recentlyCompletedTasks.sort(
-      (a, b) => b.dateUpdated.getTime() - a.dateUpdated.getTime()
-    );
-
-    this.todoStats = stats;
-  }
-
-  /**
-   * Save tracking data to localStorage
-   */
-  private saveToLocalStorage(): void {
-    try {
-      localStorage.setItem(
-        "todoTracking",
-        JSON.stringify({
-          stats: this.todoStats,
-          items: this.todoItems,
-        })
-      );
-    } catch (error) {
-      console.error("Error saving todo tracking data:", error);
     }
+    return "Uncategorized";
   }
 
   /**
-   * Get current todo statistics
+   * Generate a unique ID
    */
-  public getStats(): TodoStats {
-    return this.todoStats;
+  private generateId(): string {
+    return "task_" + Math.random().toString(36).substring(2, 15);
   }
 
   /**
-   * Get todo items with optional filtering
+   * Sync tasks back to the file
+   * Note: This is a placeholder - in a real implementation, this would use an API to update the file
    */
-  public getTodoItems(filter?: {
-    category?: string;
-    status?:
-      | "not-started"
-      | "in-progress"
-      | "blocked"
-      | "completed"
-      | "recurring";
-    priority?: 1 | 2 | 3 | 4 | 5;
-    tag?: string;
-  }): TodoItem[] {
-    if (!filter) {
-      return this.todoItems;
-    }
+  private async syncToFile(): Promise<void> {
+    // In a real implementation, this would update the master-todo.mdc file
+    console.log("Syncing tasks to file (placeholder)");
 
-    return this.todoItems.filter((item) => {
-      if (filter.category && item.category !== filter.category) {
-        return false;
-      }
-      if (filter.status && item.status !== filter.status) {
-        return false;
-      }
-      if (filter.priority && item.priority !== filter.priority) {
-        return false;
-      }
-      if (filter.tag && !item.tags.includes(filter.tag)) {
-        return false;
-      }
-      return true;
-    });
-  }
+    // For now, only update the in-memory representation
+    // The real implementation would call an API endpoint to update the file
 
-  /**
-   * Register a listener for todo updates
-   */
-  public onTodoUpdated(callback: (stats: TodoStats) => void): () => void {
-    this.on("todoUpdated", callback);
-    return () => {
-      this.off("todoUpdated", callback);
-    };
+    // TODO: Implement actual file sync
+    return Promise.resolve();
   }
 }
 
 // Export singleton instance
-export default TodoTrackingService.getInstance();
+const todoTrackingService = new TodoTrackingService();
+export default todoTrackingService;

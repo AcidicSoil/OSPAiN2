@@ -9,7 +9,7 @@ Instructions to run frontend at root of project --> start-ospain-hub.sh or start
 Instructions to run browser-tools --> start-browser-tools.sh or .bat
 Instructions to start all other MCP tools currently configured and available for immiedate use --> python mcp_server.py 
 
-Keep server open for debugging purposes
+browser-tools debug screenshots are located at  C:\Users\comfy\OSPAiN2\browserToolsMCPscreenshots view these for additional debug info related to users probable issue
 
 Enter relevant mode for the issue at hand:
 - design mode :: implement fastest viable solution 
@@ -24,7 +24,7 @@ Before starting any new task:
 3. Understand the big picture using knowledge graph context retrieval
 
 Task Implementation Protocol:
-- Attempt Threshold: 2
+- Attempt Threshold: 1
 - If threshold exceeded, implement workaround and document proper solution in master-todo
 - Test functions and edge cases
 - Document progress/learnings in both @master-todo.md and @master-todo.mdc

@@ -1,6 +1,11 @@
 ---
 description: 
 globs: 
+alwaysApply: false
+---
+---
+description: 
+globs: 
 alwaysApply: true
 ---
 ---
@@ -441,6 +446,12 @@ Description: Framework for multiple specialized agents to work together on compl
 Value Assessment: Would enable more sophisticated automation capabilities
 Dependencies: Requires stable agent system and inter-agent communication protocol
 Horizon Classification: [H2]
+
+[2024-06-05] TypeScript-Go Integration
+Description: Native Go port of TypeScript compiler for potentially faster compilation
+Value Assessment: Could provide significantly improved performance for TypeScript processing
+Dependencies: Requires stable release of TypeScript-Go from Microsoft
+Horizon Classification: [H3]
 ```
 
 ## Recently Completed Tasks

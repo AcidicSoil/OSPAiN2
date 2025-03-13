@@ -15,6 +15,8 @@ import { RateLimitProvider } from "./context/RateLimitContext";
 import { WorkerDemo } from "./pages/WorkerDemo";
 import DebugDashboard from "./pages/DebugDashboard";
 import ComponentManagerPage from "./pages/ComponentManagerPage";
+import TaskManager from "./pages/TaskManager";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 /**
  * Main App Component
@@ -24,34 +26,121 @@ import ComponentManagerPage from "./pages/ComponentManagerPage";
  */
 const App: React.FC = () => {
   return (
-    <RateLimitProvider>
-      <ToastContainer
-        position="bottom-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Dashboard />} />
-          <Route path="rate-limit-manager" element={<RateLimitManager />} />
-          <Route path="rate-limit-demo" element={<RateLimitDemo />} />
-          <Route path="tool-manager" element={<ToolManager />} />
-          <Route path="agent-demo" element={<AgentDemo />} />
-          <Route path="knowledge-graph" element={<KnowledgeGraph />} />
-          <Route path="progress-dashboard" element={<ProgressDashboard />} />
-          <Route path="worker-demo" element={<WorkerDemo />} />
-          <Route path="settings" element={<Settings />} />
-          <Route path="debug" element={<DebugDashboard />} />
-          <Route path="component-manager" element={<ComponentManagerPage />} />
-        </Route>
-      </Routes>
-    </RateLimitProvider>
+    <ErrorBoundary>
+      <RateLimitProvider>
+        <ToastContainer
+          position="bottom-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route
+              index
+              element={
+                <ErrorBoundary>
+                  <Dashboard />
+                </ErrorBoundary>
+              }
+            />
+            <Route
+              path="rate-limit-manager"
+              element={
+                <ErrorBoundary>
+                  <RateLimitManager />
+                </ErrorBoundary>
+              }
+            />
+            <Route
+              path="rate-limit-demo"
+              element={
+                <ErrorBoundary>
+                  <RateLimitDemo />
+                </ErrorBoundary>
+              }
+            />
+            <Route
+              path="tool-manager"
+              element={
+                <ErrorBoundary>
+                  <ToolManager />
+                </ErrorBoundary>
+              }
+            />
+            <Route
+              path="agent-demo"
+              element={
+                <ErrorBoundary>
+                  <AgentDemo />
+                </ErrorBoundary>
+              }
+            />
+            <Route
+              path="knowledge-graph"
+              element={
+                <ErrorBoundary>
+                  <KnowledgeGraph />
+                </ErrorBoundary>
+              }
+            />
+            <Route
+              path="progress-dashboard"
+              element={
+                <ErrorBoundary>
+                  <ProgressDashboard />
+                </ErrorBoundary>
+              }
+            />
+            <Route
+              path="task-manager"
+              element={
+                <ErrorBoundary>
+                  <TaskManager />
+                </ErrorBoundary>
+              }
+            />
+            <Route
+              path="worker-demo"
+              element={
+                <ErrorBoundary>
+                  <WorkerDemo />
+                </ErrorBoundary>
+              }
+            />
+            <Route
+              path="settings"
+              element={
+                <ErrorBoundary>
+                  <Settings />
+                </ErrorBoundary>
+              }
+            />
+            <Route
+              path="debug"
+              element={
+                <ErrorBoundary>
+                  <DebugDashboard />
+                </ErrorBoundary>
+              }
+            />
+            <Route
+              path="component-manager"
+              element={
+                <ErrorBoundary>
+                  <ComponentManagerPage />
+                </ErrorBoundary>
+              }
+            />
+          </Route>
+        </Routes>
+      </RateLimitProvider>
+    </ErrorBoundary>
   );
 };
 

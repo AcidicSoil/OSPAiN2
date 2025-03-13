@@ -6,7 +6,6 @@ declare const self: Worker;
 
 // Worker context - not exposed to global scope
 let workerId: string | null = null;
-let config: any = {};
 let isReady = false;
 
 /**
@@ -14,7 +13,7 @@ let isReady = false;
  */
 function initialize(id: string, workerConfig: any): void {
   workerId = id;
-  config = workerConfig || {};
+  const config = workerConfig || {};
   isReady = true;
 
   // Notify manager that worker is ready

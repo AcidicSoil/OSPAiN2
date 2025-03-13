@@ -1,0 +1,166 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+---
+description: Horizon Framework Integration Map for the Ollama Ecosystem Project
+globs: 
+alwaysApply: true
+---
+
+# Ollama Ecosystem - Horizon Framework Map
+
+## Purpose
+This document establishes clear horizons for focused development in the Ollama Ecosystem Project, organizing elements into distinct timeframes for implementation and planning.
+
+## Horizon Definitions
+
+- **Horizon 1 (H1)**: Current focus - Features and concepts actively being implemented
+- **Horizon 2 (H2)**: Next phase - Concepts cleared for planning but not yet ready for implementation
+- **Horizon 3 (H3)**: Future ideas - Concepts captured but deliberately kept for future consideration
+
+## Current Horizon Classification
+
+### Horizon 1 (Now)
+
+#### Core Infrastructure
+- OSPAiN2-hub frontend implementation
+- API server for todo management
+- Docker setup and integration
+- Code quality tools (ESLint, Knip)
+- Development Mode Framework
+
+#### UI Components
+- TodoManager component
+- EcosystemGraph visualization component
+- AgentPanel components
+- PydanticFormBuilder for dynamic form generation
+
+#### System Architecture
+- Local-first infrastructure
+- Knowledge Graph integration
+- MCP Server implementation
+
+#### CLI Tools
+- Tag CLI engine for todo management
+- Mode switcher for development modes
+- Context management tools
+
+### Horizon 2 (Next)
+
+#### Advanced Agent Components
+- AgentForge component for workflow automation
+- Multi-agent communication protocols
+- Agent task visualization enhancements
+
+#### Cross-Service Integration
+- Integration interfaces between components
+- Standardized API specifications
+- Service discovery mechanism
+
+#### Performance Optimization
+- Caching strategies implementation
+- Resource usage monitoring
+- Response time optimization
+
+#### Documentation
+- Enhanced API documentation
+- User guides for all components
+- Workflow documentation
+
+#### Research Features
+- "Research History" view for debug sessions
+- Research result sharing functionality
+- Caching of research results
+
+#### Model Management
+- Model comparison feature
+- Download progress indicators
+- Model collections for organization
+
+### Horizon 3 (Future)
+
+#### Plugin System Architecture
+- Extensible plugin framework
+- Plugin marketplace
+- Security sandboxing for plugins
+
+#### AI Model Optimization
+- Custom model fine-tuning
+- Model performance benchmarking
+- Model-specific optimizations
+
+#### Community Contribution Framework
+- Contribution guidelines
+- Review process automation
+- Community recognition system
+
+#### Advanced Visualization Tools
+- Performance metrics visualization
+- Knowledge graph exploration UI
+- System health monitoring dashboard
+
+#### Comprehensive Documentation
+- Video tutorials for setup and usage
+- Interactive documentation
+- API playground and examples
+
+#### Advanced UI/UX Improvements
+- Advanced filtering options
+- Visual graph of related debugging issues
+- Feedback system for solution effectiveness
+- Export functionality for research results
+
+## Horizon Transition Process
+
+### Promotion Criteria
+For H2 → H1 promotion:
+- Prerequisites and dependencies must be fulfilled
+- Resource availability confirmed
+- Clear implementation plan established
+- Success metrics defined
+
+For H3 → H2 promotion:
+- Strategic alignment with project goals
+- Technical feasibility assessed
+- Preliminary resource requirements estimated
+- User value proposition clearly articulated
+
+### Review Schedule
+- Weekly horizon review: Monday
+- End-of-cycle promotion evaluation: Every 3 weeks
+- Reflection and parking lot processing: Friday
+
+## Integration with Development Modes
+
+Each horizon aligns with specific development modes:
+
+**H1 Implementation**:
+- 🔧 Engineering Mode: Core functionality implementation
+- 🧪 Testing Mode: Quality assurance for active features
+- 📦 Deployment Mode: Release preparation for completed features
+
+**H2 Planning**:
+- 🎨 Design Mode: Architecture and UI planning
+- 🔧 Engineering Mode: Technical spike development
+
+**H3 Ideation**:
+- 🎨 Design Mode: Concept exploration
+- 🔍 Maintenance Mode: Future improvement identification
+
+## Horizon Management Process
+
+1. **Capture** ideas in appropriate horizon
+2. **Evaluate** ideas against promotion criteria
+3. **Promote** items between horizons during scheduled reviews
+4. **Focus** development efforts on H1 items only
+5. **Reflect** on horizon effectiveness regularly
+
+## Implementation Status
+
+- ✅ Horizon definitions established
+- ✅ Initial classification of project elements completed
+- 🔄 Integration with master-todo.mdc in progress
+- 🔄 Transition process implementation in progress
+- 🔄 Review schedule implementation in progress 

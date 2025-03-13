@@ -98,6 +98,16 @@ During development:
 - **Resume from interruptions**: Design workflows to be resumable from the last successful operation
 - **Document continuation points**: When reaching the limit, clearly document the next steps for a follow-up session
 
+### Advanced Tool Call Strategies
+
+- **Compressed contexts**: Use summarization to reduce context size before making tool calls
+- **Multi-stage fallback**: Define progressively simpler fallback strategies if primary approach fails
+- **Exponential backoff**: Implement increasing delays between retry attempts
+- **Proactive caching**: Cache results of common operations before they're needed
+- **Progressive prompting**: Start with minimal prompts and expand only if necessary
+- **Context-aware prompting**: Analyze available context before generating prompts
+- **Tool call effectiveness metrics**: Track success rates of different tool call patterns
+
 ### Mode-Specific Optimization
 
 #### Design Mode
@@ -143,10 +153,94 @@ During development:
 ### Documentation
 
 - Keep README files up-to-date
-- Document API endpoints
-- Maintain changelog
-- Update mode-specific guides
-- Document context transitions
+- Document API endpoints with examples
+- Add usage examples for libraries and tools
+- Include requirements and dependencies
+- Provide troubleshooting guidance
+- Document known limitations
+
+## Documentation Standards Framework
+
+### Documentation Types
+
+- **Product Requirements Document (PRD)** - Outlines what needs to be built and why
+- **Technical Design Document (TDD)** - Details how components will be implemented
+- **Protocol Handshake Analysis (PHA)** - Examines interaction protocols between systems
+- **API Specifications** - Defines endpoints, parameters, and response formats
+- **User Guides** - Provides end-user instructions for using the software
+- **Developer Guides** - Assists contributors in understanding and extending the codebase
+
+### Documentation Directory Structure
+
+```
+docs/
+├── prd/                  # Product Requirements Documents
+├── tdd/                  # Technical Design Documents
+├── pha/                  # Protocol Handshake Analysis
+├── api/                  # API Documentation
+│   ├── rest/             # REST API Documentation
+│   └── websocket/        # WebSocket API Documentation
+├── guides/               # User and Developer Guides
+│   ├── user/             # End-user documentation
+│   └── developer/        # Developer documentation
+└── assets/               # Documentation assets (images, diagrams, etc.)
+```
+
+### Documentation Templates
+
+Each document type follows a standardized template:
+
+#### PRD Template Structure
+
+- Executive Summary
+- Problem Statement
+- User Stories
+- Requirements (Functional/Non-functional)
+- Success Metrics
+- Implementation Priorities
+- Out of Scope
+
+#### TDD Template Structure
+
+- System Overview
+- Architecture Design
+- Component Breakdown
+- Data Models
+- Interfaces
+- Error Handling
+- Performance Considerations
+- Security Considerations
+- Testing Strategy
+
+#### PHA Template Structure
+
+- Protocol Overview
+- Sequence Diagrams
+- Message Formats
+- Error Scenarios
+- Performance Characteristics
+- Security Considerations
+
+### Documentation Format Standards
+
+- Use Markdown for all documentation
+- Include table of contents for documents longer than 500 lines
+- Follow a consistent header hierarchy
+- Include versioning information
+- Document last updated date
+- Link to related documents
+- Include code examples where applicable
+- Add diagrams for complex concepts (using Mermaid or PlantUML)
+- Use consistent terminology throughout
+
+### Documentation Review Process
+
+- Technical accuracy review
+- Completeness check
+- Clarity and readability assessment
+- Conformance to templates
+- Link verification
+- Graphics quality check
 
 ## Shell Scripts Guidelines
 
@@ -374,6 +468,48 @@ Use this section for active task planning and notes:
   - Offline access
   - Searchable with keyboard shortcuts
   - Regular updates with latest documentation
+
+## Horizon Management Framework
+
+### Horizon Classification
+
+- **Horizon 1 (Now)** - Features and concepts actively being implemented
+- **Horizon 2 (Next)** - Concepts cleared for planning but not implementation
+- **Horizon 3 (Future)** - Ideas captured but deliberately kept at a distance
+
+### Horizon Documentation
+
+- Document current horizons in `@horizon-map.mdc`
+- Mark tasks in @master-todo.mdc with horizon designation [H1], [H2], [H3]
+- Only work on [H1] tasks during implementation phases
+
+### Horizon Task Status Tracking
+
+- 🔴 [H1] Not Started - H1 task has not been initiated
+- 🟡 [H1] In Progress - Work has begun but not completed
+- 🔵 [H1] Blocked - Cannot proceed due to dependencies/issues
+- 🟢 [H1] Completed - Task is finished
+- 📌 [H1] Recurring - Task that repeats regularly
+- 🔜 [H2] Ready - H2 task ready for promotion consideration
+- 🔮 [H3] Captured - H3 idea documented for future consideration
+
+### Horizon Ceremonies
+
+- Weekly horizon review (Monday)
+- Weekly reflection and parking lot processing (Friday)
+- End-of-cycle horizon promotion ceremony (every 3 weeks)
+
+### Concept Parking Lot
+
+- Maintain `@parking-lot.mdc` to capture future ideas
+- Structure for parking lot entries:
+  ```
+  [DATE] [CONCEPT NAME]
+  Description: Brief description of the concept
+  Value Assessment: Potential impact on project objectives
+  Dependencies: Related systems or prerequisites
+  Horizon Classification: [H2/H3]
+  ```
 
 ## Security
 

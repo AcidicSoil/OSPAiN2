@@ -92,7 +92,23 @@ const TaskAnalytics: React.FC = () => {
     const fetchTasks = async () => {
       setLoading(true);
       try {
+        // Check if taskQueue exists before calling it
+        if (!taskQueue || typeof taskQueue.getAllTasks !== "function") {
+          console.warn("TaskQueue not available or missing getAllTasks method");
+          setTasks([]);
+          return;
+        }
+
         const allTasks = await taskQueue.getAllTasks();
+
+        // Validate that tasks array is returned
+        if (!Array.isArray(allTasks)) {
+          console.warn(
+            "getAllTasks did not return an array, using empty array instead"
+          );
+          setTasks([]);
+          return;
+        }
 
         // Filter by time range if needed
         let filteredTasks = allTasks;
@@ -116,7 +132,8 @@ const TaskAnalytics: React.FC = () => {
         setTasks(filteredTasks);
       } catch (error) {
         console.error("Failed to fetch tasks for analytics:", error);
-        // In a real app, you'd want to show an error message to the user
+        // Set empty array instead of leaving previous data that could be invalid
+        setTasks([]);
       } finally {
         setLoading(false);
       }

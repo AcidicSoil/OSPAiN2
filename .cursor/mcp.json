@@ -438,8 +438,8 @@
     },
     {
       "name": "search_memory",
-      "description": "Searches the Titan Memory knowledge graph",
-      "server": "Titan Memory",
+      "description": "Searches the Knowledge Graph",
+      "server": "Knowledge Graph",
       "inputs": [
         {
           "name": "query",
@@ -670,10 +670,55 @@
     }
   ],
   "mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "args": ["-y", "@executeautomation/playwright-mcp-server"]
+    },
+    "browser-tools": {
+      "command": "npx",
+      "args": ["@agentdeskai/browser-tools-server@1.2.0"]
+    },
     "knowledge-graph": {
       "command": "node",
-      "args": ["dist/server.js", "--memory-path", "./data/memory.jsonl"],
-      "cwd": "/c/Users/comfy/Projects/mcp-knowledge-graph"
+      "args": ["./mcp-knowledge-graph/server.js"]
+    },
+    "repository-tools": {
+      "command": "node",
+      "args": ["./mcp-servers/repository-tools/server.js"]
+    },
+    "docker-integration": {
+      "command": "node",
+      "args": ["./mcp-servers/docker-integration/server.js"]
+    },
+    "mouse-automation": {
+      "command": "node",
+      "args": ["./mcp-servers/mouse-automation/server.js"]
+    },
+    "prompt-engineering": {
+      "command": "node",
+      "args": ["./mcp-servers/prompt-engineering/server.js"]
+    },
+    "@smithery-ai-brave-search": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@smithery/cli@latest",
+        "run",
+        "@smithery-ai/brave-search",
+        "--config",
+        "{\"braveApiKey\":\"BSAEjLxaT3Id1XDriNigTdhQ3LyOwlz\"}"
+      ]
+    },
+    "mcp-simple-arxiv": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@smithery/cli@latest",
+        "run",
+        "mcp-simple-arxiv",
+        "--config",
+        "{}"
+      ]
     }
   },
   "services": [

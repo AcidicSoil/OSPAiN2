@@ -12,6 +12,7 @@ import WorkIcon from "@mui/icons-material/Work";
 import HomeIcon from "@mui/icons-material/Home";
 import BugReportIcon from "@mui/icons-material/BugReport";
 import ExtensionIcon from "@mui/icons-material/Extension";
+import TaskIcon from "@mui/icons-material/Task";
 
 import ToolCallMonitor from "../rate-limit/ToolCallMonitor";
 
@@ -40,6 +41,11 @@ const Sidebar = ({ isOpen }: SidebarProps) => {
       path: "/knowledge-graph",
       label: "Knowledge Graph",
       icon: <StorageIcon />,
+    },
+    {
+      path: "/task-manager",
+      label: "Task Manager",
+      icon: <TaskIcon />,
     },
     {
       path: "/component-manager",

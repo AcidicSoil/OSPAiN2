@@ -65,6 +65,7 @@
   - Status: Completed - Core rule implemented
 
 - 🟡 **P1**: Master Todo Location Change
+
   - Purpose: Improve model context awareness by relocating master-todo.md
   - Tasks:
     - ✓ Move master-todo.md to .cursor/ directory
@@ -81,6 +82,56 @@
     - Improved task tracking integration
     - Better alignment with Cursor IDE conventions
   - Status: In Progress - Initial move complete, monitoring effectiveness
+
+- 🔴 **P1**: Implement TaskMaster --> Task Runner System
+
+  - Purpose: Create an intelligent system for automated code base scanning with specialized research/analyst models
+  - Tasks:
+    - Develop frequent full code base scanning mechanism
+    - Implement specialized research/analyst model collaboration
+    - Create organizing model for output management
+    - Build integration with master task list for appropriate edits/additions
+    - Implement sorting model for ensuring data integrity
+    - Design synchronization mechanism for real-time updates
+    - Create monitoring dashboard for system performance
+    - Implement notification system for significant findings
+  - Integration points:
+    - Knowledge Graph for context and relationship tracking
+    - Mode Orchestration for mode-specific scanning patterns
+    - MCP server for specialized model coordination
+    - Master todo list for task management
+  - Expected benefits:
+    - Automated discovery of code issues and opportunities
+    - Intelligent organization of findings
+    - Improved task management through automation
+    - Enhanced codebase understanding and documentation
+  - Status: Not Started - Planning phase
+
+- 🟡 **P2**: Implement Documentation Standards Framework
+  - Purpose: Establish consistent documentation standards integrated with horizon framework
+  - Tasks:
+    - 🟢 Initial Framework Definition:
+      - Define documentation types (PRD, TDD, PHA, PHD, etc.)
+      - Establish documentation hierarchy structure
+      - Create organization by horizon level
+    - 🟡 Template Creation:
+      - Create standardized templates for each document type
+      - Develop README with usage guidelines
+      - Build integration with existing documentation
+    - 🔴 Process Integration:
+      - Update horizon ceremonies to include documentation review
+      - Establish documentation quality metrics
+      - Create documentation contribution guidelines
+  - Integration Points:
+    - Horizon Management Framework
+    - Development Mode Framework
+    - TaskMaster system
+  - Expected Benefits:
+    - Improved knowledge transfer
+    - Consistent documentation quality
+    - Better alignment with development horizons
+    - Clear standards for contributors
+  - Status: 🟡 In Progress - Framework defined in @horizon-map.mdc, multiple templates created (PRD, TDD, PHA), directory structure established, and example documentation created
 
 ### Quick-Prompt Extension Integration
 
@@ -2514,3 +2565,75 @@ This master todo list will be updated regularly as tasks are completed or priori
     - Implemented memory and disk cache in template server
     - Created framework for semantic caching
   - IN PROGRESS: Basic caching implemented, advanced features in progress
+
+### Test Agents Implementation
+
+- 🔴 **P1**: Research Analysis Phase for Test Agents
+
+  - Purpose: Identify and evaluate existing test agent frameworks and libraries before implementation
+  - Tasks:
+    - 🔴 Research Framework Setup:
+      - Create research agent architecture for scanning GitHub repositories
+      - Develop evaluation criteria for test agent frameworks
+      - Set up automated comparison system
+      - Define thresholds for automated vs. human review decisions
+    - 🔴 Documentation Integration:
+      - Create framework evaluation report templates
+      - Set up documentation generators for selected frameworks
+      - Implement automatic PRD/TDD updates based on findings
+      - Build integration with existing documentation structure
+    - 🔴 Analysis Components:
+      - Repository scanning and analysis modules
+      - Feature comparison system
+      - Performance evaluation tools
+      - Security assessment framework
+      - Documentation quality analyzer
+  - Research Criteria:
+    - Active maintenance and community support
+    - Compatibility with existing ecosystem
+    - Performance characteristics
+    - Security considerations
+    - Documentation quality
+    - Integration capabilities
+  - Success Metrics:
+    - Number of viable frameworks identified
+    - Quality score of selected frameworks
+    - Integration complexity assessment
+    - Documentation completeness
+    - Community activity metrics
+  - Integration Points:
+    - Documentation Standards Framework
+    - Horizon Management Framework
+    - Development Mode Framework
+    - Knowledge Graph System
+  - Status: 🔴 Not Started - High Priority
+
+- 🔴 **P1**: Test Agents Implementation
+  - Purpose: Implement systematic test agents for documentation verification and development
+  - Tasks:
+    - 🔴 Documentation Test Agent:
+      - Verify documentation accuracy
+      - Cross-reference with implementation
+      - Test code examples
+      - Validate links and references
+    - 🔴 Implementation Test Agent:
+      - Write tests before implementation
+      - Ensure test coverage
+      - Verify edge cases
+      - Document decisions
+    - 🔴 Integration Test Agent:
+      - Test component interactions
+      - Verify API contracts
+      - Validate data flow
+      - Document patterns
+  - Integration Points:
+    - Documentation Standards Framework
+    - Horizon Management Framework
+    - Development Mode Framework
+    - TaskMaster system
+  - Expected Benefits:
+    - Improved testing efficiency
+    - Better documentation quality
+    - Reduced implementation time
+    - Enhanced code quality
+  - Status: 🔴 Not Started - High Priority

@@ -1,0 +1,18 @@
+[Unit]
+Description=Knowledge Graph Server
+After=network.target
+
+[Service]
+Type=simple
+User=%i
+WorkingDirectory=/c%3A/Users/comfy/OSPAiN2/mcp-knowledge-graph
+ExecStart=/usr/bin/node dist/index.js --memory-path ../../data/memory.jsonl
+Restart=on-failure
+RestartSec=10
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=knowledge-graph
+Environment=NODE_ENV=production
+
+[Install]
+WantedBy=multi-user.target 

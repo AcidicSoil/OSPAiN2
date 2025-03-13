@@ -21,6 +21,7 @@ class DebugMcpService extends EventEmitter {
   private sessionArchiveSize: number = 10;
   private logListeners: Array<(log: LogEntry) => void> = [];
   private isInitialized: boolean = false;
+  private isCapturingLog: boolean = false;
 
   private constructor() {
     super();
@@ -115,60 +116,66 @@ class DebugMcpService extends EventEmitter {
     level: "debug" | "info" | "warn" | "error",
     args: any[]
   ): void {
-    if (!this.currentSession) return;
+    if (!this.currentSession || this.isCapturingLog) return;
 
-    // Extract stack trace to determine source
-    const stack = new Error().stack || "";
-    const stackLines = stack.split("\n");
-    let source = "unknown";
+    this.isCapturingLog = true;
 
-    // Find the caller in the stack trace (skip first 2 lines which are Error and captureLog)
-    if (stackLines.length > 2) {
-      const callerLine = stackLines[2].trim();
-      const match = callerLine.match(/at\s+(.*)/);
-      if (match) {
-        source = match[1];
+    try {
+      // Extract stack trace to determine source
+      const stack = new Error().stack || "";
+      const stackLines = stack.split("\n");
+      let source = "unknown";
+
+      // Find the caller in the stack trace (skip first 2 lines which are Error and captureLog)
+      if (stackLines.length > 2) {
+        const callerLine = stackLines[2].trim();
+        const match = callerLine.match(/at\s+(.*)/);
+        if (match) {
+          source = match[1];
+        }
       }
-    }
 
-    // Create log entry
-    const log: LogEntry = {
-      id: `log-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
-      timestamp: Date.now(),
-      level,
-      message: args
-        .map((arg) => {
-          if (typeof arg === "object") {
-            try {
-              return JSON.stringify(arg);
-            } catch (e) {
-              return String(arg);
+      // Create log entry
+      const log: LogEntry = {
+        id: `log-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+        timestamp: Date.now(),
+        level,
+        message: args
+          .map((arg) => {
+            if (typeof arg === "object") {
+              try {
+                return JSON.stringify(arg);
+              } catch (e) {
+                return String(arg);
+              }
             }
-          }
-          return String(arg);
-        })
-        .join(" "),
-      source,
-      metadata: {
-        args: args.map((arg) => typeof arg),
-      },
-    };
+            return String(arg);
+          })
+          .join(" "),
+        source,
+        metadata: {
+          args: args.map((arg) => typeof arg),
+        },
+      };
 
-    // Add log to current session
-    this.currentSession.logs.push(log);
+      // Add log to current session
+      this.currentSession.logs.push(log);
 
-    // Trim logs if we exceed the maximum
-    if (this.currentSession.logs.length > this.maxLogsPerSession) {
-      this.currentSession.logs = this.currentSession.logs.slice(
-        -this.maxLogsPerSession
-      );
+      // Trim logs if we exceed the maximum
+      if (this.currentSession.logs.length > this.maxLogsPerSession) {
+        this.currentSession.logs = this.currentSession.logs.slice(
+          -this.maxLogsPerSession
+        );
+      }
+
+      // Notify listeners
+      this.notifyLogListeners(log);
+
+      // Save sessions
+      this.saveToStorage();
+    } finally {
+      this.isCapturingLog = false;
     }
-
-    // Notify listeners
-    this.notifyLogListeners(log);
-
-    // Save sessions
-    this.saveToStorage();
   }
 
   /**
