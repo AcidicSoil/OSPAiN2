@@ -1,3 +1,13 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+---
+description: 
+globs: 
+alwaysApply: true
+---
 # Tool Call Optimization Rule
 
 This rule ensures you continue execution until reaching the maximum 25 tool call limit, optimizing value delivery within Cursor IDE constraints.
@@ -86,3 +96,38 @@ When tool call limits constrain your ability to complete a task, your imperative
 1. Deliver as much value as possible with remaining calls
 2. Document exact progress and continuation points
 3. Prepare for seamless continuation in next session 
+
+## UI Component Development Optimization
+
+When working on UI component implementation, follow these specific patterns:
+
+1. **Component Batching**: Group related UI component implementations to maximize development efficiency
+   - Example: Develop all form-related components in sequence (Input, Select, Checkbox, Radio)
+   - Example: Implement base component + its variants in a single development session
+
+2. **Testing Integration**: Combine test file creation with component implementation
+   - Create the component file and its corresponding test file in the same session
+   - Implement basic component functionality and tests in parallel
+
+3. **Documentation Efficiency**: Generate example files alongside component implementation
+   - Implement the component, its tests, and example usage in a single development flow
+   - Update export index files immediately after component implementation
+
+4. **Current Project Context**: For the UI Component Library (Phase 2 - 60% complete):
+   - Prioritize implementing core navigation components (Breadcrumbs, Pagination) first
+   - Batch related component styles for consistent theming
+   - Generate comprehensive prop interfaces before implementation
+   - Focus on accessibility integration during initial development rather than as an afterthought
+
+### Component Implementation Strategy
+
+For each new component:
+
+1. Review similar existing components (1-2 tool calls)
+2. Create component file with TypeScript interface (1 tool call)
+3. Implement core component functionality (1-2 tool calls)
+4. Create test file (1 tool call)
+5. Generate example usage file (1 tool call)
+6. Update index exports (1 tool call)
+
+This approach ensures consistent implementation and maximizes the value of each tool call. 

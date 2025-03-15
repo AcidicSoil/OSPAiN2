@@ -193,7 +193,9 @@ ${config.workingDir}
 ## Available Tools:
 - ${config.packages.join('\n- ')}
 
-To switch modes, use the mode_switcher.sh script in your terminal.
+To switch modes, use the 'm' alias or mode_switcher.sh script in your terminal:
+- m switch <mode> "reason"
+- ./mode_switcher.sh switch <mode> "reason"
 `;
 
     await desktop.files.write(`${config.workingDir}/WELCOME.md`, welcomeContent);

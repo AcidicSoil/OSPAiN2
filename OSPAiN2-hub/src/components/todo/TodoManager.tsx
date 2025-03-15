@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useCallback } from "react";
 import {
   Box,
   Typography,
@@ -33,6 +33,12 @@ import {
   DialogTitle,
   DialogContent,
   DialogActions,
+  Link,
+  Alert,
+  Switch,
+  FormControlLabel,
+  Stack,
+  Snackbar,
 } from "@mui/material";
 import {
   Add as AddIcon,
@@ -47,13 +53,24 @@ import {
   Dashboard as DashboardIcon,
   KeyboardArrowDown as ExpandMoreIcon,
   KeyboardArrowUp as ExpandLessIcon,
+  Sync as SyncIcon,
+  Cloud as CloudIcon,
+  AddOutlined,
+  SyncOutlined,
+  SettingsOutlined,
 } from "@mui/icons-material";
 import todoTrackingService, {
   TodoItem,
   TodoStats,
 } from "../../services/TodoTrackingService";
+import { useNotion } from "../../context/NotionContext";
 import LinearProgressWithLabel from "./LinearProgressWithLabel";
 import { SelectChangeEvent } from "@mui/material/Select";
+import NotionConfigDialog from "./NotionConfigDialog";
+import NotionSyncStatus from "./NotionSyncStatus";
+import TodoList from './TodoList';
+import TodoForm from './TodoForm';
+import TodoDashboard from './TodoDashboard';
 
 // Define types for our task filters
 interface TaskFilters {
@@ -101,6 +118,15 @@ export const TodoManager: React.FC<TodoManagerProps> = ({ className = "" }) => {
   const [filterDialogOpen, setFilterDialogOpen] = useState<boolean>(false);
   const [taskDialogOpen, setTaskDialogOpen] = useState<boolean>(false);
   const [currentTask, setCurrentTask] = useState<TodoItem | null>(null);
+  const [notionDialogOpen, setNotionDialogOpen] = useState<boolean>(false);
+  const [notionSyncInProgress, setNotionSyncInProgress] = useState<boolean>(false);
+  const [notionSyncError, setNotionSyncError] = useState<string | null>(null);
+  const [notionSyncSuccess, setNotionSyncSuccess] = useState<boolean>(false);
+  const [notionDatabaseMappings, setNotionDatabaseMappings] = useState<Record<string, string>>({
+    tasks: "",
+  });
+  const [notionAutoSync, setNotionAutoSync] = useState<boolean>(false);
+  const notion = useNotion();
 
   // Load data on mount
   useEffect(() => {
@@ -129,6 +155,17 @@ export const TodoManager: React.FC<TodoManagerProps> = ({ className = "" }) => {
       unsubscribe();
     };
   }, []);
+
+  useEffect(() => {
+    if (notion.isConfigured && notionAutoSync) {
+      // Check for task updates and sync periodically
+      const interval = setInterval(() => {
+        handleSyncWithNotion();
+      }, 300000); // Every 5 minutes
+      
+      return () => clearInterval(interval);
+    }
+  }, [notion.isConfigured, notionAutoSync]);
 
   // Filter and sort tasks
   const filteredTasks = useMemo(() => {
@@ -284,6 +321,85 @@ export const TodoManager: React.FC<TodoManagerProps> = ({ className = "" }) => {
     }
   };
 
+  const handleOpenNotionDialog = () => {
+    setNotionDialogOpen(true);
+    setNotionSyncError(null);
+    setNotionSyncSuccess(false);
+  };
+
+  const handleCloseNotionDialog = () => {
+    setNotionDialogOpen(false);
+  };
+
+  const handleNotionDatabaseMappingChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setNotionDatabaseMappings({
+      ...notionDatabaseMappings,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const handleConfigureNotion = async () => {
+    setNotionSyncInProgress(true);
+    setNotionSyncError(null);
+    
+    try {
+      const success = await notion.configureDatabaseMappings(notionDatabaseMappings);
+      if (success) {
+        setNotionSyncSuccess(true);
+      } else {
+        setNotionSyncError("Failed to configure Notion integration.");
+      }
+    } catch (error) {
+      setNotionSyncError(`Error configuring Notion: ${error}`);
+    } finally {
+      setNotionSyncInProgress(false);
+    }
+  };
+
+  const handleSyncWithNotion = async () => {
+    if (!notion.isConnected || !notion.isConfigured) {
+      handleOpenNotionDialog();
+      return;
+    }
+    
+    try {
+      // First, sync local tasks to Notion
+      await notion.syncTasksToNotion(tasks);
+      
+      // Then, import Notion tasks
+      const notionTasks = await notion.importTasksFromNotion();
+      
+      // Merge tasks (this is a simplified example, real implementation 
+      // would need conflict resolution logic)
+      for (const notionTask of notionTasks) {
+        // Check if task already exists
+        const existingTask = tasks.find(t => t.id === notionTask.id);
+        
+        if (existingTask) {
+          // Update existing task (if Notion version is newer)
+          if (new Date(notionTask.lastUpdated) > new Date(existingTask.lastUpdated)) {
+            await todoTrackingService.updateTask(notionTask.id, notionTask);
+          }
+        } else {
+          // Add new task from Notion
+          await todoTrackingService.addTask(notionTask);
+        }
+      }
+      
+      // Refresh local tasks
+      loadData();
+    } catch (error) {
+      console.error("Error syncing with Notion:", error);
+      // Display error notification
+    }
+  };
+
+  const handleToggleAutoSync = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setNotionAutoSync(event.target.checked);
+  };
+
   // UI Components
   const renderStatusChip = (status: string) => {
     let color = "default";
@@ -409,6 +525,22 @@ export const TodoManager: React.FC<TodoManagerProps> = ({ className = "" }) => {
             Add Task
           </Button>
         </Box>
+      </Box>
+
+      <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 2 }}>
+        <Tooltip title="Sync with Notion">
+          <IconButton 
+            color={notion.isConnected ? "primary" : "default"}
+            onClick={handleOpenNotionDialog}
+          >
+            <Badge
+              color={notion.isConfigured ? "success" : "error"}
+              variant="dot"
+            >
+              <CloudIcon />
+            </Badge>
+          </IconButton>
+        </Tooltip>
       </Box>
 
       <Tabs
@@ -551,6 +683,13 @@ export const TodoManager: React.FC<TodoManagerProps> = ({ className = "" }) => {
                 </TableContainer>
               </CardContent>
             </Card>
+          </Grid>
+
+          <Grid item xs={12}>
+            <NotionSyncStatus 
+              onConfigClick={handleOpenNotionDialog} 
+              onSyncClick={handleSyncWithNotion}
+            />
           </Grid>
         </Grid>
       ) : (
@@ -987,6 +1126,12 @@ export const TodoManager: React.FC<TodoManagerProps> = ({ className = "" }) => {
           />
         </DialogContent>
       </Dialog>
+
+      <NotionConfigDialog
+        open={notionDialogOpen}
+        onClose={handleCloseNotionDialog}
+        onConfigured={handleNotionConfigured}
+      />
     </Paper>
   );
 };

@@ -1,0 +1,73 @@
+---
+description: Concept Parking Lot for future project ideas
+globs: 
+alwaysApply: true
+---
+
+# Ollama Ecosystem - Concept Parking Lot
+
+This document captures future ideas for the Ollama Ecosystem project that are not yet ready for implementation but should be preserved for future consideration.
+
+## UI Component Library
+
+[2023-05-22] Advanced Animation System
+Description: A comprehensive animation system for UI components with configurable transitions, timing functions, and sequencing
+Value Assessment: Would enhance user experience and provide visual feedback for state changes
+Dependencies: Core UI component library, Animation utilities
+Horizon Classification: [H3]
+
+[2023-05-22] Theme Builder Component
+Description: Interactive component allowing users to customize and preview theme changes in real-time
+Value Assessment: Would improve customization options and user satisfaction
+Dependencies: Theme system, Color utilities
+Horizon Classification: [H3]
+
+[2023-05-22] Accessibility Analyzer Component
+Description: Component that analyzes UI for accessibility issues and provides suggestions for improvements
+Value Assessment: Would enhance compliance with accessibility standards and improve user experience
+Dependencies: UI component library, Accessibility testing utilities
+Horizon Classification: [H3]
+
+[2023-05-22] Interactive Graph Components
+Description: Advanced graph components with zoom, pan, and interactive data exploration capabilities
+Value Assessment: Would enhance data visualization capabilities and user engagement
+Dependencies: Chart components, Interaction utilities
+Horizon Classification: [H2]
+
+[2023-05-22] Component Playground
+Description: Interactive environment for testing and experimenting with UI components
+Value Assessment: Would improve developer experience and component testing
+Dependencies: UI component library, Code editor component
+Horizon Classification: [H2]
+
+## System Architecture
+
+// Future system architecture ideas will be added here
+
+## Agent Framework
+
+// Future agent framework ideas will be added here
+
+## Knowledge Management
+
+// Future knowledge management ideas will be added here
+
+## Development Tools
+
+[2025-03-15] Custom Git Visualization System
+Description: A comprehensive Git visualization system inspired by GitLens that provides granular views and ultimate control over repository information including inline blame annotations, file history view, CodeLens, commit graph, heatmap visualization, and comparison tools
+Value Assessment: Would enhance code understanding, improve review processes, provide historical context for development decisions, and increase development velocity through better visibility
+Dependencies: Git integration, VS Code configuration, Node.js utilities for Git data processing
+Horizon Classification: [H3]
+
+[2025-03-15] Integrated Metrics Dashboard
+Description: Centralized dashboard showing development metrics, Git activity patterns, documentation coverage, and task completion velocity
+Value Assessment: Would provide valuable insights into development patterns, help identify bottlenecks, and support data-driven decision making
+Dependencies: Git visualization system, Reporting system, Data visualization components
+Horizon Classification: [H3]
+
+[2025-03-15] Advanced Code Review Workflow
+Description: Enhanced code review process with automated checks, visualization of changes in context, and integration with Git history
+Value Assessment: Would improve code quality, reduce review time, and ensure consistent standards
+Dependencies: Git visualization system, Linting infrastructure, Testing framework
+Horizon Classification: [H2]

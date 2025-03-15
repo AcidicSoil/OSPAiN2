@@ -7,6 +7,8 @@ import TasksPage from './pages/TasksPage';
 import SettingsPage from './pages/SettingsPage';
 import NotFoundPage from './pages/NotFoundPage';
 import { KnowledgeGraphPage } from './pages/KnowledgeGraphPage';
+import SecureChatPage from './pages/SecureChatPage';
+import { NotionPage } from './pages/NotionPage';
 
 const AppRoutes = () => {
   return (
@@ -17,6 +19,8 @@ const AppRoutes = () => {
         <Route path="agents" element={<AgentsPage />} />
         <Route path="tasks" element={<TasksPage />} />
         <Route path="knowledge-graph" element={<KnowledgeGraphPage />} />
+        <Route path="secure-chat" element={<SecureChatPage />} />
+        <Route path="notion" element={<NotionPage />} />
         <Route path="settings" element={<SettingsPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>

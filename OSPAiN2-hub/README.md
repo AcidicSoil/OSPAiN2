@@ -1,124 +1,122 @@
-# OSPAiN₂ Hub
+# OSPAiN² Hub
 
-OSPAiN₂ (Open Source Platform for AI Networking) is a central hub for managing, monitoring, and optimizing interactions with various AI tools and services, with a focus on local-first, sovereign AI principles.
+A dashboard for managing the OSPAiN² (Open Source Platform for AI Networks) ecosystem. This application provides tools for interacting with Ollama models, managing tasks, and visualizing AI agent behaviors.
 
-## 🔬 What is OSPAiN₂?
+## Features
 
-OSPAiN₂ serves as the central nervous system of the Ollama ecosystem, connecting various components and providing a unified interface for managing AI tools, agents, and knowledge. Named with a chemistry-inspired theme, OSPAiN₂ represents the bonding of different components (like atoms) into a cohesive structure.
+- Modern, responsive UI with dark mode support
+- Dashboard for monitoring system status
+- Tool manager for configuring AI agent tools
+- Agent demo for interactive demonstrations
+- Task management system
+- Rate limiting controls
+- Knowledge graph visualization
 
-## 🌟 Key Features
-
-- **Tool Call Rate Limit Management**: Sophisticated service for managing and bypassing rate limits when working with AI assistants
-- **Agent Interaction Interface**: Unified interface for interacting with different types of agents
-- **Knowledge Graph Integration**: Visualization and interaction with the local knowledge graph
-- **Component Evaluation**: Testing ground for evaluating new components before integration
-
-## 🔧 Tool Call Rate Limit Bypass
-
-A key feature of OSPAiN₂ is its ability to manage and bypass rate limits when working with AI assistants. This service ensures uninterrupted workflow by automatically handling rate limit issues through various methods:
-
-### Bypass Methods
-
-- **Session Rotation**: Automatically rotates sessions to reset rate limits
-- **Token Management**: Optimizes token usage to stay within limits
-- **Cache Optimization**: Enhances caching strategies to reduce unnecessary calls
-- **Request Batching**: Combines multiple requests to reduce total call count
-- **Custom Rules**: Supports custom rules for specialized bypass strategies
-
-### How It Works
-
-1. **Monitoring**: Continuously monitors tool call usage and rate limits
-2. **Threshold Detection**: Detects when usage approaches configurable thresholds
-3. **Automatic Bypass**: Executes the configured bypass method when thresholds are reached
-4. **Session Management**: Maintains session state across bypass operations
-5. **Notification System**: Provides alerts for rate limit events
-
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
-- Node.js 18+ LTS
+- Node.js (v14 or higher)
 - npm or yarn
 
 ### Installation
 
+1. Clone the repository
+
 ```bash
-# Clone the repository
 git clone https://github.com/yourusername/OSPAiN2-hub.git
-
-# Navigate to the project directory
 cd OSPAiN2-hub
+```
 
-# Install dependencies
+2. Install dependencies
+
+```bash
 npm install
 # or
 yarn install
+```
 
-# Start the development server
+### Running the Application
+
+The application consists of two parts:
+
+1. An API server (port 3002)
+2. A React frontend (port 3000)
+
+#### Option 1: Start everything with the unified script
+
+```bash
+# Start both API server and React development server
+./start-services.sh
+
+# Start only the API server
+./start-services.sh --api-only
+```
+
+#### Option 2: Start services individually
+
+In one terminal, start the API server:
+
+```bash
+node server.js
+```
+
+In another terminal, start the React application:
+
+```bash
 npm start
 # or
 yarn start
 ```
 
-The application will be available at http://localhost:3000
+### Accessing the Application
 
-## 📁 Project Structure
+- Frontend: http://localhost:3000
+- API endpoints:
+  - Health check: http://localhost:3002/api/health
+  - Todo data: http://localhost:3002/api/todo
+  - Visualization data: http://localhost:3002/api/visualization/patterns
+
+## Development
+
+### Project Structure
 
 ```
 OSPAiN2-hub/
-├── public/                  # Static files
+├── public/                  # Static assets
 ├── src/
-│   ├── components/          # UI components
-│   │   ├── layout/          # Layout components (Header, Sidebar)
-│   │   └── ...              # Other components
+│   ├── components/          # React components
+│   │   ├── layout/          # Layout components (Header, Sidebar, etc.)
+│   │   ├── rate-limit/      # Rate limiting components
+│   │   └── ...
+│   ├── hooks/               # Custom React hooks
 │   ├── pages/               # Page components
-│   │   ├── Dashboard.tsx    # Main dashboard
-│   │   ├── RateLimitManager.tsx # Rate limit management interface
-│   │   └── ...              # Other pages
-│   ├── services/            # Application services
-│   │   └── RateLimitBypassService.ts # Rate limit bypass functionality
 │   ├── utils/               # Utility functions
-│   ├── context/             # React context providers
-│   ├── App.tsx              # Main application component
-│   └── index.tsx            # Application entry point
-├── package.json             # Dependencies and scripts
-└── tsconfig.json            # TypeScript configuration
+│   └── App.tsx              # Main application component
+├── server.js                # API server
+└── start-services.sh        # Script to start all services
 ```
 
-## 🧪 Implementation Details
+### Building for Production
 
-### Rate Limit Bypass Service
+```bash
+npm run build
+# or
+yarn build
+```
 
-The Rate Limit Bypass Service provides a comprehensive solution for managing tool call rate limits, with:
+The production build will be created in the `build` directory.
 
-- Real-time monitoring of tool call usage
-- Configurable threshold detection
-- Multiple bypass strategies
-- Historical tracking of tool calls
-- Notification system for important events
+## Recent Changes
 
-### UI Components
+### UI Component Fixes
 
-The UI is built with React and follows a chemistry-inspired design theme that represents the molecular structure of the system:
+- Fixed JavaScript module format issues in layout components
+- Converted CommonJS modules to ES modules
+- Fixed sidebar component export issues
+- Updated API server to properly handle routes
+- Improved start-services.sh script for better process management
 
-- Carbon-based color palette for core components
-- Oxygen-themed accent colors for interactive elements
-- Nitrogen and Hydrogen highlights for special features
-- Phosphorus indicators for status and activity
+## License
 
-## 🤝 Integration with Ollama Ecosystem
-
-OSPAiN₂ Hub is designed to integrate with the broader Ollama ecosystem:
-
-- **Knowledge Graph**: Connects to the local knowledge graph for context-aware operations
-- **Agent Framework**: Interfaces with various agent implementations
-- **Tag System**: Leverages the existing tag system for organization
-- **Tool Management**: Coordinates tool access and optimization
-
-## 📝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
+[MIT](LICENSE)

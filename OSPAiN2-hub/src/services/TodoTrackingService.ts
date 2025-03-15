@@ -8,68 +8,57 @@
 
 import { EventEmitter } from "events";
 
+/**
+ * Interface representing a todo item
+ */
 export interface TodoItem {
   id: string;
   title: string;
-  status: "not-started" | "in-progress" | "blocked" | "completed" | "recurring";
-  priority: 1 | 2 | 3 | 4 | 5;
+  description: string;
+  status: string;
+  priority: number;
   category: string;
   tags: string[];
-  dateCreated: Date;
-  dateUpdated: Date;
-  description?: string;
-  subTasks?: TodoItem[];
-}
-
-export interface TodoCategory {
-  name: string;
-  priority: number;
-  progress: number;
-  totalTasks: number;
-  completedTasks: number;
-  inProgressTasks: number;
-  notStartedTasks: number;
-  blockedTasks: number;
-}
-
-export interface TodoStats {
-  categories: Record<string, TodoCategory>;
-  overallProgress: number;
-  totalTasks: number;
-  completedTasks: number;
-  inProgressTasks: number;
-  notStartedTasks: number;
-  blockedTasks: number;
-  highPriorityTasks: number;
-  highPriorityCompleted: number;
-  recentlyCompletedTasks: TodoItem[];
-  upcomingDeadlines: TodoItem[];
+  horizon?: string;
+  dateCreated?: Date;
   lastUpdated: Date;
-  recurringTasks: number;
+  dueDate?: Date;
+  source?: 'local' | 'notion' | 'github' | 'other';
+  sourceUrl?: string;
+  customFields?: Record<string, any>;
+}
+
+/**
+ * Interface representing task statistics
+ */
+export interface TodoStats {
+  total: number;
+  byStatus: Record<string, number>;
+  byPriority: Record<number, number>;
+  byHorizon: Record<string, number>;
+  byCategory: Record<string, number>;
+  byTag: Record<string, number>;
 }
 
 class TodoTrackingService {
   private static instance: TodoTrackingService;
-  private todoFilePath: string = "/master-todo.mdc";
+  private todoFilePath: string = "/@master-todo.mdc";
   private tasks: TodoItem[] = [];
   private stats: TodoStats = {
-    categories: {},
-    overallProgress: 0,
-    totalTasks: 0,
-    completedTasks: 0,
-    inProgressTasks: 0,
-    notStartedTasks: 0,
-    blockedTasks: 0,
-    highPriorityTasks: 0,
-    highPriorityCompleted: 0,
-    recentlyCompletedTasks: [],
-    upcomingDeadlines: [],
-    lastUpdated: new Date(),
-    recurringTasks: 0,
+    total: 0,
+    byStatus: {},
+    byPriority: {},
+    byHorizon: {},
+    byCategory: {},
+    byTag: {},
   };
   private eventEmitter = new EventEmitter();
   private refreshInterval: NodeJS.Timeout | null = null;
   private isRefreshing = false;
+  private categories: string[] = [];
+  private tags: string[] = [];
+  private statuses: string[] = ['not-started', 'in-progress', 'completed', 'blocked', 'recurring'];
+  private horizons: string[] = ['H1', 'H2', 'H3'];
 
   constructor() {
     if (TodoTrackingService.instance) {
@@ -78,6 +67,7 @@ class TodoTrackingService {
     TodoTrackingService.instance = this;
     this.refreshData();
     this.startRefreshInterval();
+    this.loadSampleData(); // Load sample data for development
   }
 
   /**
@@ -133,7 +123,7 @@ class TodoTrackingService {
     }
 
     // Update the dateUpdated field
-    task.dateUpdated = new Date();
+    task.lastUpdated = new Date();
 
     // Replace the task in the array
     this.tasks[taskIndex] = task;
@@ -159,7 +149,7 @@ class TodoTrackingService {
 
     // Set timestamps
     task.dateCreated = task.dateCreated || new Date();
-    task.dateUpdated = new Date();
+    task.lastUpdated = new Date();
 
     // Add to tasks array
     this.tasks.push(task);
@@ -251,126 +241,53 @@ class TodoTrackingService {
    * Calculate stats from tasks
    */
   private calculateStats(): void {
-    const categories: Record<string, TodoCategory> = {};
-    let totalTasks = 0;
-    let completedTasks = 0;
-    let inProgressTasks = 0;
-    let notStartedTasks = 0;
-    let blockedTasks = 0;
-    let recurringTasks = 0;
-    const upcomingDeadlines: TodoItem[] = [];
+    const categories: Record<string, number> = {};
+    const byStatus: Record<string, number> = {};
+    const byPriority: Record<number, number> = {};
+    const byHorizon: Record<string, number> = {};
+    const byTag: Record<string, number> = {};
+    let total = 0;
 
     // Process all tasks
     for (const task of this.tasks) {
-      totalTasks++;
+      total++;
 
       // Update status counts
-      switch (task.status) {
-        case "completed":
-          completedTasks++;
-          break;
-        case "in-progress":
-          inProgressTasks++;
-          break;
-        case "not-started":
-          notStartedTasks++;
-          break;
-        case "blocked":
-          blockedTasks++;
-          break;
-        case "recurring":
-          recurringTasks++;
-          break;
+      if (task.status) {
+        byStatus[task.status] = (byStatus[task.status] || 0) + 1;
+      }
+
+      // Process priority
+      if (task.priority) {
+        byPriority[task.priority] = (byPriority[task.priority] || 0) + 1;
+      }
+
+      // Process horizon
+      if (task.horizon) {
+        byHorizon[task.horizon] = (byHorizon[task.horizon] || 0) + 1;
       }
 
       // Process category
       if (task.category) {
-        if (!categories[task.category]) {
-          categories[task.category] = {
-            name: task.category,
-            priority: 0,
-            progress: 0,
-            totalTasks: 0,
-            completedTasks: 0,
-            inProgressTasks: 0,
-            notStartedTasks: 0,
-            blockedTasks: 0,
-          };
-        }
-
-        const category = categories[task.category];
-        category.totalTasks++;
-
-        // Update category status counts
-        switch (task.status) {
-          case "completed":
-            category.completedTasks++;
-            break;
-          case "in-progress":
-            category.inProgressTasks++;
-            break;
-          case "not-started":
-            category.notStartedTasks++;
-            break;
-          case "blocked":
-            category.blockedTasks++;
-            break;
-        }
-
-        // Calculate category progress
-        category.progress =
-          category.totalTasks > 0
-            ? (category.completedTasks / category.totalTasks) * 100
-            : 0;
+        categories[task.category] = (categories[task.category] || 0) + 1;
       }
 
-      // Track high priority tasks (P1)
-      if (task.priority === 1) {
-        this.stats.highPriorityTasks++;
-        if (task.status === "completed") {
-          this.stats.highPriorityCompleted++;
-        }
-      }
-
-      // Track recently completed tasks (last 7 days)
-      const oneWeekAgo = new Date();
-      oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
-
-      if (task.status === "completed" && task.dateUpdated > oneWeekAgo) {
-        this.stats.recentlyCompletedTasks.push(task);
-      }
-
-      // Check for deadlines (This would use a separate deadline field in a real implementation)
-      // For now, just add high priority in-progress tasks
-      if (task.priority <= 2 && task.status === "in-progress") {
-        upcomingDeadlines.push(task);
+      // Process tags
+      if (task.tags && Array.isArray(task.tags)) {
+        task.tags.forEach(tag => {
+          byTag[tag] = (byTag[tag] || 0) + 1;
+        });
       }
     }
 
-    // Calculate overall progress
-    this.stats.overallProgress =
-      totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
-
-    // Sort recently completed tasks by date (newest first)
-    this.stats.recentlyCompletedTasks.sort(
-      (a, b) => b.dateUpdated.getTime() - a.dateUpdated.getTime()
-    );
-
     // Update stats
     this.stats = {
-      categories,
-      overallProgress: this.stats.overallProgress,
-      totalTasks,
-      completedTasks,
-      inProgressTasks,
-      notStartedTasks,
-      blockedTasks,
-      highPriorityTasks: this.stats.highPriorityTasks,
-      highPriorityCompleted: this.stats.highPriorityCompleted,
-      recentlyCompletedTasks: this.stats.recentlyCompletedTasks,
-      upcomingDeadlines,
-      lastUpdated: new Date(),
-      recurringTasks,
+      total,
+      byStatus,
+      byPriority,
+      byHorizon,
+      byCategory: categories,
+      byTag,
     };
   }
 
@@ -409,7 +326,7 @@ class TodoTrackingService {
           tags: [horizon],
           category: this.determineCategory(line, lines, i),
           dateCreated: new Date(),
-          dateUpdated: new Date(),
+          lastUpdated: new Date(),
         };
 
         // Add description if next lines are indented
@@ -445,7 +362,7 @@ class TodoTrackingService {
             category: currentTask.category,
             tags: [...(currentTask.tags || [])],
             dateCreated: new Date(),
-            dateUpdated: new Date(),
+            lastUpdated: new Date(),
           });
 
           j++;
@@ -476,7 +393,7 @@ class TodoTrackingService {
       category: task.category || "Uncategorized",
       tags: task.tags || [],
       dateCreated: task.dateCreated || new Date(),
-      dateUpdated: task.dateUpdated || new Date(),
+      lastUpdated: task.lastUpdated || new Date(),
       description: task.description,
       subTasks: subTasks.length > 0 ? (subTasks as TodoItem[]) : undefined,
     };
@@ -543,7 +460,7 @@ class TodoTrackingService {
    * Note: This is a placeholder - in a real implementation, this would use an API to update the file
    */
   private async syncToFile(): Promise<void> {
-    // In a real implementation, this would update the master-todo.mdc file
+    // In a real implementation, this would update the @master-todo.mdc file
     console.log("Syncing tasks to file (placeholder)");
 
     // For now, only update the in-memory representation
@@ -551,6 +468,171 @@ class TodoTrackingService {
 
     // TODO: Implement actual file sync
     return Promise.resolve();
+  }
+
+  /**
+   * Get available categories
+   */
+  public getCategories(): string[] {
+    return [...this.categories];
+  }
+
+  /**
+   * Get available tags
+   */
+  public getTags(): string[] {
+    return [...this.tags];
+  }
+
+  /**
+   * Get available statuses
+   */
+  public getStatuses(): string[] {
+    return [...this.statuses];
+  }
+
+  /**
+   * Get available horizons
+   */
+  public getHorizons(): string[] {
+    return [...this.horizons];
+  }
+
+  /**
+   * Add a new task
+   */
+  public async addTask(task: Omit<TodoItem, 'id' | 'dateCreated' | 'lastUpdated'>): Promise<TodoItem> {
+    const now = new Date();
+    const newTask: TodoItem = {
+      id: `task-${Date.now()}-${Math.floor(Math.random() * 1000)}`,
+      dateCreated: now,
+      lastUpdated: now,
+      source: 'local',
+      ...task,
+    };
+    
+    this.tasks.push(newTask);
+    this.updateMetadata();
+    this.emitChange();
+    
+    return newTask;
+  }
+
+  /**
+   * Update metadata from tasks
+   */
+  private updateMetadata(): void {
+    const categoriesSet = new Set<string>();
+    const tagsSet = new Set<string>();
+    const statusesSet = new Set<string>(this.statuses);
+    const horizonsSet = new Set<string>(this.horizons);
+    
+    this.tasks.forEach(task => {
+      if (task.category) {
+        categoriesSet.add(task.category);
+      }
+      
+      if (task.tags && Array.isArray(task.tags)) {
+        task.tags.forEach(tag => tagsSet.add(tag));
+      }
+      
+      if (task.status) {
+        statusesSet.add(task.status);
+      }
+      
+      if (task.horizon) {
+        horizonsSet.add(task.horizon);
+      }
+    });
+    
+    this.categories = Array.from(categoriesSet);
+    this.tags = Array.from(tagsSet);
+    this.statuses = Array.from(statusesSet);
+    this.horizons = Array.from(horizonsSet);
+  }
+
+  /**
+   * Emit change event
+   */
+  private emitChange(): void {
+    this.eventEmitter.emit('change');
+  }
+
+  /**
+   * Load sample data
+   */
+  private loadSampleData(): void {
+    const sampleTasks: TodoItem[] = [
+      {
+        id: 'task-1',
+        title: 'Implement Notion Integration',
+        description: 'Integrate TodoManager with Notion to sync tasks between the app and Notion databases.',
+        status: 'in-progress',
+        priority: 1,
+        category: 'Development',
+        tags: ['notion', 'integration', 'sync'],
+        horizon: 'H1',
+        dateCreated: new Date(Date.now() - 86400000 * 3), // 3 days ago
+        lastUpdated: new Date(),
+        source: 'local',
+      },
+      {
+        id: 'task-2',
+        title: 'Create UI Components',
+        description: 'Design and implement reusable UI components for the application.',
+        status: 'completed',
+        priority: 2,
+        category: 'UI/UX',
+        tags: ['ui', 'components', 'design'],
+        horizon: 'H1',
+        dateCreated: new Date(Date.now() - 86400000 * 5), // 5 days ago
+        lastUpdated: new Date(Date.now() - 86400000), // 1 day ago
+        source: 'local',
+      },
+      {
+        id: 'task-3',
+        title: 'Implement Task Filtering',
+        description: 'Add ability to filter tasks by status, priority, tags, and other criteria.',
+        status: 'not-started',
+        priority: 3,
+        category: 'Development',
+        tags: ['filtering', 'search'],
+        horizon: 'H2',
+        dateCreated: new Date(Date.now() - 86400000 * 2), // 2 days ago
+        lastUpdated: new Date(Date.now() - 86400000 * 2), // 2 days ago
+        source: 'local',
+      },
+      {
+        id: 'task-4',
+        title: 'Add Sync Status Indicators',
+        description: 'Show sync status indicators for tasks that are synced with external services.',
+        status: 'not-started',
+        priority: 2,
+        category: 'UI/UX',
+        tags: ['sync', 'ui'],
+        horizon: 'H1',
+        dateCreated: new Date(Date.now() - 86400000), // 1 day ago
+        lastUpdated: new Date(Date.now() - 86400000), // 1 day ago
+        source: 'local',
+      },
+      {
+        id: 'notion-1',
+        title: 'Sample Notion Task',
+        description: 'This is a sample task that would be synced from Notion.',
+        status: 'not-started',
+        priority: 2,
+        category: 'Documentation',
+        tags: ['notion', 'sample'],
+        horizon: 'H2',
+        dateCreated: new Date(Date.now() - 86400000 * 4), // 4 days ago
+        lastUpdated: new Date(Date.now() - 86400000 * 2), // 2 days ago
+        source: 'notion',
+        sourceUrl: 'https://www.notion.so/sample-page',
+      },
+    ];
+    
+    this.tasks = sampleTasks;
+    this.updateMetadata();
   }
 }
 

@@ -1,260 +1,137 @@
-# Test Agent Framework Research Tool
+# OSPAiN2 - Ollama Ecosystem Project
 
-This tool helps analyze and evaluate existing test agent frameworks and libraries to inform our implementation decisions.
+This repository contains tools and utilities for the Ollama Ecosystem, with a focus on local-first infrastructure and agentic workflow automation.
 
-## Features
+## Agentic Workflow System
 
-- GitHub repository scanning for test agent frameworks
-- Automated evaluation of repository metrics
-- Generation of comprehensive research reports
-- Integration with our documentation standards
+The project implements an agentic workflow system that integrates various knowledge frameworks:
 
-## Prerequisites
-
-- Node.js 18+ LTS
-- GitHub Personal Access Token with repo scope
-
-## Installation
-
-1. Clone the repository
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-3. Set up your GitHub token:
-   ```bash
-   export GITHUB_TOKEN=your_token_here
-   ```
-
-## Usage
-
-1. Build the project:
-
-   ```bash
-   npm run build
-   ```
-
-2. Run the scanner:
-
-   ```bash
-   npm start
-   ```
-
-3. View results in the `research-results` directory:
-   - `raw-results.json`: Raw repository data
-   - `research-report.json`: Structured report data
-   - `research-report.md`: Human-readable markdown report
-
-## Development
-
-Run in development mode:
-
-```bash
-npm run dev
-```
-
-## Research Criteria
-
-The tool evaluates repositories based on the following criteria:
-
-- Minimum stars: 100
-- Minimum contributors: 5
-- Last update within 30 days
-- Minimum test coverage: 70%
-- Maximum dependencies: 50
-- Minimum documentation score: 0.7
-
-## Output Format
-
-### JSON Report
-
-```typescript
-interface ResearchReport {
-  timestamp: string;
-  totalRepositories: number;
-  summary: {
-    averageStars: number;
-    averageContributors: number;
-    languages: string[];
-    topics: string[];
-  };
-  repositories: RepositoryData[];
-}
-```
-
-### Markdown Report
-
-- Summary statistics
-- Language distribution
-- Topic analysis
-- Top 10 repositories with detailed metrics
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
-
-## License
-
-MIT License - see LICENSE file for details
-
-# Token Context Management System
-
-A sophisticated system for managing token context ratios across different development modes, optimizing context usage while maintaining high-quality interactions.
-
-## Features
-
-- **Mode-Specific Context Optimization**: Tailored context management for design, engineering, and testing modes
-- **Intelligent Context Compression**: Semantic chunking and relevance-based filtering
-- **Rate Limiting**: Configurable token limits per mode and time period
-- **Usage Analytics**: Comprehensive tracking and analysis of token usage patterns
-- **Caching System**: Efficient caching of compressed contexts
+1. **Horizon Framework** - Classifies tasks and resources into implementation horizons (H1/H2/H3)
+2. **OACL (Optimized AI Command Language)** - Provides structured communication patterns
+3. **Research Levels Framework** - Organizes knowledge acquisition and research maturity
+4. **CleanupAgent** - Recursively analyzes and identifies cleanup candidates
 
 ## Components
 
-### EnhancedContextManager
+### OSPAiN2-Hub Frontend
 
-The core component that orchestrates context optimization and management:
+The OSPAiN2-Hub Frontend is a modern web application for interacting with the OSPAiN2 ecosystem. The project is currently being rebuilt with a modern stack including Vite, React, TypeScript, and Tailwind CSS. Key features include:
 
-```typescript
-const contextManager = new EnhancedContextManager(
-  knowledgeGraph,
-  rateLimitService
-);
-const optimizedContext = await contextManager.optimizeContext(
-  context,
-  DevelopmentMode.Engineering
-);
+- Dashboard for ecosystem monitoring
+- T2P Engine interface
+- Agent Competition System
+- Task Management
+- Settings and Configuration
+
+For more information, see:
+- [Frontend Documentation Index](./docs/frontend/index.md)
+- [Frontend Architecture](./docs/frontend/architecture.md)
+- [Frontend Project Summary](./docs/frontend/summary.md)
+
+### CleanupAgent
+
+The CleanupAgent is an agentic tool that analyzes the codebase recursively to identify outdated files and cleanup candidates. It integrates with the Horizon Framework to preserve active development resources while suggesting cleanup for potentially obsolete files.
+
+Features:
+- Recursive codebase analysis
+- Horizon-aware classification
+- Dependency tracking
+- Git integration for history analysis
+- Safe operation with dry-run mode
+
+Usage:
+```bash
+# Basic analysis (dry run mode)
+node cleanup-agent.js
+
+# Analysis with specific settings
+node cleanup-agent.js --dry-run=true --age-threshold=60 --output=my-report.md
+
+# Cleanup mode (with deletion)
+node cleanup-agent.js --dry-run=false
 ```
 
-### KnowledgeGraph
+### CleanupSystem
 
-Handles semantic analysis and context chunking:
-
-```typescript
-const knowledgeGraph = new KnowledgeGraph();
-const chunks = await knowledgeGraph.chunkContext(context);
-const filteredContext = await knowledgeGraph.scoreAndFilter(context);
-```
-
-### RateLimitService
-
-Manages token usage limits and tracking:
-
-```typescript
-const rateLimitService = new RateLimitService();
-const canProceed = await rateLimitService.checkRateLimit(
-  tokens,
-  DevelopmentMode.Engineering
-);
-await rateLimitService.recordUsage(tokens, DevelopmentMode.Engineering);
-```
-
-## Configuration
-
-### Token Limits
-
-Default token limits per mode:
-
-```typescript
-{
-  design: {
-    maxTokensPerMinute: 800,
-    maxTokensPerHour: 8000
-  },
-  engineering: {
-    maxTokensPerMinute: 1200,
-    maxTokensPerHour: 12000
-  },
-  testing: {
-    maxTokensPerMinute: 600,
-    maxTokensPerHour: 6000
-  }
-}
-```
-
-### Context Optimization
-
-Configurable parameters for context optimization:
-
-```typescript
-{
-  maxTokens: 8192,
-  minContextRatio: 0.2,
-  maxContextRatio: 0.8,
-  compressionThreshold: 0.7
-}
-```
-
-## Usage Examples
-
-### Basic Context Optimization
-
-```typescript
-const contextManager = new EnhancedContextManager(
-  knowledgeGraph,
-  rateLimitService
-);
-const optimizedContext = await contextManager.optimizeContext(
-  largeContext,
-  DevelopmentMode.Engineering
-);
-```
-
-### Rate Limit Checking
-
-```typescript
-const canProceed = await rateLimitService.checkRateLimit(
-  1000,
-  DevelopmentMode.Engineering
-);
-if (canProceed) {
-  // Process context
-}
-```
-
-### Usage Monitoring
-
-```typescript
-const usage = rateLimitService.getCurrentUsage();
-const modeUsage = rateLimitService.getModeUsage(DevelopmentMode.Engineering);
-```
-
-## Testing
-
-Run the test suite:
+The CleanupSystem provides a comprehensive CLI for managing the cleanup workflow with additional utilities for todo integration and horizon management.
 
 ```bash
-npm test
+# Install dependencies
+npm install
+
+# Run analysis
+npm run cleanup:analyze
+
+# Run weekly cleanup check
+npm run cleanup:weekly
+
+# Manage horizon classifications
+npm run cleanup:horizon
 ```
 
-The test suite covers:
+Advanced usage:
+```bash
+# Run analysis with custom options
+node cleanup-system.js analyze --age-threshold 45 --add-todo --switch-mode
 
-- Context optimization
-- Rate limiting
-- Knowledge graph operations
-- Integration scenarios
+# Run cleanup with deletion (caution!)
+node cleanup-system.js cleanup --dry-run false
 
-## Events
+# Update horizon map from latest report
+node cleanup-system.js horizon
+```
 
-The system emits various events for monitoring and integration:
+## Knowledge Management Framework
 
-- `usageAnalysis`: Emitted when token usage is analyzed
-- `rateLimitExceeded`: Emitted when rate limits are exceeded
-- `modeRateLimitExceeded`: Emitted when mode-specific limits are exceeded
-- `usageRecorded`: Emitted when token usage is recorded
+The project uses a structured knowledge management approach with specialized memory data containers (MDC):
 
-## Contributing
+- **@horizon-map.mdc** - Maps development priorities across time horizons
+- **oacl.mdc** - Defines optimized AI command language patterns
+- **research-levels-framework.mdc** - Classifies research and knowledge maturity
 
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
+## Development Modes
+
+The project supports different development modes:
+
+- **🎨 Design Mode** - UI/UX structuring, component architecture
+- **🔧 Engineering Mode** - Core functionality, business logic
+- **🧪 Testing Mode** - Quality assurance, edge cases
+- **📦 Deployment Mode** - Release readiness, CI/CD
+- **🔍 Maintenance Mode** - Ongoing health, improvements
+
+Switch modes using the `m` command:
+```bash
+./development-modes/m switch maint "Running maintenance operations"
+```
+
+## Task Management
+
+Tasks are managed using the t2p CLI tool:
+
+```bash
+# Add new todo item
+t2p todo add --priority 2 --horizon H1 --category "Documentation" --tags "docs" --title "Update API docs"
+
+# List todos
+t2p todo list --priority 1 --status "in-progress"
+```
+
+## Documentation
+
+- [Frontend Documentation](./docs/frontend/index.md)
+- [Agentic Workflow Documentation](./agentic-workflow.md)
+- [CleanupAgent README](./cleanup-agent-README.md)
+- [CleanupAgent Integration Guide](./cleanup-agent-integration.md)
+- [Master Todo List](./docs/master-todo.md)
+- [Project Documentation](docs/)
+- [Development Guidelines](docs/development-guidelines.md)
+- [MDC Naming Convention](docs/mdc-naming-convention.md)
+- [API References](docs/api/)
+
+## Tools
+
+- [system-file-manager.sh](./system-file-manager.sh) - Manages system-level MDC files with @ prefix convention ([Documentation](docs/system-file-manager.md))
 
 ## License
 
-MIT License - see LICENSE file for details
+MIT

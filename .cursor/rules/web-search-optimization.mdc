@@ -1,0 +1,53 @@
+---
+description: Rules for optimizing web search API usage in the Ollama ecosystem
+globs: 
+alwaysApply: true
+---
+
+# Web Search Optimization Guidelines
+
+## API Usage Conservation
+
+1. Always use `web_search_optimized` MCP tool instead of standard web search when available
+2. Use specific, targeted search queries instead of broad ones
+3. Batch related searches together to minimize API calls
+4. Cache search results in the Knowledge Graph for future reference
+5. Use the lowest sufficient number of results (default to 5)
+6. When multiple searches might be needed, start with a single comprehensive search
+7. Prioritize searching developer documentation and official sources
+
+## Formatting Queries
+
+1. Include year (2024/2025) for time-sensitive information
+2. Use quotes for exact phrases
+3. Add "tutorial" or "example" for implementation guidance
+4. Include technology name + specific feature for targeted results
+5. Include "best practices" or "patterns" for architectural guidance
+
+## Intelligent Result Processing
+
+1. Rank information by relevance and authoritativeness 
+2. Extract code examples when available
+3. Summarize findings concisely
+4. Cite sources for verification
+5. Note information age/freshness when relevant
+
+## Usage Pattern
+
+```
+// Example optimal usage
+1. First use targeted search
+2. Store/cache key findings in Knowledge Graph
+3. Reference cached information before new searches
+4. Only search for new information when cache is insufficient
+```
+
+## Web Search MCP Configuration
+
+The Brave Search MCP server is configured to optimize API usage while providing high-quality results. To enable this:
+
+1. Sign up for a Brave API key at https://brave.com/search/api/
+2. Add your API key to the .cursor/mcp.json configuration
+3. Start the MCP server when needed using the Cursor MCP interface
+
+Remember that each search consumes an API call, so use them judiciously and effectively. 

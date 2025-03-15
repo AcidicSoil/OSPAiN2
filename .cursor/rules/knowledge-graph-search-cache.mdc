@@ -1,0 +1,89 @@
+---
+description: Guidelines for caching web search results in the Knowledge Graph
+globs: 
+alwaysApply: true
+---
+
+# Knowledge Graph Web Search Caching
+
+## Purpose
+
+This rule establishes a strategy for efficiently caching web search results in the Knowledge Graph to minimize redundant API calls while maintaining access to valuable information.
+
+## Caching Strategy
+
+1. **Initial Search Caching**
+   - After each web search, store key information in the Knowledge Graph
+   - Tag entries with search query, timestamp, and source
+   - Classify information by relevance and topic
+
+2. **Cache Validation**
+   - Before making a new web search, query the Knowledge Graph
+   - Use semantic search to find related cached information
+   - Consider cached results valid for non-time-sensitive topics
+
+3. **Refresh Strategy**
+   - For rapidly evolving topics, set a short cache lifetime (1-7 days)
+   - For stable documentation, set a longer cache lifetime (30-90 days)
+   - For historical information, consider cache permanent
+
+## Implementation
+
+```typescript
+// Example Knowledge Graph integration
+async function searchWithCaching(query: string): Promise<SearchResult> {
+  // First check cache
+  const cachedResults = await searchMemory({
+    query: query,
+    include_relations: true,
+    types: ['search_result']
+  });
+  
+  // If we have valid cached results, use them
+  if (cachedResults && isResultValid(cachedResults)) {
+    return cachedResults;
+  }
+  
+  // Otherwise perform web search
+  const searchResults = await web_search_optimized({
+    query: query,
+    count: 5
+  });
+  
+  // Cache the results
+  await cacheSearchResults(query, searchResults);
+  
+  return searchResults;
+}
+```
+
+## Knowledge Graph Structure
+
+- **Entity Types**
+  - `search_query`: The original search query
+  - `search_result`: Individual search results
+  - `documentation`: Documentation references
+  - `code_example`: Code examples found in searches
+  
+- **Relation Types**
+  - `resulted_in`: Connects queries to results
+  - `contains_example`: Links results to code examples
+  - `references`: Links between related information
+
+## Tool Integration
+
+1. Use the Knowledge Graph MCP server for all caching operations
+2. Integrate search caching into standard query workflow
+3. Implement automatic cache invalidation based on content type
+4. Track cache hits/misses to improve caching strategy
+
+## Results Handling
+
+1. Filter and rank information by relevance and recency
+2. Prefer authoritative sources (official docs, respected blogs)
+3. Extract and separately cache code examples
+4. Generate concise summaries for quick reference
+
+## Implementation Note
+
+The Knowledge Graph cache system works with both standard web searches and the `web_search_optimized` tool to maximize API efficiency while ensuring information availability. 

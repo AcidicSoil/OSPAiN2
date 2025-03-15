@@ -1,0 +1,26 @@
+# Concept Parking Lot
+
+This document captures future ideas and concepts for the Master Player system that are not scheduled for immediate implementation.
+
+## Horizon 3 (Future) Concepts
+
+[2023-11-21] **Agent Competition System**
+Description: Create a battle royale system where agents compete to become the new Master Player, with the objective of winning at all costs.
+Value Assessment: Could create evolutionary pressure for agent improvement and discover novel approaches through competition.
+Dependencies: Fully functional agent system, simulation environment, competition rules engine
+Horizon Classification: [H3]
+
+Key components:
+- Agent combat/competition mechanics
+- Scoring and evaluation system
+- Different agent archetypes (good, bad, neutral)
+- Virtual environment for competition visualization
+- Evolution mechanisms for improvement across generations
+- MCP game tools for visualization of the process
+
+Research areas:
+- Multi-agent competitive environments
+- Evolutionary algorithms for agent improvement
+- Balance mechanisms for fair competition
+- Metrics for determining "fitness" for Master Player role
+- Containment protocols for aggressive agent behavior 

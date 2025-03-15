@@ -1,3 +1,4 @@
+todo:: master
 ---
 description: 
 globs: 
@@ -6,7 +7,7 @@ alwaysApply: false
 ---
 description: 
 globs: 
-alwaysApply: false
+alwaysApply: age
 ---
 ---
 description: 
@@ -32,54 +33,53 @@ alwaysApply: false
 ## High Priority Tasks (P1-P2)
 
 ### Frontend Framework Migration
-- 🔴 **P1**: Migrate OSPAiN2-hub from Create React App to T3 Stack
-  - Purpose: Resolve dependency conflicts, ensure modern tooling, and improve development experience
+- 🔴 **P3**: Continue Component-Based Migration Approach
+  - Purpose: Efficiently migrate high-value components from ollama-schematics-ui while continuing Vite implementation
   - Tasks:
-    - 🔴 Project Scaffolding Phase:
-      - Setup new T3 Stack project with Next.js, TypeScript, Tailwind, tRPC
-      - Create project structure matching existing component organization
-      - Configure ESLint and Prettier with strict TypeScript rules
-      - Set up development environment with hot reload
-    - 🔴 Component Migration Phase:
-      - Migrate layout components (Header, Sidebar, Footer)
-      - Migrate UI component library to leverage Next.js patterns
-      - Adapt visualization components (EcosystemGraph, ChartComponents)
-      - Refactor debug console and monitoring tools
-    - 🔴 State Management Migration:
-      - Implement data fetching with tRPC for type safety
-      - Migrate context providers to leverage Next.js patterns
-      - Create server-side API routes for backend communication
-      - Implement optimized data loading with SWR or React Query
-    - 🔴 Page Structure Migration:
-      - Convert routes to Next.js pages structure
-      - Implement dashboard layouts with proper nesting
-      - Create API routes for server-side functionality
-      - Optimize with static generation where appropriate
-    - 🔴 Testing and Deployment:
-      - Set up comprehensive testing with MSW and Playwright
-      - Create CI/CD pipeline for automated testing
-      - Configure production deployment with Vercel or custom hosting
-      - Implement analytics and monitoring
+    - 🟢 Project Setup Phase:
+      - ✅ Set up Vite with React and TypeScript
+      - ✅ Configure Tailwind CSS for styling
+      - ✅ Set up ESLint and Prettier for code quality
+      - ✅ Configure testing environment with Vitest
+    - 🟡 Component Migration Phase:
+      - 🟡 High Priority Components:
+        - 🔴 Migrate TodoManager Component
+        - 🔴 Migrate EcosystemGraph Component
+        - 🔴 Migrate KnowledgeExplorer Component
+      - 🔴 Medium Priority Components:
+        - 🔴 Migrate MermaidDiagram Component
+        - 🔴 Migrate JsonViewer Component
+        - 🔴 Migrate ToastNotification Component
+      - 🔴 Low Priority Components (Optional):
+        - 🔴 Consider OpenManusAgent Component
+        - 🔴 Consider SchematicViewer & EcosystemViewer3D Components
+    - 🟡 Integration Phase:
+      - ✅ Implement state management with Zustand
+      - ✅ Set up React Query for data fetching
+      - 🔴 Integrate migrated components into relevant pages
+      - 🔴 Update navigation links in the sidebar
+    - 🔴 Testing and Documentation:
+      - 🔴 Test each component individually for functionality
+      - 🔴 Test integration with the OSPAiN2-hub application
+      - 🔴 Document migrated components in README.md
+      - 🔴 Update references in master-todo.md to new locations
   - Implementation notes:
-    - T3 Stack provides Next.js, TypeScript, Tailwind CSS, tRPC, and Prisma integration
-    - Next.js will eliminate dependency conflicts currently plaguing CRA
-    - TypeScript version issues will be resolved with proper peer dependencies
-    - End-to-end type safety via tRPC will improve component integration
-    - Improved development experience with faster builds and hot reloading
+    - Following component migration strategy as outlined in migration-plan.mdc
+    - Vite implementation already successfully underway with core infrastructure complete
+    - Focus on high-value components first before optional ones
+    - Strategy prioritizes immediate value delivery over complete framework migration
   - Technical benefits:
-    - Elimination of CRA dependency conflicts and deprecation warnings
-    - Modern tech stack with active maintenance and updates
-    - Improved performance via Next.js optimizations
-    - Type-safe API calls through tRPC
-    - Better component modularity and code organization
+    - Faster delivery of useful features
+    - Reduced migration risk with incremental approach
+    - Continued progress on existing Vite implementation
+    - Storage savings by consolidating functionality
+    - Improved focus on component quality and integration
   - Timeline:
-    - Scaffolding: 2-3 days
-    - Component Migration: 5-7 days
-    - State Management: 3-4 days
-    - Pages and Routing: 2-3 days
-    - Testing and Deployment: 3-4 days
-    - Total estimate: 15-21 days
-  - PRIORITY: Critical - Blocks further frontend development due to dependency issues
+    - High Priority Components: 5-7 days
+    - Medium Priority Components: 3-5 days
+    - Low Priority Components: 2-3 days (if deemed necessary)
+    - Total estimate: 10-15 days (vs. 25-30 days for complete framework migration)
+  - PRIORITY: Medium - Component migration can proceed alongside other development efforts
 
 ### Docker Setup and Integration
 - 🟢 **P1**: Test and run the Ollama Deep Researcher TS Docker setup
@@ -169,6 +169,12 @@ alwaysApply: false
 - 🔴 [H1] **P1**: Develop Documentation Standards Enforcer Agent
   - Purpose: Automatically scan codebase and correct documentation not aligned with standards
   - See detailed documentation in [documentation-enforcer-agent.md](documentation-enforcer-agent.md)
+  - PRIORITY: Critical - Essential for maintaining documentation standards at scale
+
+
+- 🔴 [H1] **P1**: Develop Documentation Standards Enforcer Agent
+  - Purpose: Automatically scan codebase and correct documentation not aligned with standards
+  - See detailed documentation in [documentation-enforcer-agent.md](mdc:OSPAiN2/OSPAiN2/OSPAiN2/documentation-enforcer-agent.md)
   - PRIORITY: Critical - Essential for maintaining documentation standards at scale
 
 - 🟡 **P2**: Convert Markdown files to Cursor-compatible .mdc format
@@ -2081,6 +2087,12 @@ alwaysApply: false
   - See detailed documentation in [documentation-enforcer-agent.md](documentation-enforcer-agent.md)
   - PRIORITY: Critical - Essential for maintaining documentation standards at scale
 
+
+- 🔴 [H1] **P1**: Develop Documentation Standards Enforcer Agent
+  - Purpose: Automatically scan codebase and correct documentation not aligned with standards
+  - See detailed documentation in [documentation-enforcer-agent.md](mdc:OSPAiN2/OSPAiN2/OSPAiN2/documentation-enforcer-agent.md)
+  - PRIORITY: Critical - Essential for maintaining documentation standards at scale
+
 - 🟡 **P2**: Convert Markdown files to Cursor-compatible .mdc format
   - Created md-to-mdc.sh script for bulk conversion
   - Script preserves original .md files and creates .mdc duplicates
@@ -5769,6 +5781,12 @@ alwaysApply: false
 - 🔴 [H1] **P1**: Develop Documentation Standards Enforcer Agent
   - Purpose: Automatically scan codebase and correct documentation not aligned with standards
   - See detailed documentation in [documentation-enforcer-agent.md](documentation-enforcer-agent.md)
+  - PRIORITY: Critical - Essential for maintaining documentation standards at scale
+
+
+- 🔴 [H1] **P1**: Develop Documentation Standards Enforcer Agent
+  - Purpose: Automatically scan codebase and correct documentation not aligned with standards
+  - See detailed documentation in [documentation-enforcer-agent.md](mdc:OSPAiN2/OSPAiN2/OSPAiN2/documentation-enforcer-agent.md)
   - PRIORITY: Critical - Essential for maintaining documentation standards at scale
 
 - 🟡 **P2**: Convert Markdown files to Cursor-compatible .mdc format
@@ -10601,6 +10619,12 @@ alwaysApply: false
 - 🔴 [H1] **P1**: Develop Documentation Standards Enforcer Agent
   - Purpose: Automatically scan codebase and correct documentation not aligned with standards
   - See detailed documentation in [documentation-enforcer-agent.md](documentation-enforcer-agent.md)
+  - PRIORITY: Critical - Essential for maintaining documentation standards at scale
+
+
+- 🔴 [H1] **P1**: Develop Documentation Standards Enforcer Agent
+  - Purpose: Automatically scan codebase and correct documentation not aligned with standards
+  - See detailed documentation in [documentation-enforcer-agent.md](mdc:OSPAiN2/OSPAiN2/OSPAiN2/documentation-enforcer-agent.md)
   - PRIORITY: Critical - Essential for maintaining documentation standards at scale
 
 - 🟡 **P2**: Convert Markdown files to Cursor-compatible .mdc format
@@ -16556,3 +16580,27 @@ This master todo list will be updated regularly as tasks are completed or priori
     - Set up automation for daily generation
   - Tags: architecture, mindmap, research, improvement
   - Category: development-process
+
+## [H1] T2P Engine Integration for AI Model Interactions 🔴
+**Priority**: P1 (Critical) | **Timeline**: 5-8 days
+
+### Purpose
+Integrate t2p engine with AI model interactions for streamlined task handling and interface operations.
+
+### Key Components
+- Analysis of t2p capabilities and extension points
+- Integration with model context system
+- User experience enhancements
+- Testing and optimization framework
+
+### Success Metrics
+- 50% reduction in tokens for common operations
+- 70% quick tasks handled through t2p
+- 90% user satisfaction with commands
+- 40% reduction in operation time
+
+### Documentation
+See detailed specification in: t2p-integration.md
+
+### Status Updates
+- [$(date +%Y-%m-%d)] Task created and added to master todo list

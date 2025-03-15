@@ -1,20 +1,21 @@
-import { useState } from "react";
-import { NavLink } from "react-router-dom";
-import DashboardIcon from "@mui/icons-material/Dashboard";
-import BuildIcon from "@mui/icons-material/Build";
-import SmartToyIcon from "@mui/icons-material/SmartToy";
-import StorageIcon from "@mui/icons-material/Storage";
-import SpeedIcon from "@mui/icons-material/Speed";
-import SettingsIcon from "@mui/icons-material/Settings";
-import MenuBookIcon from "@mui/icons-material/MenuBook";
-import InsightsIcon from "@mui/icons-material/Insights";
-import WorkIcon from "@mui/icons-material/Work";
-import HomeIcon from "@mui/icons-material/Home";
-import BugReportIcon from "@mui/icons-material/BugReport";
-import ExtensionIcon from "@mui/icons-material/Extension";
-import TaskIcon from "@mui/icons-material/Task";
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import BuildIcon from '@mui/icons-material/Build';
+import SmartToyIcon from '@mui/icons-material/SmartToy';
+import StorageIcon from '@mui/icons-material/Storage';
+import SpeedIcon from '@mui/icons-material/Speed';
+import SettingsIcon from '@mui/icons-material/Settings';
+import MenuBookIcon from '@mui/icons-material/MenuBook';
+import InsightsIcon from '@mui/icons-material/Insights';
+import WorkIcon from '@mui/icons-material/Work';
+import HomeIcon from '@mui/icons-material/Home';
+import BugReportIcon from '@mui/icons-material/BugReport';
+import ExtensionIcon from '@mui/icons-material/Extension';
+import TaskIcon from '@mui/icons-material/Task';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 
-import ToolCallMonitor from "../rate-limit/ToolCallMonitor";
+import { ToolCallMonitor } from '../rate-limit';
 
 interface SidebarProps {
   isOpen: boolean;
@@ -32,49 +33,54 @@ interface NavItem {
  * Provides navigation for the application and displays a tool call monitor.
  * Can be toggled open/closed via the isOpen prop.
  */
-const Sidebar = ({ isOpen }: SidebarProps) => {
+const Sidebar: React.FC<SidebarProps> = ({ isOpen }) => {
   const navItems: NavItem[] = [
-    { path: "/", label: "Dashboard", icon: <HomeIcon /> },
-    { path: "/tool-manager", label: "Tool Manager", icon: <BuildIcon /> },
-    { path: "/agent-demo", label: "Agent Demo", icon: <SmartToyIcon /> },
+    { path: '/', label: 'Dashboard', icon: <HomeIcon /> },
+    { path: '/tool-manager', label: 'Tool Manager', icon: <BuildIcon /> },
+    { path: '/agent-demo', label: 'Agent Demo', icon: <SmartToyIcon /> },
     {
-      path: "/knowledge-graph",
-      label: "Knowledge Graph",
+      path: '/knowledge-graph',
+      label: 'Knowledge Graph',
       icon: <StorageIcon />,
     },
     {
-      path: "/task-manager",
-      label: "Task Manager",
+      path: '/knowledge-visualization',
+      label: 'Knowledge Visualization',
+      icon: <VisibilityIcon />,
+    },
+    {
+      path: '/task-manager',
+      label: 'Task Manager',
       icon: <TaskIcon />,
     },
     {
-      path: "/component-manager",
-      label: "Component Manager",
+      path: '/component-manager',
+      label: 'Component Manager',
       icon: <ExtensionIcon />,
     },
     {
-      path: "/progress-dashboard",
-      label: "Progress Tracker",
+      path: '/progress-dashboard',
+      label: 'Progress Tracker',
       icon: <InsightsIcon />,
     },
     {
-      path: "/worker-demo",
-      label: "Worker System",
+      path: '/worker-demo',
+      label: 'Worker System',
       icon: <WorkIcon />,
     },
     {
-      path: "/rate-limit-manager",
-      label: "Rate Limit Manager",
+      path: '/rate-limit-manager',
+      label: 'Rate Limit Manager',
       icon: <SpeedIcon />,
     },
-    { path: "/debug", label: "Debug Console", icon: <BugReportIcon /> },
-    { path: "/settings", label: "Settings", icon: <SettingsIcon /> },
+    { path: '/debug', label: 'Debug Console', icon: <BugReportIcon /> },
+    { path: '/settings', label: 'Settings', icon: <SettingsIcon /> },
   ];
 
   return (
     <aside
       className={`transition-all duration-300 ease-in-out bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 fixed h-full z-20 top-16 left-0 ${
-        isOpen ? "w-64" : "w-20"
+        isOpen ? 'w-64' : 'w-20'
       }`}
     >
       <div className="h-full px-3 py-4 overflow-y-auto">
@@ -87,10 +93,10 @@ const Sidebar = ({ isOpen }: SidebarProps) => {
                 flex items-center p-2 rounded-lg 
                 ${
                   isActive
-                    ? "bg-blue-100 text-blue-800 dark:bg-blue-800 dark:text-white"
-                    : "text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700"
+                    ? 'bg-blue-100 text-blue-800 dark:bg-blue-800 dark:text-white'
+                    : 'text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700'
                 }
-                ${!isOpen ? "justify-center" : ""}
+                ${!isOpen ? 'justify-center' : ''}
               `}
             >
               <span className="min-w-[24px]">{item.icon}</span>

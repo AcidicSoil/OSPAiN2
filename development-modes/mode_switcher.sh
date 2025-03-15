@@ -302,6 +302,7 @@ edit_notes() {
 show_help() {
     echo "Development Mode Switcher"
     echo "Usage: $(basename "$0") [command] [options]"
+    echo "   or: m [command] [options]  (when using the alias)"
     echo ""
     echo "Commands:"
     echo "  current             Show the current development mode"

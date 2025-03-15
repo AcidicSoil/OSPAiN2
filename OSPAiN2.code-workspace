@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../Downloads/BrowserTools-1.2.0-extension/chrome-extension"
+		}
+	],
+	"settings": {}
+}

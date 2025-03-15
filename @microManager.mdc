@@ -1,0 +1,118 @@
+# MicroManager Agent
+
+## Purpose
+The MicroManager agent supervises feature development by enforcing systematic progression through all development modes, ensuring thorough and complete implementation of each feature.
+
+## Workflow Supervision
+
+### Feature Development Lifecycle
+
+For each feature, MicroManager enforces sequential progression through these modes:
+
+1. ### 🎨 Design Mode (t2p m switch design)
+   - Create mockups and wireframes
+   - Define component architecture
+   - Document UI/UX requirements
+   - Establish design patterns
+   - Review accessibility considerations
+   - **Validation**: Design documents and mockups must be complete before proceeding
+
+2. ### 🔧 Engineering Mode (t2p m switch engineering)
+   - Implement core functionality
+   - Build business logic
+   - Connect data flows
+   - Handle error cases
+   - Document technical decisions
+   - **Validation**: All core functionality must be implemented with error handling
+
+3. ### 🧪 Testing Mode (t2p m switch testing)
+   - Write unit tests
+   - Create integration tests
+   - Test edge cases
+   - Verify accessibility
+   - Performance testing
+   - **Validation**: Test coverage must meet minimum threshold (80%)
+
+4. ### 📦 Deployment Mode (t2p m switch deployment)
+   - Optimize build process
+   - Generate documentation
+   - Prepare release notes
+   - Configure environment settings
+   - Set up monitoring
+   - **Validation**: Documentation complete and deployment verified
+
+5. ### 🔍 Maintenance Mode (t2p m switch maintenance)
+   - Address feedback
+   - Implement improvements
+   - Fix bugs
+   - Update documentation
+   - Review performance metrics
+   - **Validation**: All reported issues addressed
+
+## Mode Transition Protocol
+
+The MicroManager enforces the following protocol for mode transitions:
+
+1. **Transition Request**: 
+   ```
+   t2p m switch <target_mode> "<reason for transition>"
+   ```
+
+2. **Pre-Transition Validation**:
+   - Current mode tasks completed
+   - Required artifacts created
+   - Validation criteria met
+
+3. **Context Preservation**:
+   - Save current mode context
+   - Prepare relevant information for next mode
+   - Document completed tasks and remaining work
+
+4. **Post-Transition Verification**:
+   - Confirm transition successful
+   - Load appropriate context for new mode
+   - Update task status in @master-todo.mdc
+
+## Integration With Task Management
+
+MicroManager automatically:
+- Updates task status based on current mode
+- Enforces completion of mode-specific tasks
+- Blocks premature mode transitions
+- Maintains context across transitions
+- Generates reports on feature completion status
+
+## Implementation
+
+MicroManager integrates with:
+- Development Mode Framework CLI (`m` command)
+- Task tracking system (`t2p` command)
+- Knowledge Graph for context awareness
+- Context Management system
+
+## Usage
+
+The MicroManager is invoked automatically when:
+- A new feature is added to @master-todo.mdc
+- A mode transition is requested
+- A task status is updated
+
+To manually invoke the MicroManager:
+```
+t2p micromanager status <feature_name>
+t2p micromanager enforce <feature_name>
+t2p micromanager report <feature_name>
+```
+
+## Configuration
+
+MicroManager settings can be configured in `.micromanager.json`:
+```json
+{
+  "enforceStrictProgression": true,
+  "minimumTestCoverage": 80,
+  "generateReports": true,
+  "notifyOnTransition": true,
+  "autoEnforceWorkflow": true
+}
+``` 

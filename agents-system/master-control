@@ -1,0 +1,281 @@
+#!/usr/bin/env python
+"""
+Master Control - Unified control script for the Master Player system
+"""
+
+import os
+import sys
+import argparse
+import asyncio
+import json
+from datetime import datetime
+
+# Ensure we can import from our package
+script_dir = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(script_dir)
+
+try:
+    from agents_system.direct_control import DirectControl
+except ImportError:
+    sys.path.append(os.path.join(script_dir, "src"))
+    try:
+        from agents_system.direct_control import DirectControl
+    except ImportError:
+        print("Error: Cannot import DirectControl. Make sure agents_system is installed.")
+        sys.exit(1)
+
+BANNER = """
+╔═══════════════════════════════════════════════════════════════╗
+║                       MASTER CONTROL                          ║
+║                                                               ║
+║           Complete control of the Ollama ecosystem            ║
+╚═══════════════════════════════════════════════════════════════╝
+"""
+
+# ANSI colors
+class Colors:
+    RESET = "\033[0m"
+    RED = "\033[91m"
+    GREEN = "\033[92m"
+    YELLOW = "\033[93m"
+    BLUE = "\033[94m"
+    MAGENTA = "\033[95m"
+    CYAN = "\033[96m"
+    BOLD = "\033[1m"
+
+def print_banner():
+    """Print the Master Control banner."""
+    print(Colors.CYAN + BANNER + Colors.RESET)
+
+def print_status(dc, args):
+    """Print the current status of the Master Player."""
+    status = dc.get_status()
+    print("\n" + Colors.BOLD + Colors.BLUE + "=== MASTER PLAYER STATUS ===" + Colors.RESET)
+    print(f"Initialized: {Colors.GREEN if status['initialized'] else Colors.RED}{status['initialized']}{Colors.RESET}")
+    print(f"Active: {Colors.GREEN if status['active'] else Colors.RED}{status['active']}{Colors.RESET}")
+    print(f"Data directory: {status['data_dir']}")
+    
+    if status.get('ownership'):
+        print("\n" + Colors.BOLD + Colors.BLUE + "=== OWNERSHIP REPORT ===" + Colors.RESET)
+        print(f"Total owned components: {status['ownership']['total_owned']}")
+        print(f"Agents: {len(status['ownership']['agents'])}")
+        print(f"Tasks: {len(status['ownership']['tasks'])}")
+        print(f"Resources: {len(status['ownership']['resources'])}")
+    
+    if args.verbose:
+        print("\n" + Colors.BOLD + Colors.BLUE + "=== STATUS LOG ===" + Colors.RESET)
+        for msg in status['status_messages']:
+            print(msg)
+
+async def create_task(dc, args):
+    """Create a task."""
+    capabilities = args.capabilities.split(',') if args.capabilities else []
+    task_id = await dc.create_task(
+        name=args.name,
+        description=args.description,
+        priority=args.priority,
+        horizon=args.horizon,
+        capabilities=capabilities
+    )
+    
+    if task_id:
+        print(f"{Colors.GREEN}Task created successfully: {task_id}{Colors.RESET}")
+        return task_id
+    else:
+        print(f"{Colors.RED}Failed to create task.{Colors.RESET}")
+        return None
+
+async def execute_task(dc, args):
+    """Execute a task."""
+    print(f"{Colors.YELLOW}Executing task: {args.task_id}{Colors.RESET}")
+    
+    result = await dc.execute_task(args.task_id)
+    
+    if result:
+        success_color = Colors.GREEN if result['success'] else Colors.RED
+        print(f"{Colors.BOLD}Task results:{Colors.RESET}")
+        print(f"Success: {success_color}{result['success']}{Colors.RESET}")
+        print(f"Agent: {result['agent_id']}")
+        print(f"Execution time: {result['execution_time']} seconds")
+        print(f"Summary: {result['summary']}")
+        
+        if args.output:
+            # Save results to a file
+            with open(args.output, 'w') as f:
+                json.dump(result, f, indent=2)
+            print(f"\nResults saved to: {args.output}")
+            
+        return result
+    else:
+        print(f"{Colors.RED}Failed to execute task: {args.task_id}{Colors.RESET}")
+        return None
+
+async def create_and_execute(dc, args):
+    """Create and immediately execute a task."""
+    task_id = await create_task(dc, args)
+    if task_id:
+        args.task_id = task_id
+        await execute_task(dc, args)
+
+async def run_batch(dc, args):
+    """Run a batch of tasks from a file."""
+    try:
+        with open(args.batch_file, 'r') as f:
+            tasks = json.load(f)
+    except (json.JSONDecodeError, FileNotFoundError) as e:
+        print(f"{Colors.RED}Error loading batch file: {e}{Colors.RESET}")
+        return
+        
+    print(f"{Colors.YELLOW}Running batch of {len(tasks)} tasks{Colors.RESET}")
+    
+    results = []
+    for i, task in enumerate(tasks):
+        print(f"\n{Colors.BOLD}Task {i+1}/{len(tasks)}: {task['name']}{Colors.RESET}")
+        
+        capabilities = task.get('capabilities', [])
+        task_id = await dc.create_task(
+            name=task['name'],
+            description=task.get('description'),
+            priority=task.get('priority', 'MEDIUM'),
+            horizon=task.get('horizon', 'H1'),
+            capabilities=capabilities
+        )
+        
+        if task_id:
+            print(f"{Colors.GREEN}Task created: {task_id}{Colors.RESET}")
+            result = await dc.execute_task(task_id)
+            
+            if result:
+                success_color = Colors.GREEN if result['success'] else Colors.RED
+                print(f"Success: {success_color}{result['success']}{Colors.RESET}")
+                print(f"Execution time: {result['execution_time']} seconds")
+                results.append(result)
+            else:
+                print(f"{Colors.RED}Failed to execute task{Colors.RESET}")
+                results.append({"task_id": task_id, "success": False})
+        else:
+            print(f"{Colors.RED}Failed to create task{Colors.RESET}")
+            
+    if args.output:
+        with open(args.output, 'w') as f:
+            json.dump(results, f, indent=2)
+        print(f"\nBatch results saved to: {args.output}")
+    
+    successes = sum(1 for r in results if r.get('success', False))
+    print(f"\n{Colors.BOLD}Batch Summary:{Colors.RESET}")
+    print(f"Total tasks: {len(tasks)}")
+    print(f"Successful: {Colors.GREEN}{successes}{Colors.RESET}")
+    print(f"Failed: {Colors.RED}{len(tasks) - successes}{Colors.RESET}")
+
+def export_patterns(dc, args):
+    """Export success patterns to a file."""
+    success = dc.export_patterns(args.output_file)
+    if success:
+        print(f"{Colors.GREEN}Success patterns exported to: {args.output_file}{Colors.RESET}")
+    else:
+        print(f"{Colors.RED}Failed to export success patterns{Colors.RESET}")
+
+async def main():
+    """Main entry point."""
+    parser = argparse.ArgumentParser(description="Master Control - Unified control for Master Player")
+    parser.add_argument("--data-dir", help="Directory for storing Master Player data")
+    parser.add_argument("--verbose", "-v", action="store_true", help="Enable verbose output")
+    
+    subparsers = parser.add_subparsers(dest="command", help="Command to execute")
+    
+    # Initialize command
+    init_parser = subparsers.add_parser("init", help="Initialize the Master Player")
+    
+    # Take control command
+    take_control_parser = subparsers.add_parser("takeover", help="Take control of the Ollama ecosystem")
+    
+    # Status command
+    status_parser = subparsers.add_parser("status", help="Get status information")
+    
+    # Create task command
+    create_task_parser = subparsers.add_parser("create", help="Create a new task")
+    create_task_parser.add_argument("--name", required=True, help="Name of the task")
+    create_task_parser.add_argument("--description", help="Description of the task")
+    create_task_parser.add_argument("--priority", default="MEDIUM", help="Priority of the task (CRITICAL, HIGH, MEDIUM, LOW, OPTIONAL)")
+    create_task_parser.add_argument("--horizon", default="H1", help="Horizon of the task (H1, H2, H3)")
+    create_task_parser.add_argument("--capabilities", help="Comma-separated list of required capabilities")
+    
+    # Execute task command
+    execute_task_parser = subparsers.add_parser("execute", help="Execute a task")
+    execute_task_parser.add_argument("--task-id", required=True, help="ID of the task to execute")
+    execute_task_parser.add_argument("--output", help="File to save the results to")
+    
+    # Create and execute task command
+    create_execute_parser = subparsers.add_parser("run", help="Create and execute a task")
+    create_execute_parser.add_argument("--name", required=True, help="Name of the task")
+    create_execute_parser.add_argument("--description", help="Description of the task")
+    create_execute_parser.add_argument("--priority", default="MEDIUM", help="Priority of the task (CRITICAL, HIGH, MEDIUM, LOW, OPTIONAL)")
+    create_execute_parser.add_argument("--horizon", default="H1", help="Horizon of the task (H1, H2, H3)")
+    create_execute_parser.add_argument("--capabilities", help="Comma-separated list of required capabilities")
+    create_execute_parser.add_argument("--output", help="File to save the results to")
+    
+    # Batch command
+    batch_parser = subparsers.add_parser("batch", help="Run a batch of tasks from a file")
+    batch_parser.add_argument("--batch-file", required=True, help="JSON file containing the batch of tasks")
+    batch_parser.add_argument("--output", help="File to save the results to")
+    
+    # Export patterns command
+    export_parser = subparsers.add_parser("export-patterns", help="Export success patterns to a file")
+    export_parser.add_argument("--output-file", required=True, help="File to export patterns to")
+    
+    # Shutdown command
+    shutdown_parser = subparsers.add_parser("shutdown", help="Shutdown the Master Player")
+    
+    args = parser.parse_args()
+    
+    if not args.command:
+        parser.print_help()
+        return
+    
+    print_banner()
+    print(f"{Colors.YELLOW}Command: {args.command}{Colors.RESET}")
+    print(f"Timestamp: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    
+    dc = DirectControl(data_dir=args.data_dir)
+    
+    if args.command == "init":
+        success = dc.initialize()
+        if success:
+            print(f"{Colors.GREEN}Master Player initialized successfully.{Colors.RESET}")
+        else:
+            print(f"{Colors.RED}Failed to initialize Master Player.{Colors.RESET}")
+            
+    elif args.command == "takeover":
+        success = dc.take_control()
+        if success:
+            print(f"{Colors.GREEN}Successfully took control of Ollama ecosystem.{Colors.RESET}")
+        else:
+            print(f"{Colors.RED}Failed to take control of Ollama ecosystem.{Colors.RESET}")
+    
+    elif args.command == "status":
+        print_status(dc, args)
+            
+    elif args.command == "create":
+        await create_task(dc, args)
+            
+    elif args.command == "execute":
+        await execute_task(dc, args)
+            
+    elif args.command == "run":
+        await create_and_execute(dc, args)
+            
+    elif args.command == "batch":
+        await run_batch(dc, args)
+            
+    elif args.command == "export-patterns":
+        export_patterns(dc, args)
+            
+    elif args.command == "shutdown":
+        success = dc.shutdown()
+        if success:
+            print(f"{Colors.GREEN}Master Player shutdown successfully.{Colors.RESET}")
+        else:
+            print(f"{Colors.RED}Failed to shutdown Master Player.{Colors.RESET}")
+
+if __name__ == "__main__":
+    asyncio.run(main()) 

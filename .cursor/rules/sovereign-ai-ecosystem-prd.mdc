@@ -95,6 +95,25 @@ Community contribution guidelines
 Versioning strategy
 Documentation updates
 
+### Development Mode Supervision: MicroManager Agent
+
+To enforce systematic progression through all development modes, the MicroManager agent serves as a supervisor for feature development:
+
+- **Purpose**: Ensures thorough and complete implementation of each feature by enforcing sequential progression through all modes
+- **Workflow Enforcement**: Validates completion of required tasks in each mode before allowing transition
+- **Context Preservation**: Maintains development context across mode transitions
+- **Integration**: Connects with task tracking, knowledge graph, and development mode framework
+- **Automation**: Automatically updates task status, blocks premature transitions, and generates progress reports
+
+The MicroManager follows this transition protocol:
+
+1. **Transition Request**: `t2p m switch <target_mode> "<reason for transition>"`
+2. **Pre-Transition Validation**: Ensures all current mode tasks are completed
+3. **Context Preservation**: Saves context for seamless continuation
+4. **Post-Transition Verification**: Confirms successful transition and updates status
+
+For detailed documentation, see `microManager.mdc`.
+
 Part II: Sovereign AI Implementation
 The technical implementation of our AI capabilities follows the principles of local-first, sovereign computing that gives users complete control over their data and models:
 

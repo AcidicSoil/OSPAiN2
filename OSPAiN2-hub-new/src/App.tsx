@@ -3,6 +3,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useEffect } from 'react';
 import AppRoutes from './router';
 import { useUIStore } from './store';
+import { NotionProvider } from '../../src/context/NotionContext';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -27,9 +28,11 @@ function App() {
   
   return (
     <QueryClientProvider client={queryClient}>
-      <Router>
-        <AppRoutes />
-      </Router>
+      <NotionProvider>
+        <Router>
+          <AppRoutes />
+        </Router>
+      </NotionProvider>
     </QueryClientProvider>
   );
 }

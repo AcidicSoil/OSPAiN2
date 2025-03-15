@@ -1,3 +1,8 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
 # Tool Call Error Handler
 
 This rule provides specific error handling mechanisms for when Cursor IDE approaches the 25 tool call limit.

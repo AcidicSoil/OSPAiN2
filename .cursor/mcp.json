@@ -11,6 +11,27 @@
       "command": "npx @agentdeskai/browser-tools-mcp@1.2.0",
       "url": "http://localhost:8587/",
       "autostart": false
+    },
+    {
+      "name": "Brave Search MCP",
+      "description": "Optimized web search with Brave Search API - conservative with API calls",
+      "command": "npx -y @modelcontextprotocol/server-brave-search",
+      "url": "http://localhost:8588/",
+      "autostart": false,
+      "env": {
+        "BRAVE_API_KEY": "BSAEjLxaT3Id1XDriNigTdhQ3LyOwlz"
+      }
+    },
+    {
+      "name": "Notion Integration MCP",
+      "description": "Integration with Notion API for notes, tasks, and knowledge management",
+      "command": "node .cursor/mcp-servers/notion-integration/index.js",
+      "url": "http://localhost:8589/",
+      "autostart": false,
+      "env": {
+        "NOTION_API_KEY": "your-notion-api-key-here",
+        "NOTION_DATABASE_ID": "your-notion-database-id-here"
+      }
     }
   ],
   "ecosystem": {
@@ -667,6 +688,110 @@
       "name": "open_nodes",
       "server": "Knowledge Graph",
       "description": "Open specific nodes in the knowledge graph by their names"
+    },
+    {
+      "name": "detect_component",
+      "description": "Detects and analyzes new components in the codebase",
+      "server": "component-absorption",
+      "inputs": [
+        {
+          "name": "path",
+          "type": "string",
+          "description": "Path to analyze for components",
+          "required": true
+        },
+        {
+          "name": "type",
+          "type": "string",
+          "description": "Type of component to detect",
+          "default": "auto"
+        },
+        {
+          "name": "depth",
+          "type": "number",
+          "description": "Analysis depth",
+          "default": 3
+        }
+      ],
+      "output": {
+        "type": "object",
+        "description": "Component analysis results"
+      }
+    },
+    {
+      "name": "analyze_component",
+      "description": "Performs detailed analysis of a detected component",
+      "server": "component-absorption",
+      "inputs": [
+        {
+          "name": "componentId",
+          "type": "string",
+          "description": "ID of the component to analyze",
+          "required": true
+        },
+        {
+          "name": "analysisType",
+          "type": "string",
+          "description": "Type of analysis to perform",
+          "default": "full"
+        }
+      ],
+      "output": {
+        "type": "object",
+        "description": "Detailed component analysis"
+      }
+    },
+    {
+      "name": "integrate_component",
+      "description": "Integrates a detected component into the system",
+      "server": "component-absorption",
+      "inputs": [
+        {
+          "name": "componentId",
+          "type": "string",
+          "description": "ID of the component to integrate",
+          "required": true
+        },
+        {
+          "name": "integrationOptions",
+          "type": "object",
+          "description": "Integration configuration options",
+          "default": {}
+        }
+      ],
+      "output": {
+        "type": "object",
+        "description": "Integration results"
+      }
+    },
+    {
+      "name": "web_search_optimized",
+      "description": "Performs efficient web searches with the Brave Search API, conserving API usage",
+      "server": "Brave Search MCP",
+      "inputs": [
+        {
+          "name": "query",
+          "type": "string",
+          "description": "The search query",
+          "required": true
+        },
+        {
+          "name": "count",
+          "type": "number",
+          "description": "Number of results to return (1-10)",
+          "default": 5
+        },
+        {
+          "name": "country",
+          "type": "string",
+          "description": "Country code for localized results",
+          "default": "US"
+        }
+      ],
+      "output": {
+        "type": "object",
+        "description": "Search results with prioritized information"
+      }
     }
   ],
   "mcpServers": {
@@ -680,45 +805,48 @@
     },
     "knowledge-graph": {
       "command": "node",
-      "args": ["./mcp-knowledge-graph/server.js"]
+      "args": ["./mcp-knowledge-graph/server.js"],
+      "description": "Unified knowledge graph and memory management system"
     },
     "repository-tools": {
       "command": "node",
-      "args": ["./mcp-servers/repository-tools/server.js"]
+      "args": ["./mcp-servers/repository-tools/server.js"],
+      "description": "Repository management and analysis tools"
     },
     "docker-integration": {
       "command": "node",
-      "args": ["./mcp-servers/docker-integration/server.js"]
+      "args": ["./mcp-servers/docker-integration/server.js"],
+      "description": "Docker container management and integration"
     },
     "mouse-automation": {
       "command": "node",
-      "args": ["./mcp-servers/mouse-automation/server.js"]
+      "args": ["./mcp-servers/mouse-automation/server.js"],
+      "description": "Mouse and input automation tools"
     },
     "prompt-engineering": {
       "command": "node",
-      "args": ["./mcp-servers/prompt-engineering/server.js"]
+      "args": ["./mcp-servers/prompt-engineering/server.js"],
+      "description": "Prompt engineering and optimization tools"
     },
-    "@smithery-ai-brave-search": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "@smithery/cli@latest",
-        "run",
-        "@smithery-ai/brave-search",
-        "--config",
-        "{\"braveApiKey\":\"BSAEjLxaT3Id1XDriNigTdhQ3LyOwlz\"}"
-      ]
+    "titan-memory": {
+      "command": "node",
+      "args": ["./titanmemory/mcp-titan/server.js"],
+      "description": "Advanced memory and context management system"
     },
-    "mcp-simple-arxiv": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "@smithery/cli@latest",
-        "run",
-        "mcp-simple-arxiv",
-        "--config",
-        "{}"
-      ]
+    "ollama-tag-cli": {
+      "command": "node",
+      "args": ["./ollama-tag-cli/dist/index.js"],
+      "description": "Tag management system for ecosystem context"
+    },
+    "component-absorption": {
+      "command": "node",
+      "args": ["./mcp-servers/component-absorption/server.js"],
+      "description": "Component detection, analysis, and integration system"
+    },
+    "web-search-optimizer": {
+      "command": "node",
+      "args": [".cursor/mcp-servers/web-search-optimizer/web-search-optimizer.js"],
+      "description": "Optimized web search with caching and API conservation"
     }
   },
   "services": [

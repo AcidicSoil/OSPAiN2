@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Script to append the Documentation Standards Enforcer Agent task to master-todo.mdc
+# Script to append the Documentation Standards Enforcer Agent task to @master-todo.mdc
 
 # Ensure we're in the right directory
 cd "$(dirname "$0")" || exit 1
@@ -16,9 +16,9 @@ cat > temp-content.md << 'EOL'
 EOL
 
 # Find the Documentation and Compatibility section and append the task
-sed -i '/### Documentation and Compatibility/r temp-content.md' master-todo.mdc
+sed -i '/### Documentation and Compatibility/r temp-content.md' @master-todo.mdc
 
 # Clean up the temporary file
 rm temp-content.md
 
-echo "Documentation Standards Enforcer Agent task added to master-todo.mdc"
+echo "Documentation Standards Enforcer Agent task added to @master-todo.mdc"

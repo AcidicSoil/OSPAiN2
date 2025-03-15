@@ -1,0 +1,25 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+---
+description: Quick reference to rule configuration guidelines
+globs: 
+alwaysApply: true
+---
+
+# Rule Configuration Reference
+
+For comprehensive guidance on configuring rule attachments in Cursor, refer to:
+
+`@docs/rule-attachment-guide.mdc`
+
+This guide organizes rules by:
+- Global application
+- File extension patterns
+- Directory patterns
+- Special cases
+- Manual attachment guidelines
+
+When configuring a new rule or updating rule settings, consult the full guide for the appropriate pattern. 

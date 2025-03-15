@@ -1,0 +1,206 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Feature Documentation Template
+
+## Feature Overview
+- Name: [Feature Name]
+- Category: [Category]
+- Priority: [P1-P5]
+- Status: [🔴 Not Started | 🟡 In Progress | 🔵 Blocked | 🟢 Completed | 📌 Recurring]
+- Horizon: [H1 | H2 | H3]
+- Last Updated: ${new Date().toISOString()}
+- Version: 1.0.0
+
+## Core Components
+
+### Architecture
+```typescript
+interface FeatureArchitecture {
+  components: {
+    name: string;
+    type: 'service' | 'module' | 'system' | 'interface';
+    dependencies: string[];
+    consumers: string[];
+    status: 'planned' | 'in-progress' | 'completed' | 'testing';
+  }[];
+  interfaces: {
+    name: string;
+    type: 'api' | 'event' | 'data' | 'ui';
+    definition: string;
+    status: 'draft' | 'implemented' | 'testing' | 'stable';
+  }[];
+  dataFlow: {
+    source: string;
+    destination: string;
+    type: 'sync' | 'async' | 'event';
+    status: 'planned' | 'implemented' | 'testing';
+  }[];
+}
+```
+
+### Implementation Status
+- [ ] Core Implementation
+  - [ ] Component 1
+  - [ ] Component 2
+  - [ ] Component 3
+- [ ] Integration
+  - [ ] System 1
+  - [ ] System 2
+- [ ] Testing
+  - [ ] Unit Tests
+  - [ ] Integration Tests
+  - [ ] E2E Tests
+
+## 3D Visualization
+
+### View Types
+1. System Architecture View
+   - Component relationships
+   - Data flow paths
+   - Integration points
+   - Status indicators
+
+2. Development Progress View
+   - Task completion
+   - Timeline visualization
+   - Resource allocation
+   - Blockers and dependencies
+
+3. Knowledge Graph View
+   - Feature relationships
+   - Context connections
+   - Learning outcomes
+   - Pattern recognition
+
+### Visualization Properties
+```typescript
+interface VisualizationConfig {
+  view: {
+    type: 'architecture' | 'progress' | 'knowledge';
+    perspective: 'top' | 'front' | 'side' | 'isometric';
+    zoom: number;
+    rotation: [number, number, number];
+  };
+  elements: {
+    nodes: {
+      type: string;
+      position: [number, number, number];
+      scale: number;
+      color: string;
+      opacity: number;
+    }[];
+    edges: {
+      from: string;
+      to: string;
+      type: string;
+      color: string;
+      thickness: number;
+    }[];
+  };
+  interactions: {
+    hover: boolean;
+    click: boolean;
+    drag: boolean;
+    zoom: boolean;
+  };
+}
+```
+
+## Success Metrics
+
+### Performance Metrics
+- Response Time: [target]
+- Resource Usage: [target]
+- Scalability: [target]
+- Reliability: [target]
+
+### Quality Metrics
+- Code Coverage: [target]
+- Bug Rate: [target]
+- User Satisfaction: [target]
+- Documentation Coverage: [target]
+
+## Integration Points
+
+### System Connections
+- [ ] System 1
+  - Connection Type: [type]
+  - Status: [status]
+  - Dependencies: [list]
+- [ ] System 2
+  - Connection Type: [type]
+  - Status: [status]
+  - Dependencies: [list]
+
+### Data Flow
+- [ ] Input Sources
+  - Type: [type]
+  - Format: [format]
+  - Validation: [status]
+- [ ] Output Destinations
+  - Type: [type]
+  - Format: [format]
+  - Validation: [status]
+
+## Development Timeline
+
+### Phase 1: Foundation
+- Start Date: [date]
+- End Date: [date]
+- Milestones: [list]
+- Dependencies: [list]
+
+### Phase 2: Core Development
+- Start Date: [date]
+- End Date: [date]
+- Milestones: [list]
+- Dependencies: [list]
+
+### Phase 3: Integration
+- Start Date: [date]
+- End Date: [date]
+- Milestones: [list]
+- Dependencies: [list]
+
+## Learning & Adaptation
+
+### Update Triggers
+- [ ] Technical Changes
+- [ ] User Feedback
+- [ ] Performance Issues
+- [ ] Security Concerns
+
+### Adaptation Rules
+- [ ] Pattern Recognition
+- [ ] Performance Optimization
+- [ ] Security Hardening
+- [ ] User Experience
+
+## Documentation Requirements
+
+### Technical Documentation
+- [ ] Architecture Overview
+- [ ] API Documentation
+- [ ] Data Models
+- [ ] Integration Guide
+
+### User Documentation
+- [ ] User Guide
+- [ ] API Reference
+- [ ] Troubleshooting Guide
+- [ ] FAQ
+
+## Version History
+- v1.0.0 - Initial feature documentation
+- Current: v1.0.0
+
+## Last Update
+- Timestamp: ${new Date().toISOString()}
+- Type: [Update Type]
+- Changes: [Description of Changes]
+
+## Tags
+#feature #documentation #tracking #visualization #development #integration #metrics #learning 

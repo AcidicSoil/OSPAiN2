@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# Create backup of master-todo.mdc
-cp master-todo.mdc master-todo.mdc.bak
+# Create backup of @master-todo.mdc
+cp @master-todo.mdc @master-todo.mdc.bak
 
-# Add new task to master-todo.mdc
-cat << 'EOF' >> master-todo.mdc
+# Add new task to @master-todo.mdc
+cat << 'EOF' >> @master-todo.mdc
 
 ## [H1] T2P Engine Integration for AI Model Interactions 🔴
 **Priority**: P1 (Critical) | **Timeline**: 5-8 days
@@ -31,5 +31,5 @@ See detailed specification in: t2p-integration.md
 - [$(date +%Y-%m-%d)] Task created and added to master todo list
 EOF
 
-echo "Task added to master-todo.mdc"
-echo "Backup created at master-todo.mdc.bak"
+echo "Task added to @master-todo.mdc"
+echo "Backup created at @master-todo.mdc.bak"

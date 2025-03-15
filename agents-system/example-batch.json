@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Perform system analysis",
+    "description": "Analyze the current system state and provide recommendations",
+    "priority": "HIGH",
+    "horizon": "H1",
+    "capabilities": ["SYSTEM_ADMINISTRATION", "DATA_ANALYSIS"]
+  },
+  {
+    "name": "Generate documentation",
+    "description": "Create comprehensive documentation for the API",
+    "priority": "MEDIUM",
+    "horizon": "H1",
+    "capabilities": ["CODE_GENERATION"]
+  },
+  {
+    "name": "Optimize performance",
+    "description": "Identify and resolve performance bottlenecks",
+    "priority": "HIGH",
+    "horizon": "H2",
+    "capabilities": ["CODE_GENERATION", "DATA_ANALYSIS"]
+  },
+  {
+    "name": "Plan future development",
+    "description": "Create a roadmap for future features and improvements",
+    "priority": "MEDIUM",
+    "horizon": "H3",
+    "capabilities": ["TASK_PLANNING"]
+  }
+] 

@@ -662,3 +662,186 @@ This project is a CLI tool for sending prompts to Cursor IDE chat windows using 
 - Document configuration options.
 - Provide troubleshooting guidance.
 - Keep documentation up-to-date.
+
+# Ollama Ecosystem Development Guidelines
+
+## 📋 Core Development Principles
+- Write clean, simple, readable code with the fewest lines possible
+- Implement features in the simplest possible way
+- Keep files small and focused (<200 lines)
+- Test after every meaningful change
+- Focus on core functionality before optimization
+- Use clear, consistent naming
+- Think thoroughly before coding (write 2-3 reasoning paragraphs when needed)
+- ALWAYS write simple, clean, and modular code
+- Use clear and easy-to-understand language with short sentences
+- Follow TypeScript strict mode
+- Maintain backward compatibility
+
+## 📝 Documentation Standards
+- Always use Markdown for documentation and README files
+- Document API changes
+- Include JSDoc for function documentation
+- Keep comments clear and concise, explaining the "why" not just the "what"
+- NEVER delete old comments unless they are obviously wrong/obsolete
+- ALWAYS add more helpful and explanatory comments into our code
+- Document all changes and their reasoning IN THE COMMENTS YOU WRITE
+- Maintain the existing structure of the README.md file
+- Use MDC format for special documentation files
+- Follow horizon-based documentation organization (H1, H2, H3)
+
+## 🔄 Development Mode Framework
+- Use mode indicators for current working context:
+  - 🎨 Design Mode :: UI/UX structuring, component architecture
+  - 🔧 Engineering Mode :: Core functionality, business logic
+  - 🧪 Testing Mode :: Quality assurance, edge cases
+  - 📦 Deployment Mode :: Release readiness, CI/CD
+  - 🔍 Maintenance Mode :: Ongoing health, improvements
+- Use `m switch <mode> "<reason>"` for mode transitions
+- Retrieve context with `m context --copy`
+- Document mode-specific strategies and approaches
+
+## 📊 Horizon Management
+- Organize work into three distinct horizons:
+  - **Horizon 1 (Now)** :: Features and concepts actively being implemented
+  - **Horizon 2 (Next)** :: Concepts cleared for planning but not implementation
+  - **Horizon 3 (Future)** :: Ideas captured but deliberately kept at a distance
+- Use consistent status indicators with horizon context:
+  - 🔴 [H1] Not Started :: H1 task has not been initiated
+  - 🟡 [H1] In Progress :: Work has begun but not completed
+  - 🔵 [H1] Blocked :: Cannot proceed due to dependencies/issues
+  - 🟢 [H1] Completed :: Task is finished
+  - 📌 [H1] Recurring :: Task that repeats regularly
+  - 🔜 [H2] Ready :: H2 task ready for promotion consideration
+  - 🔮 [H3] Captured :: H3 idea documented for future consideration
+- Mark tasks in @master-todo.mdc with horizon designation [H1], [H2], [H3]
+- Only work on [H1] tasks during implementation phases
+
+## 📈 Project Organization
+- For each new project:
+  - Create .cursorrules file specific to the project
+  - Add notes.md (personalized) and add to .gitignore
+  - Create todo.md for task management
+  - Keep dependencies updated
+  - Fetch relevant .cursorrules file using web search MCP
+- Create conversation summaries every 5 minor/major changes as checkpoints
+- Back up to GitHub to ensure smooth development process and portability
+- Organize .cursorrules files into appropriate categories
+- Use t2p CLI tools for task management:
+  ```bash
+  t2p todo add --priority <1-5> --horizon <H1|H2|H3> --category "<Category>" --tags "<tag1,tag2>" --title "<Title>" --description "<Description>"
+  ```
+
+## 🛠️ Error Handling & Debugging
+- DO NOT JUMP TO CONCLUSIONS! Consider multiple possible causes before deciding
+- Explain problems in plain English 
+- Make minimal necessary changes, modifying as few lines of code as possible
+- Test commands in a test directory before implementing in production
+- For strange errors, ask the user to perform a Perplexity web search for latest up-to-date information
+- Make notes of important packages required by other frameworks that might conflict
+- Ensure debugging is at a minimum by adding as much testing as possible
+- When not sure what to do, tell the user to perform a web search
+- If you fail to execute code, use an appropriate MCP tool to find the latest relevant docs
+
+## 💻 Terminal Usage
+- Create terminal.md to document terminal-specific relevancy for user interaction
+- Determine the most relevant terminal (PowerShell, CMD, Bash, etc.)
+- Make necessary changes to use the preferred terminal approach for running any commands
+- Include specific commands for each supported terminal type
+- Be aware of Git Bash terminal issues in Windows:
+  - Watch for strange prefixes like `[200~` that cause command failures
+  - Avoid multi-line commands in Cursor terminal
+  - Use `edit_file` tool instead of complex terminal commands
+  - Break complex operations into smaller, simpler commands
+  - Verify file paths exist before trying to access them
+
+## 🧪 Development Process
+- Verify each feature works by telling the user how to test it
+- DO NOT write complicated and confusing code - opt for simple & modular approaches
+- Before starting, ensure the future environment will be successful (0% → 100%) without conflicts
+- Create profound-thoughts.mdc when necessary for future consideration
+- Update setup scripts with fixes identified during testing
+- Test cross-browser compatibility
+- Use MCP tools to improve output and find latest relevant docs to resolve conflicts
+- Create an effective way to convey available tools for enhancing overall development process
+- Include only the essential steps when explaining processes
+
+## 🔍 Project Navigation
+- Use efficient search commands:
+  ```bash
+  find . -type f -name "*<partial-name>*" | grep -v "node_modules" | grep -v ".git"
+  grep -r "<search-term>" --include="*.{js,ts,md,mdc}" . --color
+  ```
+- For codebase orientation:
+  ```bash
+  find . -type f -not -path "*/node_modules/*" -not -path "*/.git/*" | sort -r | xargs wc -l | sort -nr | head -20
+  find . -name "README.md" -o -name "*.mdc" | grep -v "node_modules" | xargs cat | grep -i "purpose\|overview\|architecture"
+  ```
+- Quick project refresh after context switch:
+  ```bash
+  m current && t2p todo list --priority 1 --status "in-progress" && cat */README.md | grep -A 10 "Overview"
+  ```
+
+## 📋 Systematic Approach Checklist
+1. Write code with the fewest lines possible
+2. Proceed like a senior developer
+3. Implement features fully and completely
+4. Write reasoning paragraphs before resolving errors
+5. Keep answers concise when appropriate
+6. Preserve all comments
+7. Summarize current state before proceeding
+8. Perform unbiased analysis when comparing solutions
+9. Create specific search queries for research
+10. Start with uncertainty and gradually build confidence
+
+## 📄 README.md Structure
+- Maintain the following structure in README.md files:
+  1. Title and Awesome badge
+  2. Logo
+  3. Short description
+  4. "Why .cursorrules?" section
+  5. Table of Contents
+  6. Rules section with appropriate categories
+  7. How to Use section
+  8. Contributing section
+  9. License section
+- Ensure table of contents remains accurate when updating
+
+## 📝 Note-Taking
+- Create a notes.md at the root of the project and add it to .gitignore
+- Use this for personal notes helpful as the project progresses
+- Make note of corrections to avoid future occurrences
+- Document important package conflicts
+- Create/manage notes with t2p:
+  ```bash
+  t2p note new "<Title>" --tags "<tags>" --category "<category>"
+  t2p note list --tag "<tag>" --category "<category>" --search "<term>"
+  ```
+
+## 🔄 Maintenance and Updates
+- Update README.md when adding new .cursorrules files
+- Ensure all links in README.md are relative and correct
+- When adding new categories, update both 'Contents' and 'Rules' sections
+- Regularly review and update categorization as the repository grows
+- Keep dependencies updated
+- Document API changes
+
+## 💬 Prompting Patterns
+- "Write code with the fewest lines of code"
+- "Proceed like a senior developer"
+- "Do not stop until you've implemented this feature fully"
+- "Write reasoning paragraphs analyzing what the error might be"
+- "Answer in short"
+- "Do not delete comments"
+- "Give me a summary of the current state"
+- "Write unbiased analysis of different solutions"
+- "Form proper search queries"
+- "Start with uncertainty and gradually build confidence"
+
+## 🧠 Paranoid Mode - Survival Tactics
+When faced with incomplete information or unclear structure:
+1. Quick Health Check: `t2p todo list --priority 1 --horizon H1` and `m current`
+2. Orient in Codebase: `cat */README.md 2>/dev/null | grep -i "purpose\|overview"`
+3. Find Entry Points: `find . -name "package.json" -o -name "main.js" -o -name "index.js" | grep -v "node_modules"`
+4. Identify Core Tools: `find . -type f -name "*.sh" | grep -v "node_modules" | sort`
+5. Last Resort: Add a documentation task and solve systematically

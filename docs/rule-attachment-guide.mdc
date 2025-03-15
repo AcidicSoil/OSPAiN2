@@ -1,0 +1,165 @@
+---
+description: Reference guide for rule attachment patterns by file type/context
+globs: 
+alwaysApply: false
+---
+
+# Rule Attachment Configuration Guide
+
+This document serves as a reference for configuring rule attachments in Cursor settings, ensuring consistent application of coding standards, documentation practices, and development workflows across the OSPAiN2 ecosystem.
+
+## Global Rules (Auto-Attach to All Files)
+
+These rules should be set to apply to all requests, providing foundational guidance across the entire project:
+
+| Rule File | Purpose | Priority |
+|-----------|---------|----------|
+| master-todo.mdc | Core task tracking and organization | Critical |
+| tool-call-optimization.mdc | Efficient AI tool interaction patterns | Critical |
+| tool-call-error-handler.mdc | Error recovery for AI interactions | Critical |
+| devdocs-source.mdc | Documentation source standards | High |
+| master-player.mdc | Command patterns and execution strategies | High |
+| context-aware-prompt-engine.mdc | Enhanced AI prompting capabilities | Medium |
+
+## File Extension Based Rules
+
+Rules that should be attached based on specific file extensions:
+
+### TypeScript/JavaScript Files (`.ts`, `.tsx`, `.js`, `.jsx`)
+
+| Rule File | Extensions | Purpose |
+|-----------|------------|---------|
+| distributed-computation.mdc | `.ts`, `.tsx`, `.js`, `.jsx`, `.py`, `.go` | Performance optimization for distributed systems |
+| adv-tool-call-opt.mdc | `.ts`, `.tsx`, `.js`, `.jsx` | Advanced tool call optimization for AI interfaces |
+| sovereign_ai_implementation.mdc | `.ts`, `.tsx`, `.js`, `.jsx`, `.py` | AI implementation standards |
+| knowledge-graph-search-cache.mdc | `.ts`, `.tsx`, `.js`, `.jsx` | Knowledge graph and caching systems |
+| web-search-optimization.mdc | `.ts`, `.tsx`, `.js`, `.jsx` | Web search and API optimization |
+| context-aware-prompt-engine.mdc | `.ts`, `.tsx`, `.js`, `.jsx`, `.py` | Context-aware prompt engineering |
+| sovereign-aimode-switch-orch.mdc | `.ts`, `.tsx`, `.js`, `.jsx` | Mode switching and orchestration |
+
+### Documentation Files (`.md`, `.mdc`, `.mdx`, `.txt`)
+
+| Rule File | Extensions | Purpose |
+|-----------|------------|---------|
+| sovereign-ai-ecosystem-prd.mdc | `.md`, `.mdc`, `.mdx`, `.txt` | Product requirements guidance |
+| master-prd.mdc | `.md`, `.mdc`, `.mdx` | Product documentation standards |
+| integrated-governance-framework.mdc | `.md`, `.mdc` | Governance documentation |
+| dont-reply-back.mdc | `.md`, `.mdc` | Communication protocol for documentation |
+
+### Configuration Files (`.json`, `.yaml`, `.yml`, `.config.js`, `.config.ts`)
+
+| Rule File | Extensions | Purpose |
+|-----------|------------|---------|
+| integrated-governance-framework.mdc | `.json`, `.yaml`, `.yml`, `.js`, `.ts` | System configuration standards |
+
+### Python Files (`.py`)
+
+| Rule File | Extensions | Purpose |
+|-----------|------------|---------|
+| distributed-computation.mdc | `.py` | Performance optimization for Python |
+| sovereign_ai_implementation.mdc | `.py` | AI implementation standards for Python |
+
+## Directory Based Rules
+
+Rules that should be attached based on specific directories:
+
+### AI and Model Directories
+
+| Rule File | Directories | Purpose |
+|-----------|------------|---------|
+| sovereign_ai_implementation.mdc | `/src/ai/`, `/src/models/`, `/src/agents/` | AI implementation guidance |
+| context-aware-prompt-engine.mdc | `/src/prompts/`, `/src/ai/`, `/src/templates/` | Prompt engineering standards |
+
+### Performance-Critical Directories
+
+| Rule File | Directories | Purpose |
+|-----------|------------|---------|
+| distributed-computation.mdc | `/src/services/`, `/src/workers/`, `/src/compute/` | Performance optimization |
+| adv-tool-call-opt.mdc | `/src/tools/`, `/src/api/`, `/src/mcp/` | Tool optimization |
+
+### Documentation Directories
+
+| Rule File | Directories | Purpose |
+|-----------|------------|---------|
+| sovereign-ai-ecosystem-prd.mdc | `/docs/`, `/planning/`, `/requirements/` | Product requirements standards |
+| master-prd.mdc | `/docs/`, `/planning/`, `/roadmap/` | Product documentation |
+
+### Search and Knowledge Directories
+
+| Rule File | Directories | Purpose |
+|-----------|------------|---------|
+| knowledge-graph-search-cache.mdc | `/src/search/`, `/src/cache/`, `/src/knowledge/` | Knowledge system implementation |
+| web-search-optimization.mdc | `/src/search/`, `/src/api/`, `/src/services/` | Search optimization |
+
+### Governance and System Directories
+
+| Rule File | Directories | Purpose |
+|-----------|------------|---------|
+| integrated-governance-framework.mdc | `/src/governance/`, `/config/`, `/policies/` | Governance implementation |
+| sovereign-aimode-switch-orch.mdc | `/src/modes/`, `/src/orchestration/`, `/src/controllers/` | Mode orchestration |
+
+## Special Cases
+
+### Component Migration
+
+For components being migrated from ollama-schematics-ui to OSPAiN2-hub:
+
+| Component | File Path Pattern | Rule to Attach |
+|-----------|------------------|----------------|
+| TodoManager | `/src/components/todo/TodoManager*` | `TodoManager.md` |
+| EcosystemGraph | `/src/components/visualization/EcosystemGraph*` | `EcosystemGraph.md` |
+| KnowledgeExplorer | `/src/components/knowledge/KnowledgeExplorer*` | `KnowledgeExplorer.md` |
+| MermaidDiagram | `/src/components/MermaidDiagram*` | `MermaidDiagram.md` |
+| JsonViewer | `/src/components/JsonViewer*` | `JsonViewer.md` |
+| ToastNotification | `/src/components/ToastNotification*` | `ToastNotification.md` |
+
+### Test Files
+
+For test files across the codebase:
+
+| Rule File | File Pattern | Purpose |
+|-----------|--------------|---------|
+| tool-call-optimization.mdc | `*.test.ts`, `*.test.js`, `*.spec.ts`, `*.spec.js`, `*_test.py` | Optimize AI testing |
+| integrated-governance-framework.mdc | `/test/**/*`, `/tests/**/*`, `/src/**/tests/*`, `/src/**/__tests__/*` | Test governance |
+
+### Build Configuration Files
+
+For build configuration files:
+
+| Rule File | File Names/Patterns | Purpose |
+|-----------|---------------------|---------|
+| integrated-governance-framework.mdc | `package.json`, `tsconfig.json`, `webpack.config.js`, `vite.config.ts` | Build configuration governance |
+
+## Manual Attachment Only
+
+Rules that should only be attached manually when needed:
+
+| Rule File | Use Case | Apply When |
+|-----------|----------|------------|
+| enhanced-governance-framework.mdc | Enhanced governance for critical systems | Working on system-critical code |
+| mcp-create.mdc | MCP server creation guidance | Developing new MCP servers |
+| laser-focus.mdc | Focused implementation approach | Working against tight deadlines |
+
+## Implementation Instructions
+
+In Cursor Settings:
+
+1. Navigate to Cursor Settings > Rules
+2. For each rule, configure:
+   - Applies to: All requests / Glob patterns
+   - Set glob patterns based on this guide
+   - Save settings
+
+Example glob pattern for TypeScript files in AI directories:
+```
+**/*.{ts,tsx} & **/src/ai/**/*
+```
+
+## Maintenance
+
+This guide should be updated whenever:
+- New rules are added to the system
+- Existing rules are modified in scope or purpose
+- New file types or directories are added to the project structure
+
+Last updated: 2025-03-15 

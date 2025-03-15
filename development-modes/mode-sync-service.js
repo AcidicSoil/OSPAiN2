@@ -1,204 +1,194 @@
 "use strict";
 /**
  * Mode Synchronization Service
- * Ensures all components of the system display the same development mode
+ *
+ * This service ensures that the development mode is synchronized across all components:
+ * - Terminal sessions
+ * - Chat windows
+ * - IDE components
  */
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || (function () {
+    var ownKeys = function(o) {
+        ownKeys = Object.getOwnPropertyNames || function (o) {
+            var ar = [];
+            for (var k in o) if (Object.prototype.hasOwnProperty.call(o, k)) ar[ar.length] = k;
+            return ar;
+        };
+        return ownKeys(o);
     };
-    return __assign.apply(this, arguments);
-};
+    return function (mod) {
+        if (mod && mod.__esModule) return mod;
+        var result = {};
+        if (mod != null) for (var k = ownKeys(mod), i = 0; i < k.length; i++) if (k[i] !== "default") __createBinding(result, mod, k[i]);
+        __setModuleDefault(result, mod);
+        return result;
+    };
+})();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getCurrentMode = getCurrentMode;
-exports.updateSyncData = updateSyncData;
-exports.checkSync = checkSync;
-exports.syncAllComponents = syncAllComponents;
-exports.handleModeSwitch = handleModeSwitch;
-var fs = require("fs");
-var path = require("path");
+exports.setMode = setMode;
+exports.syncMode = syncMode;
+const fs = __importStar(require("fs"));
+const path = __importStar(require("path"));
 // Configuration
-var MODES_DIR = path.resolve(__dirname);
-var CURRENT_MODE_FILE = path.join(MODES_DIR, ".current_mode");
-var MODE_SYNC_FILE = path.join(MODES_DIR, ".mode_sync.json");
-var CHAT_CONFIG_FILE = path.join(MODES_DIR, "..", ".cursor", "chat_config.json");
-var AVAILABLE_MODES = [
-    "design",
-    "engineering",
-    "testing",
-    "deployment",
-    "maintenance",
-];
-var MODE_EMOJIS = ["🎨", "🔧", "🧪", "📦", "🔍"];
+const CONFIG = {
+    modesPath: path.resolve(process.cwd(), "development-modes"),
+    currentModeFile: path.resolve(process.cwd(), ".current_mode"),
+    chatConfigDir: path.resolve(process.cwd(), ".cursor"),
+    chatConfigFile: path.resolve(process.cwd(), ".cursor", "chat_config.json"),
+    availableModes: [
+        "design",
+        "engineering",
+        "testing",
+        "deployment",
+        "maintenance",
+    ],
+    modeEmojis: {
+        design: "🎨",
+        engineering: "🔧",
+        testing: "🧪",
+        deployment: "📦",
+        maintenance: "🔍",
+    },
+};
 /**
- * Gets the current active mode from the .current_mode file
+ * Gets the current active mode
+ * @returns The current mode and its emoji
  */
 function getCurrentMode() {
     try {
-        if (fs.existsSync(CURRENT_MODE_FILE)) {
-            var mode = fs.readFileSync(CURRENT_MODE_FILE, "utf8").trim();
-            if (AVAILABLE_MODES.includes(mode)) {
-                return mode;
+        if (fs.existsSync(CONFIG.currentModeFile)) {
+            const mode = fs.readFileSync(CONFIG.currentModeFile, "utf-8").trim();
+            if (CONFIG.availableModes.includes(mode)) {
+                return {
+                    mode,
+                    emoji: CONFIG.modeEmojis[mode] || "❓",
+                };
             }
         }
-        return "No active mode";
+        return { mode: "No active mode", emoji: "❓" };
     }
     catch (error) {
-        console.error("Error reading current mode:", error);
-        return "No active mode";
+        console.error("Error getting current mode:", error);
+        return { mode: "Error", emoji: "⚠️" };
     }
 }
 /**
- * Updates the sync data file with current status
+ * Sets the current mode
+ * @param mode The mode to set
+ * @returns Success status and message
  */
-function updateSyncData(components) {
-    if (components === void 0) { components = {}; }
+function setMode(mode) {
     try {
-        // Read existing data or create default
-        var syncData = {
-            currentMode: getCurrentMode(),
-            lastUpdated: new Date().toISOString(),
-            components: {
-                terminal: false,
-                chat: false,
-                ide: false,
-            },
-        };
-        if (fs.existsSync(MODE_SYNC_FILE)) {
-            try {
-                syncData = JSON.parse(fs.readFileSync(MODE_SYNC_FILE, "utf8"));
-                // Update with current mode
-                syncData.currentMode = getCurrentMode();
-                syncData.lastUpdated = new Date().toISOString();
-            }
-            catch (e) {
-                console.warn("Error parsing mode sync file, creating new one");
-            }
+        if (!CONFIG.availableModes.includes(mode)) {
+            return {
+                success: false,
+                message: `Invalid mode: ${mode}. Available modes: ${CONFIG.availableModes.join(", ")}`,
+            };
         }
-        // Update components status
-        syncData.components = __assign(__assign({}, syncData.components), components);
-        // Write updated data
-        fs.writeFileSync(MODE_SYNC_FILE, JSON.stringify(syncData, null, 2));
-        return syncData;
+        fs.writeFileSync(CONFIG.currentModeFile, mode);
+        updateChatConfig();
+        return { success: true, message: `Mode set to ${mode}` };
     }
     catch (error) {
-        console.error("Error updating sync data:", error);
-        throw error;
+        console.error("Error setting mode:", error);
+        return { success: false, message: `Error setting mode: ${error}` };
     }
 }
 /**
- * Updates the chat window configuration to display the correct mode
+ * Updates the chat configuration based on the current mode
  */
 function updateChatConfig() {
     try {
-        var currentMode = getCurrentMode();
-        if (currentMode === "No active mode") {
-            return false;
+        const { mode, emoji } = getCurrentMode();
+        // Create the .cursor directory if it doesn't exist
+        if (!fs.existsSync(CONFIG.chatConfigDir)) {
+            fs.mkdirSync(CONFIG.chatConfigDir, { recursive: true });
         }
-        // Create chat config directory if it doesn't exist
-        var chatConfigDir = path.dirname(CHAT_CONFIG_FILE);
-        if (!fs.existsSync(chatConfigDir)) {
-            fs.mkdirSync(chatConfigDir, { recursive: true });
-        }
-        // Read existing chat config or create default
-        var chatConfig = {};
-        if (fs.existsSync(CHAT_CONFIG_FILE)) {
+        // Read or create chat config
+        let chatConfig = {};
+        if (fs.existsSync(CONFIG.chatConfigFile)) {
+            const configContent = fs.readFileSync(CONFIG.chatConfigFile, "utf-8");
             try {
-                chatConfig = JSON.parse(fs.readFileSync(CHAT_CONFIG_FILE, "utf8"));
+                chatConfig = JSON.parse(configContent);
             }
-            catch (e) {
-                console.warn("Error parsing chat config, creating new one");
+            catch (error) {
+                console.warn("Invalid chat config, creating new one");
             }
         }
-        // Get mode index and emoji
-        var modeIndex = AVAILABLE_MODES.indexOf(currentMode);
-        var modeEmoji = modeIndex >= 0 ? MODE_EMOJIS[modeIndex] : "";
-        // Update mode in chat config
-        chatConfig.currentMode = currentMode;
-        chatConfig.modeEmoji = modeEmoji;
-        chatConfig.modeDisplay = "".concat(modeEmoji, " ").concat(currentMode.charAt(0).toUpperCase() + currentMode.slice(1), " Mode");
+        // Update the mode in the chat config
+        chatConfig.currentMode = mode;
+        chatConfig.modeEmoji = emoji;
         chatConfig.lastUpdated = new Date().toISOString();
-        // Write updated config
-        fs.writeFileSync(CHAT_CONFIG_FILE, JSON.stringify(chatConfig, null, 2));
-        // Update components status
-        updateSyncData({ chat: true });
-        return true;
+        // Write the updated config
+        fs.writeFileSync(CONFIG.chatConfigFile, JSON.stringify(chatConfig, null, 2), "utf-8");
+        console.log(`Chat configuration updated with mode: ${mode} ${emoji}`);
     }
     catch (error) {
         console.error("Error updating chat config:", error);
-        updateSyncData({ chat: false });
-        return false;
     }
 }
 /**
- * Checks if all components are in sync
+ * Synchronizes the mode across all components
  */
-function checkSync() {
-    var syncData = updateSyncData();
-    var _a = syncData.components, terminal = _a.terminal, chat = _a.chat, ide = _a.ide;
-    return terminal && chat && ide;
-}
-/**
- * Synchronizes all components with the current mode
- */
-function syncAllComponents() {
-    var currentMode = getCurrentMode();
-    console.log("Syncing all components to mode: ".concat(currentMode));
-    // Update terminal display
+function syncMode() {
     try {
-        // This would normally be a hook into the terminal's display mechanism
-        // For now, we'll just note that it should be updated
-        console.log("Terminal mode should display: ".concat(currentMode));
-        updateSyncData({ terminal: true });
+        const { mode, emoji } = getCurrentMode();
+        console.log(`Synchronizing mode: ${mode} ${emoji}`);
+        // Update chat config
+        updateChatConfig();
+        // Emit a mode changed event (for future use)
+        emitModeChangedEvent(mode, emoji);
+        console.log("Mode synchronization completed successfully");
     }
     catch (error) {
-        console.error("Error syncing terminal:", error);
-        updateSyncData({ terminal: false });
+        console.error("Error during mode synchronization:", error);
     }
-    // Update chat window
-    var chatUpdated = updateChatConfig();
-    // Update IDE status (if applicable)
-    try {
-        // This would hook into the IDE's status display
-        // For now, we'll assume it works
-        updateSyncData({ ide: true });
-    }
-    catch (error) {
-        console.error("Error syncing IDE:", error);
-        updateSyncData({ ide: false });
-    }
-    console.log("Sync status:", checkSync() ? "All components in sync" : "Some components out of sync");
 }
 /**
- * Mode switch handler - to be called whenever mode is changed
+ * Emits a mode changed event (placeholder for future implementation)
  */
-function handleModeSwitch(newMode) {
-    console.log("Mode switch detected: ".concat(newMode));
-    syncAllComponents();
+function emitModeChangedEvent(mode, emoji) {
+    // This would be implemented to use an EventEmitter or similar
+    // For now, just log the event
+    console.log(`Mode changed event: ${mode} ${emoji}`);
 }
-// CLI handling
-if (require.main === module) {
-    var command = process.argv[2] || "sync";
-    switch (command) {
-        case "sync":
-            syncAllComponents();
-            break;
-        case "check":
-            console.log(checkSync() ? "In sync" : "Out of sync");
-            break;
-        case "status":
-            var syncData = updateSyncData();
-            console.log("Current mode:", syncData.currentMode);
-            console.log("Last updated:", syncData.lastUpdated);
-            console.log("Components status:", syncData.components);
-            break;
-        default:
-            console.log("Unknown command:", command);
-            console.log("Available commands: sync, check, status");
+// Main execution
+function main() {
+    const args = process.argv.slice(2);
+    const command = args[0];
+    if (command === "get") {
+        const { mode, emoji } = getCurrentMode();
+        console.log(`Current mode: ${mode} ${emoji}`);
+    }
+    else if (command === "set" && args[1]) {
+        const result = setMode(args[1]);
+        console.log(result.message);
+    }
+    else if (command === "sync") {
+        syncMode();
+    }
+    else {
+        // Default action: sync mode
+        syncMode();
     }
 }
+// Run the main function
+main();
+//# sourceMappingURL=mode-sync-service.js.map

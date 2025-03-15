@@ -1,22 +1,18 @@
 ---
 description: 
 globs: 
-alwaysApply: false
----
----
-description: 
-globs: 
-alwaysApply: true
----
----
-description: 
-globs: 
 alwaysApply: true
 ---
 ---
 description: 
 globs: 
 alwaysApply: false
+---
+todo:: master
+---
+description: Master todo list for the Ollama Ecosystem Project
+globs: 
+alwaysApply: true
 ---
 # Ollama Ecosystem Project - Master Todo List
 
@@ -36,7 +32,97 @@ alwaysApply: false
 - 🔜 [H2] **Ready** - H2 task ready for promotion consideration
 - 🔮 [H3] **Captured** - H3 idea documented for future consideration
 
+## Development Mode Workflow Template
+For each feature, systematically progress through all development modes:
+
+### 🎨 Design Mode (t2p m switch design)
+- Create mockups and wireframes
+- Define component architecture
+- Document UI/UX requirements
+- Establish design patterns
+- Review accessibility considerations
+
+### 🔧 Engineering Mode (t2p m switch engineering)
+- Implement core functionality
+- Build business logic
+- Connect data flows
+- Handle error cases
+- Document technical decisions
+
+### 🧪 Testing Mode (t2p m switch testing)
+- Write unit tests
+- Create integration tests
+- Test edge cases
+- Verify accessibility
+- Performance testing
+
+### 📦 Deployment Mode (t2p m switch deployment)
+- Optimize build process
+- Generate documentation
+- Prepare release notes
+- Configure environment settings
+- Set up monitoring
+
+### 🔍 Maintenance Mode (t2p m switch maintenance)
+- Address feedback
+- Implement improvements
+- Fix bugs
+- Update documentation
+- Review performance metrics
+
 ## High Priority Tasks (P1-P2)
+
+### MicroManager Implementation
+- 🔴 [H1] **P1**: Implement MicroManager Agent for Development Mode Supervision
+  - Purpose: Enforce systematic progression through all development modes for each feature
+  - Tasks:
+    - 🟢 Create microManager.mdc documentation
+    - 🟡 Develop CLI integration for t2p command
+      - 🟢 Create micromanager-logs.sh logging system
+      - 🟢 Create micromanager-integration.sh for mode switch hooks
+      - 🔴 Test integration with existing mode switch command
+    - 🔴 Implement mode transition validation logic
+    - 🔴 Create context preservation system
+    - 🟡 Build reporting and status visualization
+      - 🟢 Implement detailed failure logging
+      - 🟢 Add metrics reporting functionality
+      - 🟢 Create JSON export for visualization
+      - 🟢 Implement log monitoring system with health dashboard
+      - 🔴 Build interactive dashboard for log visualization
+    - 🔴 Add integration with Knowledge Graph for context awareness
+    - 🔴 Implement configuration system with .micromanager.json
+  - Integration points:
+    - Development Mode Framework
+    - Task tracking system
+    - Knowledge Graph
+    - Context Management system
+
+### UI Component Library
+- 🟡 [H1] **P1**: Implement UI Component Library for OSPAiN2-hub
+  - Purpose: Create a comprehensive set of reusable UI components for the OSPAiN2-hub frontend
+  - Tasks:
+    - 🟢 Implement Button component with variants, sizes, and loading states
+    - 🟢 Implement Card component with header, footer, and hoverable states
+    - 🟢 Implement Input component with validation, icons, and error states
+    - 🟢 Implement ErrorDisplay component with various presentation options
+    - 🟢 Implement Modal component with variants, sizes, and confirm functionality
+    - 🟢 Implement Dropdown component with sections, custom content, and positioning
+    - 🟢 Implement Toast notification component with variants, actions, and positioning
+    - 🟢 Implement Tabs component with variants, orientations, and badges
+    - 🔴 Implement Breadcrumbs component
+    - 🔴 Implement Pagination component
+    - 🔴 Implement Collapsible panel component
+    - 🔴 Implement Chart components
+    - 🔴 Implement Status indicators
+    - 🔴 Implement Progress bars
+    - 🔴 Implement Timeline component
+  - Integration points:
+    - OSPAiN2-hub frontend
+    - ThemeContext
+    - UI State Management
+  - Progress:
+    - Phase 2 is now 60% complete
+    - Project is 3 days ahead of schedule
 
 ### Horizon Framework Integration
 - 🔴 [H1] **P1**: Implement Horizon Framework Integration

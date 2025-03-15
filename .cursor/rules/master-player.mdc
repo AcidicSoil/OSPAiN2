@@ -1,0 +1,594 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+---
+description: Strategic commands and prompts for efficient codebase navigation and task execution
+globs: 
+alwaysApply: true
+---
+
+# Master Player Guide - Fast Track Commands
+
+This document contains the most efficient commands and strategies for common tasks in the Ollama Ecosystem project. Use these to quickly navigate complex situations and perform tasks with minimal effort.
+
+## Todo Management
+
+### Adding Todo Items
+
+The fastest way to add a todo item to all master todo files:
+
+```bash
+t2p todo add --priority <1-5> --horizon <H1|H2|H3> --category "<Category>" --tags "<tag1,tag2>" --title "<Title>" --description "<Description>"
+```
+
+Example:
+```bash
+t2p todo add --priority 2 --horizon H1 --category "Documentation" --tags "instructions" --title "Update instruction documentation" --description "Add missing information to instruction documentation"
+```
+
+### Listing and Filtering Todos
+
+Quick todo listing with filters:
+
+```bash
+t2p todo list --priority <1-5> --horizon <H1|H2|H3> --status <status> --tags "<tags>"
+```
+
+Example:
+```bash
+t2p todo list --priority 1 --horizon H1 --status "in-progress"
+```
+
+## Development Mode Management
+
+### Switching Development Modes
+
+Switch between modes with reason:
+
+```bash
+m switch <mode> "<reason>"
+```
+
+Example:
+```bash
+m switch design "Starting UI design for new feature"
+```
+
+### Getting Mode Context
+
+Get current mode context for chat:
+
+```bash
+m context --copy
+```
+
+## Documentation Management
+
+### Convert MD to MDC Format
+
+```bash
+./md-to-mdc.sh <source-file.md>
+```
+
+### Adding Documentation Tasks
+
+```bash
+t2p todo add --priority 2 --horizon H1 --category "Documentation" --tags "docs" --title "<Title>" --description "<Description>"
+```
+
+## Project Navigation
+
+### Finding Files
+
+Find files using fuzzy search:
+
+```bash
+find . -type f -name "*<partial-name>*" | grep -v "node_modules" | grep -v ".git"
+```
+
+### Searching File Contents
+
+Search in files recursively:
+
+```bash
+grep -r "<search-term>" --include="*.{js,ts,md,mdc}" . --color
+```
+
+## Note Management
+
+### Creating Notes
+
+Create new note with optional AI assistance:
+
+```bash
+t2p note new "<Title>" --tags "<tags>" --category "<category>"
+t2p note new --ai "<prompt>"  # Generate content with AI
+```
+
+### Listing Notes
+
+```bash
+t2p note list --tag "<tag>" --category "<category>" --search "<term>"
+```
+
+## Emergency Codebase Analysis
+
+When facing a complex, unfamiliar codebase:
+
+```bash
+find . -type f -not -path "*/node_modules/*" -not -path "*/.git/*" | sort -r | xargs wc -l | sort -nr | head -20
+find . -name "README.md" -o -name "*.mdc" | grep -v "node_modules" | xargs cat | grep -i "purpose\|overview\|architecture"
+```
+
+## Paranoid Mode - Survival Tactics
+
+When faced with incomplete information or unclear structure:
+
+1. **Quick Health Check**:
+   ```bash
+   t2p todo list --priority 1 --horizon H1
+   m current
+   ```
+
+2. **Orient in Codebase**:
+   ```bash
+   cat */README.md 2>/dev/null | grep -i "purpose\|overview"
+   ```
+
+3. **Find Entry Points**:
+   ```bash
+   find . -name "package.json" -o -name "main.js" -o -name "index.js" | grep -v "node_modules"
+   ```
+
+4. **Identify Core Tools**:
+   ```bash
+   find . -type f -name "*.sh" | grep -v "node_modules" | sort
+   ```
+
+5. **Last Resort**: When all else fails, add a documentation task and solve systematically:
+   ```bash
+   t2p todo add --priority 1 --horizon H1 --category "Documentation" --tags "architecture" --title "Create codebase architecture guide" --description "Document core components and workflows"
+   ```
+
+## Context Switching
+
+Quick project refresh after context switch:
+
+```bash
+m current && t2p todo list --priority 1 --status "in-progress" && cat */README.md | grep -A 10 "Overview"
+```
+
+## Command Error Prevention
+
+### Common Mistakes to Avoid
+
+| Incorrect Command | Issue | Correct Command |
+|------------------|-------|-----------------|
+| `[200~cp file.txt dir/` | Terminal error with bracket prefix | `cp file.txt dir/` |
+| `cat > file << 'EOF'` + multiple lines | Multi-line commands in Cursor terminal | Use `edit_file` tool instead |
+| `sed -i -e '/pattern/c\replacement'` | Complex sed with newlines | Use `edit_file` or create temporary script |
+| `./script.sh` when not executable | Permission denied | First run `chmod +x script.sh` |
+| `command with > redirect` | Output redirection issues | Consider using a temporary file or `edit_file` |
+| `grep pattern | command` | Piping may fail in Cursor terminal | Store results in temp file first |
+
+### Git Bash Terminal Issues in Windows
+
+In the Windows environment with Git Bash, commands may be prefixed with `[200~` causing them to fail. This is a terminal bracketed paste mode issue.
+
+**Problem diagnosis**:
+- Command output shows something like: `bash: [200~command: command not found`
+- Commands appear to have strange brackets at the beginning
+
+**Solutions**:
+1. **Use the edit_file tool** instead of terminal commands for file operations
+2. **Create simple batch/shell scripts** and execute them
+3. **Break complex operations** into smaller, simpler commands
+4. **Use t2p CLI tools** which are designed to work in this environment
+
+### Key Rules
+
+1. **Avoid multi-line commands** in Cursor terminal - use temporary files or `edit_file` tool
+2. **Check for strange prefixes** ([200~ etc.) that may be added by terminal emulation
+3. **Use simple commands** that don't require redirection or complex pipes
+4. **Verify file paths** exist before trying to access them
+5. **For complex file editing** use the `edit_file` tool rather than sed/awk
+6. **For any failing command** try simpler alternatives or break into multiple commands
+
+## Remember
+
+1. **Always use t2p for todo/task management** - It's the purpose-built tool that handles synchronization
+2. **Mode switching should be explicit** - Use the "m" command
+3. **Documentation is structured by horizons and categories** - Follow the pattern
+4. **The right command saves minutes to hours** - Learn these patterns well 
+
+## Advanced Error Avoidance Techniques
+
+### Alternative Command Execution Methods
+
+When Git Bash terminal commands fail with bracketed paste issues:
+
+1. **Use Node scripts instead of Bash scripts**:
+   ```bash
+   # Instead of complex bash command
+   node -e "console.log(require('fs').readdirSync('.').filter(f => f.endsWith('.md')))"
+   ```
+
+2. **Use PowerShell when available**:
+   ```powershell
+   # Launch PowerShell from Git Bash
+   powershell -Command "Get-ChildItem -Filter *.md | Select-Object Name"
+   ```
+
+3. **Create single-line script files**:
+   ```bash
+   # Create a temporary script file
+   echo 'find . -name "*.md" | grep -v node_modules' > temp_script.sh
+   # Run it
+   bash temp_script.sh
+   # Clean up
+   rm temp_script.sh
+   ```
+
+4. **Use JavaScript for complex file operations**:
+   ```bash
+   # Create a JS file for complex operations
+   node -e "
+   const fs = require('fs');
+   const content = fs.readFileSync('master-todo.mdc', 'utf8');
+   const lines = content.split('\n');
+   const section = lines.findIndex(l => l.includes('Documentation and Compatibility'));
+   if (section > -1) {
+     lines.splice(section + 2, 0, '- 🔴 [H1] **P2**: New task here');
+     fs.writeFileSync('master-todo.mdc', lines.join('\n'));
+     console.log('Added task successfully');
+   }
+   "
+   ```
+
+### Cross-Platform Command Equivalents
+
+| Task | Unix/Bash | Windows/PowerShell | Node.js (Platform Independent) |
+|------|-----------|-------------------|--------------------------------|
+| List files | `ls -la` | `Get-ChildItem` | `node -e "console.log(require('fs').readdirSync('.'))"` |
+| Find text | `grep -r "text" .` | `Get-ChildItem -Recurse | Select-String "text"` | `node -e "require('child_process').execSync('grep -r \"text\" .')"` |
+| Create directory | `mkdir -p dir/subdir` | `New-Item -Path dir/subdir -ItemType Directory -Force` | `node -e "require('fs').mkdirSync('dir/subdir', {recursive: true})"` |
+| Copy file | `cp file1 file2` | `Copy-Item file1 file2` | `node -e "require('fs').copyFileSync('file1', 'file2')"` |
+| Append to file | `echo "text" >> file` | `Add-Content -Path file -Value "text"` | `node -e "require('fs').appendFileSync('file', 'text')"` |
+
+### Cursor-Specific Workarounds
+
+1. **When complex text processing is needed**:
+   ```bash
+   # Instead of complex sed/awk processing
+   t2p note new "Temp Processing" --ai "Process the following text and extract all tasks: $(cat file.txt)"
+   ```
+
+2. **Safe file editing across platforms**:
+   ```bash
+   # Create a dedicated file editor script
+   cat > edit.js << EOF
+   const fs = require('fs');
+   const file = process.argv[2];
+   const search = process.argv[3];
+   const replace = process.argv[4];
+   const content = fs.readFileSync(file, 'utf8');
+   fs.writeFileSync(file, content.replace(new RegExp(search, 'g'), replace));
+   EOF
+   
+   # Use it safely
+   node edit.js filename.md "pattern" "replacement"
+   ```
+
+3. **Generate commands instead of running them**:
+   ```bash
+   # Generate a batch file for later execution
+   echo "#!/bin/bash" > generated_commands.sh
+   echo "# Commands generated on $(date)" >> generated_commands.sh
+   echo "cd $(pwd)" >> generated_commands.sh
+   echo "git status" >> generated_commands.sh
+   chmod +x generated_commands.sh
+   ```
+
+4. **Use JSON for complex data structures**:
+   ```bash
+   # Create a JSON configuration
+   cat > config.json << EOF
+   {
+     "task": "Update documentation",
+     "priority": 2,
+     "horizon": "H1",
+     "category": "Documentation",
+     "tags": ["docs", "update"]
+   }
+   EOF
+   
+   # Process it with Node
+   node -e "
+   const config = require('./config.json');
+   const cmd = \`t2p todo add --priority \${config.priority} --horizon \${config.horizon} --category \"\${config.category}\" --tags \"\${config.tags.join(',')}\" --title \"\${config.task}\" --description \"Task automatically created from JSON config\"\`;
+   console.log('Command to run:', cmd);
+   require('child_process').execSync(cmd, {stdio: 'inherit'});
+   "
+   ```
+
+### Advanced Diagnostic Tools
+
+When commands mysteriously fail:
+
+1. **Command output tracing**:
+   ```bash
+   # Add trace debugging
+   TRACE=1 bash -x command_that_fails.sh
+   ```
+
+2. **Environment verification**:
+   ```bash
+   # Check crucial environment variables
+   node -e "console.log('Path:', process.env.PATH.split(';'))"
+   node -e "console.log('Node version:', process.version)"
+   node -e "console.log('OS:', require('os').platform(), require('os').release())"
+   ```
+
+3. **Check command availability**:
+   ```bash
+   # Verify command exists and is executable
+   node -e "
+   const cmd = 't2p';
+   const { execSync } = require('child_process');
+   try {
+     const path = execSync('which ' + cmd).toString().trim();
+     console.log(`Command ${cmd} found at: ${path}`);
+     console.log('Permissions:', execSync(`ls -la ${path}`).toString());
+   } catch (e) {
+     console.log(`Command ${cmd} not found in PATH`);
+     console.log('PATH:', process.env.PATH);
+   }
+   "
+   ```
+
+4. **Create AI-assisted diagnostics**:
+   ```bash
+   # Generate a diagnostic report
+   t2p note new --ai "Analyze my environment and suggest fixes for the following error: $(command_that_fails.sh 2>&1)"
+   ```
+
+### Paranoid Approach to Critical Operations
+
+For operations that absolutely must not fail:
+
+1. **State preservation before operations**:
+   ```bash
+   # Save state before risky operations
+   mkdir -p .backups
+   timestamp=$(date +%Y%m%d_%H%M%S)
+   cp important_file.md .backups/important_file.md.$timestamp
+   
+   # Perform operation
+   # ...
+   
+   # Verify success or restore
+   if [ $? -ne 0 ]; then
+     echo "Operation failed, restoring backup"
+     cp .backups/important_file.md.$timestamp important_file.md
+   fi
+   ```
+
+2. **Staged operation with verification**:
+   ```bash
+   # Stage changes in a temporary file
+   cp original.md temp.md
+   
+   # Make changes to temp.md
+   # ...
+   
+   # Verify before replacing
+   diff original.md temp.md
+   read -p "Apply these changes? (y/n) " confirm
+   if [ "$confirm" = "y" ]; then
+     mv temp.md original.md
+   else
+     echo "Operation canceled"
+     rm temp.md
+   fi
+   ```
+
+3. **Create operation log**:
+   ```bash
+   # Log all operations
+   echo "[$(date)] Starting operation: $1" >> operations.log
+   $@ 2>&1 | tee -a operations.log
+   echo "[$(date)] Operation completed with status: $?" >> operations.log
+   ```
+
+## Creative Unconventional Approaches
+
+When traditional methods fail, try these unorthodox techniques:
+
+### Command Environment Transformation 
+
+1. **Browser Console as Command Environment**:
+   Use the browser console in Chrome/Firefox DevTools as an alternative terminal:
+   ```javascript
+   // From browser console, add a file to the project
+   fetch('http://localhost:3000/api/files', {
+     method: 'POST',
+     headers: { 'Content-Type': 'application/json' },
+     body: JSON.stringify({ 
+       path: 'new-file.md', 
+       content: '# New File\n\nCreated via browser API' 
+     })
+   }).then(r => r.json()).then(console.log)
+   ```
+
+2. **VS Code Extension as Command Proxy**:
+   Leverage VS Code Extension APIs when terminal commands fail:
+   ```javascript
+   // Create a simple VS Code extension command that proxies terminal operations
+   // Use Command Palette > "Execute: Add Todo" instead of terminal
+   vscode.commands.registerCommand('execute.addTodo', async () => {
+     const title = await vscode.window.showInputBox({prompt: 'Task title'});
+     const description = await vscode.window.showInputBox({prompt: 'Description'});
+     // Run the t2p command internally
+     const terminal = vscode.window.createTerminal('Task Terminal');
+     terminal.sendText(`t2p todo add --title "${title}" --description "${description}"`);
+   });
+   ```
+
+3. **UI Automation Instead of Commands**:
+   Use UI automation tools when command-line options fail:
+   ```javascript
+   // Using Playwright/Puppeteer for UI automation
+   const {chromium} = require('playwright');
+   (async () => {
+     const browser = await chromium.launch();
+     const page = await browser.newPage();
+     await page.goto('http://localhost:3000/todos');
+     await page.click('button.add-todo');
+     await page.fill('input[name="title"]', 'New Todo');
+     await page.fill('textarea[name="description"]', 'Description');
+     await page.click('button[type="submit"]');
+     await browser.close();
+   })();
+   ```
+
+### File-Based Communication
+
+1. **Watch-Based Systems**:
+   Create a file-watching system for commands:
+   ```javascript
+   // Create a command processor that watches for files
+   const fs = require('fs');
+   const chokidar = require('chokidar');
+   
+   // Watch the commands directory
+   chokidar.watch('./commands').on('add', (path) => {
+     console.log(`New command file detected: ${path}`);
+     const command = fs.readFileSync(path, 'utf8');
+     console.log(`Executing: ${command}`);
+     require('child_process').exec(command, (error, stdout, stderr) => {
+       fs.writeFileSync(`${path}.result`, `STDOUT:\n${stdout}\n\nSTDERR:\n${stderr}`);
+       fs.unlinkSync(path); // Remove the command file
+     });
+   });
+   ```
+
+2. **Morse Code File Communication**:
+   When all else fails, use binary communication:
+   ```javascript
+   // Create a simple binary communication protocol
+   function createCommand(command) {
+     // Convert command to 1s and 0s (dots and dashes)
+     const binary = Array.from(command).map(c => 
+       c.charCodeAt(0).toString(2).padStart(8, '0')
+     ).join('');
+     
+     // Write to a file with explicit name
+     fs.writeFileSync('command-signal.bin', binary);
+     console.log('Command signal created');
+   }
+   
+   // On the receiving end
+   function processCommand() {
+     const binary = fs.readFileSync('command-signal.bin', 'utf8');
+     // Convert binary back to text
+     const command = binary.match(/.{8}/g)
+       .map(byte => String.fromCharCode(parseInt(byte, 2)))
+       .join('');
+     
+     console.log(`Executing command: ${command}`);
+     require('child_process').execSync(command);
+   }
+   ```
+
+### Extreme Debugging
+
+1. **Visual Execution Flow**:
+   Create a visual map of command execution:
+   ```javascript
+   // Add this to your shell script to visualize flow
+   function trace() {
+     echo "⚙️ $1" | tee -a execution_flow.log
+     echo "   └─ $(date +%H:%M:%S.%N | cut -b1-15)" | tee -a execution_flow.log
+   }
+   
+   # Then use in scripts
+   trace "Beginning task execution"
+   # command here
+   trace "Task complete"
+   ```
+
+2. **Neural Command Predictor**:
+   Train a simple model to predict successful commands:
+   ```javascript
+   // Log successful and failed commands
+   function logCommand(cmd, success) {
+     fs.appendFileSync('command_history.jsonl', 
+       JSON.stringify({command: cmd, success, timestamp: Date.now()}) + '\n'
+     );
+   }
+   
+   // Analyze past commands for patterns
+   function suggestCommand(partialCommand) {
+     const history = fs.readFileSync('command_history.jsonl', 'utf8')
+       .split('\n')
+       .filter(Boolean)
+       .map(JSON.parse);
+     
+     // Find similar successful commands
+     const matches = history
+       .filter(entry => entry.success && entry.command.includes(partialCommand))
+       .sort((a, b) => b.timestamp - a.timestamp);
+     
+     return matches.length > 0 ? matches[0].command : null;
+   }
+   ```
+
+### Quantum Approach to Documentation
+
+1. **Schrödinger's Documentation**:
+   Update both code and docs simultaneously, neither is primary:
+   ```javascript
+   // Generate both implementation and docs in one operation
+   function generateBoth(spec) {
+     const implementation = generateCodeFromSpec(spec);
+     const documentation = generateDocsFromSpec(spec);
+     
+     fs.writeFileSync('implementation.js', implementation);
+     fs.writeFileSync('documentation.md', documentation);
+     
+     // Create bidirectional links
+     insertDocsLink('implementation.js', 'documentation.md');
+     insertCodeLink('documentation.md', 'implementation.js');
+   }
+   ```
+
+2. **Documentation-Driven Debugging**:
+   Debug by writing documentation about what should happen:
+   ```javascript
+   // Create a debugging document
+   function documentDebug(problem) {
+     const debugDoc = `
+     # Debug Investigation: ${problem}
+     
+     ## Expected Behavior
+     [Describe what should happen]
+     
+     ## Actual Behavior
+     [Describe what actually happens]
+     
+     ## Investigation Steps
+     1. [First step]
+     2. [Second step]
+     
+     ## Findings
+     [Document discoveries here]
+     `;
+     
+     fs.writeFileSync(`debug-${Date.now()}.md`, debugDoc);
+     // The act of writing this often reveals the solution!
+   }
+   ```
+
+Remember: When conventional approaches fail, creative solutions often succeed. The best command is often the one that works in your specific environment, regardless of how unorthodox it might seem. 

@@ -40,6 +40,23 @@ Our documentation is organized according to a clear hierarchy that answers diffe
   - Product Hazard Analysis (PHAs)
   - Operational runbooks
 
+## Frontend Documentation
+
+The `docs/frontend/` directory contains documentation specific to the OSPAiN2-Hub frontend rebuild project:
+
+- `architecture.md` - Technical architecture, component structure, and design patterns
+- `wireframes.md` - UI/UX wireframes and layout designs
+- `setup.md` - Setup instructions and development environment configuration
+- `progress.md` - Progress tracking and current status
+- `summary.md` - Project overview and key accomplishments
+
+Additional frontend-related documents in the root docs directory:
+
+- `frontend-implementation-plan.md` - Detailed implementation plan and timeline
+- `frontend-setup.md` - Comprehensive setup guide
+- `frontend-wireframes.md` - Detailed wireframes for all screens
+- `frontend-rebuild.md` - Overall rebuild strategy and architecture
+
 ## Documentation Horizons
 
 Documents are classified according to our horizon framework:
@@ -73,4 +90,5 @@ As part of our horizon management:
 
 - [Documentation Templates](../templates/documentation/README.md)
 - [Horizon Framework Map](../@horizon-map.mdc)
-- [Master Todo List](../.cursor/master-todo.md)
+- [Master Todo List](../master-todo.mdc)
+- [Frontend Rebuild Documentation](./frontend/summary.md)

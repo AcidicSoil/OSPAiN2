@@ -149,7 +149,7 @@ function generateModeContext() {
   const currentMode = getCurrentMode();
 
   if (currentMode === 'none') {
-    return `⚠️ **No active development mode**\n\nConsider setting a development mode with:\n\`./mode_switcher.sh switch <mode> "reason"\``;
+    return `⚠️ **No active development mode**\n\nConsider setting a development mode with:\n\`m switch <mode> "reason"\` or \`./mode_switcher.sh switch <mode> "reason"\``;
   }
 
   const context = modeContext[currentMode];

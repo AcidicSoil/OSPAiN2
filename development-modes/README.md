@@ -45,6 +45,8 @@ The framework includes command-line tools for managing development modes:
 - `mode_switcher.sh` for Bash/Git Bash environments
 - `mode_switcher.ps1` for PowerShell environments
 
+> **Note:** An alias `m` is available for `mode_switcher.sh` after installation, allowing for simpler commands.
+
 ### Available Commands
 
 - **current**: Show the current development mode
@@ -52,11 +54,21 @@ The framework includes command-line tools for managing development modes:
   ```
   ./mode_switcher.sh current
   ```
+  
+  With alias:
+  ```
+  m current
+  ```
 
 - **list**: List all available development modes
 
   ```
   ./mode_switcher.sh list
+  ```
+  
+  With alias:
+  ```
+  m list
   ```
 
 - **switch**: Switch to a different development mode with reason
@@ -64,16 +76,31 @@ The framework includes command-line tools for managing development modes:
   ```
   ./mode_switcher.sh switch design "Starting UI design for new feature"
   ```
+  
+  With alias:
+  ```
+  m switch design "Starting UI design for new feature"
+  ```
 
 - **history**: Show mode transition history
 
   ```
   ./mode_switcher.sh history
   ```
+  
+  With alias:
+  ```
+  m history
+  ```
 
 - **notes**: Edit mode-specific notes for the current or specified mode
   ```
   ./mode_switcher.sh notes engineering
+  ```
+  
+  With alias:
+  ```
+  m notes engineering
   ```
 
 ### Mode Context for Chat Sessions
