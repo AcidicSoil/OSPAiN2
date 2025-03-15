@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  falkordb:
+    image: falkordb/falkordb:latest
+    container_name: ospain2-falkordb
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - falkordb-data:/data
+    command: ["--requirepass", "${FALKORDB_PASSWORD:-falkordb}"]
+    environment:
+      - TZ=UTC
+    networks:
+      - ospain2-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "-a", "${FALKORDB_PASSWORD:-falkordb}", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+networks:
+  ospain2-network:
+    name: ospain2-network
+    driver: bridge
+
+volumes:
+  falkordb-data:
+    name: ospain2-falkordb-data 
