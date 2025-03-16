@@ -1,4 +1,3 @@
 @echo off
-cd OSPAiN2-hub
-start cmd /k npm start
-start cmd /k node server.js 
+cd OSPAiN2-hub-new
+start cmd /k pnpm dev 

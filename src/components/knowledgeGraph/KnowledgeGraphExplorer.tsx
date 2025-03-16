@@ -10,4 +10,7 @@ export const KnowledgeGraphExplorer: React.FC = () => {
       </Box>
     </Paper>
   );
-}; 
+};
+
+// Ensure default export is also available
+export default KnowledgeGraphExplorer; 

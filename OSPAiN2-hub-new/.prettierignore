@@ -1,0 +1,41 @@
+# Dependency directories
+node_modules/
+dist/
+build/
+
+# Generated files
+coverage/
+.coverage/
+.nyc_output/
+*.min.js
+
+# Lock files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Cache
+.cache/
+.npm/
+.eslintcache
+
+# Log files
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw? 

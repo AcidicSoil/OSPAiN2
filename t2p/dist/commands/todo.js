@@ -251,8 +251,8 @@ async function remixTodo(llmResponse) {
                     }
                     else if (field === 'priority') {
                         const priority = typeof value === 'object' ? value.suggestion : value;
-                        remixedTodo.priority =
-                            typeof priority === 'number' ? priority : parseInt(priority);
+                        const parsedPriority = typeof priority === 'number' ? priority : parseInt(priority);
+                        remixedTodo.priority = (parsedPriority >= 1 && parsedPriority <= 5 ? parsedPriority : 3);
                     }
                     else if (field === 'horizon') {
                         const horizon = typeof value === 'object' ? value.suggestion : value;

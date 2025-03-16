@@ -19,4 +19,12 @@ export declare class TerminalExecutor {
      * @returns True if the command is valid
      */
     static validateCommand(command: string): boolean;
+    /**
+     * Wraps a command in quotes if it contains spaces or special characters
+     * that might cause issues in the shell
+     *
+     * @param command Command to wrap safely
+     * @returns Safely quoted command
+     */
+    static safeQuote(command: string): string;
 }

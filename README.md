@@ -131,6 +131,8 @@ t2p todo list --priority 1 --status "in-progress"
 ## Tools
 
 - [system-file-manager.sh](./system-file-manager.sh) - Manages system-level MDC files with @ prefix convention ([Documentation](docs/system-file-manager.md))
+- [chat-export-tool.js](./chat-export-tool.js) - Exports conversations for prompt engineering analysis and template creation
+- [text-cleanup.js](./text-cleanup.js) - Context-aware pattern replacement tool for maintaining codebase consistency ([Documentation](docs/text-cleanup.md))
 
 ## License
 

@@ -1,3 +1,8 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
 todo:: master
 ---
 description: 
@@ -165,7 +170,12 @@ alwaysApply: false
   - Critical for tag system and context management functionality
 
 ### Documentation and Compatibility
-- 🟢 [H1] **P1**: Create system-file-manager.sh for @ prefix convention management
+- [ ] [H1] **P2**: Create text-cleanup.js tool for context-aware text replacement
+  - Implement a Node.js script for finding and replacing text patterns with context awareness
+  - Support smart replacement based on surrounding code context (code vs documentation)
+  - Generate comprehensive reports of all changes made
+  - Include dry-run mode for previewing changes before applying
+  - Add support for customizable file inclusion/exclusion patterns - 🟢 [H1] **P1**: Create system-file-manager.sh for @ prefix convention management
   - Created a comprehensive script to manage @ prefix for system-level MDC files
   - Implements automatic reference updating when tagging/untagging files
   - Includes scanning functionality to identify potential system files
@@ -179,7 +189,7 @@ alwaysApply: false
   - COMPLETED: All system-level MDC files now follow the @ prefix convention 
 - 🔴 [H1] **P1**: Develop Documentation Standards Enforcer Agent
   - Purpose: Automatically scan codebase and correct documentation not aligned with standards
-  - See detailed documentation in [documentation-enforcer-agent.md](documentation-enforcer-agent.md)
+  - See detailed documentation in [documentation-enforcer-agent.md](mdc:documentation-enforcer-agent.md)
   - PRIORITY: Critical - Essential for maintaining documentation standards at scale
 
 
@@ -2092,7 +2102,12 @@ alwaysApply: false
   - Critical for tag system and context management functionality
 
 ### Documentation and Compatibility
-- 🟢 [H1] **P1**: Create system-file-manager.sh for @ prefix convention management
+- [ ] [H1] **P2**: Create text-cleanup.js tool for context-aware text replacement
+  - Implement a Node.js script for finding and replacing text patterns with context awareness
+  - Support smart replacement based on surrounding code context (code vs documentation)
+  - Generate comprehensive reports of all changes made
+  - Include dry-run mode for previewing changes before applying
+  - Add support for customizable file inclusion/exclusion patterns - 🟢 [H1] **P1**: Create system-file-manager.sh for @ prefix convention management
   - Created a comprehensive script to manage @ prefix for system-level MDC files
   - Implements automatic reference updating when tagging/untagging files
   - Includes scanning functionality to identify potential system files
@@ -2106,7 +2121,7 @@ alwaysApply: false
   - COMPLETED: All system-level MDC files now follow the @ prefix convention 
 - 🔴 [H1] **P1**: Develop Documentation Standards Enforcer Agent
   - Purpose: Automatically scan codebase and correct documentation not aligned with standards
-  - See detailed documentation in [documentation-enforcer-agent.md](documentation-enforcer-agent.md)
+  - See detailed documentation in [documentation-enforcer-agent.md](mdc:documentation-enforcer-agent.md)
   - PRIORITY: Critical - Essential for maintaining documentation standards at scale
 
 
@@ -5799,7 +5814,12 @@ alwaysApply: false
   - Critical for tag system and context management functionality
 
 ### Documentation and Compatibility
-- 🟢 [H1] **P1**: Create system-file-manager.sh for @ prefix convention management
+- [ ] [H1] **P2**: Create text-cleanup.js tool for context-aware text replacement
+  - Implement a Node.js script for finding and replacing text patterns with context awareness
+  - Support smart replacement based on surrounding code context (code vs documentation)
+  - Generate comprehensive reports of all changes made
+  - Include dry-run mode for previewing changes before applying
+  - Add support for customizable file inclusion/exclusion patterns - 🟢 [H1] **P1**: Create system-file-manager.sh for @ prefix convention management
   - Created a comprehensive script to manage @ prefix for system-level MDC files
   - Implements automatic reference updating when tagging/untagging files
   - Includes scanning functionality to identify potential system files
@@ -5813,7 +5833,7 @@ alwaysApply: false
   - COMPLETED: All system-level MDC files now follow the @ prefix convention 
 - 🔴 [H1] **P1**: Develop Documentation Standards Enforcer Agent
   - Purpose: Automatically scan codebase and correct documentation not aligned with standards
-  - See detailed documentation in [documentation-enforcer-agent.md](documentation-enforcer-agent.md)
+  - See detailed documentation in [documentation-enforcer-agent.md](mdc:documentation-enforcer-agent.md)
   - PRIORITY: Critical - Essential for maintaining documentation standards at scale
 
 
@@ -10648,7 +10668,12 @@ alwaysApply: false
   - Critical for tag system and context management functionality
 
 ### Documentation and Compatibility
-- 🟢 [H1] **P1**: Create system-file-manager.sh for @ prefix convention management
+- [ ] [H1] **P2**: Create text-cleanup.js tool for context-aware text replacement
+  - Implement a Node.js script for finding and replacing text patterns with context awareness
+  - Support smart replacement based on surrounding code context (code vs documentation)
+  - Generate comprehensive reports of all changes made
+  - Include dry-run mode for previewing changes before applying
+  - Add support for customizable file inclusion/exclusion patterns - 🟢 [H1] **P1**: Create system-file-manager.sh for @ prefix convention management
   - Created a comprehensive script to manage @ prefix for system-level MDC files
   - Implements automatic reference updating when tagging/untagging files
   - Includes scanning functionality to identify potential system files
@@ -10662,7 +10687,7 @@ alwaysApply: false
   - COMPLETED: All system-level MDC files now follow the @ prefix convention 
 - 🔴 [H1] **P1**: Develop Documentation Standards Enforcer Agent
   - Purpose: Automatically scan codebase and correct documentation not aligned with standards
-  - See detailed documentation in [documentation-enforcer-agent.md](documentation-enforcer-agent.md)
+  - See detailed documentation in [documentation-enforcer-agent.md](mdc:documentation-enforcer-agent.md)
   - PRIORITY: Critical - Essential for maintaining documentation standards at scale
 
 

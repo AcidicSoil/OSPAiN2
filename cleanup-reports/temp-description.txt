@@ -1,0 +1,58 @@
+Cleanup report summary:
+- Total files scanned: 1167
+- Files analyzed: 1029
+- Potential cleanup candidates: 462
+
+Top candidates for review:
+
+### t2p\src\services\note.service.js
+
+Reasons:
+- File exports code but is not imported anywhere
+- Generated JavaScript file with TypeScript source available
+
+Metrics:
+- Last modified: Thu Mar 13 2025 15:34:34 GMT-0500 (Central Daylight Time)
+- Size: 23120 bytes
+- Age: 2 days
+- Horizon level: 3
+- Recently modified in git: Yes
+- Imported by: None
+
+**Deletion skipped (dry run)**
+
+---
+
+### archive\OSPAiN2-hub-archived\src\App.tsx
+
+Reasons:
+- File exports code but is not imported anywhere
+
+Metrics:
+- Last modified: Sun Mar 16 2025 01:53:43 GMT-0500 (Central Daylight Time)
+- Size: 5540 bytes
+- Age: 0 days
+- Horizon level: 3
+- Imported by: None
+
+**Deletion skipped (dry run)**
+
+---
+
+### archive\OSPAiN2-hub-archived\src\components\common\ErrorBoundary.tsx
+
+Reasons:
+- File exports code but is not imported anywhere
+
+Metrics:
+- Last modified: Sun Mar 16 2025 01:53:43 GMT-0500 (Central Daylight Time)
+- Size: 3693 bytes
+- Age: 0 days
+- Horizon level: 0
+- Imported by: None
+
+**Deletion skipped (dry run)**
+
+---
+
+Full report available at: cleanup-reports\cleanup-report-2025-03-16.md

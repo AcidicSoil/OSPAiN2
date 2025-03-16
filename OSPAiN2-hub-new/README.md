@@ -115,6 +115,54 @@ For a detailed architecture overview, see [docs/frontend/architecture.md](../doc
 - Follow semantic HTML practices
 - Ensure responsive design for all screens
 
+## Code Quality Tools
+
+The project uses several tools to maintain code quality:
+
+### ESLint
+
+ESLint is configured with rules for TypeScript, React, React Hooks, JSX accessibility, and import organization. To run ESLint:
+
+```bash
+# Check for issues
+npm run lint
+
+# Fix automatically fixable issues
+npm run lint:fix
+```
+
+### Prettier
+
+Prettier is used for consistent code formatting. To format your code:
+
+```bash
+npm run format
+```
+
+### TypeScript
+
+TypeScript provides static type checking. To check types:
+
+```bash
+npm run typecheck
+```
+
+### Git Hooks with Husky and lint-staged
+
+The project uses Husky to run lint-staged before commits, which automatically lints and formats staged files.
+
+### VS Code Configuration
+
+If you're using VS Code, the project includes settings for:
+- Automatic formatting on save with Prettier
+- ESLint error highlighting
+- TypeScript type checking
+
+Install the following extensions for the best experience:
+- ESLint
+- Prettier
+- Tailwind CSS IntelliSense
+
 ## Integration Points
 
 The frontend integrates with:

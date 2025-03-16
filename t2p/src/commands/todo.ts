@@ -267,8 +267,8 @@ async function remixTodo(
             remixedTodo.category = typeof value === 'object' ? value.suggestion : value;
           } else if (field === 'priority') {
             const priority = typeof value === 'object' ? value.suggestion : value;
-            remixedTodo.priority =
-              typeof priority === 'number' ? priority : (parseInt(priority) as 1 | 2 | 3 | 4 | 5);
+            const parsedPriority = typeof priority === 'number' ? priority : parseInt(priority);
+            remixedTodo.priority = (parsedPriority >= 1 && parsedPriority <= 5 ? parsedPriority : 3) as 1 | 2 | 3 | 4 | 5;
           } else if (field === 'horizon') {
             const horizon = typeof value === 'object' ? value.suggestion : value;
             remixedTodo.horizon = horizon as 'H1' | 'H2' | 'H3';

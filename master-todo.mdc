@@ -1,3 +1,8 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
 todo:: master
 ---
 description: 
@@ -168,7 +173,7 @@ alwaysApply: false
 
 - 🔴 [H1] **P1**: Develop Documentation Standards Enforcer Agent
   - Purpose: Automatically scan codebase and correct documentation not aligned with standards
-  - See detailed documentation in [documentation-enforcer-agent.md](documentation-enforcer-agent.md)
+  - See detailed documentation in [documentation-enforcer-agent.md](mdc:documentation-enforcer-agent.md)
   - PRIORITY: Critical - Essential for maintaining documentation standards at scale
 
 
@@ -2084,7 +2089,7 @@ alwaysApply: false
 
 - 🔴 [H1] **P1**: Develop Documentation Standards Enforcer Agent
   - Purpose: Automatically scan codebase and correct documentation not aligned with standards
-  - See detailed documentation in [documentation-enforcer-agent.md](documentation-enforcer-agent.md)
+  - See detailed documentation in [documentation-enforcer-agent.md](mdc:documentation-enforcer-agent.md)
   - PRIORITY: Critical - Essential for maintaining documentation standards at scale
 
 
@@ -5780,7 +5785,7 @@ alwaysApply: false
 
 - 🔴 [H1] **P1**: Develop Documentation Standards Enforcer Agent
   - Purpose: Automatically scan codebase and correct documentation not aligned with standards
-  - See detailed documentation in [documentation-enforcer-agent.md](documentation-enforcer-agent.md)
+  - See detailed documentation in [documentation-enforcer-agent.md](mdc:documentation-enforcer-agent.md)
   - PRIORITY: Critical - Essential for maintaining documentation standards at scale
 
 
@@ -10618,7 +10623,7 @@ alwaysApply: false
 
 - 🔴 [H1] **P1**: Develop Documentation Standards Enforcer Agent
   - Purpose: Automatically scan codebase and correct documentation not aligned with standards
-  - See detailed documentation in [documentation-enforcer-agent.md](documentation-enforcer-agent.md)
+  - See detailed documentation in [documentation-enforcer-agent.md](mdc:documentation-enforcer-agent.md)
   - PRIORITY: Critical - Essential for maintaining documentation standards at scale
 
 

@@ -1,0 +1,24 @@
+# Dependency directories
+node_modules/
+dist/
+build/
+
+# Generated files
+coverage/
+.coverage/
+.nyc_output/
+*.min.js
+
+# Configuration files
+tailwind.config.js
+postcss.config.js
+vite.config.ts
+vitest.config.ts
+
+# Public directory
+public/
+
+# Lock files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml 

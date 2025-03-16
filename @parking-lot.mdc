@@ -1,4 +1,9 @@
 ---
+description: 
+globs: 
+alwaysApply: false
+---
+---
 description: Concept Parking Lot for future project ideas
 globs: 
 alwaysApply: true

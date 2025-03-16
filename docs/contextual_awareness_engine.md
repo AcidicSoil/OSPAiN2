@@ -21,7 +21,7 @@ graph TD
 The Context Router is the main entry point for applications integrating with the Contextual Awareness Engine:
 
 ```typescript
-import { ContextRouter } from "ollama-tag-cli/dist/utils/context-router.js";
+import { ContextRouter } from "t2p/dist/utils/context-router.js";
 
 // Initialize router
 const contextRouter = new ContextRouter({
@@ -49,7 +49,7 @@ interface MemoryServiceConfig {
 The Tag Service manages the tag database and tag operations:
 
 ```typescript
-import { TagService } from "ollama-tag-cli/dist/utils/tag-service.js";
+import { TagService } from "ollama-tag-t2p/tag-service.js";
 
 const tagService = new TagService({
   databasePath: "~/.ollama/tags/tags.json", // Default database path
@@ -134,7 +134,7 @@ async function getRecommendedModel(userPrompt: string) {
 A complete example of integrating with Ollama API:
 
 ```typescript
-import { ContextRouter } from "ollama-tag-cli/dist/utils/context-router.js";
+import { ContextRouter } from "t2p/dist/utt2puter.js";
 import { OllamaClient } from "@ollama/client";
 
 async function enhancedChat(userPrompt: string) {

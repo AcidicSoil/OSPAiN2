@@ -21,6 +21,7 @@ import {
   Code,
   Image
 } from '@mui/icons-material';
+import knowledgeGraphService from '../../services/KnowledgeGraphService';
 
 interface UploadedFile {
   id: string;
@@ -28,12 +29,15 @@ interface UploadedFile {
   type: string;
   size: number;
   lastModified: number;
+  data: Blob;
 }
 
 export const BatchDocumentImport: React.FC = () => {
   const [files, setFiles] = useState<UploadedFile[]>([]);
   const [dragActive, setDragActive] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [importing, setImporting] = useState(false);
+  const [uploadStatus, setUploadStatus] = useState<{ type: string; message: string } | null>(null);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const fileList = event.target.files;
@@ -63,7 +67,8 @@ export const BatchDocumentImport: React.FC = () => {
         name: file.name,
         type: file.type,
         size: file.size,
-        lastModified: file.lastModified
+        lastModified: file.lastModified,
+        data: file
       });
     });
     
@@ -130,11 +135,45 @@ export const BatchDocumentImport: React.FC = () => {
     setFiles([]);
   };
 
-  const importFiles = () => {
-    // Here we would implement the actual file processing logic
-    // For now, we'll just simulate it with a console log
-    console.log('Importing files:', files);
-    alert(`Processing ${files.length} files. This would trigger the actual import in a real implementation.`);
+  const importFiles = async () => {
+    if (files.length === 0) return;
+    
+    try {
+      setImporting(true);
+      
+      // Convert UploadedFile objects to File objects
+      const filesToUpload = files.map(file => {
+        // We need to re-create File objects from our stored metadata
+        return new File(
+          [file.data], // Use the actual file data blob
+          file.name,
+          { 
+            type: file.type,
+            lastModified: file.lastModified
+          }
+        );
+      });
+      
+      // Use the service to upload the files
+      await knowledgeGraphService.uploadDocuments(filesToUpload);
+      
+      // Show success message
+      setUploadStatus({
+        type: 'success',
+        message: `Successfully queued ${files.length} file(s) for processing.`
+      });
+      
+      // Clear the uploaded files
+      setFiles([]);
+    } catch (error) {
+      console.error('Error uploading files:', error);
+      setUploadStatus({
+        type: 'error',
+        message: 'Failed to import files. Please try again.'
+      });
+    } finally {
+      setImporting(false);
+    }
   };
 
   return (
@@ -254,4 +293,6 @@ export const BatchDocumentImport: React.FC = () => {
       )}
     </Paper>
   );
-}; 
+};
+
+export default BatchDocumentImport; 

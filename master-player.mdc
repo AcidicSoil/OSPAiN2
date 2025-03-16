@@ -1,4 +1,9 @@
 ---
+description: 
+globs: 
+alwaysApply: true
+---
+---
 description: Strategic commands and prompts for efficient codebase navigation and task execution
 globs: 
 alwaysApply: true

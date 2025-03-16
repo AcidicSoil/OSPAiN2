@@ -3,6 +3,11 @@ description:
 globs: 
 alwaysApply: true
 ---
+---
+description: 
+globs: 
+alwaysApply: true
+---
 # Project Development Framework & Model Call Optimization
 
 ## Product Requirements Document

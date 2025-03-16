@@ -16,13 +16,10 @@ The Ollama Tag CLI should be available in all development and production environ
 
 ```bash
 # Global installation
-npm install -g ollama-tag-cli
+npm install -g T2P
 
 # Project dependency
-npm install --save ollama-tag-cli
-```
-
-## Memory-Enhanced Tagging
+npm install --save T2P
 
 The tag system integrates with Knowledge Graph MCP Server for intelligent tagging capabilities:
 
@@ -75,9 +72,8 @@ The tag system acts as a "context router" for AI models:
 
 ```typescript
 // Example of using the tag system as a context router
-import { TagService } from "ollama-tag-cli/dist/utils/tag-service.js";
-import { MemoryService } from "ollama-tag-cli/dist/utils/memory-service.js";
-
+import { TagService } from "t2p/dist/utils/tag-service.js";
+import { MemoryService } from "t2p/dist/utils/memory-service.js";
 async function routeContextForRequest(userRequest: string) {
   const memoryService = new MemoryService();
   const tagService = new TagService();
@@ -161,9 +157,8 @@ For optimal performance:
 3. **Large batches** (100+): Use programmatic API for direct database access
 
    ```typescript
-   import { TagService } from "ollama-tag-cli/dist/utils/tag-service.js";
-
-   async function createManyTags() {
+   import { TagService } from "t2p/dist/utils/tag-service.js";
+async function createManyTags() {
      const tagService = new TagService();
 
      // Batch create many tags
@@ -182,9 +177,9 @@ For optimal performance:
 For read-heavy applications, implement caching:
 
 ```typescript
-import { TagService } from "ollama-tag-cli/dist/utils/tag-service.js";
+import { TagService } from "ollama-tag-t2p/distservice.js";
 
-// Simple cache implementation
+// Simplet2pntation
 const tagCache = {
   data: null,
   lastFetched: 0,
@@ -215,11 +210,11 @@ async function getAllTagsCached() {
 For applications using memory features frequently, implement memory-aware caching:
 
 ```typescript
-import { TagService } from "ollama-tag-cli/dist/utils/tag-service.js";
-import { MemoryService } from "ollama-tag-cli/dist/utils/memory-service.js";
+import { TagService } from "ollama-tag-cli/dist/utt2p/dist;
+import { MemoryServicet2pa-tag-cli/dist/utils/memory-service.js";
 
 // Memory-aware cache
-const memoryCache = {
+constt2p {
   insights: new Map(),
   relatedTags: new Map(),
   expiryMs: 5 * 60 * 1000, // 5 minutes
@@ -354,10 +349,9 @@ Integrate the tag system with AI models for improved context awareness:
 
 ```typescript
 // Example: Integrating tags with Ollama API
-import { TagService } from "ollama-tag-cli/dist/utils/tag-service.js";
-import { MemoryService } from "ollama-tag-cli/dist/utils/memory-service.js";
+import { TagService } from "ollama-tag-cli/dist/utils/tag-sert2p/dist MemoryService } from "ollama-tag-clt2pemory-service.js";
 
-async function enhanceOllamaPromptWithContext(prompt: string, model: string) {
+async function enhanceOllamaPromptWithContext(promt2pdel: string) {
   const tagService = new TagService();
   const memoryService = new MemoryService();
 

@@ -19,173 +19,80 @@ import {
   Pause as PauseIcon, 
   CheckCircle, 
   Error as ErrorIcon, 
-  Info as InfoIcon, 
-  Warning as WarningIcon,
-  MoreVert,
-  ExpandMore,
+  AccessTime, 
+  ExpandMore, 
   ExpandLess
 } from '@mui/icons-material';
-
-interface ProcessingItem {
-  id: string;
-  filename: string;
-  progress: number;
-  status: 'waiting' | 'processing' | 'completed' | 'error' | 'paused';
-  startTime?: Date;
-  endTime?: Date;
-  fileType: string;
-  fileSize: number;
-  error?: string;
-  details?: string[];
-}
+import knowledgeGraphService, { ProcessingStatus } from '../../services/KnowledgeGraphService';
 
 export const BatchProcessingProgress: React.FC = () => {
-  const [items, setItems] = useState<ProcessingItem[]>([]);
+  const [items, setItems] = useState<ProcessingStatus[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [expandedItems, setExpandedItems] = useState<Set<string>>(new Set());
+  const [processingActive, setProcessingActive] = useState(true);
   const [overallProgress, setOverallProgress] = useState(0);
-  const [expanded, setExpanded] = useState<string | null>(null);
-  const [processing, setProcessing] = useState(false);
   
-  // Mock data generator
   useEffect(() => {
-    const mockItems: ProcessingItem[] = [
-      {
-        id: '1',
-        filename: 'research-paper.pdf',
-        progress: 100,
-        status: 'completed',
-        startTime: new Date(Date.now() - 15000),
-        endTime: new Date(),
-        fileType: 'pdf',
-        fileSize: 2.4 * 1024 * 1024,
-        details: [
-          'Extracted 32 pages of content',
-          'Identified 15 key concepts',
-          'Created 48 knowledge nodes',
-          'Established 67 relationships'
-        ]
-      },
-      {
-        id: '2',
-        filename: 'quarterly-report.docx',
-        progress: 65,
-        status: 'processing',
-        startTime: new Date(Date.now() - 5000),
-        fileType: 'docx',
-        fileSize: 1.7 * 1024 * 1024,
-        details: [
-          'Processing page 14 of 22',
-          'Extracting financial data',
-          'Analyzing trends'
-        ]
-      },
-      {
-        id: '3',
-        filename: 'api-documentation.md',
-        progress: 0,
-        status: 'waiting',
-        fileType: 'markdown',
-        fileSize: 0.3 * 1024 * 1024
-      },
-      {
-        id: '4',
-        filename: 'error-log.txt',
-        progress: 30,
-        status: 'error',
-        startTime: new Date(Date.now() - 8000),
-        endTime: new Date(Date.now() - 6000),
-        fileType: 'text',
-        fileSize: 0.5 * 1024 * 1024,
-        error: 'Failed to parse content: Invalid format in line 245',
-        details: [
-          'Successfully processed 30% of content',
-          'Error encountered at line 245',
-          'Invalid syntax detected'
-        ]
-      },
-      {
-        id: '5',
-        filename: 'dataset.csv',
-        progress: 80,
-        status: 'paused',
-        startTime: new Date(Date.now() - 12000),
-        fileType: 'csv',
-        fileSize: 5.1 * 1024 * 1024,
-        details: [
-          'Processed 800 of 1000 rows',
-          'Extracted 15 column mappings',
-          'Paused by user at 80%'
-        ]
-      }
-    ];
+    loadProcessingStatus();
     
-    setItems(mockItems);
-    
-    // Calculate overall progress
-    const totalProgress = mockItems.reduce((sum, item) => sum + item.progress, 0);
-    setOverallProgress(Math.floor(totalProgress / mockItems.length));
-  }, []);
-  
-  // Simulate processing
-  useEffect(() => {
-    let timer: NodeJS.Timeout;
-    
-    if (processing) {
-      timer = setInterval(() => {
-        setItems(prevItems => {
-          const newItems = [...prevItems];
-          let totalProgress = 0;
-          let changed = false;
-          
-          newItems.forEach(item => {
-            if (item.status === 'processing' && item.progress < 100) {
-              item.progress += Math.floor(Math.random() * 5) + 1;
-              changed = true;
-              
-              if (item.progress >= 100) {
-                item.progress = 100;
-                item.status = 'completed';
-                item.endTime = new Date();
-              }
-            } else if (item.status === 'waiting' && !newItems.some(i => i.status === 'processing')) {
-              item.status = 'processing';
-              item.startTime = new Date();
-              changed = true;
-            }
-            
-            totalProgress += item.progress;
-          });
-          
-          if (changed) {
-            setOverallProgress(Math.floor(totalProgress / newItems.length));
-          }
-          
-          // Check if all items are processed
-          if (!newItems.some(item => item.status === 'processing' || item.status === 'waiting')) {
-            setProcessing(false);
-          }
-          
-          return changed ? newItems : prevItems;
-        });
-      }, 500);
+    // Set up polling if processing is active
+    let interval: NodeJS.Timeout | null = null;
+    if (processingActive) {
+      interval = setInterval(() => {
+        loadProcessingStatus();
+      }, 5000); // Poll every 5 seconds
     }
     
     return () => {
-      if (timer) clearInterval(timer);
+      if (interval) clearInterval(interval);
     };
-  }, [processing]);
+  }, [processingActive]);
+  
+  const loadProcessingStatus = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      const data = await knowledgeGraphService.getProcessingStatus();
+      setItems(data);
+      
+      // Calculate overall progress
+      if (data.length > 0) {
+        const totalProgress = data.reduce((sum, item) => sum + item.progress, 0);
+        setOverallProgress(Math.round(totalProgress / data.length));
+      }
+      
+      // Check if any items are still processing
+      const hasActiveJobs = data.some(item => 
+        item.status === 'processing' || item.status === 'waiting'
+      );
+      setProcessingActive(hasActiveJobs);
+    } catch (error) {
+      console.error('Error loading processing status:', error);
+      setError('Failed to load processing status. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
   
   const toggleExpand = (id: string) => {
-    setExpanded(expanded === id ? null : id);
+    const newExpanded = new Set(expandedItems);
+    if (newExpanded.has(id)) {
+      newExpanded.delete(id);
+    } else {
+      newExpanded.add(id);
+    }
+    setExpandedItems(newExpanded);
   };
   
   const toggleProcessing = () => {
-    setProcessing(!processing);
+    setProcessingActive(!processingActive);
   };
   
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'completed': return 'success';
-      case 'processing': return 'primary';
+      case 'processing': return 'info';
       case 'waiting': return 'default';
       case 'error': return 'error';
       case 'paused': return 'warning';
@@ -197,143 +104,165 @@ export const BatchProcessingProgress: React.FC = () => {
     switch (status) {
       case 'completed': return <CheckCircle fontSize="small" />;
       case 'processing': return <CircularProgress size={16} />;
-      case 'waiting': return <InfoIcon fontSize="small" />;
+      case 'waiting': return <AccessTime fontSize="small" />;
       case 'error': return <ErrorIcon fontSize="small" />;
       case 'paused': return <PauseIcon fontSize="small" />;
-      default: return <InfoIcon fontSize="small" />;
+      default: return null;
     }
   };
   
   const formatFileSize = (bytes: number) => {
-    if (bytes < 1024) return `${bytes} bytes`;
-    if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
-    return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+    if (bytes < 1024) return bytes + ' B';
+    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+    if (bytes < 1024 * 1024 * 1024) return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+    return (bytes / (1024 * 1024 * 1024)).toFixed(1) + ' GB';
   };
   
-  const formatDuration = (startTime?: Date, endTime?: Date) => {
-    if (!startTime) return '-';
-    const end = endTime || new Date();
-    const seconds = Math.floor((end.getTime() - startTime.getTime()) / 1000);
+  const formatDuration = (startTime?: string, endTime?: string) => {
+    if (!startTime) return 'N/A';
     
+    const start = new Date(startTime);
+    const end = endTime ? new Date(endTime) : new Date();
+    const durationMs = end.getTime() - start.getTime();
+    
+    const seconds = Math.floor(durationMs / 1000);
     if (seconds < 60) return `${seconds} sec`;
-    return `${Math.floor(seconds / 60)}m ${seconds % 60}s`;
+    
+    const minutes = Math.floor(seconds / 60);
+    if (minutes < 60) return `${minutes} min ${seconds % 60} sec`;
+    
+    const hours = Math.floor(minutes / 60);
+    return `${hours} hr ${minutes % 60} min`;
   };
   
   return (
     <Paper sx={{ p: 3, mt: 3 }}>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <Typography variant="h5">Batch Processing Progress</Typography>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
+        <Typography variant="h5">Processing Queue</Typography>
         <Button 
-          variant="contained" 
-          color={processing ? "warning" : "primary"}
-          startIcon={processing ? <PauseIcon /> : <PlayArrow />}
+          variant="outlined" 
+          startIcon={processingActive ? <PauseIcon /> : <PlayArrow />}
           onClick={toggleProcessing}
         >
-          {processing ? "Pause Processing" : "Start Processing"}
+          {processingActive ? 'Pause Updates' : 'Resume Updates'}
         </Button>
       </Box>
       
-      <Box sx={{ mt: 3, mb: 2 }}>
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 1 }}>
-          <Typography variant="body2" color="textSecondary">
-            Overall Progress ({overallProgress}%)
-          </Typography>
-          <Typography variant="body2" color="textSecondary">
-            {items.filter(i => i.status === 'completed').length} of {items.length} files completed
+      {loading && items.length === 0 ? (
+        <Box sx={{ display: 'flex', justifyContent: 'center', my: 4 }}>
+          <CircularProgress />
+        </Box>
+      ) : error ? (
+        <Box sx={{ my: 2 }}>
+          <Typography color="error">{error}</Typography>
+        </Box>
+      ) : items.length === 0 ? (
+        <Box sx={{ my: 4, textAlign: 'center' }}>
+          <Typography variant="body1" color="textSecondary">
+            No items in processing queue
           </Typography>
         </Box>
-        <LinearProgress 
-          variant="determinate" 
-          value={overallProgress} 
-          sx={{ height: 10, borderRadius: 5 }} 
-        />
-      </Box>
-      
-      <Divider sx={{ my: 2 }} />
-      
-      <Box sx={{ mt: 2 }}>
-        {items.map((item) => (
-          <Card key={item.id} sx={{ mb: 2, borderLeft: `4px solid ${item.status === 'completed' ? '#4caf50' : item.status === 'error' ? '#f44336' : item.status === 'paused' ? '#ff9800' : item.status === 'processing' ? '#2196f3' : '#9e9e9e'}` }}>
-            <CardContent sx={{ p: 2, '&:last-child': { pb: 2 } }}>
-              <Grid container spacing={2}>
-                <Grid item xs={12} sm={6}>
-                  <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                    <Typography variant="subtitle1" sx={{ fontWeight: 500 }}>
-                      {item.filename}
-                    </Typography>
-                    <Chip 
-                      size="small" 
-                      label={item.status.toUpperCase()}
-                      color={getStatusColor(item.status) as any}
-                      icon={getStatusIcon(item.status)}
-                      sx={{ ml: 1 }}
-                    />
-                  </Box>
-                  <Typography variant="body2" color="textSecondary">
-                    {item.fileType.toUpperCase()} • {formatFileSize(item.fileSize)}
-                  </Typography>
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <Box sx={{ flexGrow: 1, mr: 2 }}>
-                      <LinearProgress 
-                        variant="determinate" 
-                        value={item.progress} 
-                        color={
-                          item.status === 'completed' ? 'success' : 
-                          item.status === 'error' ? 'error' : 
-                          item.status === 'paused' ? 'warning' : 'primary'
-                        }
-                      />
-                      <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 0.5 }}>
-                        <Typography variant="caption">
-                          {item.startTime && `Started: ${item.startTime.toLocaleTimeString()}`}
-                        </Typography>
-                        <Typography variant="caption">
-                          {item.startTime && `Duration: ${formatDuration(item.startTime, item.endTime)}`}
-                        </Typography>
-                      </Box>
-                    </Box>
-                    <IconButton size="small" onClick={() => toggleExpand(item.id)}>
-                      {expanded === item.id ? <ExpandLess /> : <ExpandMore />}
-                    </IconButton>
-                  </Box>
-                </Grid>
-                
-                {expanded === item.id && (
+      ) : (
+        <Box>
+          <Box sx={{ mb: 3 }}>
+            <Typography variant="body2" gutterBottom>
+              Overall Progress
+            </Typography>
+            <LinearProgress 
+              variant="determinate" 
+              value={overallProgress} 
+              sx={{ height: 10, borderRadius: 5 }}
+            />
+            <Typography variant="body2" align="right" sx={{ mt: 0.5 }}>
+              {overallProgress}%
+            </Typography>
+          </Box>
+          
+          <Divider sx={{ mb: 2 }} />
+          
+          {items.map((item) => (
+            <Card key={item.id} sx={{ mb: 2, border: '1px solid #eee' }}>
+              <CardContent sx={{ pb: 1 }}>
+                <Grid container spacing={2}>
                   <Grid item xs={12}>
-                    <Divider sx={{ my: 1 }} />
-                    <Box sx={{ p: 1, bgcolor: 'action.hover', borderRadius: 1 }}>
-                      <Typography variant="subtitle2" sx={{ mb: 1 }}>Processing Details:</Typography>
-                      {item.error && (
-                        <Box sx={{ mb: 1, p: 1, bgcolor: '#ffebee', borderRadius: 1, border: '1px solid #ffcdd2' }}>
-                          <Typography variant="body2" color="error">
-                            <ErrorIcon fontSize="small" sx={{ verticalAlign: 'middle', mr: 1 }} />
-                            {item.error}
-                          </Typography>
-                        </Box>
-                      )}
-                      {item.details ? (
-                        <ul style={{ margin: '0', paddingLeft: '20px' }}>
-                          {item.details.map((detail, index) => (
-                            <li key={index}>
-                              <Typography variant="body2">{detail}</Typography>
-                            </li>
-                          ))}
-                        </ul>
-                      ) : (
-                        <Typography variant="body2" color="textSecondary">
-                          No processing details available
-                        </Typography>
-                      )}
+                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <Typography variant="subtitle1" sx={{ fontWeight: 'medium' }}>
+                        {item.filename}
+                      </Typography>
+                      <Chip 
+                        size="small"
+                        label={item.status.toUpperCase()}
+                        color={getStatusColor(item.status) as any}
+                        icon={getStatusIcon(item.status)}
+                      />
                     </Box>
                   </Grid>
-                )}
-              </Grid>
-            </CardContent>
-          </Card>
-        ))}
-      </Box>
+                  
+                  <Grid item xs={12}>
+                    <LinearProgress 
+                      variant="determinate" 
+                      value={item.progress} 
+                      color={
+                        item.status === 'error' ? 'error' : 
+                        item.status === 'completed' ? 'success' : 'primary'
+                      }
+                    />
+                    <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 0.5 }}>
+                      <Typography variant="body2">{item.progress}%</Typography>
+                      <Typography variant="body2">
+                        {formatDuration(item.startTime, item.endTime)}
+                      </Typography>
+                    </Box>
+                  </Grid>
+                  
+                  <Grid item xs={12}>
+                    <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                      <Typography variant="body2" color="textSecondary">
+                        {item.fileType.toUpperCase()} • {formatFileSize(item.fileSize)}
+                      </Typography>
+                      <IconButton 
+                        size="small" 
+                        onClick={() => toggleExpand(item.id)}
+                        sx={{ ml: 1 }}
+                      >
+                        {expandedItems.has(item.id) ? <ExpandLess /> : <ExpandMore />}
+                      </IconButton>
+                    </Box>
+                  </Grid>
+                  
+                  {expandedItems.has(item.id) && (
+                    <Grid item xs={12}>
+                      <Divider sx={{ my: 1 }} />
+                      {item.error && (
+                        <Typography variant="body2" color="error" sx={{ mb: 1 }}>
+                          Error: {item.error}
+                        </Typography>
+                      )}
+                      {item.details && item.details.length > 0 && (
+                        <Box sx={{ mt: 1 }}>
+                          <Typography variant="body2" sx={{ fontWeight: 'medium', mb: 0.5 }}>
+                            Details:
+                          </Typography>
+                          <ul style={{ margin: 0, paddingLeft: 16 }}>
+                            {item.details.map((detail, index) => (
+                              <li key={index}>
+                                <Typography variant="body2">{detail}</Typography>
+                              </li>
+                            ))}
+                          </ul>
+                        </Box>
+                      )}
+                    </Grid>
+                  )}
+                </Grid>
+              </CardContent>
+            </Card>
+          ))}
+        </Box>
+      )}
     </Paper>
   );
-}; 
+};
+
+// Add default export
+export default BatchProcessingProgress; 

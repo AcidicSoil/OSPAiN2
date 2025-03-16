@@ -1,0 +1,90 @@
+name: Text Cleanup Tool CI
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'text-cleanup.js'
+      - 'test/text-cleanup.test.js'
+      - '.github/workflows/text-cleanup.yml'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'text-cleanup.js'
+      - 'test/text-cleanup.test.js'
+      - '.github/workflows/text-cleanup.yml'
+
+jobs:
+  test:
+    name: Test Text Cleanup Tool
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x, 18.x, 20.x]
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci || npm install
+    
+    - name: Install mocha for testing
+      run: npm install -g mocha
+    
+    - name: Run tests
+      run: mocha test/text-cleanup.test.js
+    
+    - name: Generate test coverage report
+      run: |
+        npm install -g nyc
+        nyc --reporter=text --reporter=lcov mocha test/text-cleanup.test.js
+
+    - name: Upload coverage report
+      uses: codecov/codecov-action@v3
+      with:
+        file: ./coverage/lcov.info
+        fail_ci_if_error: false
+
+  analyze:
+    name: Analyze Codebase Naming Consistency
+    runs-on: ubuntu-latest
+    needs: test
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Use Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18.x'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci || npm install
+    
+    - name: Generate consistency report
+      run: |
+        # Run text-cleanup in dry-run mode to generate report only
+        node text-cleanup.js -p "ollama-tag-cli" --smart --dry-run --report "./cleanup-report.md"
+    
+    - name: Upload report as artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: naming-consistency-report
+        path: ./cleanup-report.md
+    
+    - name: Check for inconsistencies
+      run: |
+        REPLACEMENTS=$(grep -c "Total Replacements:" ./cleanup-report.md | awk '{print $NF}')
+        echo "Found $REPLACEMENTS potential naming inconsistencies"
+        if [ "$REPLACEMENTS" -gt "10" ]; then
+          echo "::warning::Found $REPLACEMENTS naming inconsistencies. Consider running text-cleanup.js"
+        fi 

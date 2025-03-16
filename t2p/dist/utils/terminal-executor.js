@@ -16,13 +16,26 @@ class TerminalExecutor {
      * @returns The command output as a string
      */
     static execute(command, options) {
+        if (!command || command.trim() === '') {
+            throw new Error('Cannot execute empty command');
+        }
+        // Log the original command for debugging purposes
+        console.log(`[Terminal] Original command: ${JSON.stringify(command)}`);
         // Sanitize the command
         const sanitizedCommand = (0, terminal_utils_1.sanitizeTerminalCommand)(command);
         const wasModified = command !== sanitizedCommand;
         if (wasModified) {
-            console.log(`Command was sanitized: "${command}" -> "${sanitizedCommand}"`);
+            // Log the before/after comparison for debugging
+            console.log(`[Terminal] Command sanitized: 
+        Original: ${JSON.stringify(command)}
+        Sanitized: ${JSON.stringify(sanitizedCommand)}
+      `);
         }
         try {
+            // For debugging - show if command needs sanitization
+            if ((0, terminal_utils_1.commandNeedsSanitization)(command)) {
+                console.log('[Terminal] Command needed sanitization due to control sequences');
+            }
             // Execute the sanitized command
             const result = (0, child_process_1.execSync)(sanitizedCommand, {
                 encoding: 'utf8',
@@ -32,10 +45,21 @@ class TerminalExecutor {
         }
         catch (error) {
             // Add helpful information about the command and error
-            console.error(`Error executing command: ${sanitizedCommand}`);
-            console.error(`Original command: ${command}`);
+            console.error(`[Terminal Error] Failed to execute command: ${sanitizedCommand}`);
+            console.error(`[Terminal Error] Original command: ${command}`);
             if (command !== sanitizedCommand) {
-                console.error('Command was sanitized before execution because it contained escape sequences');
+                console.error('[Terminal Error] Command was sanitized before execution because it contained escape sequences');
+            }
+            // Display the error in a more readable format
+            console.error('[Terminal Error] Details:', {
+                message: error.message,
+                code: error.code,
+                signal: error.signal,
+                cmd: error.cmd
+            });
+            // Provide guidance for common errors
+            if (error.message && error.message.includes('command not found')) {
+                console.error('[Terminal Error] Hint: This could be due to the command not being installed or not in PATH');
             }
             throw error;
         }
@@ -50,6 +74,24 @@ class TerminalExecutor {
         // Basic validation - commands should not be empty after sanitization
         const sanitizedCommand = (0, terminal_utils_1.sanitizeTerminalCommand)(command);
         return sanitizedCommand.trim().length > 0;
+    }
+    /**
+     * Wraps a command in quotes if it contains spaces or special characters
+     * that might cause issues in the shell
+     *
+     * @param command Command to wrap safely
+     * @returns Safely quoted command
+     */
+    static safeQuote(command) {
+        // Sanitize first
+        const sanitized = (0, terminal_utils_1.sanitizeTerminalCommand)(command);
+        // If it contains spaces or shell special chars, wrap in quotes
+        if (/[\s&|<>;"'`()]/.test(sanitized)) {
+            // Escape any existing double quotes
+            const escaped = sanitized.replace(/"/g, '\\"');
+            return `"${escaped}"`;
+        }
+        return sanitized;
     }
 }
 exports.TerminalExecutor = TerminalExecutor;

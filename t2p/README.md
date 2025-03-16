@@ -16,6 +16,7 @@ A command-line tool for managing tags, todos, and notes in the Ollama ecosystem.
 - 🌐 **Web Capture**: Create notes from web content automatically
 - 👥 **Multi-user Workflow**: Collaborative todos with approval system
 - 🗺️ **Architecture Mindmaps**: Daily generated architecture analysis with expert recommendations
+- 🔄 **Migration Tools**: Context-aware tools for migrating from ollama-tag-cli
 
 ## Components
 
@@ -25,6 +26,7 @@ A command-line tool for managing tags, todos, and notes in the Ollama ecosystem.
 - **LLM Integration**: AI-enhanced processing for todos and notes
 - **Multi-user Support**: Collaborative todo workflows
 - **Architecture Mindmaps**: Daily architecture analysis and recommendations
+- **Text Cleanup Tool**: Context-aware migration from ollama-tag-cli to t2p
 
 ## Documentation
 
@@ -33,6 +35,7 @@ A command-line tool for managing tags, todos, and notes in the Ollama ecosystem.
 - [API Documentation](docs/api.md)
 - [Note-Taking System](docs/note-system.md)
 - [Mindmap Feature](docs/mindmap-feature.md)
+- [Migration from ollama-tag-cli](docs/text-cleanup-integration.md)
 
 ## Installation
 
