@@ -41,6 +41,12 @@ class KnowledgeGraphManager extends events_1.EventEmitter {
         super();
         this.isConnected = false;
         this.refreshInterval = null;
+        this.defaultSearchOptions = {
+            alpha: 0.6, // Default weight favoring vector search
+            limit: 10,
+            includeContent: true,
+            searchMode: 'hybrid'
+        };
         this.context = context;
         this.serverUrl = 'http://localhost:3005'; // Default Knowledge Graph MCP server URL
     }
@@ -48,6 +54,13 @@ class KnowledgeGraphManager extends events_1.EventEmitter {
         const config = vscode.workspace.getConfiguration('cody');
         this.serverUrl = config.get('knowledgeGraph.serverUrl', this.serverUrl);
         const syncInterval = config.get('knowledgeGraph.syncInterval', 300) * 1000;
+        // Initialize default search options from config
+        this.defaultSearchOptions = {
+            alpha: config.get('knowledgeGraph.searchAlpha', 0.6),
+            limit: config.get('knowledgeGraph.searchLimit', 10),
+            includeContent: config.get('knowledgeGraph.includeContent', true),
+            searchMode: config.get('knowledgeGraph.searchMode', 'hybrid')
+        };
         try {
             await this.connect();
             this.setupRefreshInterval(syncInterval);
@@ -218,6 +231,70 @@ class KnowledgeGraphManager extends events_1.EventEmitter {
         if (this.refreshInterval) {
             clearInterval(this.refreshInterval);
         }
+    }
+    /**
+     * Performs a hybrid search combining vector and keyword approaches
+     * @param query The search query
+     * @param options Search options to customize behavior
+     */
+    async hybridSearch(query, options) {
+        const mergedOptions = { ...this.defaultSearchOptions, ...options };
+        try {
+            const endpoint = '/search/hybrid';
+            const results = await this.makeRequest(endpoint, 'POST', {
+                query,
+                options: mergedOptions
+            });
+            return results.map((result) => ({
+                node: result.node,
+                score: result.score,
+                vectorScore: result.vectorScore,
+                keywordScore: result.keywordScore,
+                highlights: result.highlights
+            }));
+        }
+        catch (error) {
+            console.error('Hybrid search failed:', error);
+            // Fallback to standard search if hybrid search fails
+            return this.searchGraph(query).then(nodes => nodes.map(node => ({ node, score: 1.0 })));
+        }
+    }
+    /**
+     * Intelligently chunks content before adding to the graph
+     * @param content The content to chunk
+     * @param metadata Metadata about the content
+     */
+    async semanticChunking(content, metadata) {
+        try {
+            const endpoint = '/process/chunk';
+            const result = await this.makeRequest(endpoint, 'POST', {
+                content,
+                metadata,
+                options: {
+                    preserveBoundaries: true,
+                    overlapSize: 50, // 50 token overlap between chunks
+                    chunkSize: metadata.fileType === 'code' ? 150 : 300 // Different sizes for different content types
+                }
+            });
+            return result.chunks;
+        }
+        catch (error) {
+            console.error('Semantic chunking failed:', error);
+            // Simple fallback chunking by paragraphs if server chunking fails
+            return content.split('\n\n').filter(chunk => chunk.trim().length > 0);
+        }
+    }
+    /**
+     * Updates the search configuration
+     */
+    updateSearchConfiguration() {
+        const config = vscode.workspace.getConfiguration('cody');
+        this.defaultSearchOptions = {
+            alpha: config.get('knowledgeGraph.searchAlpha', 0.6),
+            limit: config.get('knowledgeGraph.searchLimit', 10),
+            includeContent: config.get('knowledgeGraph.includeContent', true),
+            searchMode: config.get('knowledgeGraph.searchMode', 'hybrid')
+        };
     }
 }
 exports.KnowledgeGraphManager = KnowledgeGraphManager;

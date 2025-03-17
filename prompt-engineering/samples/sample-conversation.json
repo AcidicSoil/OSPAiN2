@@ -1,0 +1,22 @@
+{
+  "id": "sample-conversation",
+  "timestamp": "2025-03-16T21:51:50.963Z",
+  "exchanges": [
+    {
+      "role": "user",
+      "content": "Can you help me implement a new React component?"
+    },
+    {
+      "role": "assistant",
+      "content": "I'll help you create a React component. What functionality do you need?"
+    },
+    {
+      "role": "user",
+      "content": "I need a button component with different variants and sizes."
+    },
+    {
+      "role": "assistant",
+      "content": "Here's a basic implementation:\n\n```tsx\ninterface ButtonProps {\n  variant?: 'primary' | 'secondary';\n  size?: 'small' | 'medium' | 'large';\n  children: React.ReactNode;\n  onClick?: () => void;\n}\n\nexport const Button: React.FC<ButtonProps> = ({\n  variant = 'primary',\n  size = 'medium',\n  children,\n  onClick\n}) => {\n  return (\n    <button \n      className={`btn btn-${variant} btn-${size}`}\n      onClick={onClick}\n    >\n      {children}\n    </button>\n  );\n};\n```"
+    }
+  ]
+}

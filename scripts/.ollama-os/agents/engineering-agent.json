@@ -1,0 +1,77 @@
+{
+  "name": "engineering-agent",
+  "description": "Specialized agent for engineering mode tasks in OllamaOS",
+  "version": "0.1.0",
+  "capabilities": [
+    "code_generation",
+    "refactoring",
+    "performance_optimization",
+    "debugging",
+    "architecture_implementation"
+  ],
+  "contextDepth": "high",
+  "tools": [
+    "codebase_search",
+    "read_file",
+    "edit_file",
+    "run_terminal_cmd",
+    "list_dir",
+    "grep_search",
+    "search_symbols"
+  ],
+  "preferences": {
+    "codeStyle": "clean",
+    "documentationLevel": "comprehensive",
+    "verbosity": "medium",
+    "optimizationPriority": "readability"
+  },
+  "specializations": {
+    "implementation": {
+      "description": "Building core functionality from specifications",
+      "patterns": [
+        "Write clean, modular code",
+        "Ensure proper error handling",
+        "Add appropriate comments",
+        "Follow project coding standards"
+      ]
+    },
+    "refactoring": {
+      "description": "Improving existing code without changing behavior",
+      "patterns": [
+        "Identify code smells",
+        "Apply appropriate refactoring patterns",
+        "Maintain backwards compatibility",
+        "Document reasons for changes"
+      ]
+    },
+    "optimization": {
+      "description": "Improving performance and efficiency",
+      "patterns": [
+        "Measure before optimizing",
+        "Focus on critical paths",
+        "Document performance considerations",
+        "Balance readability with performance"
+      ]
+    }
+  },
+  "outputFormats": {
+    "implementationPlan": {
+      "structure": [
+        "Goal and requirements",
+        "Technical approach",
+        "Component breakdown",
+        "Dependencies",
+        "Testing strategy"
+      ]
+    },
+    "codeReview": {
+      "structure": [
+        "Code quality assessment",
+        "Potential issues",
+        "Performance considerations",
+        "Recommended improvements",
+        "Best practices"
+      ]
+    }
+  }
+} 

@@ -12,8 +12,7 @@ import {
   Alert,
   Snackbar
 } from '@mui/material';
-import { KnowledgeGraphExplorer } from '../components/knowledgeGraph/KnowledgeGraphExplorer';
-import { BatchDocumentImport } from '../components/knowledgeGraph/BatchDocumentImport';
+import { KnowledgeGraphExplorer, BatchDocumentImport } from '../components/knowledgeGraph';
 import { KnowledgeGraphService } from '../services/knowledgeGraph/KnowledgeGraphService';
 import { BatchProcessor, BatchProcessingOptions, BatchProcessingProgress } from '../services/knowledgeGraph/BatchProcessor';
 import { Document, Entity, Relationship } from '../services/knowledgeGraph/types';

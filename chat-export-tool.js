@@ -15,19 +15,84 @@ const CONFIG = {
   outputDir: './prompt-engineering/exports',
   templatesDir: './prompt-engineering/templates',
   logDir: './logs/chat',
+  sampleDir: './prompt-engineering/samples',
   defaultFormat: 'markdown',
   supportedFormats: ['markdown', 'json', 'csv']
 };
 
 /**
- * Ensures necessary directories exist
+ * Creates a sample conversation for testing
+ * @returns {Object} Sample conversation
+ */
+function createSampleConversation() {
+  return {
+    id: 'sample-conversation',
+    timestamp: new Date().toISOString(),
+    exchanges: [
+      {
+        role: 'user',
+        content: 'Can you help me implement a new React component?'
+      },
+      {
+        role: 'assistant',
+        content: 'I\'ll help you create a React component. What functionality do you need?'
+      },
+      {
+        role: 'user',
+        content: 'I need a button component with different variants and sizes.'
+      },
+      {
+        role: 'assistant',
+        content: `Here's a basic implementation:
+
+\`\`\`tsx
+interface ButtonProps {
+  variant?: 'primary' | 'secondary';
+  size?: 'small' | 'medium' | 'large';
+  children: React.ReactNode;
+  onClick?: () => void;
+}
+
+export const Button: React.FC<ButtonProps> = ({
+  variant = 'primary',
+  size = 'medium',
+  children,
+  onClick
+}) => {
+  return (
+    <button 
+      className={\`btn btn-\${variant} btn-\${size}\`}
+      onClick={onClick}
+    >
+      {children}
+    </button>
+  );
+};
+\`\`\``
+      }
+    ]
+  };
+}
+
+/**
+ * Ensures necessary directories exist and creates sample data if needed
  */
 function ensureDirectories() {
-  [CONFIG.outputDir, CONFIG.templatesDir].forEach(dir => {
+  // Create all required directories
+  [CONFIG.outputDir, CONFIG.templatesDir, CONFIG.logDir, CONFIG.sampleDir].forEach(dir => {
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir, { recursive: true });
+      console.log(`Created directory: ${dir}`);
     }
   });
+
+  // Create sample data if no conversations exist
+  const sampleFile = path.join(CONFIG.sampleDir, 'sample-conversation.json');
+  if (!fs.existsSync(sampleFile)) {
+    const sampleData = createSampleConversation();
+    fs.writeFileSync(sampleFile, JSON.stringify(sampleData, null, 2));
+    console.log(`Created sample conversation: ${sampleFile}`);
+  }
 }
 
 /**
@@ -55,11 +120,17 @@ function processArgs() {
  * @returns {Array<string>} - Array of file paths
  */
 function findChatLogs(options) {
-  const sourcePath = options.source;
+  let sourcePath = options.source;
   
+  // If source directory doesn't exist, try sample directory
   if (!fs.existsSync(sourcePath)) {
-    console.error(`Source path does not exist: ${sourcePath}`);
-    process.exit(1);
+    console.log(`Source path ${sourcePath} not found, using sample directory...`);
+    sourcePath = CONFIG.sampleDir;
+    
+    // If sample directory doesn't exist or is empty, create sample data
+    if (!fs.existsSync(sourcePath) || fs.readdirSync(sourcePath).length === 0) {
+      ensureDirectories();
+    }
   }
   
   let files = [];
@@ -620,14 +691,17 @@ function exportAnalysisSummary(analysis) {
  */
 function main() {
   try {
+    // Ensure directories exist first
     ensureDirectories();
+    
     const options = processArgs();
     
     const files = findChatLogs(options);
     console.log(`Found ${files.length} conversation files`);
     
     if (files.length === 0) {
-      console.log('No conversations to export.');
+      console.log('No conversations found. A sample conversation has been created in the samples directory.');
+      console.log(`Try running the tool again with: --source "${CONFIG.sampleDir}"`);
       return;
     }
     
@@ -646,6 +720,7 @@ function main() {
     
   } catch (error) {
     console.error('Error:', error.message);
+    console.error('\nTry running with --help for usage information');
     process.exit(1);
   }
 }

@@ -1,6 +1,335 @@
 ---
-description: 
-globs: 
-alwaysApply: false
+description: Comprehensive guide for development mode workflows in the Ollama ecosystem
+globs: ["*.ts", "*.tsx", "*.js", "*.jsx", "*.md", "*.mdc"]
+alwaysApply: true
 ---
- 
+
+# Development Mode Workflow Guide
+
+## Overview
+
+This document outlines the systematic workflow processes for each development mode in the Ollama ecosystem. It provides structured guidelines for transitioning between modes and ensuring comprehensive feature implementation.
+
+## Mode Switching Protocol
+
+### Command Format
+```bash
+t2p m switch <mode> "<reason>"
+```
+
+### Available Modes
+- 🎨 Design Mode: `design`
+- 🔧 Engineering Mode: `engineering`
+- 🧪 Testing Mode: `testing`
+- 📦 Deployment Mode: `deployment`
+- 🔍 Maintenance Mode: `maintenance`
+
+## Development Mode Workflows
+
+### 🎨 Design Mode
+
+#### Entry Criteria
+- Clear feature requirements documented
+- User stories or use cases defined
+- Design resources and assets available
+- Accessibility requirements identified
+
+#### Workflow Steps
+1. **Initial Planning**
+   - Review requirements and constraints
+   - Create component/feature mockups
+   - Define user interaction flows
+   - Document accessibility requirements
+
+2. **Architecture Design**
+   - Define component structure
+   - Plan data flow and state management
+   - Document API requirements
+   - Create technical specifications
+
+3. **UI/UX Design**
+   - Create wireframes and prototypes
+   - Define style guidelines
+   - Plan responsive layouts
+   - Document component variants
+
+4. **Design Review**
+   - Validate against requirements
+   - Check accessibility compliance
+   - Review performance implications
+   - Document design decisions
+
+#### Exit Criteria
+- Complete technical specifications
+- Approved design mockups
+- Documented component architecture
+- Defined acceptance criteria
+
+### 🔧 Engineering Mode
+
+#### Entry Criteria
+- Approved design specifications
+- Clear technical requirements
+- Defined API contracts
+- Available development environment
+
+#### Workflow Steps
+1. **Setup**
+   - Create feature branch
+   - Set up development environment
+   - Configure necessary tools
+   - Review coding standards
+
+2. **Implementation**
+   - Develop core functionality
+   - Implement business logic
+   - Create required components
+   - Add error handling
+
+3. **Integration**
+   - Connect with APIs
+   - Implement state management
+   - Add event handling
+   - Configure data flow
+
+4. **Code Review**
+   - Self-review code quality
+   - Run linting and formatting
+   - Check for edge cases
+   - Document technical debt
+
+#### Exit Criteria
+- Functioning implementation
+- Passing lint checks
+- Complete error handling
+- Updated documentation
+
+### 🧪 Testing Mode
+
+#### Entry Criteria
+- Complete feature implementation
+- Documented test requirements
+- Available test environment
+- Defined test scenarios
+
+#### Workflow Steps
+1. **Test Planning**
+   - Define test scenarios
+   - Create test data
+   - Set up test environment
+   - Document test cases
+
+2. **Implementation Testing**
+   - Write unit tests
+   - Create integration tests
+   - Implement E2E tests
+   - Add performance tests
+
+3. **Quality Assurance**
+   - Run automated tests
+   - Perform manual testing
+   - Test edge cases
+   - Validate accessibility
+
+4. **Test Review**
+   - Review test coverage
+   - Document test results
+   - Track found issues
+   - Plan bug fixes
+
+#### Exit Criteria
+- Passing test suite
+- Met coverage requirements
+- Documented test results
+- Fixed critical issues
+
+### 📦 Deployment Mode
+
+#### Entry Criteria
+- Passing test suite
+- Complete documentation
+- Approved code review
+- Ready release candidate
+
+#### Workflow Steps
+1. **Preparation**
+   - Update version numbers
+   - Generate changelogs
+   - Review dependencies
+   - Check configurations
+
+2. **Build Process**
+   - Create production build
+   - Run build validation
+   - Check bundle size
+   - Verify assets
+
+3. **Deployment**
+   - Deploy to staging
+   - Run smoke tests
+   - Verify configurations
+   - Check monitoring
+
+4. **Release**
+   - Create release notes
+   - Update documentation
+   - Tag release version
+   - Archive artifacts
+
+#### Exit Criteria
+- Successful deployment
+- Complete documentation
+- Working monitoring
+- Updated changelogs
+
+### 🔍 Maintenance Mode
+
+#### Entry Criteria
+- Deployed feature
+- Active monitoring
+- User feedback available
+- Identified improvements
+
+#### Workflow Steps
+1. **Monitoring**
+   - Track performance
+   - Monitor errors
+   - Collect feedback
+   - Analyze metrics
+
+2. **Optimization**
+   - Improve performance
+   - Fix reported issues
+   - Refactor code
+   - Update dependencies
+
+3. **Documentation**
+   - Update guides
+   - Add examples
+   - Improve comments
+   - Record decisions
+
+4. **Review**
+   - Assess improvements
+   - Plan updates
+   - Document learnings
+   - Prepare handoff
+
+#### Exit Criteria
+- Stable performance
+- Updated documentation
+- Resolved issues
+- Documented learnings
+
+## Mode Transition Checklist
+
+### Before Transition
+- [ ] Complete current mode tasks
+- [ ] Document progress and status
+- [ ] Save all relevant work
+- [ ] Update task tracking
+- [ ] Notify team members
+
+### After Transition
+- [ ] Verify mode switch
+- [ ] Load relevant context
+- [ ] Review requirements
+- [ ] Set up tools
+- [ ] Begin new mode tasks
+
+## Progress Tracking
+
+### Status Indicators
+- 🔴 Not Started
+- 🟡 In Progress
+- 🔵 Blocked
+- 🟢 Completed
+- 📌 Recurring
+
+### Documentation Requirements
+- Update master-todo.mdc
+- Record decisions and rationale
+- Document blockers and solutions
+- Track time spent in each mode
+- Note lessons learned
+
+## Best Practices
+
+### General Guidelines
+1. Follow the mode sequence for each feature
+2. Document decisions and rationale
+3. Maintain clear communication
+4. Track progress consistently
+5. Review before mode transitions
+
+### Mode-Specific Practices
+
+#### Design Mode
+- Create clear specifications
+- Document design decisions
+- Consider accessibility early
+- Plan for scalability
+
+#### Engineering Mode
+- Follow coding standards
+- Write clear documentation
+- Handle errors properly
+- Consider performance
+
+#### Testing Mode
+- Write comprehensive tests
+- Document test cases
+- Test edge cases
+- Validate accessibility
+
+#### Deployment Mode
+- Follow release protocol
+- Update documentation
+- Verify configurations
+- Monitor deployment
+
+#### Maintenance Mode
+- Track performance
+- Document improvements
+- Update documentation
+- Plan future updates
+
+## Integration with Other Tools
+
+### Knowledge Graph
+- Store mode-specific context
+- Track relationships between tasks
+- Maintain decision history
+- Cache relevant documentation
+
+### Task Management
+- Use t2p for task tracking
+- Update task status regularly
+- Link related tasks
+- Document dependencies
+
+### Version Control
+- Follow branching strategy
+- Write clear commit messages
+- Link to relevant issues
+- Maintain clean history
+
+## Troubleshooting
+
+### Common Issues
+1. Mode switch failures
+2. Lost context after switch
+3. Incomplete transitions
+4. Missing documentation
+5. Tool configuration issues
+
+### Resolution Steps
+1. Verify command syntax
+2. Check error messages
+3. Review documentation
+4. Validate configuration
+5. Contact support if needed
+
+## Conclusion
+
+Following these workflows ensures systematic development and maintains high-quality standards across the project. Regular review and updates of this document help improve the development process. 

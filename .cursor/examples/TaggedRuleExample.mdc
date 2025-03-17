@@ -1,0 +1,94 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+---
+description: Example of a rule file with '@' tags to reference related rules
+globs: 
+alwaysApply: false
+---
+
+<!-- Related rules -->
+@tool-call-optimization(Related based on tool, call, optimization, error, implementation)
+@master-prd(Related based on development, mode, framework, implementation)
+@sovereign-ai-ecosystem-prd(Related based on development, ecosystem, implementation)
+@integrated-governance-framework(Related based on governance, framework, workflow)
+@knowledge-graph-search-cache(Related based on knowledge, cache, implementation)
+
+# Error Handling Best Practices
+
+This rule provides guidelines for handling errors across different development modes and ensuring robust implementation.
+
+## Core Principles
+
+1. **Proactive Error Detection**: Identify potential errors before they occur
+2. **Graceful Degradation**: Systems should fail gracefully, preserving state and data
+3. **User-Friendly Messaging**: Error messages should be clear and actionable
+4. **Comprehensive Logging**: Errors should be logged with context for debugging
+5. **Recovery Mechanisms**: Include recovery paths for common error cases
+
+## Implementation Requirements
+
+### Error Handling by Development Mode
+
+#### Design Mode Error Handling
+- Validate design assumptions early
+- Include error states in wireframes and prototypes
+- Document potential edge cases for later implementation
+
+#### Engineering Mode Error Handling
+- Implement try/catch blocks with specific error types
+- Add comprehensive logging with contextual information
+- Create fallback mechanisms for common failure points
+- Implement circuit breakers for external dependencies
+
+#### Testing Mode Error Handling
+- Create tests specifically targeting error conditions
+- Verify error messages are user-friendly
+- Test recovery mechanisms functionality
+- Validate logging of all error scenarios
+
+#### Deployment Mode Error Handling
+- Verify monitoring captures all error states
+- Ensure alerts are properly configured
+- Document error resolution procedures
+- Implement proper error reporting
+
+## Integration with Other Rules
+
+This rule works in conjunction with @tool-call-optimization for managing errors when approaching tool call limits and with @master-prd for mode-specific implementation requirements.
+
+## Example Implementation
+
+```typescript
+// Example of proper error handling
+async function processData(data: InputData): Promise<Result> {
+  try {
+    // Main operation logic
+    return await performOperation(data);
+  } catch (error) {
+    // Specific error type handling
+    if (error instanceof ValidationError) {
+      logger.warn("Validation error", { data, error: error.message });
+      return fallbackOperation(data);
+    } else if (error instanceof ExternalServiceError) {
+      logger.error("External service failure", { service: error.service });
+      metrics.incrementCounter('external_service_failures');
+      throw new AppError("Service temporarily unavailable, please try again later");
+    } else {
+      // Unknown errors
+      logger.error("Unexpected error", { error });
+      metrics.incrementCounter('unexpected_errors');
+      throw new AppError("An unexpected error occurred");
+    }
+  } finally {
+    // Cleanup operations
+    await releaseResources();
+  }
+}
+```
+
+## Enforcement
+
+This rule takes priority when conflicts arise with style guidelines. Error handling should never be compromised for the sake of brevity or style. 

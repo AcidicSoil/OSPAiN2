@@ -1,94 +1,75 @@
-# Ollama Ecosystem Documentation
+# Documentation Directory
 
-This directory contains all documentation for the Ollama Ecosystem project, organized according to our Documentation Standards Framework and Horizon Management system.
+This directory contains project documentation organized according to the Documentation Standards Framework.
 
-## Documentation Structure
+## Directory Structure
 
-Our documentation is organized according to a clear hierarchy that answers different questions about our project:
+### Core Documentation
+- vision/
+  - prd/: Product Requirements Documents
+  - roadmap/: Project roadmaps and future plans
+- implementation/
+  - tdd/: Technical Design Documents
+  - guides/: Implementation guides and procedures
+- specs/
+  - pha/: Protocol Handshake Analysis
+  - architecture/: System architecture documents
+  - integration/: Integration specifications
+- operations/
+  - guides/: Operational guides and procedures
+  - runbooks/: System runbooks and troubleshooting
 
-### 1. Vision (WHY)
+### Supporting Documentation
+- research/: Research documents and analysis
+- planning/: Project planning and roadmap documents
+- ui/: UI/UX design documents
+- frontend/: Frontend-specific documentation
+- models/: Data models and schemas
+- templates/: Document templates
 
-- Located in `docs/vision/`
-- Answers: Why are we building this? What problems are we solving?
-- Key document types:
-  - Product Requirements Documents (PRDs)
-  - Roadmap documents
+## Standards
 
-### 2. Specifications (WHAT)
+Please refer to the Documentation Standards Framework for guidelines on documentation organization and creation.
 
-- Located in `docs/specs/`
-- Answers: What are we building? What are the requirements?
-- Key document types:
-  - Functional requirements
-  - Non-functional requirements
+## File Naming Conventions
 
-### 3. Implementation (HOW)
+1. Use lowercase with hyphens for separation
+2. Include category prefixes where appropriate
+3. Use .md extension for standard documentation
+4. Use .mdc extension for special documentation files
 
-- Located in `docs/implementation/`
-- Answers: How are we building this? How does it work?
-- Key document types:
-  - Technical Design Documents (TDDs)
-  - Model Cards
-  - Data Flow Diagrams (DFDs)
+## Version Control
 
-### 4. Operations (WHEN/WHO)
+- All documentation is version controlled
+- Major changes should be reviewed
+- Keep a change log in each major document
 
-- Located in `docs/operations/`
-- Answers: Who is responsible? When and how should operations occur?
-- Key document types:
-  - Project Handover Documents (PHDs)
-  - Product Hazard Analysis (PHAs)
-  - Operational runbooks
+## Documentation Types
 
-## Frontend Documentation
+1. **Product Requirements Documents (PRD)**
+   - Located in: vision/prd/
+   - Purpose: Define what needs to be built and why
+   - Key sections: Problem statement, user stories, requirements
 
-The `docs/frontend/` directory contains documentation specific to the OSPAiN2-Hub frontend rebuild project:
+2. **Technical Design Documents (TDD)**
+   - Located in: implementation/tdd/
+   - Purpose: Detail how components will be implemented
+   - Key sections: Architecture, components, interfaces
 
-- `architecture.md` - Technical architecture, component structure, and design patterns
-- `wireframes.md` - UI/UX wireframes and layout designs
-- `setup.md` - Setup instructions and development environment configuration
-- `progress.md` - Progress tracking and current status
-- `summary.md` - Project overview and key accomplishments
+3. **Protocol Handshake Analysis (PHA)**
+   - Located in: specs/pha/
+   - Purpose: Examine interaction protocols between systems
+   - Key sections: Protocol overview, message formats, security
 
-Additional frontend-related documents in the root docs directory:
+4. **Operational Guides**
+   - Located in: operations/guides/
+   - Purpose: Provide instructions for system operation
+   - Key sections: Setup, maintenance, troubleshooting
 
-- `frontend-implementation-plan.md` - Detailed implementation plan and timeline
-- `frontend-setup.md` - Comprehensive setup guide
-- `frontend-wireframes.md` - Detailed wireframes for all screens
-- `frontend-rebuild.md` - Overall rebuild strategy and architecture
+## Contributing
 
-## Documentation Horizons
-
-Documents are classified according to our horizon framework:
-
-- **Horizon 1 (H1)**: Documents for features currently being implemented
-- **Horizon 2 (H2)**: Documents for features in planning stage
-- **Horizon 3 (H3)**: Documents for future feature ideas
-
-## Documentation Templates
-
-Standardized templates for all document types can be found in `templates/documentation/`.
-
-## Integration with Development Modes
-
-Our documentation process is integrated with our development modes:
-
-- 🎨 **Design Mode**: Focus on PRDs, wireframes, user flows
-- 🔧 **Engineering Mode**: Focus on TDDs, DFDs, Model Cards
-- 🧪 **Testing Mode**: Focus on test plans derived from PRDs and TDDs
-- 📦 **Deployment Mode**: Focus on PHDs, runbooks
-- 🔍 **Maintenance Mode**: Focus on PHAs, system documentation
-
-## Documentation Review Process
-
-As part of our horizon management:
-
-- **Monday**: Review documentation needs for promoted horizon items
-- **Friday**: Document lessons learned and update relevant documents
-
-## References
-
-- [Documentation Templates](../templates/documentation/README.md)
-- [Horizon Framework Map](../@horizon-map.mdc)
-- [Master Todo List](../master-todo.mdc)
-- [Frontend Rebuild Documentation](./frontend/summary.md)
+1. Choose the appropriate directory for your document
+2. Follow the naming conventions
+3. Use the templates provided in the templates directory
+4. Include all required sections
+5. Update the relevant README files

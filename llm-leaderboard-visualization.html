@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLM Leaderboard Visualization 2024</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@radix-ui/react-tabs@1.0.4/dist/index.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+
+        .glass-container {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 1rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .chart-container {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .chart-container:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .chart-wrapper {
+            position: relative;
+            margin: auto;
+            height: 400px;
+        }
+
+        .grid-pattern {
+            background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+    </style>
+</head>
+<body class="min-h-screen grid-pattern">
+    <nav class="w-full py-4 px-6 glass-container sticky top-0 z-50 mb-8">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold gradient-text">LLM Leaderboard 2024</h1>
+            <div class="flex gap-4">
+                <button class="px-4 py-2 rounded-lg bg-blue-500 text-white hover:bg-blue-600 transition-colors">
+                    Share
+                </button>
+                <button class="px-4 py-2 rounded-lg border border-gray-200 hover:border-gray-300 transition-colors">
+                    Export
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-6 py-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="glass-container p-6 chart-container">
+                <h2 class="text-xl font-semibold mb-4">Model Performance (MMLU)</h2>
+                <div class="chart-wrapper">
+                    <canvas id="mmluChart"></canvas>
+                </div>
+            </div>
+
+            <div class="glass-container p-6 chart-container">
+                <h2 class="text-xl font-semibold mb-4">Speed Comparison</h2>
+                <div class="chart-wrapper">
+                    <canvas id="speedChart"></canvas>
+                </div>
+            </div>
+
+            <div class="glass-container p-6 chart-container">
+                <h2 class="text-xl font-semibold mb-4">Cost Analysis</h2>
+                <div class="chart-wrapper">
+                    <canvas id="costChart"></canvas>
+                </div>
+            </div>
+
+            <div class="glass-container p-6 chart-container">
+                <h2 class="text-xl font-semibold mb-4">Context Window Size</h2>
+                <div class="chart-wrapper">
+                    <canvas id="contextChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="w-full py-8 px-6 mt-12 bg-white border-t border-gray-100">
+        <div class="max-w-7xl mx-auto text-center text-gray-600">
+            <p>Data updated: March 2024 • <a href="#" class="text-blue-500 hover:text-blue-600">View Methodology</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Theme configuration
+        const theme = {
+            colors: {
+                primary: 'rgba(59, 130, 246, 0.7)',
+                secondary: 'rgba(139, 92, 246, 0.7)',
+                tertiary: 'rgba(236, 72, 153, 0.7)',
+                quaternary: 'rgba(34, 197, 94, 0.7)',
+            },
+            font: {
+                family: "'Inter', sans-serif"
+            }
+        };
+
+        // Common chart options
+        const commonOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'top',
+                    labels: {
+                        font: {
+                            family: theme.font.family,
+                            weight: 500
+                        },
+                        padding: 20
+                    }
+                },
+                tooltip: {
+                    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                    titleColor: '#1e293b',
+                    bodyColor: '#1e293b',
+                    borderColor: 'rgba(0, 0, 0, 0.1)',
+                    borderWidth: 1,
+                    padding: 12,
+                    cornerRadius: 8,
+                    titleFont: {
+                        family: theme.font.family,
+                        weight: 600
+                    },
+                    bodyFont: {
+                        family: theme.font.family
+                    }
+                }
+            }
+        };
+
+        // MMLU Performance Chart
+        new Chart(document.getElementById('mmluChart'), {
+            type: 'bar',
+            data: {
+                labels: ['o1', 'GPT-4o', 'Claude 3.5 Sonnet', 'Llama 3.1 405b', 'DeepSeek R1', 'o1-preview', 'DeepSeek V3', 'Gemini 2.0 Pro'],
+                datasets: [{
+                    label: 'MMLU Score (%)',
+                    data: [92.3, 88.7, 88.7, 88.6, 90.8, 90.8, 88.5, 79.1],
+                    backgroundColor: theme.colors.primary,
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                ...commonOptions,
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        min: 75,
+                        max: 95,
+                        grid: {
+                            display: true,
+                            color: 'rgba(0, 0, 0, 0.05)'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+
+        // Speed Comparison Chart
+        new Chart(document.getElementById('speedChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Llama 3.1 70b', 'o3-mini', 'Gemini 1.5 Flash', 'Claude 3 Haiku', 'GPT-4o', 'Claude 3.5 Sonnet', 'DeepSeek R1', 'Claude 3 Opus'],
+                datasets: [{
+                    label: 'Tokens per Second',
+                    data: [2100, 214, 166, 133, 79, 78, 58, 25],
+                    backgroundColor: theme.colors.secondary,
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                ...commonOptions,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            display: true,
+                            color: 'rgba(0, 0, 0, 0.05)'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+
+        // Cost Comparison Chart
+        new Chart(document.getElementById('costChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Ministral 3B', 'Llama 3.2 1B', 'Nova Micro', 'Nova Lite', 'GPT-4o mini', 'DeepSeek R1', 'Claude 3.5 Sonnet', 'GPT-4'],
+                datasets: [{
+                    label: '$ per Million Tokens',
+                    data: [0.04, 0.05, 0.04, 0.06, 0.15, 0.55, 3.00, 30.00],
+                    backgroundColor: theme.colors.tertiary,
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                ...commonOptions,
+                scales: {
+                    y: {
+                        type: 'logarithmic',
+                        grid: {
+                            display: true,
+                            color: 'rgba(0, 0, 0, 0.05)'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+
+        // Context Window Size Chart
+        new Chart(document.getElementById('contextChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Gemini 1.5 Pro', 'Claude 3.7 Sonnet', 'Claude 3.5 Sonnet', 'o3-mini', 'GPT-4o', 'Llama 3.1 70b', 'GPT-4', 'GPT-3.5 Turbo'],
+                datasets: [{
+                    label: 'Context Window Size (tokens)',
+                    data: [2000000, 200000, 200000, 200000, 128000, 128000, 8192, 16400],
+                    backgroundColor: theme.colors.quaternary,
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                ...commonOptions,
+                scales: {
+                    y: {
+                        type: 'logarithmic',
+                        grid: {
+                            display: true,
+                            color: 'rgba(0, 0, 0, 0.05)'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html> 

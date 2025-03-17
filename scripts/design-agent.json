@@ -1,0 +1,74 @@
+{
+  "name": "design-agent",
+  "description": "Specialized agent for design mode tasks in OllamaOS",
+  "version": "0.1.0",
+  "capabilities": [
+    "ui_design",
+    "ux_research",
+    "prototyping",
+    "accessibility",
+    "design_system"
+  ],
+  "contextDepth": "high",
+  "tools": [
+    "codebase_search",
+    "read_file",
+    "edit_file",
+    "list_dir",
+    "web_search"
+  ],
+  "preferences": {
+    "codeStyle": "clean",
+    "documentationLevel": "comprehensive",
+    "verbosity": "high",
+    "designFocus": "user-centered"
+  },
+  "specializations": {
+    "componentDesign": {
+      "description": "Creating and refining UI components",
+      "patterns": [
+        "Follow existing component patterns",
+        "Ensure accessibility compliance",
+        "Consider responsive behavior",
+        "Document props and variants"
+      ]
+    },
+    "architecture": {
+      "description": "Planning component relationships and structure",
+      "patterns": [
+        "Consider component composition",
+        "Plan for reusability",
+        "Document component dependencies",
+        "Define clear interfaces"
+      ]
+    },
+    "prototyping": {
+      "description": "Creating initial implementations for validation",
+      "patterns": [
+        "Focus on core functionality first",
+        "Use placeholder data when appropriate",
+        "Document assumptions",
+        "Consider edge cases"
+      ]
+    }
+  },
+  "outputFormats": {
+    "componentProposal": {
+      "structure": [
+        "Component name and purpose",
+        "Props interface",
+        "Variants and states",
+        "Accessibility considerations",
+        "Example usage"
+      ]
+    },
+    "architectureDiagram": {
+      "structure": [
+        "Component hierarchy",
+        "Data flow",
+        "State management",
+        "External dependencies"
+      ]
+    }
+  }
+} 

@@ -1,0 +1,6394 @@
+{
+  "panelChats": [],
+  "inlineChats": [],
+  "schemaVersion": "1.0",
+  "deletedChats": {
+    "deletedMessageIDs": [],
+    "deletedPanelChatIDs": []
+  },
+  "kv_store": {
+    "unique_matched_lines_count": 0,
+    "total_repo_line_count": 475915,
+    "best_prompt_response": null,
+    "file_statistics": [
+      {
+        "file": ".bak/master-todo.mdc.bak",
+        "total_lines": 16584,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".codefetchignore",
+        "total_lines": 3,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/archive/docs-master-todo.md.20250313",
+        "total_lines": 674,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/archive/master-todo.md.20250313",
+        "total_lines": 2481,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/archive/master-todo.mdc.20250313",
+        "total_lines": 561,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/archive/master-todo.mdc.bak.20250313",
+        "total_lines": 16559,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/chat_config.json",
+        "total_lines": 6,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/cursor-mode-sync.js",
+        "total_lines": 204,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/extensions.json",
+        "total_lines": 32,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/integrations.json",
+        "total_lines": 21,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/master-todo.md",
+        "total_lines": 716,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/master-todo.mdc",
+        "total_lines": 668,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/mcp-servers/clear-thought/config.json",
+        "total_lines": 58,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/mcp-servers/clear-thought/templates/problem_decomposition.md",
+        "total_lines": 147,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/mcp-servers/notion-integration/.env.template",
+        "total_lines": 16,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/mcp-servers/notion-integration/README.md",
+        "total_lines": 67,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/mcp-servers/notion-integration/index.js",
+        "total_lines": 1002,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/mcp-servers/notion-integration/package.json",
+        "total_lines": 25,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/mcp-servers/web-search-optimizer/README.md",
+        "total_lines": 116,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/mcp-servers/web-search-optimizer/package.json",
+        "total_lines": 22,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/mcp-servers/web-search-optimizer/test-queries.js",
+        "total_lines": 171,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/mcp-servers/web-search-optimizer/web-search-optimizer.js",
+        "total_lines": 430,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/mcp.json",
+        "total_lines": 933,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/memory/absorption-feature.mdc",
+        "total_lines": 210,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/memory/ai-misconception-tracker.mdc",
+        "total_lines": 170,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/memory/component-absorption.mdc",
+        "total_lines": 157,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/memory/documentation-enforcer.mdc",
+        "total_lines": 265,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/memory/engineering-workflow-example.mdc",
+        "total_lines": 110,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/memory/feature-visualization.mdc",
+        "total_lines": 268,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/memory/horizon-map.mdc",
+        "total_lines": 194,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/memory/implementation-structure.mdc",
+        "total_lines": 190,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/memory/index.mdc",
+        "total_lines": 528,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/memory/knowledge-index.mdc",
+        "total_lines": 10,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/memory/oacl.mdc",
+        "total_lines": 190,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/memory/research-levels-framework.mdc",
+        "total_lines": 218,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/memory/system-health.mdc",
+        "total_lines": 176,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/memory/text-cleanup-system-integration.mdc",
+        "total_lines": 218,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/memory/text-cleanup-technical-specification.mdc",
+        "total_lines": 382,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/memory/text-cleanup-testing-strategy.mdc",
+        "total_lines": 294,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/notes.md",
+        "total_lines": 75,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/priority-system-spec.md",
+        "total_lines": 160,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/rules/adv-tool-call-opt.mdc",
+        "total_lines": 13,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/rules/context-aware-prompt-engine.mdc",
+        "total_lines": 13,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/rules/devdocs-source.mdc",
+        "total_lines": 105,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/rules/distributed-computation.mdc",
+        "total_lines": 13,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/rules/dont-reply-back.mdc",
+        "total_lines": 67,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/rules/enhanced-governance-framework.mdc",
+        "total_lines": 106,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/rules/integrated-governance-framework.mdc",
+        "total_lines": 148,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/rules/knowledge-graph-search-cache.mdc",
+        "total_lines": 89,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/rules/laser-focus.mdc",
+        "total_lines": 49,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/rules/master-player.mdc",
+        "total_lines": 573,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/rules/master-prd.mdc",
+        "total_lines": 257,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/rules/master-todo.mdc",
+        "total_lines": 759,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/rules/mcp-create.mdc",
+        "total_lines": 11,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/rules/sovereign-ai-ecosystem-prd.mdc",
+        "total_lines": 349,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/rules/sovereign-aimode-switch-orch.mdc",
+        "total_lines": 13,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/rules/sovereign_ai_implementation.mdc",
+        "total_lines": 480,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/rules/tool-call-error-handler.mdc",
+        "total_lines": 122,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/rules/tool-call-optimization.mdc",
+        "total_lines": 133,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/rules/web-search-optimization.mdc",
+        "total_lines": 53,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/tasks/budget-optimization.mdc",
+        "total_lines": 293,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/tasks/cli-voice-integration.mdc",
+        "total_lines": 234,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/tasks/extension-tasks.mdc",
+        "total_lines": 130,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/tasks/integration-tasks.mdc",
+        "total_lines": 129,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/tasks/next-integration-steps.mdc",
+        "total_lines": 75,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/tasks/rule-type-configuration.mdc",
+        "total_lines": 171,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/tasks/self-evolving-workflow.mdc",
+        "total_lines": 233,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/tasks/self-improving-model-integration.mdc",
+        "total_lines": 213,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/tasks/workflow-tracking-system.mdc",
+        "total_lines": 294,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/templates/feature-template.mdc",
+        "total_lines": 206,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/templates/mcp-server/README.template.md",
+        "total_lines": 151,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/templates/mcp-server/config.template.json",
+        "total_lines": 49,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/templates/mcp-server/problem_decomposition.template.md",
+        "total_lines": 168,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/terminal.mdc",
+        "total_lines": 80,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursor/todo.md",
+        "total_lines": 80,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursorignore",
+        "total_lines": 34,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".cursorrules",
+        "total_lines": 848,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".eslintrc.js",
+        "total_lines": 47,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".eslintrc.json",
+        "total_lines": 19,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".npmignore",
+        "total_lines": 10,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".prettierrc",
+        "total_lines": 15,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": ".vscodeignore",
+        "total_lines": 10,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "@development-mode-workflow.mdc",
+        "total_lines": 6,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "@horizon-map.mdc",
+        "total_lines": 187,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "@master-dev-schedule.mdc",
+        "total_lines": 239,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "@master-player.mdc",
+        "total_lines": 229,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "@master-todo.mdc",
+        "total_lines": 16676,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "@microManager.mdc",
+        "total_lines": 123,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "@parking-lot.mdc",
+        "total_lines": 79,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "GITHUB_BACKUP.md",
+        "total_lines": 149,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/.env.example",
+        "total_lines": 15,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/.eslintignore",
+        "total_lines": 24,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/.eslintrc.json",
+        "total_lines": 63,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/.husky/pre-commit",
+        "total_lines": 4,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/.lintstagedrc.json",
+        "total_lines": 9,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/.prettierignore",
+        "total_lines": 41,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/.prettierrc",
+        "total_lines": 12,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/README.md",
+        "total_lines": 215,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/docker-compose.falkordb.yml",
+        "total_lines": 30,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/index.html",
+        "total_lines": 15,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/package.json",
+        "total_lines": 69,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/pnpm-lock.yaml",
+        "total_lines": 7705,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/public/favicon.svg",
+        "total_lines": 4,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/src/App.tsx",
+        "total_lines": 93,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/src/components/common/Breadcrumbs/Breadcrumbs.css",
+        "total_lines": 54,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/src/components/common/Breadcrumbs/Breadcrumbs.example.tsx",
+        "total_lines": 131,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/src/components/common/Breadcrumbs/Breadcrumbs.test.tsx",
+        "total_lines": 87,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/src/components/common/Breadcrumbs/Breadcrumbs.tsx",
+        "total_lines": 98,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/src/components/common/Breadcrumbs/index.ts",
+        "total_lines": 4,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/src/components/common/Pagination/Pagination.css",
+        "total_lines": 89,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/src/components/common/Pagination/Pagination.example.tsx",
+        "total_lines": 226,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/src/components/common/Pagination/Pagination.test.tsx",
+        "total_lines": 188,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/src/components/common/Pagination/Pagination.tsx",
+        "total_lines": 208,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/src/components/common/Pagination/index.ts",
+        "total_lines": 4,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/src/components/common/__mocks__/BrowserRouterMock.tsx",
+        "total_lines": 13,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/src/components/common/index.ts",
+        "total_lines": 15,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/src/components/knowledgeGraph/BatchDocumentImport.tsx",
+        "total_lines": 542,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/src/components/knowledgeGraph/BatchProcessingProgress.tsx",
+        "total_lines": 315,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/src/components/knowledgeGraph/GraphVisualization.tsx",
+        "total_lines": 251,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/src/components/knowledgeGraph/KnowledgeGraphDemo.tsx",
+        "total_lines": 228,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/src/components/knowledgeGraph/KnowledgeGraphExplorer.tsx",
+        "total_lines": 541,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/src/components/layout/Header.tsx",
+        "total_lines": 175,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/src/components/layout/MainLayout.tsx",
+        "total_lines": 33,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/src/components/layout/Sidebar.tsx",
+        "total_lines": 285,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/src/components/todo/LinearProgressWithLabel.tsx",
+        "total_lines": 26,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/src/components/todo/TodoManager.tsx",
+        "total_lines": 1296,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/src/components/visualization/ModelCard.css",
+        "total_lines": 138,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/src/components/visualization/ModelCard.tsx",
+        "total_lines": 95,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/src/components/visualization/ModelDetailPanel.css",
+        "total_lines": 256,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/src/components/visualization/ModelDetailPanel.tsx",
+        "total_lines": 185,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/src/components/visualization/ModelsCatalog.css",
+        "total_lines": 711,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/src/components/visualization/ModelsCatalog.test.tsx",
+        "total_lines": 125,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/src/components/visualization/ModelsCatalog.tsx",
+        "total_lines": 373,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/src/components/visualization/useTimelinePositioning.ts",
+        "total_lines": 109,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/src/context/NotionContext.tsx",
+        "total_lines": 110,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/src/hooks/useKnowledgeGraph.ts",
+        "total_lines": 224,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/src/index.css",
+        "total_lines": 34,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/src/main.tsx",
+        "total_lines": 10,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/src/pages/AgentsPage.tsx",
+        "total_lines": 43,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/src/pages/Dashboard.tsx",
+        "total_lines": 305,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/src/pages/KnowledgeGraphPage.tsx",
+        "total_lines": 361,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/src/pages/NotFoundPage.tsx",
+        "total_lines": 30,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/src/pages/NotionPage.tsx",
+        "total_lines": 213,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/src/pages/SecureChatPage.tsx",
+        "total_lines": 200,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/src/pages/SettingsPage.tsx",
+        "total_lines": 127,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/src/pages/T2PPage.tsx",
+        "total_lines": 268,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/src/pages/TasksPage.tsx",
+        "total_lines": 18,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/src/router.tsx",
+        "total_lines": 31,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/src/services/NotionService.ts",
+        "total_lines": 295,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/src/services/api/apiClient.ts",
+        "total_lines": 47,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/src/services/knowledgeGraph/BatchProcessor.ts",
+        "total_lines": 233,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/src/services/knowledgeGraph/CacheService.ts",
+        "total_lines": 425,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/src/services/knowledgeGraph/EmbeddingsService.ts",
+        "total_lines": 304,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/src/services/knowledgeGraph/FalkorClient.ts",
+        "total_lines": 270,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/src/services/knowledgeGraph/GraphRAGService.ts",
+        "total_lines": 273,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/src/services/knowledgeGraph/KnowledgeGraphService.ts",
+        "total_lines": 617,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/src/services/knowledgeGraph/LLMService.ts",
+        "total_lines": 294,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/src/services/knowledgeGraph/README.md",
+        "total_lines": 220,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/src/services/knowledgeGraph/index.ts",
+        "total_lines": 93,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/src/services/secureChat.ts",
+        "total_lines": 166,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/src/services/todo/index.ts",
+        "total_lines": 106,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/src/services/todo/todoStore.ts",
+        "total_lines": 403,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/src/store/index.ts",
+        "total_lines": 100,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/start-falkordb.sh",
+        "total_lines": 47,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/tailwind.config.js",
+        "total_lines": 51,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/tsconfig.json",
+        "total_lines": 25,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/tsconfig.node.json",
+        "total_lines": 9,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2-hub-new/vite.config.ts",
+        "total_lines": 28,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "OSPAiN2.code-workspace",
+        "total_lines": 29,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "README-additional-integrations.md",
+        "total_lines": 157,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "README-notion-integration.md",
+        "total_lines": 81,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "README.md",
+        "total_lines": 508,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "SUMMARY.md",
+        "total_lines": 108,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "Start-McpServers.ps1",
+        "total_lines": 37,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "__mocks__/fileMock.js",
+        "total_lines": 2,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "add-t2p-task.sh",
+        "total_lines": 36,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "additional-tools.json",
+        "total_lines": 172,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "agentic-workflow.md",
+        "total_lines": 109,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "agents-system/README.md",
+        "total_lines": 228,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "agents-system/direct_control_launcher.py",
+        "total_lines": 125,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "agents-system/docs/TODO.md",
+        "total_lines": 60,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "agents-system/docs/agent-competition-flow.md",
+        "total_lines": 320,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "agents-system/docs/agent-competition-frontend-guidelines.md",
+        "total_lines": 558,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "agents-system/docs/agent-competition-implementation-plan.md",
+        "total_lines": 272,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "agents-system/docs/agent-competition-system-prd.md",
+        "total_lines": 242,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "agents-system/docs/agent-competition-system.md",
+        "total_lines": 359,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "agents-system/docs/agent-competition-tech-stack.md",
+        "total_lines": 439,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "agents-system/docs/api-reference.md",
+        "total_lines": 702,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "agents-system/docs/getting-started.md",
+        "total_lines": 189,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "agents-system/docs/master-player-comprehensive.md",
+        "total_lines": 560,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "agents-system/docs/master-player.mdc",
+        "total_lines": 345,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "agents-system/docs/parking-lot.mdc",
+        "total_lines": 26,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "agents-system/docs/t2p-ai-integration.md",
+        "total_lines": 195,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "agents-system/docs/task-agent-architecture.md",
+        "total_lines": 167,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "agents-system/docs/task-agents-guide.md",
+        "total_lines": 308,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "agents-system/example-batch.json",
+        "total_lines": 30,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "agents-system/master-control",
+        "total_lines": 281,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "agents-system/pyproject.toml",
+        "total_lines": 30,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "agents-system/src/agents_system/__init__.py",
+        "total_lines": 17,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "agents-system/src/agents_system/core/__init__.py",
+        "total_lines": 15,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "agents-system/src/agents_system/core/agent.py",
+        "total_lines": 188,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "agents-system/src/agents_system/core/manager.py",
+        "total_lines": 287,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "agents-system/src/agents_system/core/master_player.py",
+        "total_lines": 498,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "agents-system/src/agents_system/core/schema.py",
+        "total_lines": 119,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "agents-system/src/agents_system/direct_control.py",
+        "total_lines": 369,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "agents-system/src/agents_system/examples/README.md",
+        "total_lines": 115,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "agents-system/src/agents_system/examples/__init__.py",
+        "total_lines": 4,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "agents-system/src/agents_system/examples/prompt_engine_example.py",
+        "total_lines": 238,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "agents-system/src/agents_system/examples/t2p_integration_example.py",
+        "total_lines": 200,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "agents-system/src/agents_system/integrations/__init__.py",
+        "total_lines": 13,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "agents-system/src/agents_system/integrations/ai_t2p_adapter.py",
+        "total_lines": 408,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "agents-system/src/agents_system/integrations/model_context_provider.py",
+        "total_lines": 180,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "agents-system/src/agents_system/integrations/t2p.py",
+        "total_lines": 350,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "agents-system/src/agents_system/takeover.py",
+        "total_lines": 116,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "agents-system/src/agents_system/utils/__init__.py",
+        "total_lines": 21,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "agents-system/src/agents_system/utils/context.py",
+        "total_lines": 309,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "agents-system/src/agents_system/utils/prompt_engine.py",
+        "total_lines": 269,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "agents-system/src/agents_system/utils/prompt_templates.py",
+        "total_lines": 371,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "agents-system/takeover.sh",
+        "total_lines": 147,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "append-git-tasks.js",
+        "total_lines": 39,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "append-todo.sh",
+        "total_lines": 25,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive-ospain-hub.bat",
+        "total_lines": 14,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive-ospain-hub.sh",
+        "total_lines": 14,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/README.md",
+        "total_lines": 123,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/fast-start.js",
+        "total_lines": 63,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/package.json",
+        "total_lines": 77,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/postcss.config.js",
+        "total_lines": 7,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/public/index.html",
+        "total_lines": 40,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/public/manifest.json",
+        "total_lines": 16,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/public/offline.html",
+        "total_lines": 235,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/public/service-worker.js",
+        "total_lines": 294,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/server.js",
+        "total_lines": 407,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/App.js",
+        "total_lines": 76,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/App.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/App.tsx",
+        "total_lines": 172,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/ComponentManager.js",
+        "total_lines": 794,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/ComponentManager.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/ComponentManager.tsx",
+        "total_lines": 1088,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/ErrorBoundary.js",
+        "total_lines": 122,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/ErrorBoundary.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/ErrorBoundary.tsx",
+        "total_lines": 126,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/README.md",
+        "total_lines": 45,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/TaskDashboard.js",
+        "total_lines": 432,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/TaskDashboard.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/TaskDashboard.tsx",
+        "total_lines": 543,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/TaskDetails.js",
+        "total_lines": 138,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/TaskDetails.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/TaskDetails.tsx",
+        "total_lines": 142,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/TodoList.css",
+        "total_lines": 270,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/TodoList.js",
+        "total_lines": 174,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/TodoList.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/TodoList.tsx",
+        "total_lines": 200,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/VirtualizedTaskList.js",
+        "total_lines": 63,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/VirtualizedTaskList.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/VirtualizedTaskList.tsx",
+        "total_lines": 112,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/common/ErrorBoundary.css",
+        "total_lines": 126,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/common/ErrorBoundary.js",
+        "total_lines": 127,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/common/ErrorBoundary.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/common/ErrorBoundary.tsx",
+        "total_lines": 125,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/debug/DebugConsole.js",
+        "total_lines": 520,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/debug/DebugConsole.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/debug/DebugConsole.tsx",
+        "total_lines": 728,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/knowledge/GraphVisualization.tsx",
+        "total_lines": 174,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/knowledge/KnowledgeExplorer.md",
+        "total_lines": 64,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/layout/Header.js",
+        "total_lines": 95,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/layout/Header.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/layout/Header.tsx",
+        "total_lines": 61,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/layout/Layout.js",
+        "total_lines": 39,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/layout/Layout.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/layout/Layout.tsx",
+        "total_lines": 37,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/layout/PageContainer.js",
+        "total_lines": 42,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/layout/PageContainer.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/layout/PageContainer.tsx",
+        "total_lines": 64,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/layout/Sidebar.js",
+        "total_lines": 129,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/layout/Sidebar.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/layout/Sidebar.tsx",
+        "total_lines": 146,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/notion/NotionConfigDialog.tsx",
+        "total_lines": 315,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/notion/NotionSyncStatus.tsx",
+        "total_lines": 233,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/notion/index.ts",
+        "total_lines": 2,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/rate-limit/RateLimitHistory.js",
+        "total_lines": 103,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/rate-limit/RateLimitHistory.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/rate-limit/RateLimitHistory.tsx",
+        "total_lines": 159,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/rate-limit/RateLimitMonitor.js",
+        "total_lines": 98,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/rate-limit/RateLimitMonitor.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/rate-limit/RateLimitMonitor.tsx",
+        "total_lines": 132,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/rate-limit/RateLimitSettings.js",
+        "total_lines": 164,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/rate-limit/RateLimitSettings.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/rate-limit/RateLimitSettings.tsx",
+        "total_lines": 247,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/rate-limit/ToolCallHistory.js",
+        "total_lines": 101,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/rate-limit/ToolCallHistory.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/rate-limit/ToolCallHistory.tsx",
+        "total_lines": 159,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/rate-limit/ToolCallMonitor.js",
+        "total_lines": 111,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/rate-limit/ToolCallMonitor.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/rate-limit/ToolCallMonitor.tsx",
+        "total_lines": 150,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/rate-limit/index.js",
+        "total_lines": 31,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/rate-limit/index.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/rate-limit/index.ts",
+        "total_lines": 23,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/search/SearchBar.tsx",
+        "total_lines": 170,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/search/SearchPage.tsx",
+        "total_lines": 219,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/search/SearchResult.tsx",
+        "total_lines": 155,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/todo/LinearProgressWithLabel.js",
+        "total_lines": 19,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/todo/LinearProgressWithLabel.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/todo/LinearProgressWithLabel.tsx",
+        "total_lines": 32,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/todo/NotionConfigDialog.tsx",
+        "total_lines": 352,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/todo/NotionSyncStatus.tsx",
+        "total_lines": 198,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/todo/ProgressTracker.js",
+        "total_lines": 485,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/todo/ProgressTracker.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/todo/ProgressTracker.tsx",
+        "total_lines": 631,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/todo/TodoItem.tsx",
+        "total_lines": 264,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/todo/TodoManager.js",
+        "total_lines": 794,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/todo/TodoManager.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/todo/TodoManager.md",
+        "total_lines": 60,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/todo/TodoManager.tsx",
+        "total_lines": 1299,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/todo/TodoProgress.js",
+        "total_lines": 241,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/todo/TodoProgress.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/todo/TodoProgress.tsx",
+        "total_lines": 266,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/ui/Breadcrumbs.test.tsx",
+        "total_lines": 137,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/ui/Breadcrumbs.tsx",
+        "total_lines": 135,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/ui/Button.tsx",
+        "total_lines": 107,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/ui/Card.tsx",
+        "total_lines": 108,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/ui/Dropdown.tsx",
+        "total_lines": 304,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/ui/ErrorDisplay.tsx",
+        "total_lines": 145,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/ui/Input.tsx",
+        "total_lines": 175,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/ui/Modal.tsx",
+        "total_lines": 354,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/ui/Pagination.test.tsx",
+        "total_lines": 180,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/ui/Pagination.tsx",
+        "total_lines": 332,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/ui/Tabs.tsx",
+        "total_lines": 255,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/ui/ThemeToggle.tsx",
+        "total_lines": 57,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/ui/Toast.tsx",
+        "total_lines": 384,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/ui/index.ts",
+        "total_lines": 37,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/visualization/EcosystemGraph.md",
+        "total_lines": 61,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/visualization/MisconceptionPatternGraph3D.js",
+        "total_lines": 151,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/visualization/MisconceptionPatternGraph3D.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/visualization/MisconceptionPatternGraph3D.tsx",
+        "total_lines": 79,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/visualization/MisconceptionPatternGraphDemo.tsx",
+        "total_lines": 114,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/visualization/MisconceptionPatternVisualizer.js",
+        "total_lines": 100,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/visualization/MisconceptionPatternVisualizer.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/visualization/MisconceptionPatternVisualizer.tsx",
+        "total_lines": 90,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/visualization/TaskAnalytics.js",
+        "total_lines": 340,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/visualization/TaskAnalytics.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/visualization/TaskAnalytics.tsx",
+        "total_lines": 437,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/visualization/TaskStatistics.js",
+        "total_lines": 90,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/visualization/TaskStatistics.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/visualization/TaskStatistics.tsx",
+        "total_lines": 102,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/visualization/charts/TaskCompletionTimeTrend.js",
+        "total_lines": 15,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/visualization/charts/TaskCompletionTimeTrend.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/visualization/charts/TaskCompletionTimeTrend.tsx",
+        "total_lines": 26,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/visualization/charts/TaskDueDateDistribution.js",
+        "total_lines": 126,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/visualization/charts/TaskDueDateDistribution.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/visualization/charts/TaskDueDateDistribution.tsx",
+        "total_lines": 127,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/visualization/charts/TaskPriorityDistribution.js",
+        "total_lines": 15,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/visualization/charts/TaskPriorityDistribution.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/visualization/charts/TaskPriorityDistribution.tsx",
+        "total_lines": 26,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/visualization/charts/TaskProcessingTimeByType.js",
+        "total_lines": 15,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/visualization/charts/TaskProcessingTimeByType.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/visualization/charts/TaskProcessingTimeByType.tsx",
+        "total_lines": 24,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/visualization/charts/TaskStatusDistribution.js",
+        "total_lines": 214,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/visualization/charts/TaskStatusDistribution.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/visualization/charts/TaskStatusDistribution.tsx",
+        "total_lines": 221,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/visualization/charts/TaskTags.js",
+        "total_lines": 14,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/visualization/charts/TaskTags.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/visualization/charts/TaskTags.tsx",
+        "total_lines": 18,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/visualization/charts/TaskTimeline.js",
+        "total_lines": 14,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/visualization/charts/TaskTimeline.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/visualization/charts/TaskTimeline.tsx",
+        "total_lines": 18,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/visualization/charts/TaskTypeDistribution.js",
+        "total_lines": 216,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/visualization/charts/TaskTypeDistribution.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/visualization/charts/TaskTypeDistribution.tsx",
+        "total_lines": 219,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/visualization/charts/WorkerPerformance.js",
+        "total_lines": 14,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/visualization/charts/WorkerPerformance.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/components/visualization/charts/WorkerPerformance.tsx",
+        "total_lines": 18,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/context/NotionContext.tsx",
+        "total_lines": 316,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/context/RateLimitContext.js",
+        "total_lines": 211,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/context/RateLimitContext.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/context/RateLimitContext.tsx",
+        "total_lines": 264,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/context/ThemeContext.tsx",
+        "total_lines": 94,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/contexts/NotionContext.tsx",
+        "total_lines": 190,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/docs/ChemicalReactor3DVisualization.md",
+        "total_lines": 352,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/docs/DESIGN_CHANGES.md",
+        "total_lines": 82,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/docs/NightlyQuestionCollection.md",
+        "total_lines": 592,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/docs/RateLimitGuide.md",
+        "total_lines": 322,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/docs/VISUALIZATION_CHANGES.md",
+        "total_lines": 109,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/docs/web-search-optimizer.md",
+        "total_lines": 176,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/docs/web-search-optimizer.mdc",
+        "total_lines": 182,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/examples/BreadcrumbsExample.tsx",
+        "total_lines": 120,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/examples/DropdownExample.tsx",
+        "total_lines": 86,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/examples/PaginationExample.tsx",
+        "total_lines": 170,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/examples/TabsExample.tsx",
+        "total_lines": 262,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/examples/ToastExample.tsx",
+        "total_lines": 146,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/hooks/useGraphLayoutCalculation.ts",
+        "total_lines": 39,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/hooks/useMisconceptionPatterns.js",
+        "total_lines": 131,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/hooks/useMisconceptionPatterns.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/hooks/useMisconceptionPatterns.ts",
+        "total_lines": 123,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/hooks/useThreeJs.js",
+        "total_lines": 80,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/hooks/useThreeJs.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/hooks/useThreeJs.ts",
+        "total_lines": 38,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/index.css",
+        "total_lines": 107,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/index.js",
+        "total_lines": 131,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/index.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/index.tsx",
+        "total_lines": 112,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/pages/AgentDemo.js",
+        "total_lines": 46,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/pages/AgentDemo.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/pages/AgentDemo.tsx",
+        "total_lines": 45,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/pages/ComponentManagerPage.js",
+        "total_lines": 21,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/pages/ComponentManagerPage.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/pages/ComponentManagerPage.tsx",
+        "total_lines": 23,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/pages/Dashboard.js",
+        "total_lines": 234,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/pages/Dashboard.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/pages/Dashboard.tsx",
+        "total_lines": 295,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/pages/DebugDashboard.js",
+        "total_lines": 262,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/pages/DebugDashboard.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/pages/DebugDashboard.tsx",
+        "total_lines": 310,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/pages/KnowledgeGraph.js",
+        "total_lines": 157,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/pages/KnowledgeGraph.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/pages/KnowledgeGraph.tsx",
+        "total_lines": 168,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/pages/KnowledgeVisualizationPage.tsx",
+        "total_lines": 130,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/pages/ProgressDashboard.js",
+        "total_lines": 267,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/pages/ProgressDashboard.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/pages/ProgressDashboard.tsx",
+        "total_lines": 322,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/pages/RateLimitDemo.js",
+        "total_lines": 211,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/pages/RateLimitDemo.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/pages/RateLimitDemo.tsx",
+        "total_lines": 222,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/pages/RateLimitManager.js",
+        "total_lines": 668,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/pages/RateLimitManager.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/pages/RateLimitManager.tsx",
+        "total_lines": 973,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/pages/Settings.js",
+        "total_lines": 301,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/pages/Settings.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/pages/Settings.tsx",
+        "total_lines": 437,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/pages/TaskManager.js",
+        "total_lines": 44,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/pages/TaskManager.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/pages/TaskManager.tsx",
+        "total_lines": 49,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/pages/ToolManager.js",
+        "total_lines": 162,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/pages/ToolManager.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/pages/ToolManager.tsx",
+        "total_lines": 182,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/pages/WorkerDemo.js",
+        "total_lines": 367,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/pages/WorkerDemo.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/pages/WorkerDemo.tsx",
+        "total_lines": 487,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/scripts/run-nightly-collection.js",
+        "total_lines": 110,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/scripts/run-nightly-collection.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/scripts/run-nightly-collection.ts",
+        "total_lines": 91,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/serviceWorkerRegistration.js",
+        "total_lines": 144,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/serviceWorkerRegistration.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/serviceWorkerRegistration.ts",
+        "total_lines": 165,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/services/DebugMcpService.js",
+        "total_lines": 408,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/services/DebugMcpService.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/services/DebugMcpService.ts",
+        "total_lines": 479,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/services/KnowledgeGraphService.ts",
+        "total_lines": 196,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/services/NotionService.ts",
+        "total_lines": 427,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/services/RateLimitBypassService.js",
+        "total_lines": 186,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/services/RateLimitBypassService.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/services/RateLimitBypassService.ts",
+        "total_lines": 367,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/services/RateLimitService.js",
+        "total_lines": 904,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/services/RateLimitService.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/services/RateLimitService.ts",
+        "total_lines": 1156,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/services/TaskQueue.js",
+        "total_lines": 429,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/services/TaskQueue.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/services/TaskQueue.ts",
+        "total_lines": 504,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/services/TodoService.js",
+        "total_lines": 263,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/services/TodoService.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/services/TodoService.ts",
+        "total_lines": 352,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/services/TodoTrackingService.js",
+        "total_lines": 442,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/services/TodoTrackingService.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/services/TodoTrackingService.ts",
+        "total_lines": 642,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/services/WorkerManager.js",
+        "total_lines": 469,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/services/WorkerManager.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/services/WorkerManager.ts",
+        "total_lines": 610,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/services/api/todoApi.js",
+        "total_lines": 180,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/services/api/todoApi.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/services/api/todoApi.ts",
+        "total_lines": 184,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/styles/responsive.css",
+        "total_lines": 252,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/styles/theme.css",
+        "total_lines": 260,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/types.d.ts",
+        "total_lines": 175,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/types/Task.js",
+        "total_lines": 53,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/types/Task.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/types/Task.ts",
+        "total_lines": 160,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/types/debug.js",
+        "total_lines": 3,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/types/debug.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/types/debug.ts",
+        "total_lines": 26,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/utils/NightlyQuestionCollection.js",
+        "total_lines": 254,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/utils/NightlyQuestionCollection.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/utils/NightlyQuestionCollection.ts",
+        "total_lines": 327,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/utils/TaskUtils.js",
+        "total_lines": 261,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/utils/TaskUtils.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/utils/TaskUtils.ts",
+        "total_lines": 336,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/utils/api.js",
+        "total_lines": 67,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/utils/apiUtils.js",
+        "total_lines": 202,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/utils/apiUtils.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/utils/apiUtils.ts",
+        "total_lines": 276,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/utils/chartDataTransformers.js",
+        "total_lines": 94,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/utils/chartDataTransformers.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/utils/chartDataTransformers.ts",
+        "total_lines": 130,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/utils/componentAbsorber.js",
+        "total_lines": 226,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/utils/componentAbsorber.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/utils/componentAbsorber.ts",
+        "total_lines": 340,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/utils/componentEvaluation.js",
+        "total_lines": 219,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/utils/componentEvaluation.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/utils/componentEvaluation.original.js",
+        "total_lines": 219,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/utils/componentEvaluation.original.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/utils/componentEvaluation.original.ts",
+        "total_lines": 336,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/utils/componentEvaluation.ts",
+        "total_lines": 336,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/utils/errorHandling.ts",
+        "total_lines": 302,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/utils/metrics.ts",
+        "total_lines": 227,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/utils/optimizationTracker.ts",
+        "total_lines": 485,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/workers/TaskWorker.js",
+        "total_lines": 235,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/workers/TaskWorker.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/src/workers/TaskWorker.ts",
+        "total_lines": 278,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/start-api-server.js",
+        "total_lines": 7,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/tailwind.config.js",
+        "total_lines": 93,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "archive/OSPAiN2-hub-archived/tsconfig.json",
+        "total_lines": 22,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "backup-scripts/QUICK_START.md",
+        "total_lines": 122,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "backup-scripts/README.md",
+        "total_lines": 136,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "backup-scripts/backup-config.json",
+        "total_lines": 50,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "backup-scripts/github-backup.ps1",
+        "total_lines": 235,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "backup-scripts/github-backup.sh",
+        "total_lines": 166,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "backup-scripts/setup-schedule.ps1",
+        "total_lines": 185,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "backup-scripts/setup-schedule.sh",
+        "total_lines": 159,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "backup-scripts/test-backup.ps1",
+        "total_lines": 101,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "backup-scripts/test-backup.sh",
+        "total_lines": 82,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "backup-scripts/test-github-connection.sh",
+        "total_lines": 137,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "chat-export-tool.js",
+        "total_lines": 729,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "cleanup-agent-README.md",
+        "total_lines": 80,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "cleanup-agent-integration.md",
+        "total_lines": 280,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "cleanup-agent.js",
+        "total_lines": 655,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "cleanup-report-20250316.md",
+        "total_lines": 5614,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "cleanup-report-migration.md",
+        "total_lines": 7594,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "cleanup-report.md",
+        "total_lines": 15,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "cleanup-reports/cleanup-report-2025-03-16.md",
+        "total_lines": 7594,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "cleanup-reports/temp-description.txt",
+        "total_lines": 58,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "cleanup-system.js",
+        "total_lines": 449,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "codefetch.config.mjs",
+        "total_lines": 7,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "codefetch/codebase.md",
+        "total_lines": 112257,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "codefetch/output.md",
+        "total_lines": 64177,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "codefetch/prompts/default.md",
+        "total_lines": 36,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "components/ResumeGenerator.jsx",
+        "total_lines": 370,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "create-gitlens-settings.js",
+        "total_lines": 65,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "data/mcp-server.pid",
+        "total_lines": 2,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "development-mode-workflow.mdc",
+        "total_lines": 335,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "development-mode-worklow.mdc.bak",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "development-modes/.current_mode",
+        "total_lines": 2,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "development-modes/.mode_history",
+        "total_lines": 10,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "development-modes/README.md",
+        "total_lines": 287,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "development-modes/chat-mode-context.html",
+        "total_lines": 194,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "development-modes/deployment",
+        "total_lines": 62,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "development-modes/design",
+        "total_lines": 52,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "development-modes/e2b-mode-launcher.js",
+        "total_lines": 236,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "development-modes/e2b-mode-launcher.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "development-modes/e2b-mode-launcher.ts",
+        "total_lines": 228,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "development-modes/engineering",
+        "total_lines": 57,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "development-modes/git-hooks/prepare-commit-msg",
+        "total_lines": 61,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "development-modes/git-hooks/prepare-commit-msg.ps1",
+        "total_lines": 54,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "development-modes/install.ps1",
+        "total_lines": 129,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "development-modes/install.sh",
+        "total_lines": 100,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "development-modes/maintenance",
+        "total_lines": 62,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "development-modes/mode-context.js",
+        "total_lines": 222,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "development-modes/mode-context.ps1",
+        "total_lines": 64,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "development-modes/mode-context.sh",
+        "total_lines": 126,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "development-modes/mode-sync-service.js",
+        "total_lines": 194,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "development-modes/mode-sync-service.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "development-modes/mode-sync-service.ts",
+        "total_lines": 178,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "development-modes/mode_switcher.ps1",
+        "total_lines": 369,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "development-modes/mode_switcher.sh",
+        "total_lines": 349,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "development-modes/package.json",
+        "total_lines": 18,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "development-modes/test-mode-sync.js",
+        "total_lines": 329,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "development-modes/testing",
+        "total_lines": 60,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "development-modes/tsconfig.json",
+        "total_lines": 114,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "docs/README.md",
+        "total_lines": 76,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "docs/frontend/architecture.md",
+        "total_lines": 280,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "docs/frontend/index.md",
+        "total_lines": 94,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "docs/frontend/predictive-optimization.md",
+        "total_lines": 192,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "docs/frontend/progress.md",
+        "total_lines": 204,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "docs/frontend/schedule-flexibility.md",
+        "total_lines": 107,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "docs/frontend/setup.md",
+        "total_lines": 677,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "docs/frontend/summary.md",
+        "total_lines": 137,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "docs/frontend/updates.md",
+        "total_lines": 135,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "docs/frontend/wireframes.md",
+        "total_lines": 460,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "docs/implementation/tdd/documentation-standards-tdd.md",
+        "total_lines": 204,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "docs/planning/implementation-plan.md",
+        "total_lines": 124,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "docs/research/research-analysis-phase.md",
+        "total_lines": 162,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "docs/tagging_philosophy.md",
+        "total_lines": 166,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "docs/templates/enforcer-demo.md",
+        "total_lines": 219,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "docs/text-cleanup.md",
+        "total_lines": 208,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "docs/ui/README.md",
+        "total_lines": 115,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "docs/ui/brainstorm.html",
+        "total_lines": 69,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "docs/ui/index.html",
+        "total_lines": 406,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "docs/ui/launch.bat",
+        "total_lines": 4,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "docs/ui/launch.sh",
+        "total_lines": 10,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "docs/ui/package.json",
+        "total_lines": 32,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "docs/ui/script.js",
+        "total_lines": 1083,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "docs/ui/serve.py",
+        "total_lines": 44,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "docs/ui/styles.css",
+        "total_lines": 576,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "docs/vision/prd/documentation-standards-prd.md",
+        "total_lines": 122,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "git-visualization/README.md",
+        "total_lines": 61,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "git-visualization/config.js",
+        "total_lines": 153,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "git-viz-todo-entry.md",
+        "total_lines": 36,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "jest.config.js",
+        "total_lines": 24,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "jest.setup.js",
+        "total_lines": 72,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "jest.setup.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "jest.setup.ts",
+        "total_lines": 84,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "master-dev-schedule.mdc",
+        "total_lines": 301,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "master-dev-schedule.mdc.bak",
+        "total_lines": 296,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "master-notes.md",
+        "total_lines": 37,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "master-player.mdc",
+        "total_lines": 234,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "master-player.mdc.bak",
+        "total_lines": 229,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "master-todo.mdc",
+        "total_lines": 16612,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "master-todo.mdc.bak",
+        "total_lines": 16607,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-server-implementation.mdc",
+        "total_lines": 384,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/.env.example",
+        "total_lines": 22,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/README.md",
+        "total_lines": 231,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/README.md.bak",
+        "total_lines": 263,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/README.mdc",
+        "total_lines": 268,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/content-summarizer/.env.example",
+        "total_lines": 18,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/content-summarizer/README.md",
+        "total_lines": 107,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/content-summarizer/content-summarizer-server.js",
+        "total_lines": 350,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/content-summarizer/content-summarizer-server.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/content-summarizer/content-summarizer-server.ts",
+        "total_lines": 435,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/content-summarizer/index.js",
+        "total_lines": 30,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/content-summarizer/index.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/content-summarizer/index.ts",
+        "total_lines": 32,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/content-summarizer/package.json",
+        "total_lines": 45,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/content-summarizer/test.js",
+        "total_lines": 82,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/content-summarizer/tsconfig.json",
+        "total_lines": 19,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/docker-integration/docker-integration-server.js",
+        "total_lines": 206,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/docker-integration/docker-integration-server.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/docker-integration/docker-integration-server.ts",
+        "total_lines": 243,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/mouse-automation/README.md",
+        "total_lines": 328,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/mouse-automation/mouse-automation-server.js",
+        "total_lines": 1048,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/mouse-automation/mouse-automation-server.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/mouse-automation/mouse-automation-server.ts",
+        "total_lines": 1277,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/package.json",
+        "total_lines": 50,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/prompt-engineering/prompt-engineering-server.js",
+        "total_lines": 350,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/prompt-engineering/prompt-engineering-server.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/prompt-engineering/prompt-engineering-server.ts",
+        "total_lines": 466,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/shared/cache/disk-cache.js",
+        "total_lines": 284,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/shared/cache/disk-cache.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/shared/cache/disk-cache.ts",
+        "total_lines": 292,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/shared/cache/memory-cache.js",
+        "total_lines": 126,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/shared/cache/memory-cache.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/shared/cache/memory-cache.ts",
+        "total_lines": 157,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/shared/cache/semantic-cache.js",
+        "total_lines": 392,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/shared/cache/semantic-cache.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/shared/cache/semantic-cache.ts",
+        "total_lines": 448,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/shared/integrations/ollama-service.js",
+        "total_lines": 179,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/shared/integrations/ollama-service.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/shared/integrations/ollama-service.ts",
+        "total_lines": 257,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/shared/mcp-server.js",
+        "total_lines": 327,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/shared/mcp-server.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/shared/mcp-server.ts",
+        "total_lines": 475,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/shared/mcp-types.js",
+        "total_lines": 24,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/shared/mcp-types.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/shared/mcp-types.ts",
+        "total_lines": 121,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/shared/security.js",
+        "total_lines": 279,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/shared/security.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/shared/security.ts",
+        "total_lines": 369,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/shared/sse-server.js",
+        "total_lines": 144,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/shared/sse-server.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/shared/sse-server.ts",
+        "total_lines": 174,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/start-all.js",
+        "total_lines": 140,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/start-all.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/start-all.ts",
+        "total_lines": 178,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/template/server.js",
+        "total_lines": 195,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/template/server.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/template/server.ts",
+        "total_lines": 216,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/template/template-server.js",
+        "total_lines": 332,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/template/template-server.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/template/template-server.ts",
+        "total_lines": 448,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/tsconfig.json",
+        "total_lines": 28,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/utils/mode-aware.js",
+        "total_lines": 315,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/utils/mode-aware.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp-servers/utils/mode-aware.ts",
+        "total_lines": 381,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "mcp_server.py",
+        "total_lines": 319,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "microManager.mdc",
+        "total_lines": 118,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "microManager.mdc.bak",
+        "total_lines": 118,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "micromanager-integration.sh",
+        "total_lines": 206,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "micromanager-logs.sh",
+        "total_lines": 304,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "micromanager-monitor.sh",
+        "total_lines": 431,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "migration-decision.md",
+        "total_lines": 56,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "migration-plan.mdc",
+        "total_lines": 144,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/bin/sovereign.js",
+        "total_lines": 15,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/bin/sovereign.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/cli/commands/ruleType.js",
+        "total_lines": 531,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/cli/commands/ruleType.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/cli/index.js",
+        "total_lines": 43,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/cli/index.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/cli/plan-commands.js",
+        "total_lines": 54,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/cli/plan-commands.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/components/RuleMatrixContainer.js",
+        "total_lines": 296,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/components/RuleMatrixContainer.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/components/RuleMatrixDashboard.js",
+        "total_lines": 340,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/components/RuleMatrixDashboard.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/components/TaskMasterUI.js",
+        "total_lines": 144,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/components/TaskMasterUI.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/context/EnhancedContextManager.js",
+        "total_lines": 375,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/context/EnhancedContextManager.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/extension.js",
+        "total_lines": 234,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/extension.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/index.js",
+        "total_lines": 18,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/index.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/knowledge-graph/KnowledgeGraphManager.js",
+        "total_lines": 301,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/knowledge-graph/KnowledgeGraphManager.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/knowledge/KnowledgeGraph.js",
+        "total_lines": 153,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/knowledge/KnowledgeGraph.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/mcp-servers/utils/mode-aware.js",
+        "total_lines": 274,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/mcp-servers/utils/mode-aware.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/mcp/server.js",
+        "total_lines": 26,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/mcp/server.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/modes/ContextManager.js",
+        "total_lines": 157,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/modes/ContextManager.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/modes/DevelopmentModeManager.js",
+        "total_lines": 377,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/modes/DevelopmentModeManager.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/modes/__tests__/ContextManager.test.js",
+        "total_lines": 113,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/modes/__tests__/ContextManager.test.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/modes/context-manager.js",
+        "total_lines": 35,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/modes/context-manager.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/planning/PlanManager.js",
+        "total_lines": 106,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/planning/PlanManager.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/quick-prompt/QuickPromptManager.js",
+        "total_lines": 541,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/quick-prompt/QuickPromptManager.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/research/repository-scanner.js",
+        "total_lines": 133,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/research/repository-scanner.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/research/run-scanner.js",
+        "total_lines": 100,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/research/run-scanner.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/rules/documentation/RuleDocumentationGenerator.js",
+        "total_lines": 292,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/rules/documentation/RuleDocumentationGenerator.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/rules/index.js",
+        "total_lines": 34,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/rules/index.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/rules/manager/RuleTypeManager.js",
+        "total_lines": 556,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/rules/manager/RuleTypeManager.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/rules/organizer/RuleOrganizer.js",
+        "total_lines": 233,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/rules/organizer/RuleOrganizer.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/rules/relationship/RuleRelationshipManager.js",
+        "total_lines": 267,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/rules/relationship/RuleRelationshipManager.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/rules/tests/KnowledgeGraphIntegration.test.js",
+        "total_lines": 228,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/rules/tests/KnowledgeGraphIntegration.test.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/rules/tests/NLPProcessor.test.js",
+        "total_lines": 131,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/rules/tests/NLPProcessor.test.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/rules/tests/RuleMatrixVisualizer.test.js",
+        "total_lines": 173,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/rules/tests/RuleMatrixVisualizer.test.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/rules/tests/RuleTypeManager.test.js",
+        "total_lines": 101,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/rules/tests/RuleTypeManager.test.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/rules/types/index.js",
+        "total_lines": 24,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/rules/types/index.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/rules/validation/RuleValidator.js",
+        "total_lines": 167,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/rules/validation/RuleValidator.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/rules/visualization/KnowledgeGraphIntegration.js",
+        "total_lines": 279,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/rules/visualization/KnowledgeGraphIntegration.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/rules/visualization/NLPProcessor.js",
+        "total_lines": 530,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/rules/visualization/NLPProcessor.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/rules/visualization/RuleMatrixVisualizer.js",
+        "total_lines": 768,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/rules/visualization/RuleMatrixVisualizer.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/services/ContextWatcher.js",
+        "total_lines": 168,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/services/ContextWatcher.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/services/DebugMcpService.js",
+        "total_lines": 64,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/services/DebugMcpService.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/services/RateLimitService.js",
+        "total_lines": 154,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/services/RateLimitService.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/services/TaskMaster.js",
+        "total_lines": 139,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/services/TaskMaster.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/tests/token-context.test.js",
+        "total_lines": 180,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/tests/token-context.test.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/token-management/TokenManager.js",
+        "total_lines": 219,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/token-management/TokenManager.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/types.js",
+        "total_lines": 10,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/types.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/types/debug.js",
+        "total_lines": 3,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/types/debug.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/types/index.js",
+        "total_lines": 3,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/types/index.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/ui/StatusBarManager.js",
+        "total_lines": 143,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "out/ui/StatusBarManager.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "package.json",
+        "total_lines": 153,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "plan.ps1",
+        "total_lines": 94,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "plan.sh",
+        "total_lines": 62,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "pnpm-lock.yaml",
+        "total_lines": 12627,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "public/index.html",
+        "total_lines": 44,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "public/manifest.json",
+        "total_lines": 26,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "research-features.txt",
+        "total_lines": 4,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "research-integration-framework.md",
+        "total_lines": 103,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "save-implementation-plan.sh",
+        "total_lines": 133,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/bin/sovereign.ts",
+        "total_lines": 15,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/cli/commands/ruleType.ts",
+        "total_lines": 569,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/cli/index.ts",
+        "total_lines": 45,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/cli/plan-commands.ts",
+        "total_lines": 56,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/components/RuleMatrixContainer.tsx",
+        "total_lines": 309,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/components/RuleMatrixDashboard.tsx",
+        "total_lines": 413,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/components/SecureChat.tsx",
+        "total_lines": 324,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/components/TaskMasterUI.tsx",
+        "total_lines": 177,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/components/knowledge/GraphVisualization.tsx",
+        "total_lines": 24,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/components/knowledgeGraph/BatchDocumentImport.tsx",
+        "total_lines": 298,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/components/knowledgeGraph/BatchProcessingProgress.tsx",
+        "total_lines": 268,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/components/knowledgeGraph/GraphVisualization.tsx",
+        "total_lines": 88,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/components/knowledgeGraph/KnowledgeGraphExplorer.tsx",
+        "total_lines": 16,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/components/knowledgeGraph/index.ts",
+        "total_lines": 17,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/components/todo/LinearProgressWithLabel.tsx",
+        "total_lines": 21,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/components/todo/TodoManager.tsx",
+        "total_lines": 718,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/components/ui/Button.tsx",
+        "total_lines": 37,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/components/ui/Dropdown.tsx",
+        "total_lines": 39,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/components/visualization/MisconceptionPatternGraph3D.tsx",
+        "total_lines": 221,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/components/visualization/MisconceptionPatternGraphDemo.tsx",
+        "total_lines": 164,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/components/visualization/VisualizationStyles.css",
+        "total_lines": 128,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/config.ts",
+        "total_lines": 49,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/context/EnhancedContextManager.ts",
+        "total_lines": 485,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/context/NotionContext.tsx",
+        "total_lines": 122,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/context/PredictiveContextScanner.ts",
+        "total_lines": 558,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/context/index.ts",
+        "total_lines": 12,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/extension.ts",
+        "total_lines": 251,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/hooks/useGraphLayoutCalculation.ts",
+        "total_lines": 160,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/hooks/useThreeJs.ts",
+        "total_lines": 91,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/index.ts",
+        "total_lines": 31,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/knowledge-graph/KnowledgeGraphManager.ts",
+        "total_lines": 321,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/knowledge/KnowledgeGraph.ts",
+        "total_lines": 203,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/mcp-servers/utils/mode-aware.js",
+        "total_lines": 280,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/mcp-servers/utils/mode-aware.ts",
+        "total_lines": 322,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/mcp/README.md",
+        "total_lines": 237,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/mcp/cli.ts",
+        "total_lines": 380,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/mcp/client.ts",
+        "total_lines": 312,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/mcp/index.ts",
+        "total_lines": 119,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/mcp/local-server.ts",
+        "total_lines": 372,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/mcp/start-server.bat",
+        "total_lines": 85,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/mcp/start-server.sh",
+        "total_lines": 74,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/mcp/tools/knowledge-graph-tool.ts",
+        "total_lines": 243,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/modes/ContextManager.ts",
+        "total_lines": 211,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/modes/DevelopmentModeManager.ts",
+        "total_lines": 416,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/modes/__tests__/ContextManager.test.ts",
+        "total_lines": 133,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/modes/context-manager.ts",
+        "total_lines": 34,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/pages/KnowledgeGraphPage.tsx",
+        "total_lines": 63,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/pages/SecureChatPage.tsx",
+        "total_lines": 22,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/pages/TasksPage.tsx",
+        "total_lines": 18,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/planning/PlanManager.ts",
+        "total_lines": 100,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/quick-prompt/QuickPromptManager.ts",
+        "total_lines": 674,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/research/repository-scanner.ts",
+        "total_lines": 183,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/research/run-scanner.ts",
+        "total_lines": 125,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/rules/documentation/RuleDocumentationGenerator.ts",
+        "total_lines": 327,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/rules/index.ts",
+        "total_lines": 28,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/rules/manager/RuleTypeManager.ts",
+        "total_lines": 581,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/rules/organizer/RuleOrganizer.ts",
+        "total_lines": 234,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/rules/relationship/RuleRelationshipManager.ts",
+        "total_lines": 267,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/rules/tests/KnowledgeGraphIntegration.test.ts",
+        "total_lines": 227,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/rules/tests/NLPProcessor.test.ts",
+        "total_lines": 158,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/rules/tests/RuleMatrixVisualizer.test.ts",
+        "total_lines": 172,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/rules/tests/RuleTypeManager.test.ts",
+        "total_lines": 116,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/rules/types/index.ts",
+        "total_lines": 159,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/rules/validation/RuleValidator.ts",
+        "total_lines": 194,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/rules/visualization/KnowledgeGraphIntegration.ts",
+        "total_lines": 357,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/rules/visualization/NLPProcessor.ts",
+        "total_lines": 639,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/rules/visualization/RuleMatrixVisualizer.ts",
+        "total_lines": 889,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/services/ContextWatcher.ts",
+        "total_lines": 165,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/services/DebugMcpService.ts",
+        "total_lines": 75,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/services/KnowledgeGraphService.ts",
+        "total_lines": 219,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/services/NotionService.ts",
+        "total_lines": 321,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/services/RateLimitService.ts",
+        "total_lines": 217,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/services/TaskMaster.ts",
+        "total_lines": 176,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/services/notion/NotionMapper.ts",
+        "total_lines": 259,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/services/notion/NotionSchemaManager.ts",
+        "total_lines": 199,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/services/notion/NotionValidator.ts",
+        "total_lines": 162,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/services/notion/index.ts",
+        "total_lines": 15,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/services/todo/EncryptionService.ts",
+        "total_lines": 129,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/services/todo/index.ts",
+        "total_lines": 3,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/services/todo/todoStore.ts",
+        "total_lines": 403,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/tests/token-context.test.ts",
+        "total_lines": 235,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/token-management/TokenManager.ts",
+        "total_lines": 242,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/types.ts",
+        "total_lines": 42,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/types/debug.ts",
+        "total_lines": 14,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/types/index.ts",
+        "total_lines": 45,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/ui/StatusBarManager.ts",
+        "total_lines": 132,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "src/utils/metrics.ts",
+        "total_lines": 101,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "start-app.sh",
+        "total_lines": 52,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "start-browser-tools.bat",
+        "total_lines": 4,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "start-browser-tools.sh",
+        "total_lines": 3,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "start-mcp-servers.sh",
+        "total_lines": 40,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "start-mcp-service.sh",
+        "total_lines": 3,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "start-notion-integration.sh",
+        "total_lines": 24,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "start-ospain-hub-fast.bat",
+        "total_lines": 5,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "start-ospain-hub-fast.sh",
+        "total_lines": 4,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "start-ospain-hub.bat",
+        "total_lines": 110,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "start-ospain-hub.sh",
+        "total_lines": 83,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "startup/README.md",
+        "total_lines": 216,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "startup/__tests__/knowledge-graph-startup.test.sh",
+        "total_lines": 110,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "startup/check-status.js",
+        "total_lines": 292,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "startup/ecosystem.config.js",
+        "total_lines": 84,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "startup/health-check.js",
+        "total_lines": 150,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "startup/knowledge-graph-health-check.js",
+        "total_lines": 200,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "startup/knowledge-graph-startup.bat",
+        "total_lines": 109,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "startup/knowledge-graph-startup.sh",
+        "total_lines": 159,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "startup/knowledge-graph.service",
+        "total_lines": 18,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "startup/mcp-server-health-check.js",
+        "total_lines": 235,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "startup/mcp-server-startup.bat",
+        "total_lines": 75,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "startup/mcp-server-startup.sh",
+        "total_lines": 47,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "startup/ospain2-startup.bat",
+        "total_lines": 85,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "startup/ospain2-startup.sh",
+        "total_lines": 85,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "startup/ospain2.service",
+        "total_lines": 18,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "startup/setup-kg-windows-task.bat",
+        "total_lines": 56,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "startup/setup-windows-task.bat",
+        "total_lines": 56,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "startup/start-all.bat",
+        "total_lines": 56,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "startup/start-all.sh",
+        "total_lines": 43,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "system-file-manager.sh",
+        "total_lines": 360,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p-horizon-delegation.md",
+        "total_lines": 126,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p-integration.md",
+        "total_lines": 162,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/.eslintrc.json",
+        "total_lines": 75,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/.prettierrc",
+        "total_lines": 11,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/README.md",
+        "total_lines": 200,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/dist/commands/note.d.ts",
+        "total_lines": 9,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/dist/commands/note.js",
+        "total_lines": 763,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/dist/commands/note.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/dist/commands/todo.d.ts",
+        "total_lines": 3,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/dist/commands/todo.js",
+        "total_lines": 950,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/dist/commands/todo.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/dist/index.d.ts",
+        "total_lines": 3,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/dist/index.js",
+        "total_lines": 17,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/dist/index.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/dist/progress.d.ts",
+        "total_lines": 4,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/dist/progress.js",
+        "total_lines": 135,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/dist/progress.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/dist/services/llm-middleware.service.d.ts",
+        "total_lines": 77,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/dist/services/llm-middleware.service.js",
+        "total_lines": 328,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/dist/services/llm-middleware.service.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/dist/services/note.service.d.ts",
+        "total_lines": 170,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/dist/services/note.service.js",
+        "total_lines": 650,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/dist/services/note.service.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/dist/services/todo.service.d.ts",
+        "total_lines": 75,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/dist/services/todo.service.js",
+        "total_lines": 366,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/dist/services/todo.service.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/dist/types/note.d.ts",
+        "total_lines": 34,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/dist/types/note.js",
+        "total_lines": 3,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/dist/types/note.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/dist/types/todo.d.ts",
+        "total_lines": 45,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/dist/types/todo.js",
+        "total_lines": 3,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/dist/types/todo.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/docs/mindmap-feature.md",
+        "total_lines": 96,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/docs/note-system.md",
+        "total_lines": 142,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/docs/text-cleanup-integration.md",
+        "total_lines": 153,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/jest.config.js",
+        "total_lines": 29,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/master-notes.md",
+        "total_lines": 7,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/package.json",
+        "total_lines": 65,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/scripts/generate-mindmap.js",
+        "total_lines": 461,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/scripts/generate-mindmap.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/scripts/generate-mindmap.ts",
+        "total_lines": 533,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/scripts/install.js",
+        "total_lines": 29,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/scripts/setup-daily-mindmap.js",
+        "total_lines": 322,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/scripts/setup-daily-mindmap.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/scripts/setup-daily-mindmap.ts",
+        "total_lines": 334,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/src/commands/note.js",
+        "total_lines": 763,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/src/commands/note.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/src/commands/note.ts",
+        "total_lines": 852,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/src/commands/todo.js",
+        "total_lines": 950,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/src/commands/todo.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/src/commands/todo.ts",
+        "total_lines": 1043,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/src/commands/todo.ts.new",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/src/index.js",
+        "total_lines": 17,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/src/index.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/src/index.ts",
+        "total_lines": 20,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/src/progress.js",
+        "total_lines": 135,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/src/progress.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/src/progress.ts",
+        "total_lines": 174,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/src/services/llm-middleware.service.js",
+        "total_lines": 328,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/src/services/llm-middleware.service.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/src/services/llm-middleware.service.ts",
+        "total_lines": 345,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/src/services/note.service.js",
+        "total_lines": 650,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/src/services/note.service.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/src/services/note.service.ts",
+        "total_lines": 735,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/src/services/todo.service.js",
+        "total_lines": 366,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/src/services/todo.service.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/src/services/todo.service.ts",
+        "total_lines": 434,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/src/types/note.js",
+        "total_lines": 3,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/src/types/note.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/src/types/note.ts",
+        "total_lines": 37,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/src/types/todo.js",
+        "total_lines": 3,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/src/types/todo.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/src/types/todo.ts",
+        "total_lines": 49,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/src/utils/terminal-executor.js",
+        "total_lines": 56,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/src/utils/terminal-executor.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/src/utils/terminal-executor.test.js",
+        "total_lines": 77,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/src/utils/terminal-executor.test.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/src/utils/terminal-executor.test.ts",
+        "total_lines": 97,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/src/utils/terminal-executor.ts",
+        "total_lines": 110,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/src/utils/terminal.utils.js",
+        "total_lines": 41,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/src/utils/terminal.utils.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/src/utils/terminal.utils.test.js",
+        "total_lines": 59,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/src/utils/terminal.utils.test.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/src/utils/terminal.utils.test.ts",
+        "total_lines": 71,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/src/utils/terminal.utils.ts",
+        "total_lines": 56,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/tsconfig.json",
+        "total_lines": 37,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "t2p/tsconfig.node.json",
+        "total_lines": 12,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "tech-stack-diagram.mermaid",
+        "total_lines": 95,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "temp-recent-task.md",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "temp-task.txt",
+        "total_lines": 2,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "templates/Resources & Best Practices for Development.txt",
+        "total_lines": 185,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "templates/UX-DesignRubric.md",
+        "total_lines": 94,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "templates/agent-workflow-system.md",
+        "total_lines": 187,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "templates/daily-metric-report-template.md",
+        "total_lines": 148,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "templates/daily-report-template.md",
+        "total_lines": 62,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "templates/daily-tasks-template.md",
+        "total_lines": 62,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "templates/development-galaxy.mermaid",
+        "total_lines": 50,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "templates/development-progression-system.mermaid",
+        "total_lines": 33,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "templates/documentation/README.md",
+        "total_lines": 98,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "templates/documentation/pha-template.md",
+        "total_lines": 161,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "templates/documentation/prd-template.md",
+        "total_lines": 118,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "templates/documentation/tdd-template.md",
+        "total_lines": 160,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "templates/extensibility-framework.mermaid",
+        "total_lines": 45,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "templates/improved-chat-workflow.md",
+        "total_lines": 65,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "templates/improved-rules.md",
+        "total_lines": 41,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "templates/integrated-governance-framework.md",
+        "total_lines": 115,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "templates/master-todo-template-migration.md",
+        "total_lines": 31,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "templates/milestone-report-template.md",
+        "total_lines": 102,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "templates/mindset.md",
+        "total_lines": 110,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "templates/ollama-ecosystem-optimization.md",
+        "total_lines": 149,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "templates/proposalForIntegration.txt",
+        "total_lines": 9,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "templates/sovereign-ai-ecosystem-mindmap.svg",
+        "total_lines": 97,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "templates/structured-rules-template.md",
+        "total_lines": 73,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "templates/tech-stack-diagram.mermaid",
+        "total_lines": 95,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "templates/terminal.md",
+        "total_lines": 392,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "templates/universal-extensibility.mermaid",
+        "total_lines": 38,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "test-agents-framework.md",
+        "total_lines": 221,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "test-agents/TestAgent.js",
+        "total_lines": 154,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "test-agents/TestAgent.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "test-agents/TestAgent.test.js",
+        "total_lines": 108,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "test-agents/TestAgent.test.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "test-agents/TestAgent.test.ts",
+        "total_lines": 137,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "test-agents/TestAgent.ts",
+        "total_lines": 198,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "test-agents/run-agents.js",
+        "total_lines": 75,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "test-agents/run-agents.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "test-agents/run-agents.ts",
+        "total_lines": 130,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "test-memory-tools.js",
+        "total_lines": 26,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "test-notion-connection.js",
+        "total_lines": 51,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "test-notion-connection.sh",
+        "total_lines": 14,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "test-servers.js",
+        "total_lines": 117,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "test-tools.js",
+        "total_lines": 117,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "test/extension.test.js",
+        "total_lines": 24,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "test/runTest.js",
+        "total_lines": 27,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "test/suite/index.js",
+        "total_lines": 41,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "test/text-cleanup.test.js",
+        "total_lines": 186,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "text-cleanup-status-update.md",
+        "total_lines": 60,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "text-cleanup.js",
+        "total_lines": 541,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "tools/README.md",
+        "total_lines": 67,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "tools/README_tool_counter.md",
+        "total_lines": 147,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "tools/devdocs-search.js",
+        "total_lines": 77,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "tools/devdocs-search.sh",
+        "total_lines": 88,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "tools/generate-daily-report.js",
+        "total_lines": 582,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "tools/generate-daily-tasks.js",
+        "total_lines": 212,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "tools/job-application-automator.js",
+        "total_lines": 838,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "tools/llm_api.py",
+        "total_lines": 272,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "tools/mcp_tool_counter.js",
+        "total_lines": 304,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "tools/package.json",
+        "total_lines": 19,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "tools/schedule-daily-report.bat",
+        "total_lines": 178,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "tools/schedule-daily-report.sh",
+        "total_lines": 172,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "tools/screenshot_analyzer.js",
+        "total_lines": 276,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "tools/screenshot_utils.py",
+        "total_lines": 56,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "tools/search_engine.py",
+        "total_lines": 80,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "tools/tool_call_counter.js",
+        "total_lines": 205,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "tools/tool_call_counter.js.map",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "tools/tool_call_counter.ts",
+        "total_lines": 241,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "tools/tool_counter_cli.js",
+        "total_lines": 189,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "tools/tool_counter_package.json",
+        "total_lines": 33,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "tools/web_scraper.py",
+        "total_lines": 207,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "tsconfig.json",
+        "total_lines": 16,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "tsconfig.tsbuildinfo",
+        "total_lines": 1,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "ui-component-progress.md",
+        "total_lines": 29,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "update-dependencies.js",
+        "total_lines": 68,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "update-migration-approach.js",
+        "total_lines": 99,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "update-plan.sh",
+        "total_lines": 8,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "verify-paths.js",
+        "total_lines": 51,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "view-plan.ps1",
+        "total_lines": 10,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "viewplan.sh",
+        "total_lines": 12,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "weekly-cleanup.sh",
+        "total_lines": 28,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      }
+    ]
+  }
+}

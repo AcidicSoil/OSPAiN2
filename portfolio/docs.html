@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation - Ollama</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/your-kit-code.js" crossorigin="anonymous"></script>
+</head>
+<body class="docs-page">
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <img src="assets/images/logo.svg" alt="Ollama Logo">
+                <div>
+                    <h1>Ollama</h1>
+                    <span class="tagline">Documentation</span>
+                </div>
+            </div>
+            <nav class="navigation">
+                <a href="/">Home</a>
+                <a href="/docs" class="active">Documentation</a>
+                <a href="/reports">Reports</a>
+                <a href="/downloads">Downloads</a>
+                <a href="/contact">Contact</a>
+            </nav>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <div class="docs-container">
+        <aside class="docs-sidebar">
+            <div class="docs-search">
+                <input type="text" placeholder="Search documentation...">
+                <i class="fas fa-search"></i>
+            </div>
+            <nav class="docs-navigation">
+                <div class="docs-nav-section">
+                    <h3>Getting Started</h3>
+                    <ul>
+                        <li><a href="#introduction" class="active">Introduction</a></li>
+                        <li><a href="#quick-start">Quick Start Guide</a></li>
+                        <li><a href="#installation">Installation</a></li>
+                        <li><a href="#basic-usage">Basic Usage</a></li>
+                    </ul>
+                </div>
+                <div class="docs-nav-section">
+                    <h3>Core Concepts</h3>
+                    <ul>
+                        <li><a href="#architecture">Architecture</a></li>
+                        <li><a href="#models">Models</a></li>
+                        <li><a href="#configuration">Configuration</a></li>
+                        <li><a href="#performance">Performance</a></li>
+                    </ul>
+                </div>
+                <div class="docs-nav-section">
+                    <h3>API Reference</h3>
+                    <ul>
+                        <li><a href="#rest-api">REST API</a></li>
+                        <li><a href="#websocket-api">WebSocket API</a></li>
+                        <li><a href="#cli">CLI Reference</a></li>
+                    </ul>
+                </div>
+                <div class="docs-nav-section">
+                    <h3>Guides</h3>
+                    <ul>
+                        <li><a href="#deployment">Deployment</a></li>
+                        <li><a href="#security">Security</a></li>
+                        <li><a href="#monitoring">Monitoring</a></li>
+                        <li><a href="#troubleshooting">Troubleshooting</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="docs-content">
+            <section id="introduction" class="docs-section">
+                <h1>Introduction to Ollama</h1>
+                <p class="docs-intro">
+                    Ollama is an open-source AI development platform that enables you to run, create, and manage AI applications locally. This documentation will help you get started and make the most of Ollama's features.
+                </p>
+
+                <div class="info-box">
+                    <i class="fas fa-info-circle"></i>
+                    <div>
+                        <h4>Note</h4>
+                        <p>This documentation assumes basic familiarity with AI concepts and development tools. If you're new to AI development, we recommend starting with our <a href="#quick-start">Quick Start Guide</a>.</p>
+                    </div>
+                </div>
+
+                <h2>Key Features</h2>
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <i class="fas fa-rocket"></i>
+                        <div>
+                            <h3>Fast Development</h3>
+                            <p>Build and deploy AI applications quickly with our intuitive tools and frameworks.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <div>
+                            <h3>Secure by Design</h3>
+                            <p>Enterprise-grade security with local-first architecture and data sovereignty.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-plug"></i>
+                        <div>
+                            <h3>Easy Integration</h3>
+                            <p>Seamlessly integrate with your existing tools and workflows.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="quick-start" class="docs-section">
+                <h2>Quick Start Guide</h2>
+                
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>Installation</span>
+                        <button class="copy-button" data-clipboard-target="#install-code">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                    <pre><code id="install-code"># Linux/macOS
+curl -fsSL https://ollama.ai/install.sh | sh
+
+# Windows
+winget install Ollama</code></pre>
+                </div>
+
+                <h3>Basic Usage</h3>
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>Python Example</span>
+                        <button class="copy-button" data-clipboard-target="#python-code">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                    <pre><code id="python-code">from ollama import Client
+
+client = Client()
+response = client.chat(model="llama2", messages=[
+    {"role": "user", "content": "Hello, how are you?"}
+])
+
+print(response["message"]["content"])</code></pre>
+                </div>
+
+                <div class="warning-box">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <div>
+                        <h4>Important</h4>
+                        <p>Make sure you have sufficient system resources available before running large models. Check our <a href="#system-requirements">system requirements</a> for more details.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="installation" class="docs-section">
+                <h2>Installation</h2>
+                <h3>System Requirements</h3>
+                <div class="requirements-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Component</th>
+                                <th>Minimum</th>
+                                <th>Recommended</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>CPU</td>
+                                <td>4 cores</td>
+                                <td>8+ cores</td>
+                            </tr>
+                            <tr>
+                                <td>RAM</td>
+                                <td>8 GB</td>
+                                <td>16+ GB</td>
+                            </tr>
+                            <tr>
+                                <td>Storage</td>
+                                <td>10 GB</td>
+                                <td>50+ GB</td>
+                            </tr>
+                            <tr>
+                                <td>GPU</td>
+                                <td>Optional</td>
+                                <td>NVIDIA GPU with 8+ GB VRAM</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <div class="docs-pagination">
+                <a href="#" class="prev-page">
+                    <i class="fas fa-arrow-left"></i>
+                    Previous
+                </a>
+                <a href="#" class="next-page">
+                    Next
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </main>
+
+        <div class="docs-toc">
+            <div class="toc-header">
+                <h3>On This Page</h3>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#introduction">Introduction</a></li>
+                    <li><a href="#key-features">Key Features</a></li>
+                    <li><a href="#quick-start">Quick Start Guide</a>
+                        <ul>
+                            <li><a href="#installation">Installation</a></li>
+                            <li><a href="#basic-usage">Basic Usage</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#system-requirements">System Requirements</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="assets/images/logo.svg" alt="Ollama Logo">
+                    <div>
+                        <h2>Ollama</h2>
+                        <span>Open Source AI Development</span>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-links-column">
+                        <h3>Product</h3>
+                        <a href="/features">Features</a>
+                        <a href="/pricing">Pricing</a>
+                        <a href="/roadmap">Roadmap</a>
+                        <a href="/changelog">Changelog</a>
+                    </div>
+                    <div class="footer-links-column">
+                        <h3>Resources</h3>
+                        <a href="/docs">Documentation</a>
+                        <a href="/tutorials">Tutorials</a>
+                        <a href="/blog">Blog</a>
+                        <a href="/community">Community</a>
+                    </div>
+                    <div class="footer-links-column">
+                        <h3>Company</h3>
+                        <a href="/about">About</a>
+                        <a href="/careers">Careers</a>
+                        <a href="/contact">Contact</a>
+                        <a href="/press">Press Kit</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Ollama. All rights reserved.</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/docs.js"></script>
+</body>
+</html> 

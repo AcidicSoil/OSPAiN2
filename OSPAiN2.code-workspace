@@ -4,8 +4,26 @@
 			"path": "."
 		},
 		{
-			"path": "../Downloads/BrowserTools-1.2.0-extension/chrome-extension"
+			"path": 
 		}
 	],
-	"settings": {}
+	"settings": {
+		"cursor.composer.collapsePaneInputBoxPills": true,
+		"cursor.composer.cmdPFilePicker2": true,
+		"cursor.diffs.useCharacterLevelDiffs": true,
+		"cursor.general.enableShadowWorkspace": true,
+		"cursor.preferNotificationsSameAsChat": true,
+		"cursor.terminal.usePreviewBox": true,
+		"cursor.general.gitGraphIndexing": "enabled",
+		"editor.autoClosingBrackets": "always",
+		"editor.autoClosingComments": "always",
+		"editor.autoClosingDelete": "auto",
+		"editor.autoClosingOvertype": "always",
+		"editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+		"editor.codeActions.triggerOnFocusChange": true,
+		"editor.codeActionsOnSave": {
+			"source.fixAll": "explicit",
+			"source.organizeImports": "explicit"
+		}
+	}
 }

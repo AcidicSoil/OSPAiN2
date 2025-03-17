@@ -1,28 +1,49 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useUIStore } from '../../store';
+import { useLogger } from '../../utils/logger';
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const navigate = useNavigate();
   const { toggleSidebar, toggleTheme, theme } = useUIStore();
+  const logger = useLogger('Header');
+  
+  useEffect(() => {
+    logger.debug('Header rendered', { theme });
+  }, [theme, logger]);
   
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
+    logger.info('Search executed', { query: searchQuery });
     // Implement search functionality
     console.log('Search query:', searchQuery);
   };
   
   const handleNotificationsClick = () => {
+    logger.debug('Notifications clicked');
     // Implement notifications functionality
     console.log('Notifications clicked');
+  };
+  
+  const handleThemeToggle = () => {
+    logger.info('Theme toggled', { 
+      previousTheme: theme, 
+      newTheme: theme === 'light' ? 'dark' : 'light' 
+    });
+    toggleTheme();
+  };
+  
+  const handleSidebarToggle = () => {
+    logger.debug('Sidebar toggle triggered');
+    toggleSidebar();
   };
   
   return (
     <header className="bg-white dark:bg-gray-800 shadow-sm h-16 flex items-center justify-between px-6 z-10">
       <div className="flex items-center">
         <button
-          onClick={toggleSidebar}
+          onClick={handleSidebarToggle}
           className="p-2 rounded-md text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300 focus:outline-none"
         >
           <svg
@@ -79,7 +100,7 @@ const Header = () => {
       
       <div className="flex items-center space-x-4">
         <button
-          onClick={toggleTheme}
+          onClick={handleThemeToggle}
           className="p-2 rounded-md text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300 focus:outline-none"
         >
           {theme === 'light' ? (

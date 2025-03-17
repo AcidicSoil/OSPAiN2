@@ -1,24 +1,23 @@
-import React from "react";
+import { describe, it, expect, vi } from 'vitest';
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import ModelsCatalog from "./ModelsCatalog";
 
 // Mock useTimelinePositioning hook
-jest.mock("./useTimelinePositioning", () => {
-  return {
-    __esModule: true,
-    default: () => ({
-      "jina-embeddings-v3": { left: "10%", top: "0px" },
-      "jina-clip-v2": { left: "40%", top: "180px" },
-      "jina-colbert-v2": { left: "70%", top: "80px" },
-      "readerlm-v2": { left: "85%", top: "220px" },
-    }),
-  };
-});
+vi.mock('./useTimelinePositioning', () => ({
+  default: () => ({
+    positions: [],
+    updatePositions: vi.fn(),
+  }),
+}));
 
 describe("ModelsCatalog", () => {
   beforeEach(() => {
     render(<ModelsCatalog />);
+  });
+
+  it("renders without crashing", () => {
+    expect(screen.getByTestId('models-catalog')).toBeInTheDocument();
   });
 
   test("renders the catalog header", () => {

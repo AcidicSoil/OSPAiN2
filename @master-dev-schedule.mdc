@@ -1,296 +1,239 @@
 ---
-description: 
+description: Master development schedule for the Ollama Ecosystem Project
 globs: 
 alwaysApply: true
 ---
----
-description: Weekly schedule and time management framework for the Master Developer
-globs: 
-alwaysApply: false
----
 
-# Master Developer Weekly Schedule
+# Ollama Ecosystem Project - Master Development Schedule
 
-## Overview
+## Schedule Overview
 
-This schedule provides a structured framework for the Master Developer to maintain productivity, ensure project progress, and balance various responsibilities across the Ollama ecosystem. The schedule is designed to optimize deep work periods while providing adequate time for collaboration, review, and strategic planning.
+This document outlines the development schedule for the Ollama Ecosystem Project, organizing work into distinct phases with clear horizons, priorities, and timelines.
 
-## Weekly Schedule
+## Development Modes Key
+- 🎨 **Design Mode**: UI/UX structuring, component architecture design
+- 🔧 **Engineering Mode**: Core functionality, business logic, data flow
+- 🧪 **Testing Mode**: Quality assurance, edge cases, resilience testing
+- 📦 **Deployment Mode**: Release readiness, CI/CD, documentation
+- 🔍 **Maintenance Mode**: Ongoing health, improvements, community support
 
-### Monday - Strategic Planning & Alignment
+## Horizon Classification
+- **H1 (Now)**: Features actively being implemented
+- **H2 (Next)**: Concepts cleared for planning but not implementation
+- **H3 (Future)**: Ideas captured but deliberately kept at a distance
 
-| Time       | Activity                                   | Focus                                            |
-|------------|--------------------------------------------|-------------------------------------------------|
-| 08:00-09:00| **Horizon Review**                         | Review and update horizon classifications        |
-| 09:00-10:30| **Weekly Planning Session**                | Set priorities and goals for the week            |
-| 10:30-12:00| **Design Mode - System Architecture**      | Work on high-level architecture decisions        |
-| 12:00-12:30| _Break_                                    |                                                  |
-| 12:30-14:00| **Engineering Mode - Core Infrastructure** | Implement or refine core system components       |
-| 14:00-15:30| **Team Sync & Collaboration**              | Sync with team members or external collaborators |
-| 15:30-17:00| **Documentation Review & Updates**         | Update documentation based on weekly plan        |
-| 17:00-17:30| **Daily Reflection & Task Management**     | Update tasks and log progress                    |
+## Status Indicators
+- 🔴 **Not Started**: Task has not been initiated
+- 🟡 **In Progress**: Work has begun but not completed
+- 🔵 **Blocked**: Cannot proceed due to dependencies/issues
+- 🟢 **Completed**: Task is finished
+- 📌 **Recurring**: Task that repeats regularly
 
-### Tuesday - Engineering Focus Day
+## Priority Levels
+- **P1**: Critical - Must be completed immediately
+- **P2**: High - Should be completed soon
+- **P3**: Medium - Important but not urgent
+- **P4**: Low - Can be deferred
+- **P5**: Optional - Nice to have
 
-| Time       | Activity                                   | Focus                                            |
-|------------|--------------------------------------------|-------------------------------------------------|
-| 08:00-08:30| **Daily Planning**                         | Review and adjust daily priorities               |
-| 08:30-10:30| **Engineering Mode - Deep Work I**         | Core implementation of high-priority features    |
-| 10:30-10:45| _Short Break_                              |                                                  |
-| 10:45-12:30| **Engineering Mode - Deep Work II**        | Continue implementation work                     |
-| 12:30-13:00| _Break_                                    |                                                  |
-| 13:00-15:00| **Engineering Mode - Integration**         | System integration and component connections     |
-| 15:00-16:30| **Code Review & Refinement**               | Review code, address issues, optimize            |
-| 16:30-17:00| **Documentation Updates**                  | Document new implementations                     |
-| 17:00-17:30| **Daily Reflection & Task Management**     | Update tasks and log progress                    |
+## Schedule Timeline
 
-### Wednesday - Design & Innovation
+### Phase 1: Foundation (July-September 2024)
 
-| Time       | Activity                                   | Focus                                            |
-|------------|--------------------------------------------|-------------------------------------------------|
-| 08:00-08:30| **Daily Planning**                         | Review and adjust daily priorities               |
-| 08:30-10:30| **Design Mode - User Experience**          | Design interfaces and user interactions          |
-| 10:30-10:45| _Short Break_                              |                                                  |
-| 10:45-12:30| **Research & Exploration**                 | Investigate new technologies or approaches       |
-| 12:30-13:00| _Break_                                    |                                                  |
-| 13:00-15:00| **Prototyping & Experimentation**          | Build prototypes for new concepts                |
-| 15:00-16:30| **Design Review & Refinement**             | Review designs, collect feedback                 |
-| 16:30-17:00| **Documentation - Design Patterns**        | Document design decisions and patterns           |
-| 17:00-17:30| **Daily Reflection & Task Management**     | Update tasks and log progress                    |
+#### July 2024 - Week 1-2
+- **Focus**: 🎨 Design Mode
+- **Objectives**:
+  - 🟡 [H1] **P1**: Complete UI Component Library (Phase 2)
+    - Implement Breadcrumbs component
+    - Implement Pagination component
+    - Implement remaining base components
+  - 🔴 [H1] **P1**: Implement Horizon Framework Integration
+    - Create @horizon-map.mdc
+    - Update documentation with horizon designations
+    - Schedule first horizon review ceremony
 
-### Thursday - Engineering Execution
+#### July 2024 - Week 3-4
+- **Focus**: 🔧 Engineering Mode
+- **Objectives**:
+  - 🔴 [H1] **P1**: Implement MicroManager Agent
+    - Test integration with existing mode switch command
+    - Implement mode transition validation logic
+    - Create context preservation system
+  - 🔴 [H1] **P1**: Set up OSPAiN2 as central hub for ecosystem integration
+    - Implement selective component absorption process
+    - Establish metrics for component evaluation
+    - Create standardized testing protocols
 
-| Time       | Activity                                   | Focus                                            |
-|------------|--------------------------------------------|-------------------------------------------------|
-| 08:00-08:30| **Daily Planning**                         | Review and adjust daily priorities               |
-| 08:30-10:30| **Engineering Mode - Implementation**      | Continue building core features                  |
-| 10:30-10:45| _Short Break_                              |                                                  |
-| 10:45-12:30| **Testing Mode - Testing & QA**            | Test new implementations                         |
-| 12:30-13:00| _Break_                                    |                                                  |
-| 13:00-15:00| **Engineering Mode - Bug Fixing**          | Address issues from testing                      |
-| 15:00-16:30| **Engineering Mode - Optimization**        | Performance improvements                         |
-| 16:30-17:00| **Documentation - Technical Specs**        | Update technical documentation                   |
-| 17:00-17:30| **Daily Reflection & Task Management**     | Update tasks and log progress                    |
+#### August 2024 - Week 1-2
+- **Focus**: 🧪 Testing Mode
+- **Objectives**:
+  - 🔴 [H1] **P1**: Test the debugging research bridge with live Ollama instance
+  - 🔴 [H1] **P2**: Implement proper error handling for research API endpoints
+  - 🔵 [H1] **P1**: Complete Titan Memory MCP Server setup (knowledge graph server)
+    - Resolve installation issues
+    - Configure for local development
+    - Integrate with existing systems
 
-### Friday - Integration & Reflection
+#### August 2024 - Week 3-4
+- **Focus**: 🔧 Engineering Mode
+- **Objectives**:
+  - 🔴 [H1] **P1**: Create Cursor-like VSCode Extension Fork
+    - Research existing threads and forums
+    - Compile comprehensive analysis report
+    - Identify core APIs and extension points
+  - 🔴 [H1] **P1**: Implement automatic OSPAiN2 server startup
+    - Create cross-platform startup scripts
+    - Configure service management
+    - Implement health check system
 
-| Time       | Activity                                   | Focus                                            |
-|------------|--------------------------------------------|-------------------------------------------------|
-| 08:00-08:30| **Daily Planning**                         | Review and adjust daily priorities               |
-| 08:30-10:30| **Integration & System Testing**           | Ensure all components work together              |
-| 10:30-11:30| **Demo Preparation**                       | Prepare demos of completed work                  |
-| 11:30-12:30| **Weekly Demo/Review**                     | Review completed work, demonstrate features      |
-| 12:30-13:00| _Break_                                    |                                                  |
-| 13:00-14:30| **Maintenance Mode - Cleanup**             | Code cleanup, refactoring, tech debt             |
-| 14:30-16:00| **Weekly Retrospective**                   | Reflect on what went well/could be improved      |
-| 16:00-17:00| **Planning For Next Week**                 | Initial planning for upcoming week               |
-| 17:00-17:30| **Weekly Wrap-up & Documentation**         | Finalize documentation and weekly report         |
+#### September 2024 - Week 1-2
+- **Focus**: 📦 Deployment Mode
+- **Objectives**:
+  - 🔴 [H1] **P1**: Create Mode Transition Protocols
+    - Define data preservation requirements
+    - Create context maintenance mechanisms
+    - Implement pre/post transition validation
+  - 🔴 [H1] **P1**: Add AI Call Optimization to Each Component
+    - Add batching implementation to ModelServer
+    - Add caching implementation to ContextManager
+    - Add right-sizing to EmbeddingService
 
-## Flexible Time Blocks
+#### September 2024 - Week 3-4
+- **Focus**: 🔍 Maintenance Mode
+- **Objectives**:
+  - 🔴 [H1] **P1**: Fix npm/npx environment setup issues
+  - 🔴 [H1] **P1**: Set up Ollama core installation script
+  - 🟡 [H1] **P3**: Configure IDE extensions for development efficiency
 
-These blocks can be scheduled as needed throughout the week:
+### Phase 2: Expansion (October-December 2024)
 
-- **Agent Competition System Development** - 3-4 hours weekly focused specifically on evolving this system
-- **Pair Programming/Mentoring** - 2-3 hours for collaboration with team members
-- **Learning & Skill Development** - 2-3 hours for staying current with new technologies
-- **Community Engagement** - 1-2 hours for engaging with the open-source community
-- **Strategic Planning** - 2 hours for long-term planning and roadmap development
+#### October 2024 - Week 1-2
+- **Focus**: 🎨 Design Mode & 🔧 Engineering Mode
+- **Objectives**:
+  - 🔜 [H2] **P2**: Design expanded UI component library (Phase 3)
+    - Create designs for visualization components
+    - Create interactive component showcase
+  - 🔜 [H2] **P3**: Implement integration interfaces between components
+    - Define standard API contracts
+    - Create integration test framework
 
-## Mode Tracking
+#### October 2024 - Week 3-4
+- **Focus**: 🧪 Testing Mode
+- **Objectives**:
+  - 🔜 [H2] **P2**: Set up CI/CD pipeline for testing research components
+    - Configure automated test runners
+    - Implement quality gates
+    - Create release automation
 
-Track time spent in each development mode:
-- 🎨 **Design Mode**: ~8 hours weekly
-- 🔧 **Engineering Mode**: ~16 hours weekly
-- 🧪 **Testing Mode**: ~4 hours weekly
-- 📦 **Deployment Mode**: ~2 hours weekly
-- 🔍 **Maintenance Mode**: ~4 hours weekly
+#### November 2024 - Week 1-4
+- **Focus**: 🔧 Engineering Mode
+- **Objectives**:
+  - 🔜 [H2] **P3**: Develop "Research History" view
+  - 🔜 [H2] **P3**: Add ability to share research results
+  - 🔜 [H2] **P3**: Implement caching of research results
+  - 🔜 [H2] **P3**: Create unit tests for extraction functions
 
-## Work Environment Guidelines
+#### December 2024 - Week 1-4
+- **Focus**: 📦 Deployment Mode & 🔍 Maintenance Mode
+- **Objectives**:
+  - 🔜 [H2] **P3**: Implement model comparison feature
+  - 🔜 [H2] **P3**: Add download progress indicators
+  - 🔜 [H2] **P3**: Create model collections/favorites
+  - 🔜 [H2] **P3**: Create workflow documentation
+  - 🔜 [H2] **P3**: Establish CI/CD pipeline for continuous integration
 
-- **Deep Work Periods**: Enable Do Not Disturb mode, close email/messaging
-- **Meeting Guidelines**: Keep meetings focused with clear agendas
-- **Context Switching**: Minimize context switching, batch similar tasks
-- **Tools & Setup**: Ensure all development tools are properly configured
-- **Documentation**: Document as you go, not as an afterthought
+### Phase 3: Future Expansion (2025)
 
-## Adaptation Guidelines
+#### Q1 2025
+- **Focus**: 🎨 Design Mode & 🔧 Engineering Mode
+- **Objectives**:
+  - 🔮 [H3] **P4**: Add advanced filtering options for research results
+  - 🔮 [H3] **P4**: Create a visual graph of related debugging issues
+  - 🔮 [H3] **P4**: Implement conversation checkpoint bubble UI component
 
-This schedule should be adapted based on:
-- Current project priorities
-- Upcoming deadlines
-- Team needs
-- Personal productivity patterns
+#### Q2 2025
+- **Focus**: 🔧 Engineering Mode & 🧪 Testing Mode
+- **Objectives**:
+  - 🔮 [H3] **P4**: Complete comprehensive API documentation
+  - 🔮 [H3] **P4**: Write user guides for all components
+  - 🔮 [H3] **P4**: Document model configurations and recommendations
 
-Review and adjust this schedule monthly to ensure it remains effective and aligned with evolving project needs.
+#### Q3-Q4 2025
+- **Focus**: 📦 Deployment Mode & 🔍 Maintenance Mode
+- **Objectives**:
+  - 🔮 [H3] **P5**: Implement model optimization techniques
+  - 🔮 [H3] **P5**: Add monitoring and logging
+  - 🔮 [H3] **P5**: Develop plugin system
+  - 🔮 [H3] **P5**: Create visualization tools for performance metrics
 
-## Metrics & Progress Tracking
+## Resource Allocation
 
-- Track completed tasks in the master-todo.mdc file
-- Monitor time spent in each development mode
-- Record velocity on key projects
-- Document roadblocks and their resolutions
-- Update horizon classifications weekly 
+### Core Development Team
+- UI Component Library: 2 engineers
+- MicroManager & Horizon Framework: 2 engineers
+- OSPAiN2 Hub Integration: 2 engineers
+- VSCode Extension Fork: 2 engineers
 
-## Development Tools Integration
+### Support Resources
+- Design Team: 2 designers
+- QA Team: 2 testers
+- DevOps: 1 engineer
+- Documentation: 1 technical writer
 
-### Git Visualization System
+## Dependencies & Critical Path
 
-A custom Git visualization system provides granular views and ultimate control over repository information:
+### Critical Path Components
+1. Horizon Framework Integration → MicroManager Agent → Mode Transition Protocols
+2. UI Component Library → OSPAiN2 Hub Integration → Automatic Server Startup
+3. Titan Memory MCP → Knowledge Graph Caching → AI Call Optimization
 
-#### Core Features
-- **Inline Blame Annotations**: See who last modified each line directly in the editor
-- **File History View**: Track all changes to files over time with branch visualization
-- **Git CodeLens**: View authorship information above functions and classes
-- **Commit Graph**: Visual representation of the repository's history
-- **Heatmap Visualization**: Age-based heat mapping to identify older vs. newer code
-- **Comparison Tools**: Side-by-side diff views for any two points in history
+### Key Milestones
+- **End of July 2024**: Complete UI Component Library Phase 2
+- **Mid-August 2024**: Functional MicroManager Agent with mode transitions
+- **End of September 2024**: Fully operational OSPAiN2 Hub with automation
+- **End of October 2024**: Complete VSCode Extension prototype
+- **End of December 2024**: Launch Phase 2 with integrated Research capabilities
 
-#### Implementation Horizons
-- **H1**: Basic GitLens configuration via VS Code settings
-- **H2**: Core Git data retrieval and basic visualization
-- **H3**: Complete custom Git visualization system with all features
+## Governance & Review Schedule
 
-#### Integration Points
-- **Daily Reports**: Git metrics automatically included in daily reports
-- **Code Reviews**: Enhanced visibility into code history during reviews
-- **Documentation**: Automatic tracking of documentation changes
+### Weekly Reviews
+- Monday: Horizon review and promotion evaluation
+- Friday: Reflection and parking lot processing
 
-### Automated Reporting
+### Biweekly Demos
+- Every other Thursday: Demonstration of completed features
 
-The reporting system integrates with development processes to provide:
+### Monthly Planning
+- Last Friday of each month: Planning and reprioritization session
 
-- **Daily Task Reports**: Summarize completed tasks, blockers, and plans
-- **Weekly Progress Reports**: Track velocity and milestone progress 
-- **Documentation Status**: Monitor documentation coverage and freshness
-- **Metrics Dashboard**: Visualize development patterns and team performance
+### Quarterly Releases
+- End of each quarter: Stable release with documentation
 
-## Master Documentation Inline Tab
+## Horizon Promotion Schedule
+- **July 31, 2024**: First horizon promotion ceremony
+- **August 31, 2024**: Second horizon promotion ceremony
+- **September 30, 2024**: Third horizon promotion ceremony
+- **Continuing**: Monthly horizon evaluations
 
-<div class="inline-tabs">
-  <div class="tab-header">
-    <button class="tab-button active" onclick="switchTab('master-todo')">Master TODO</button>
-    <button class="tab-button" onclick="switchTab('horizon-map')">Horizon Map</button>
-    <button class="tab-button" onclick="switchTab('parking-lot')">Parking Lot</button>
-    <button class="tab-button" onclick="switchTab('git-workflow')">Git Workflow</button>
-    <button class="tab-button" onclick="switchTab('dev-tools')">Development Tools</button>
-  </div>
-  
-  <div id="master-todo" class="tab-content active">
-    <h3>Master TODO</h3>
-    <p>The central task management document that contains all tasks across horizons and categories.</p>
-    <ul>
-      <li>Current active tasks: Items marked with 🟡 [H1] In Progress</li>
-      <li>Next priority: Items marked with 🔴 [H1] Not Started</li>
-      <li>Recently completed: Items marked with 🟢 [H1] Completed</li>
-    </ul>
-    <p><a href="master-todo.mdc">Open Master TODO</a></p>
-  </div>
-  
-  <div id="horizon-map" class="tab-content">
-    <h3>Horizon Map</h3>
-    <p>The horizon classification system organizes work into three distinct timeframes:</p>
-    <ul>
-      <li><strong>Horizon 1 (Now)</strong>: Features and concepts actively being implemented</li>
-      <li><strong>Horizon 2 (Next)</strong>: Concepts cleared for planning but not implementation</li>
-      <li><strong>Horizon 3 (Future)</strong>: Ideas captured but deliberately kept at a distance</li>
-    </ul>
-    <p><a href="@horizon-map.mdc">Open Horizon Map</a></p>
-  </div>
-  
-  <div id="parking-lot" class="tab-content">
-    <h3>Parking Lot</h3>
-    <p>A collection of future ideas and concepts that have been captured but are intentionally set aside to maintain focus on current priorities.</p>
-    <ul>
-      <li>New concepts should be added here before consideration for horizon promotion</li>
-      <li>Regular review during horizon ceremonies ensures valuable ideas aren't lost</li>
-    </ul>
-    <p><a href="@parking-lot.mdc">Open Parking Lot</a></p>
-  </div>
-  
-  <div id="git-workflow" class="tab-content">
-    <h3>Git Workflow</h3>
-    <p>Standardized Git processes for maintaining code quality and collaboration:</p>
-    <ul>
-      <li><strong>Commit Message Format</strong>: <code>[MODE][H1][TASK-ID] Brief description of changes</code></li>
-      <li><strong>Branch Naming</strong>: <code>[horizon]-[task-id]-[brief-descriptor]</code></li>
-      <li><strong>Pull Request Template</strong>: Includes horizon context, changes summary, and testing details</li>
-      <li><strong>Code Review Process</strong>: Utilizes Git visualization tools to understand context and history</li>
-    </ul>
-  </div>
-  
-  <div id="dev-tools" class="tab-content">
-    <h3>Development Tools</h3>
-    <p>Tools and utilities that enhance the development workflow:</p>
-    <ul>
-      <li><strong>Git Visualization</strong>: Custom implementation of GitLens-like features for code history tracking</li>
-      <li><strong>Automated Reporting</strong>: Daily and weekly report generation for progress tracking</li>
-      <li><strong>Documentation Enforcer</strong>: Ensures documentation keeps pace with code changes</li>
-      <li><strong>Task Agent System</strong>: Automates routine development tasks and provides assistance</li>
-    </ul>
-    <p><a href="git-visualization/README.md">Git Visualization Documentation</a></p>
-  </div>
-</div>
+## Mode Transition Schedule
+- Each feature will progress through all development modes sequentially
+- Each mode typically lasts 1-2 weeks depending on feature complexity
+- Mode transitions require successful completion of all mode-specific tasks
 
-<style>
-.inline-tabs {
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  overflow: hidden;
-  margin: 20px 0;
-}
+## Development Environment Requirements
+- Node.js (18+ LTS)
+- TypeScript (5.0+)
+- React (18+) for front-end applications
+- Express (4.18+) for back-end services
+- Jest for testing
+- Docker for containerization
+- Python (3.9+) for utilities and tools
+- Virtual environment in ./venv for Python tools
 
-.tab-header {
-  display: flex;
-  background-color: #f5f5f5;
-  border-bottom: 1px solid #ddd;
-  flex-wrap: wrap;
-}
+## Continuous Improvement Process
+- Post-implementation reviews after each feature completion
+- Weekly retrospectives for process improvements
+- Monthly tooling and automation evaluations
+- Quarterly framework and architecture reviews
 
-.tab-button {
-  padding: 10px 15px;
-  border: none;
-  background: none;
-  cursor: pointer;
-  font-weight: 500;
-  transition: background-color 0.3s;
-}
-
-.tab-button:hover {
-  background-color: #e9e9e9;
-}
-
-.tab-button.active {
-  background-color: #fff;
-  border-bottom: 2px solid #0078d7;
-}
-
-.tab-content {
-  display: none;
-  padding: 15px;
-  background-color: #fff;
-}
-
-.tab-content.active {
-  display: block;
-}
-</style>
-
-<script>
-function switchTab(tabId) {
-  // Hide all tab contents
-  const tabContents = document.querySelectorAll('.tab-content');
-  tabContents.forEach(tab => {
-    tab.classList.remove('active');
-  });
-  
-  // Deactivate all buttons
-  const tabButtons = document.querySelectorAll('.tab-button');
-  tabButtons.forEach(button => {
-    button.classList.remove('active');
-  });
-  
-  // Activate the selected tab and button
-  document.getElementById(tabId).classList.add('active');
-  document.querySelector(`[onclick="switchTab('${tabId}')"]`).classList.add('active');
-}
-</script> 
+This schedule is subject to adjustment based on project progress, resource availability, and evolving priorities. Updates will be communicated during regular governance meetings and reflected in this document. 

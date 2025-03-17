@@ -95,10 +95,22 @@ This document establishes clear horizons for focused development in the Ollama E
 - Plugin marketplace
 - Security sandboxing for plugins
 
-#### AI Model Optimization
-- Custom model fine-tuning
-- Model performance benchmarking
-- Model-specific optimizations
+#### AI Model Training Implementation
+- Custom model fine-tuning workflow
+  - Parameter-Efficient Fine-Tuning (PEFT) with LoRA/QLoRA
+  - Progressive model scaling from 1B to 7B+ parameters
+  - Hardware-aware training pipeline
+  - Data preparation and evaluation tooling
+- Located in: `H3/ai-training/` directory
+- Integration with Knowledge Graph and Local-First Infrastructure
+- Implementation files:
+  - `training-workflow.md`: End-to-end workflow guide
+  - `data-preparation.py`: Dataset processing utilities
+  - Future: `train.py`, `evaluate.py`, `inference.py`
+- Dependencies:
+  - Requires stable Knowledge Graph and Local Model Serving
+  - Needs distributed computation support
+  - Builds on the Development Mode Framework
 
 #### Community Contribution Framework
 - Contribution guidelines

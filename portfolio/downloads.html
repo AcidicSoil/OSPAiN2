@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Downloads - Ollama</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/your-kit-code.js" crossorigin="anonymous"></script>
+</head>
+<body class="downloads-page">
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <img src="assets/images/logo.svg" alt="Ollama Logo">
+                <div>
+                    <h1>Ollama</h1>
+                    <span class="tagline">Downloads</span>
+                </div>
+            </div>
+            <nav class="navigation">
+                <a href="/">Home</a>
+                <a href="/docs">Documentation</a>
+                <a href="/reports">Reports</a>
+                <a href="/downloads" class="active">Downloads</a>
+                <a href="/contact">Contact</a>
+            </nav>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <main class="downloads-container">
+        <!-- Download Hero -->
+        <section class="downloads-hero">
+            <div class="container">
+                <h1>Download Ollama</h1>
+                <p class="hero-description">
+                    Get started with Ollama on your preferred platform. Choose from our official releases below.
+                </p>
+                <div class="system-detection">
+                    <i class="fas fa-desktop"></i>
+                    <span>Detected System: <strong id="detected-system">Loading...</strong></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Downloads -->
+        <section class="main-downloads">
+            <div class="container">
+                <div class="downloads-grid">
+                    <!-- macOS Download -->
+                    <div class="download-card" data-platform="macos">
+                        <div class="download-header">
+                            <i class="fab fa-apple"></i>
+                            <h2>macOS</h2>
+                        </div>
+                        <div class="download-content">
+                            <p>Universal binary for Intel and Apple Silicon</p>
+                            <div class="version-info">
+                                <span class="version">v1.0.0</span>
+                                <span class="size">125 MB</span>
+                            </div>
+                            <div class="system-requirements">
+                                <p>Requires macOS 11.0 or later</p>
+                            </div>
+                            <a href="#" class="btn download-btn">
+                                <i class="fas fa-download"></i>
+                                Download for macOS
+                            </a>
+                            <div class="installation-command">
+                                <pre><code>curl -fsSL https://ollama.ai/install.sh | sh</code></pre>
+                                <button class="copy-btn" data-clipboard-target="#macos-install">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Windows Download -->
+                    <div class="download-card" data-platform="windows">
+                        <div class="download-header">
+                            <i class="fab fa-windows"></i>
+                            <h2>Windows</h2>
+                        </div>
+                        <div class="download-content">
+                            <p>64-bit installer for Windows 10/11</p>
+                            <div class="version-info">
+                                <span class="version">v1.0.0</span>
+                                <span class="size">138 MB</span>
+                            </div>
+                            <div class="system-requirements">
+                                <p>Requires Windows 10 or later</p>
+                            </div>
+                            <a href="#" class="btn download-btn">
+                                <i class="fas fa-download"></i>
+                                Download for Windows
+                            </a>
+                            <div class="installation-command">
+                                <pre><code>winget install Ollama</code></pre>
+                                <button class="copy-btn" data-clipboard-target="#windows-install">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Linux Download -->
+                    <div class="download-card" data-platform="linux">
+                        <div class="download-header">
+                            <i class="fab fa-linux"></i>
+                            <h2>Linux</h2>
+                        </div>
+                        <div class="download-content">
+                            <p>x86_64 and ARM64 distributions</p>
+                            <div class="version-info">
+                                <span class="version">v1.0.0</span>
+                                <span class="size">112 MB</span>
+                            </div>
+                            <div class="system-requirements">
+                                <p>Compatible with major distributions</p>
+                            </div>
+                            <a href="#" class="btn download-btn">
+                                <i class="fas fa-download"></i>
+                                Download for Linux
+                            </a>
+                            <div class="installation-command">
+                                <pre><code>curl -fsSL https://ollama.ai/install.sh | sh</code></pre>
+                                <button class="copy-btn" data-clipboard-target="#linux-install">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Additional Downloads -->
+        <section class="additional-downloads">
+            <div class="container">
+                <h2>Additional Components</h2>
+                <div class="components-grid">
+                    <!-- Python SDK -->
+                    <div class="component-card">
+                        <div class="component-icon">
+                            <i class="fab fa-python"></i>
+                        </div>
+                        <div class="component-content">
+                            <h3>Python SDK</h3>
+                            <p>Official Python SDK for Ollama integration</p>
+                            <div class="installation-command">
+                                <pre><code>pip install ollama</code></pre>
+                                <button class="copy-btn" data-clipboard-target="#python-install">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Node.js SDK -->
+                    <div class="component-card">
+                        <div class="component-icon">
+                            <i class="fab fa-node-js"></i>
+                        </div>
+                        <div class="component-content">
+                            <h3>Node.js SDK</h3>
+                            <p>Official Node.js SDK for Ollama integration</p>
+                            <div class="installation-command">
+                                <pre><code>npm install @ollama/sdk</code></pre>
+                                <button class="copy-btn" data-clipboard-target="#node-install">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CLI Tools -->
+                    <div class="component-card">
+                        <div class="component-icon">
+                            <i class="fas fa-terminal"></i>
+                        </div>
+                        <div class="component-content">
+                            <h3>CLI Tools</h3>
+                            <p>Command-line tools for Ollama management</p>
+                            <div class="installation-command">
+                                <pre><code>npm install -g @ollama/cli</code></pre>
+                                <button class="copy-btn" data-clipboard-target="#cli-install">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Release Notes -->
+        <section class="release-notes">
+            <div class="container">
+                <h2>Release Notes</h2>
+                <div class="release-timeline">
+                    <div class="release-entry">
+                        <div class="release-header">
+                            <h3>v1.0.0</h3>
+                            <span class="release-date">March 15, 2024</span>
+                        </div>
+                        <ul class="release-changes">
+                            <li class="feature">Added support for custom model fine-tuning</li>
+                            <li class="improvement">Improved response time by 40%</li>
+                            <li class="bugfix">Fixed memory leak in long-running sessions</li>
+                        </ul>
+                    </div>
+                    <div class="release-entry">
+                        <div class="release-header">
+                            <h3>v0.9.5</h3>
+                            <span class="release-date">March 1, 2024</span>
+                        </div>
+                        <ul class="release-changes">
+                            <li class="feature">Introduced new model compression techniques</li>
+                            <li class="improvement">Enhanced error handling and reporting</li>
+                            <li class="bugfix">Resolved Windows installation issues</li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="/changelog" class="btn btn-outline">View Full Changelog</a>
+            </div>
+        </section>
+
+        <!-- Getting Started -->
+        <section class="getting-started">
+            <div class="container">
+                <h2>Getting Started</h2>
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h3>Download & Install</h3>
+                        <p>Choose your platform and follow the installation instructions</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h3>Configure</h3>
+                        <p>Set up your environment and API keys</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h3>Start Building</h3>
+                        <p>Follow our quickstart guide to begin development</p>
+                    </div>
+                </div>
+                <a href="/docs/quickstart" class="btn">View Quickstart Guide</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="assets/images/logo.svg" alt="Ollama Logo">
+                    <div>
+                        <h2>Ollama</h2>
+                        <span>Open Source AI Development</span>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-links-column">
+                        <h3>Product</h3>
+                        <a href="/features">Features</a>
+                        <a href="/pricing">Pricing</a>
+                        <a href="/roadmap">Roadmap</a>
+                        <a href="/changelog">Changelog</a>
+                    </div>
+                    <div class="footer-links-column">
+                        <h3>Resources</h3>
+                        <a href="/docs">Documentation</a>
+                        <a href="/tutorials">Tutorials</a>
+                        <a href="/blog">Blog</a>
+                        <a href="/community">Community</a>
+                    </div>
+                    <div class="footer-links-column">
+                        <h3>Company</h3>
+                        <a href="/about">About</a>
+                        <a href="/careers">Careers</a>
+                        <a href="/contact">Contact</a>
+                        <a href="/press">Press Kit</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Ollama. All rights reserved.</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/downloads.js"></script>
+</body>
+</html> 

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Ollama</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/your-kit-code.js" crossorigin="anonymous"></script>
+</head>
+<body class="contact-page">
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <img src="assets/images/logo.svg" alt="Ollama Logo">
+                <div>
+                    <h1>Ollama</h1>
+                    <span class="tagline">Contact Us</span>
+                </div>
+            </div>
+            <nav class="navigation">
+                <a href="/">Home</a>
+                <a href="/docs">Documentation</a>
+                <a href="/reports">Reports</a>
+                <a href="/downloads">Downloads</a>
+                <a href="/contact" class="active">Contact</a>
+            </nav>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <main class="contact-container">
+        <!-- Contact Hero -->
+        <section class="contact-hero">
+            <div class="container">
+                <h1>Get in Touch</h1>
+                <p class="hero-description">
+                    Have questions about Ollama? We're here to help. Choose the best way to reach us below.
+                </p>
+            </div>
+        </section>
+
+        <!-- Contact Options -->
+        <section class="contact-options">
+            <div class="container">
+                <div class="options-grid">
+                    <div class="option-card">
+                        <div class="option-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h3>Community Support</h3>
+                        <p>Join our Discord community for quick answers and discussions.</p>
+                        <a href="#" class="btn btn-outline">Join Discord</a>
+                    </div>
+                    <div class="option-card">
+                        <div class="option-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3>Email Support</h3>
+                        <p>Send us an email for detailed technical assistance.</p>
+                        <a href="mailto:support@ollama.ai" class="btn btn-outline">Email Us</a>
+                    </div>
+                    <div class="option-card">
+                        <div class="option-icon">
+                            <i class="fab fa-github"></i>
+                        </div>
+                        <h3>GitHub Issues</h3>
+                        <p>Report bugs or request features on our GitHub repository.</p>
+                        <a href="https://github.com/ollama/ollama/issues" class="btn btn-outline">View Issues</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Form -->
+        <section class="contact-form">
+            <div class="container">
+                <div class="form-container">
+                    <div class="form-header">
+                        <h2>Send Us a Message</h2>
+                        <p>Fill out the form below and we'll get back to you as soon as possible.</p>
+                    </div>
+                    <form id="contactForm" class="glassmorphism">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <select id="subject" name="subject" required>
+                                <option value="">Select a subject</option>
+                                <option value="general">General Inquiry</option>
+                                <option value="technical">Technical Support</option>
+                                <option value="sales">Sales</option>
+                                <option value="partnership">Partnership</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="6" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="checkbox-container">
+                                <input type="checkbox" name="newsletter" id="newsletter">
+                                <span class="checkmark"></span>
+                                Subscribe to our newsletter for updates
+                            </label>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <div class="container">
+                <h2>Frequently Asked Questions</h2>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>What is the typical response time?</h3>
+                            <button class="toggle-btn">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We typically respond to inquiries within 24 hours during business days. For urgent technical issues, please use our Discord channel for faster support.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Do you offer enterprise support?</h3>
+                            <button class="toggle-btn">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, we offer dedicated enterprise support plans with priority response times and custom solutions. Contact our sales team for more information.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Where can I find documentation?</h3>
+                            <button class="toggle-btn">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Our comprehensive documentation is available at <a href="/docs">docs.ollama.ai</a>. It includes guides, API references, and examples.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>How do I report a security issue?</h3>
+                            <button class="toggle-btn">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        <div class="faq-answer">
+                            <p>For security-related issues, please email security@ollama.ai directly. Do not post security vulnerabilities in public forums or GitHub issues.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Office Locations -->
+        <section class="office-locations">
+            <div class="container">
+                <h2>Our Offices</h2>
+                <div class="locations-grid">
+                    <div class="location-card">
+                        <div class="location-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3>San Francisco</h3>
+                        <p>123 Tech Street<br>San Francisco, CA 94105<br>United States</p>
+                    </div>
+                    <div class="location-card">
+                        <div class="location-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3>London</h3>
+                        <p>456 Innovation Square<br>London, EC2A 4NE<br>United Kingdom</p>
+                    </div>
+                    <div class="location-card">
+                        <div class="location-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3>Singapore</h3>
+                        <p>789 Digital Avenue<br>Singapore, 018989<br>Singapore</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="assets/images/logo.svg" alt="Ollama Logo">
+                    <div>
+                        <h2>Ollama</h2>
+                        <span>Open Source AI Development</span>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-links-column">
+                        <h3>Product</h3>
+                        <a href="/features">Features</a>
+                        <a href="/pricing">Pricing</a>
+                        <a href="/roadmap">Roadmap</a>
+                        <a href="/changelog">Changelog</a>
+                    </div>
+                    <div class="footer-links-column">
+                        <h3>Resources</h3>
+                        <a href="/docs">Documentation</a>
+                        <a href="/tutorials">Tutorials</a>
+                        <a href="/blog">Blog</a>
+                        <a href="/community">Community</a>
+                    </div>
+                    <div class="footer-links-column">
+                        <h3>Company</h3>
+                        <a href="/about">About</a>
+                        <a href="/careers">Careers</a>
+                        <a href="/contact">Contact</a>
+                        <a href="/press">Press Kit</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Ollama. All rights reserved.</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/contact.js"></script>
+</body>
+</html> 

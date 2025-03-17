@@ -24,6 +24,17 @@ const notion = new Client({
 // Verify Notion database access
 const DATABASE_ID = process.env.NOTION_DATABASE_ID;
 
+// Add database mappings
+const databaseMappings = {
+  title: process.env.DB_TITLE_PROPERTY || 'Name',
+  status: process.env.DB_STATUS_PROPERTY || 'Status',
+  priority: process.env.DB_PRIORITY_PROPERTY || 'Priority',
+  tags: process.env.DB_TAGS_PROPERTY || 'Tags',
+  content: process.env.DB_CONTENT_PROPERTY || 'Description',
+  dueDate: process.env.DB_DUE_DATE_PROPERTY || 'Due Date',
+  category: process.env.DB_CATEGORY_PROPERTY || 'Category'
+};
+
 // SSE endpoint for Cursor
 app.get('/sse', (req, res) => {
   res.setHeader('Content-Type', 'text/event-stream');
@@ -980,7 +991,12 @@ async function updateNotionTask(pageId, updates) {
 }
 
 // Start server
-app.listen(PORT, () => {
-  console.log(`Notion Integration MCP Server running on port ${PORT}`);
-  console.log(`SSE endpoint available at: http://localhost:${PORT}/sse`);
-}); 
+if (process.env.NODE_ENV !== 'test') {
+  app.listen(PORT, () => {
+    console.log(`Notion Integration MCP Server running on port ${PORT}`);
+    console.log(`SSE endpoint available at: http://localhost:${PORT}/sse`);
+  });
+}
+
+// Export the app for testing
+module.exports = app; 

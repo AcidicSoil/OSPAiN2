@@ -1,9 +1,40 @@
 import { useLocation, NavLink } from 'react-router-dom';
 import { useUIStore } from '../../store';
+import { useLogger } from '../../utils/logger';
+import { useEffect } from 'react';
 
 const Sidebar = () => {
   const location = useLocation();
   const { sidebarOpen } = useUIStore();
+  const logger = useLogger('Sidebar');
+  
+  useEffect(() => {
+    logger.debug('Sidebar rendered', { 
+      path: location.pathname,
+      sidebarOpen
+    });
+    
+    logger.startTimer('navigationRender');
+    
+    return () => {
+      logger.endTimer('navigationRender', 2, 'Navigation menu render completed');
+    };
+  }, [location.pathname, sidebarOpen, logger]);
+  
+  // Track navigation changes
+  useEffect(() => {
+    logger.info('Navigation changed', { 
+      path: location.pathname,
+      component: 'Sidebar' 
+    });
+  }, [location.pathname, logger]);
+  
+  // Track sidebar state changes
+  useEffect(() => {
+    logger.debug('Sidebar state changed', { 
+      isOpen: sidebarOpen 
+    });
+  }, [sidebarOpen, logger]);
   
   const navItems = [
     {

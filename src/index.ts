@@ -9,22 +9,22 @@ export { RuleType } from './rules/types';
 
 // Re-export types
 export type {
-  TokenContextConfig,
-  CompressedContext,
-  TokenUsageRecord,
-  TokenUsageMetrics,
-  ContextOptimizationResult,
-  UsageAnalysisEvent,
-  CompressionStrategy
+    CompressionStrategy, ContextOptimizationResult, TokenUsageMetrics, TokenUsageRecord, UsageAnalysisEvent
 } from './types';
+
+export type {
+    CompressedContext, TokenContextConfig
+} from './types/index';
 
 // Re-export rule-related types
 export type {
-  RuleFileInfo,
-  ValidationResult,
-  ValidationIssue,
-  RuleUpdate,
-  UpdateResult,
-  PerformanceMetrics,
-  UsagePattern
-} from './rules/types'; 
+    PerformanceMetrics, RuleFileInfo, RuleUpdate,
+    UpdateResult, UsagePattern, ValidationIssue, ValidationResult
+} from './rules/types';
+
+// Export absorption tool
+export * from './tools/absorption';
+export * from './types/absorption';
+
+// Note: AbsorptionDashboard component export is commented out until JSX support is configured
+// export { default as AbsorptionDashboard } from './components/AbsorptionDashboard';

@@ -1,4 +1,7 @@
-import { DevelopmentMode } from '../modes';
+import { DevelopmentMode } from '../types';
+
+// Re-export absorption types
+export * from './absorption';
 
 export type RuleType = 'auto_applied' | 'manual' | 'agent_requested' | 'conditional';
 

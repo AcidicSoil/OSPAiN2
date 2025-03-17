@@ -159,42 +159,21 @@ Quick project refresh after context switch:
 ```bash
 m current && t2p todo list --priority 1 --status "in-progress" && cat */README.md | grep -A 10 "Overview"
 ```
-
+@development-mode-workflow.mdc
 ## Command Error Prevention
 
 ### Common Mistakes to Avoid
 
-| Incorrect Command | Issue | Correct Command |
-|------------------|-------|-----------------|
-| `[200~cp file.txt dir/` | Terminal error with bracket prefix | `cp file.txt dir/` |
-| `cat > file << 'EOF'` + multiple lines | Multi-line commands in Cursor terminal | Use `edit_file` tool instead |
-| `sed -i -e '/pattern/c\replacement'` | Complex sed with newlines | Use `edit_file` or create temporary script |
-| `./script.sh` when not executable | Permission denied | First run `chmod +x script.sh` |
-| `command with > redirect` | Output redirection issues | Consider using a temporary file or `edit_file` |
-| `grep pattern | command` | Piping may fail in Cursor terminal | Store results in temp file first |
 
-### Git Bash Terminal Issues in Windows
 
-In the Windows environment with Git Bash, commands may be prefixed with `[200~` causing them to fail. This is a terminal bracketed paste mode issue.
+### Key Rules (update on next visit ai)
 
-**Problem diagnosis**:
-- Command output shows something like: `bash: [200~command: command not found`
-- Commands appear to have strange brackets at the beginning
-
-**Solutions**:
-1. **Use the edit_file tool** instead of terminal commands for file operations
-2. **Create simple batch/shell scripts** and execute them
-3. **Break complex operations** into smaller, simpler commands
-4. **Use t2p CLI tools** which are designed to work in this environment
-
-### Key Rules
-
-1. **Avoid multi-line commands** in Cursor terminal - use temporary files or `edit_file` tool
-2. **Check for strange prefixes** ([200~ etc.) that may be added by terminal emulation
-3. **Use simple commands** that don't require redirection or complex pipes
-4. **Verify file paths** exist before trying to access them
-5. **For complex file editing** use the `edit_file` tool rather than sed/awk
-6. **For any failing command** try simpler alternatives or break into multiple commands
+1. 
+2. 
+3.
+4. 
+5. 
+6. 
 
 ## Remember
 

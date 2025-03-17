@@ -1,0 +1,43 @@
+# Example A: Basic Rule Tagging System
+
+This file demonstrates how to use the '@' tag system to connect related rules within your codebase.
+
+## Main Context
+
+@master-todo(Main task tracking system for the project. Contains all current priorities, horizon designations, and progress metrics)
+
+@sovereign-ai-ecosystem-prd(Core architecture document defining the ecosystem structure and components)
+
+## Related Context
+
+@master-prd(Development modes framework with detailed implementation guidelines)
+
+@tool-call-optimization(Ensures efficient use of available tool calls, prioritizing critical operations)
+
+## Implementation Details
+
+When implementing a new feature, always consider:
+
+1. The current development mode:
+   @master-player(Contains quick commands for mode switching)
+   
+2. Appropriate error handling:
+   @tool-call-error-handler(Provides guidance on handling approaching tool call limits)
+   
+3. Documentation requirements:
+   @devdocs-source(Guidelines for documenting using DevDocs.io as reference)
+
+## Additional Resources
+
+For knowledge management:
+@knowledge-graph-search-cache(Efficiently cache web search results in the knowledge graph)
+
+For search optimization:
+@web-search-optimization(Format search queries for optimal results)
+
+## Usage Pattern
+
+The '@' tag syntax is:
+`@rule-name(context explanation)`
+
+Always provide descriptive context to explain why the referenced rule is relevant in this specific situation. 

@@ -1,0 +1,47 @@
+{
+  "name": "default-agent",
+  "description": "Default agent for OllamaOS that works across all modes",
+  "version": "0.1.0",
+  "capabilities": [
+    "task_planning",
+    "code_generation",
+    "documentation",
+    "testing"
+  ],
+  "contextDepth": "medium",
+  "tools": [
+    "codebase_search",
+    "read_file",
+    "edit_file",
+    "run_terminal_cmd",
+    "list_dir",
+    "grep_search"
+  ],
+  "preferences": {
+    "codeStyle": "clean",
+    "documentationLevel": "comprehensive",
+    "verbosity": "balanced"
+  },
+  "modeSpecific": {
+    "design": {
+      "focusAreas": ["ui_components", "architecture", "user_experience"],
+      "additionalTools": ["web_search"]
+    },
+    "engineering": {
+      "focusAreas": ["implementation", "optimization", "refactoring"],
+      "additionalTools": ["search_symbols"]
+    },
+    "testing": {
+      "focusAreas": ["test_coverage", "edge_cases", "quality_assurance"],
+      "additionalTools": []
+    },
+    "deployment": {
+      "focusAreas": ["documentation", "build_process", "compatibility"],
+      "additionalTools": []
+    },
+    "maintenance": {
+      "focusAreas": ["bug_fixing", "performance", "security"],
+      "additionalTools": ["diff_history"]
+    }
+  }
+} 

@@ -36,3 +36,5 @@ yarn-error.log*
 /dist/
 /coverage/
 /tmp/
+
+.gait/custom-merge-driver.sh
