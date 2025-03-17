@@ -107,7 +107,186 @@
         </div>
     </footer>
 
+    <!-- Add Mermaid.js -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    
+    <!-- Add Mermaid Diagrams Section -->
+    <section class="max-w-7xl mx-auto px-6 py-12">
+        <h2 class="text-3xl font-bold mb-8 gradient-text">LLM Architecture & Relationships</h2>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Model Architecture Comparison -->
+            <div class="glass-container p-6">
+                <h3 class="text-xl font-semibold mb-4">Model Architecture Comparison</h3>
+                <div class="mermaid">
+                    %%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#3b82f6', 'fontSize': '16px' }}}%%
+                    flowchart TB
+                        subgraph Large["Large Models (>100B)"]
+                            GPT4["GPT-4o
+                            175B params"]
+                            Claude3["Claude 3 Opus
+                            150B params"]
+                        end
+                        
+                        subgraph Medium["Medium Models (10-100B)"]
+                            Llama["Llama 3.1
+                            70B params"]
+                            DeepSeek["DeepSeek R1
+                            40B params"]
+                        end
+                        
+                        subgraph Small["Small Models (<10B)"]
+                            Nova["Nova Micro
+                            3B params"]
+                            Mini["Ministral 3B
+                            3B params"]
+                        end
+                        
+                        Large --> Performance[("High Performance
+                        MMLU >88%")]
+                        Medium --> Balance[("Balanced
+                        Cost/Performance")]
+                        Small --> Efficiency[("High Efficiency
+                        Low Cost")]
+                        
+                        style Large fill:#e3f2fd,stroke:#3b82f6
+                        style Medium fill:#e8f5e9,stroke:#4caf50
+                        style Small fill:#fff3e0,stroke:#ff9800
+                        style Performance fill:#3b82f6,color:#fff
+                        style Balance fill:#4caf50,color:#fff
+                        style Efficiency fill:#ff9800,color:#fff
+                </div>
+            </div>
+
+            <!-- Model Capabilities Map -->
+            <div class="glass-container p-6">
+                <h3 class="text-xl font-semibold mb-4">Model Capabilities Map</h3>
+                <div class="mermaid">
+                    %%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#8b5cf6' }}}%%
+                    mindmap
+                        root((LLM
+                        Capabilities))
+                            Language
+                                Translation
+                                Summarization
+                                QA
+                            Reasoning
+                                Logic
+                                Math
+                                Analysis
+                            Creative
+                                Writing
+                                Code
+                                Art
+                            Knowledge
+                                Facts
+                                Context
+                                Memory
+                </div>
+            </div>
+
+            <!-- Model Evolution Timeline -->
+            <div class="glass-container p-6">
+                <h3 class="text-xl font-semibold mb-4">Model Evolution Timeline</h3>
+                <div class="mermaid">
+                    %%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#ec4899' }}}%%
+                    timeline
+                        title Model Releases 2023-2024
+                        section 2023 Q4
+                            GPT-4 Turbo : Enhanced capabilities
+                            Claude 2.1 : Improved reasoning
+                        section 2024 Q1
+                            Claude 3 : Major architecture update
+                            Gemini 1.5 : 2M context window
+                            Llama 3 : Open source breakthrough
+                        section 2024 Q2
+                            GPT-4.5 : Planned
+                            Claude 3.5 : Released
+                            DeepSeek R2 : In development
+                </div>
+            </div>
+
+            <!-- Performance vs Cost Analysis -->
+            <div class="glass-container p-6">
+                <h3 class="text-xl font-semibold mb-4">Performance vs Cost Analysis</h3>
+                <div class="mermaid">
+                    %%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#22c55e' }}}%%
+                    quadrantChart
+                        title Performance vs Cost Efficiency
+                        x-axis Low Cost --> High Cost
+                        y-axis Low Performance --> High Performance
+                        quadrant-1 Premium Models
+                        quadrant-2 Cost-Effective
+                        quadrant-3 Basic Models
+                        quadrant-4 Overpriced
+                        GPT-4o: [0.8, 0.9]
+                        Claude-3: [0.7, 0.85]
+                        Llama-3: [0.4, 0.7]
+                        Nova-Micro: [0.2, 0.4]
+                        Ministral-3B: [0.1, 0.35]
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Notion Integration Section -->
+    <section class="max-w-7xl mx-auto px-6 py-12">
+        <h2 class="text-3xl font-bold mb-8 gradient-text">Notion Integration</h2>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Notion Sync Status -->
+            <div class="glass-container p-6">
+                <h3 class="text-xl font-semibold mb-4">Sync Status</h3>
+                <div id="notionSyncStatus" class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span>Last Sync:</span>
+                        <span id="lastSyncTime" class="text-gray-600">Never</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span>Status:</span>
+                        <span id="syncStatus" class="text-green-500">Ready</span>
+                    </div>
+                    <button id="syncButton" class="w-full py-2 px-4 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
+                        Sync with Notion
+                    </button>
+                </div>
+            </div>
+
+            <!-- Data Preview -->
+            <div class="glass-container p-6">
+                <h3 class="text-xl font-semibold mb-4">Data Preview</h3>
+                <div id="dataPreview" class="overflow-auto max-h-[400px]">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Model</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">MMLU</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Speed</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Cost</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200" id="previewTableBody">
+                            <!-- Data will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <script>
+        // Initialize Mermaid
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'base',
+            securityLevel: 'loose',
+            fontFamily: 'Inter',
+            fontSize: 16,
+            flowchart: {
+                curve: 'basis',
+                padding: 20,
+                useMaxWidth: true
+            }
+        });
+
         // Theme configuration
         const theme = {
             colors: {
@@ -280,6 +459,88 @@
                 }
             }
         });
+
+        // Notion Integration
+        class NotionIntegration {
+            constructor() {
+                this.apiEndpoint = 'https://api.notion.com/v1';
+                this.syncButton = document.getElementById('syncButton');
+                this.lastSyncTime = document.getElementById('lastSyncTime');
+                this.syncStatus = document.getElementById('syncStatus');
+                this.previewTableBody = document.getElementById('previewTableBody');
+                
+                this.initializeEventListeners();
+            }
+
+            initializeEventListeners() {
+                this.syncButton.addEventListener('click', () => this.syncData());
+            }
+
+            async syncData() {
+                try {
+                    this.updateStatus('Syncing...', 'text-yellow-500');
+                    
+                    // Fetch data
+                    const response = await this.fetchNotionData();
+                    
+                    // Update preview table
+                    this.updatePreviewTable(response.data);
+                    
+                    // Update sync status
+                    this.lastSyncTime.textContent = new Date().toLocaleString();
+                    this.updateStatus('Synced successfully', 'text-green-500');
+                } catch (error) {
+                    console.error('Sync failed:', error);
+                    this.updateStatus('Sync failed', 'text-red-500');
+                }
+            }
+
+            async fetchNotionData() {
+                // Example fetch implementation
+                const response = await fetch(`${this.apiEndpoint}/databases/your-database-id/query`, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': 'Bearer your-notion-api-key',
+                        'Notion-Version': '2022-06-28',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        sorts: [{ property: 'Model', direction: 'ascending' }]
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                return await response.json();
+            }
+
+            updateStatus(message, colorClass) {
+                this.syncStatus.textContent = message;
+                this.syncStatus.className = colorClass;
+            }
+
+            updatePreviewTable(data) {
+                // Clear existing rows
+                this.previewTableBody.innerHTML = '';
+                
+                // Add new rows
+                data.forEach(item => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${item.model}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${item.mmlu}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${item.speed}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${item.cost}</td>
+                    `;
+                    this.previewTableBody.appendChild(row);
+                });
+            }
+        }
+
+        // Initialize Notion integration
+        const notionIntegration = new NotionIntegration();
     </script>
 </body>
 </html> 

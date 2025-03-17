@@ -30,7 +30,7 @@
       "autostart": false,
       "env": {
         "NOTION_API_KEY": "your-notion-api-key-here",
-        "NOTION_DATABASE_ID": "your-notion-database-id-here"
+        "NOTION_DATABASE_ID": "1b3b3b1d96748073a6c0ce6881f7b598"
       }
     }
   ],
