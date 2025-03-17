@@ -48,6 +48,18 @@ if "%DEV_MODE%"=="true" (
     call startup\ospain2-startup.bat
 )
 
+:: Start Notion services and run tests
+echo Starting Notion services and running integration tests...
+call startup\notion-integration-startup.bat
+
+:: Run Notion integration tests
+if exist ".env" (
+    echo Running Notion integration tests...
+    call startup\run_notion_tests.bat
+) else (
+    echo Warning: .env file not found. Skipping Notion integration tests.
+)
+
 :: When OSPAiN₂ server stops, inform the user that other servers are still running
 echo.
 echo OSPAiN₂ server has stopped. Knowledge Graph and MCP servers are still running in separate windows.

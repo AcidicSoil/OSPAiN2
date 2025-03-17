@@ -35,6 +35,18 @@ sleep 3
 echo -e "\n${BLUE}Starting OSPAiN₂ server...${NC}"
 cd OSPAiN2-hub && npm start
 
+# Start Notion services and run tests
+echo "Starting Notion services and running integration tests..."
+./startup/notion-integration-startup.sh
+
+# Run Notion integration tests
+if [ -f ".env" ]; then
+    echo "Running Notion integration tests..."
+    ./startup/run_notion_tests.sh
+else
+    echo "Warning: .env file not found. Skipping Notion integration tests."
+fi
+
 # If OSPAiN₂ server exits, also terminate the Knowledge Graph and MCP servers
 echo -e "\n${YELLOW}OSPAiN₂ server has stopped. Shutting down other servers...${NC}"
 kill $KG_PID 2>/dev/null

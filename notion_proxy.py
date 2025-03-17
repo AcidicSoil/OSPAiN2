@@ -6,6 +6,9 @@ import os
 import logging
 import datetime
 import sys
+from urllib.parse import urlparse
+import requests
+from dotenv import load_dotenv
 
 # Set up logging
 logging.basicConfig(
@@ -18,6 +21,8 @@ logging.basicConfig(
 )
 logger = logging.getLogger("notion_proxy")
 
+load_dotenv()
+
 class NotionProxyHandler(BaseHTTPRequestHandler):
     def do_OPTIONS(self):
         self.send_response(200)
@@ -26,6 +31,14 @@ class NotionProxyHandler(BaseHTTPRequestHandler):
         logger.info(f"OPTIONS request to {self.path}")
 
     def do_GET(self):
+        if self.path == '/health':
+            self.send_response(200)
+            self.send_header('Content-Type', 'application/json')
+            self.send_header('Access-Control-Allow-Origin', '*')
+            self.end_headers()
+            self.wfile.write(json.dumps({"status": "healthy"}).encode())
+            return
+
         self.handle_request('GET')
 
     def do_POST(self):

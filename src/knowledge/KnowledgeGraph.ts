@@ -8,17 +8,11 @@ interface Chunk {
   dependencies: string[];
 }
 
-interface SemanticNode {
+export interface SemanticNode {
   id: string;
+  type: string;
   content: string;
-  type: "chunk" | "concept" | "relation";
-  metadata: {
-    relevance: number;
-    priority: number;
-    mode: DevelopmentMode;
-    timestamp: number;
-  };
-  connections: string[];
+  metadata: Record<string, any>;
 }
 
 export class KnowledgeGraph extends EventEmitter {
@@ -198,5 +192,10 @@ export class KnowledgeGraph extends EventEmitter {
     this.nodes.clear();
     this.chunks.clear();
     this.modeContexts.forEach((context) => context.clear());
+  }
+
+  async addNode(node: SemanticNode): Promise<void> {
+    this.nodes.set(node.id, node);
+    this.emit('nodeAdded', node);
   }
 }

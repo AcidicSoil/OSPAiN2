@@ -505,3 +505,308 @@ If services fail to start:
 ## License
 
 MIT
+
+# Ollama Ecosystem Report Generation System
+
+A comprehensive system for generating standardized dark and light reports within the Ollama Ecosystem project. This system integrates with our existing agent workflow and documentation standards to provide consistent, well-structured reports for various purposes.
+
+## Features
+
+### Dark Reports
+
+- Sensitive technical findings and security assessments
+- Multiple security levels (restricted, confidential, top-secret)
+- Detailed technical analysis and risk assessment
+- Structured findings with severity levels
+- Comprehensive mitigation recommendations
+
+### Light Reports
+
+- General project updates and progress tracking
+- Multiple visibility levels (public, internal, team)
+- Structured sections with optional subsections
+- Metric tracking with targets and status indicators
+- Action-oriented next steps
+
+## Installation
+
+```bash
+npm install
+```
+
+## Usage
+
+### Generating a Dark Report
+
+```typescript
+import { StandardReportGenerator, ReportType } from './models';
+
+const generator = new StandardReportGenerator('./reports');
+
+const darkReport = await generator.generateReport(ReportType.DARK, {
+  title: 'Security Assessment Report',
+  securityLevel: 'confidential',
+  technicalDetails: {
+    systemAccess: ['Root access detected on system A'],
+    vulnerabilities: ['CVE-2024-1234: Critical SQL injection vulnerability'],
+    exploitationRisks: ['Remote code execution possible'],
+    mitigationSteps: ['Update database to version 5.0.8']
+  },
+  findings: [
+    {
+      severity: 'critical',
+      description: 'Unauthorized access vulnerability in API endpoint',
+      evidence: 'Successful exploitation demonstrated in test environment',
+      recommendations: ['Implement rate limiting', 'Add request validation']
+    }
+  ],
+  riskAssessment: {
+    overallRisk: 'high',
+    impactAnalysis: 'Critical business impact if exploited',
+    probabilityMatrix: 'High likelihood of exploitation'
+  }
+});
+```
+
+### Generating a Light Report
+
+```typescript
+const lightReport = await generator.generateReport(ReportType.LIGHT, {
+  title: 'Sprint Progress Report',
+  visibility: 'internal',
+  sections: [
+    {
+      title: 'Sprint Overview',
+      content: 'Completed 15 out of 20 planned stories',
+      subsections: [
+        {
+          title: 'Key Achievements',
+          content: 'Successfully deployed new authentication system'
+        }
+      ]
+    }
+  ],
+  metrics: [
+    {
+      name: 'Sprint Velocity',
+      value: 45,
+      target: 50,
+      status: 'warning'
+    }
+  ],
+  nextSteps: [
+    {
+      action: 'Complete remaining stories',
+      assignee: 'dev-team',
+      dueDate: new Date('2024-03-20'),
+      priority: 'high'
+    }
+  ]
+});
+```
+
+## Report Structure
+
+### Dark Report Fields
+
+- `id`: Unique identifier
+- `type`: ReportType.DARK
+- `title`: Report title
+- `createdAt`: Creation timestamp
+- `updatedAt`: Last update timestamp
+- `createdBy`: Author identifier
+- `status`: 'draft' | 'complete'
+- `tags`: Array of tags
+- `horizon`: 'H1' | 'H2' | 'H3'
+- `priority`: 1-5
+- `mode`: Development mode indicator
+- `securityLevel`: Security classification
+- `technicalDetails`: Technical findings
+- `findings`: Array of findings
+- `riskAssessment`: Risk analysis
+
+### Light Report Fields
+
+- `id`: Unique identifier
+- `type`: ReportType.LIGHT
+- `title`: Report title
+- `createdAt`: Creation timestamp
+- `updatedAt`: Last update timestamp
+- `createdBy`: Author identifier
+- `status`: 'draft' | 'complete'
+- `tags`: Array of tags
+- `horizon`: 'H1' | 'H2' | 'H3'
+- `priority`: 1-5
+- `mode`: Development mode indicator
+- `visibility`: Access level
+- `sections`: Report content sections
+- `metrics`: Performance metrics
+- `nextSteps`: Action items
+
+## Development
+
+### Running Tests
+
+```bash
+npm test
+```
+
+### Building
+
+```bash
+npm run build
+```
+
+### Linting
+
+```bash
+npm run lint
+```
+
+## Integration with Agent Workflow
+
+The report generation system integrates with our agent workflow system:
+
+1. Reports are automatically tagged with the current development mode
+2. Reports respect the horizon classification system
+3. Reports can be linked to specific agent tasks and workflows
+4. Report templates enforce our documentation standards
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## License
+
+MIT
+
+# MCP Monitoring System
+
+A monitoring system for tracking changes in Model Context Protocol (MCP) tools and codebase changes. This system uses a workflow-based approach to analyze and report on changes in the development environment.
+
+## Features
+
+- Automated monitoring of MCP tools and capabilities
+- Git repository change tracking
+- Configurable monitoring intervals
+- Workflow-based analysis pipeline
+- Context hub integration for intelligent decision making
+- Event-based architecture for real-time updates
+
+## Architecture
+
+The system is built using a workflow graph architecture with the following components:
+
+- **WorkflowGraph**: Core engine for executing monitoring tasks
+- **MCPMonitoringService**: Main service coordinating monitoring activities
+- **Configuration System**: Flexible configuration with validation
+- **Event System**: Real-time event handling and reporting
+
+### Workflow Nodes
+
+1. **Git Monitor Node**
+   - Tracks changes in the codebase
+   - Analyzes commit patterns
+   - Reports on file modifications
+
+2. **MPC Monitor Node**
+   - Monitors MPC tool availability
+   - Tracks tool versions and capabilities
+   - Reports on new or deprecated features
+
+3. **Analysis Node**
+   - Processes data from Git and MPC monitors
+   - Generates insights and recommendations
+   - Identifies patterns and trends
+
+4. **Context Hub Node**
+   - Integrates with the context management system
+   - Updates knowledge base
+   - Provides historical context
+
+## Installation
+
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   cd mcp-monitoring
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Build the project:
+   ```bash
+   npm run build
+   ```
+
+## Configuration
+
+The system can be configured through environment variables or a configuration file. Default configuration is provided in `src/config/monitoring.ts`.
+
+Example configuration:
+
+```typescript
+{
+  checkInterval: 5 * 60 * 1000, // 5 minutes
+  mpcCheckSchedule: '0 * * * *', // Every hour
+  gitCheckSchedule: '0 0 * * *', // Daily at midnight
+  outputPath: 'data/monitoring',
+  contextHubPath: 'data/context-hub'
+}
+```
+
+## Usage
+
+Start the monitoring service:
+
+```bash
+npm run start:monitoring
+```
+
+The service will begin monitoring according to the configured schedules. Events will be emitted for:
+- Monitoring cycle completion
+- Error conditions
+- Significant changes detected
+
+## Development
+
+### Running Tests
+
+```bash
+npm test
+```
+
+### Adding New Monitoring Capabilities
+
+1. Create a new node processor in `src/processors/`
+2. Register the processor in `MCPMonitoringService`
+3. Add appropriate test coverage
+4. Update documentation
+
+### Workflow Graph
+
+The workflow graph system supports:
+- Custom node types
+- Data type validation
+- Cycle detection
+- Error handling
+- Event emission
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
+
+## License
+
+MIT License - see LICENSE file for details

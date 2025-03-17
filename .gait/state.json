@@ -8,7 +8,7 @@
   },
   "kv_store": {
     "unique_matched_lines_count": 0,
-    "total_repo_line_count": 515618,
+    "total_repo_line_count": 518816,
     "best_prompt_response": null,
     "file_statistics": [
       {
@@ -499,7 +499,7 @@
       },
       {
         "file": ".eslintrc.json",
-        "total_lines": 19,
+        "total_lines": 26,
         "ai_generated_lines": 0,
         "ai_generated_percentage": 0
       },
@@ -1219,7 +1219,7 @@
       },
       {
         "file": "README.md",
-        "total_lines": 508,
+        "total_lines": 813,
         "ai_generated_lines": 0,
         "ai_generated_percentage": 0
       },
@@ -3462,6 +3462,12 @@
         "ai_generated_percentage": 0
       },
       {
+        "file": "create_notion_database.py",
+        "total_lines": 389,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
         "file": "data/mcp-server.pid",
         "total_lines": 2,
         "ai_generated_lines": 0,
@@ -4075,7 +4081,7 @@
       },
       {
         "file": "llm-leaderboard-visualization.html",
-        "total_lines": 285,
+        "total_lines": 546,
         "ai_generated_lines": 0,
         "ai_generated_percentage": 0
       },
@@ -4568,6 +4574,54 @@
       {
         "file": "migration-plan.mdc",
         "total_lines": 144,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "notion-test.html",
+        "total_lines": 255,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "notion-test.js",
+        "total_lines": 180,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "notion_content_manager.py",
+        "total_lines": 374,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "notion_integration_readme.md",
+        "total_lines": 249,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "notion_proxy.py",
+        "total_lines": 153,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "notion_tests.html",
+        "total_lines": 133,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "notion_tests.js",
+        "total_lines": 261,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "notion_ui.html",
+        "total_lines": 514,
         "ai_generated_lines": 0,
         "ai_generated_percentage": 0
       },
@@ -5587,7 +5641,7 @@
       },
       {
         "file": "package.json",
-        "total_lines": 153,
+        "total_lines": 43,
         "ai_generated_lines": 0,
         "ai_generated_percentage": 0
       },
@@ -6121,7 +6175,7 @@
       },
       {
         "file": "src/knowledge/KnowledgeGraph.ts",
-        "total_lines": 203,
+        "total_lines": 202,
         "ai_generated_lines": 0,
         "ai_generated_percentage": 0
       },
@@ -6558,6 +6612,18 @@
         "ai_generated_percentage": 0
       },
       {
+        "file": "start_notion_services.bat",
+        "total_lines": 94,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
+        "file": "start_notion_services.sh",
+        "total_lines": 106,
+        "ai_generated_lines": 0,
+        "ai_generated_percentage": 0
+      },
+      {
         "file": "startup/README.md",
         "total_lines": 216,
         "ai_generated_lines": 0,
@@ -6661,13 +6727,13 @@
       },
       {
         "file": "startup/start-all.bat",
-        "total_lines": 56,
+        "total_lines": 68,
         "ai_generated_lines": 0,
         "ai_generated_percentage": 0
       },
       {
         "file": "startup/start-all.sh",
-        "total_lines": 43,
+        "total_lines": 55,
         "ai_generated_lines": 0,
         "ai_generated_percentage": 0
       },
@@ -7675,7 +7741,7 @@
       },
       {
         "file": "tsconfig.json",
-        "total_lines": 16,
+        "total_lines": 20,
         "ai_generated_lines": 0,
         "ai_generated_percentage": 0
       },

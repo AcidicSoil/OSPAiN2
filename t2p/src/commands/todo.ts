@@ -77,9 +77,9 @@ todo
               description: llmResponse.description,
               tags: llmResponse.tags,
               category: llmResponse.category,
-              horizon: llmResponse.horizon as 'H1' | 'H2' | 'H3',
-              status: llmResponse.status as TodoItem['status'],
-              priority: llmResponse.priority as 1 | 2 | 3 | 4 | 5,
+              horizon: llmResponse.horizon,
+              status: llmResponse.status,
+              priority: llmResponse.priority,
             };
             const newTodo = await todoService.addTodo(todo);
             console.log(chalk.green('✓ Todo added successfully:'));
@@ -221,7 +221,7 @@ async function remixTodo(
     ]);
 
     // Create a copy of the original todo to modify
-    let remixedTodo = {
+    const remixedTodo = {
       title: llmResponse.title,
       description: llmResponse.description,
       tags: [...llmResponse.tags],
