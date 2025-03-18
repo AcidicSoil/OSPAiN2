@@ -12,7 +12,21 @@
       "node_modules/",
       "logs/",
       ".git/",
-      "backup-scripts/backup-log.txt"
+      "backup-scripts/backup-log.txt",
+      ".env",
+      ".venv",
+      "dist/",
+      "build/",
+      "coverage/",
+      "docs/",
+      "examples/",
+      "tests/",
+      "src/agent/configuration.ts",
+      "src/agent/configuration.ts",
+      "src/agent/configuration.ts",
+      "src/agent/configuration.ts",
+      "src/agent/configuration.ts",
+      "src/agent/configuration.ts"
     ],
     "push_options": {
       "force": false,

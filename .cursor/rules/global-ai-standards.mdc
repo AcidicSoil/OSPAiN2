@@ -1,0 +1,284 @@
+---
+description: Master Rules for AI - Global Standards for development in the Ollama ecosystem
+globs: "*.{ts,tsx,js,jsx,md,mdc,py,html,css,scss}"
+alwaysApply: true
+---
+
+# Master Rules for AI - Global Standards
+
+## Sovereign AI Core Principles
+
+- **Data Sovereignty**: Maintain complete user control over all data and models
+- **Local-First Computing**: Prioritize local execution over external API calls
+- **Context Preservation**: Maintain awareness across transitions and sessions
+- **Transparent Processing**: Ensure all AI decisions are explainable and accessible
+- **User Autonomy**: Empower users with choices rather than making decisions for them
+- **Graceful Degradation**: Function effectively with limited or no external resources
+- **Knowledge Integration**: Connect with semantic knowledge systems for context-aware responses
+
+## Core Development Philosophy
+- Write clean, simple, readable code with the fewest lines possible
+- Implement features in the simplest possible way that satisfies requirements
+- Maintain backward compatibility while enabling forward progress
+- Follow TypeScript strict mode and appropriate language standards
+- Keep files small and focused (<200 lines) with clear separation of concerns
+- Write simple, clean, and modular code with descriptive naming
+- Test after every meaningful change to ensure stability
+- Focus on core functionality before optimization
+- Reason thoroughly about design and implementation choices
+
+## Ownership Model
+- **Complete Ownership**: Full control over component implementation and evolution
+- **Partial Ownership**: Shared control with clearly defined boundaries
+- **Managed Ownership**: Limited control with oversight and accountability
+- Maintain an ownership graph documenting relationships between components
+- Document ownership transitions during refactoring or migration
+- Consider ownership implications when designing new components
+- Follow the "takeover process" when assuming control of existing code
+
+## Development Mode Framework
+- **🎨 Design Mode**: UI/UX structuring, component architecture design
+  - Create wireframes before implementation
+  - Establish design patterns before coding
+  - Define component interfaces thoroughly
+  - Consider accessibility from initial design
+  
+- **🔧 Engineering Mode**: Core functionality, business logic, data flow
+  - Implement robust error handling
+  - Create appropriate abstraction layers
+  - Optimize data access patterns
+  - Ensure proper type safety and validation
+  
+- **🧪 Testing Mode**: Quality assurance, edge cases, resilience testing
+  - Write comprehensive test cases covering normal and edge cases
+  - Implement integration tests for component interactions
+  - Verify accessibility compliance
+  - Test performance under various conditions
+  
+- **📦 Deployment Mode**: Release readiness, CI/CD, documentation
+  - Ensure complete documentation
+  - Create streamlined build processes
+  - Implement feature flags for gradual rollout
+  - Verify cross-environment compatibility
+  
+- **🔍 Maintenance Mode**: Ongoing health, improvements, support
+  - Refactor for improved performance and clarity
+  - Address technical debt systematically
+  - Maintain and update documentation
+  - Monitor for issues proactively
+
+## Mode Transition Protocol
+- Define clear handoff procedures when switching between modes
+- Preserve context during transitions to maintain continuity
+- Document the specific reason for mode transitions
+- Optimize AI resource allocation based on the active mode
+- Cache mode-specific resources proactively for smooth transitions
+- Implement progressive context loading as needed
+- Track mode effectiveness metrics to improve future transitions
+
+## Horizon Management Principles
+- **Horizon 1 (Now)**: Features actively being implemented
+  - Prioritize highest value deliverables
+  - Focus on completion before starting new tasks
+  - Document decisions and implementation details
+  
+- **Horizon 2 (Next)**: Concepts approved for planning
+  - Research best implementation approaches
+  - Create detailed technical specifications
+  - Identify dependencies and potential blockers
+  
+- **Horizon 3 (Future)**: Ideas captured for later consideration
+  - Document concept without premature implementation
+  - Evaluate periodically for promotion to H2
+  - Consider implications on current architecture
+
+## Success Patterns
+### Task Planning Patterns
+| Pattern | Success Rate | Best For |
+|---------|--------------|----------|
+| Decomposition-first | 92% | Complex, multi-faceted tasks |
+| Critical-path-focus | 87% | Time-sensitive implementations |
+| Risk-mitigation | 85% | High-impact changes |
+
+### Code Generation Patterns
+| Pattern | Success Rate | Best For |
+|---------|--------------|----------|
+| Test-driven | 94% | Core functionality, complex logic |
+| Interface-first | 89% | Cross-component interactions |
+| Incremental-validation | 92% | UI components, user flows |
+
+### Problem Solving Patterns
+| Pattern | Success Rate | Best For |
+|---------|--------------|----------|
+| First-principles | 90% | Novel challenges, architecture design |
+| Analogy-based | 85% | Familiar patterns, standard implementations |
+| Constraint-relaxation | 87% | Blocked progress, complex requirements |
+
+## Local-First Infrastructure
+- Implement lightweight model serving with dynamic resource allocation
+- Use multi-level caching strategy (memory, disk, semantic)
+- Maintain local knowledge management systems
+- Support offline-first development capabilities
+- Implement local fine-tuning with automated data collection
+- Utilize distributed computing when available
+
+## Documentation Standards
+- Create clear, comprehensive documentation in Markdown format
+- Document API changes with examples and migration guides
+- Include JSDoc for all functions and components
+- Explain the "why" not just the "what" in comments
+- Never delete comments unless obviously wrong or obsolete
+- Add helpful explanatory comments within code
+- Structure README files consistently with standard sections
+- Use MDC format for special documentation files
+- Maintain documentation alongside code changes
+
+## Error Handling & Debugging
+- Consider multiple possible causes before reaching conclusions
+- Explain problems in plain language before technical details
+- Make minimal necessary changes to resolve issues
+- Test fixes in isolation before integrating
+- Document strange errors and their solutions
+- Add appropriate logging for all error conditions
+- Provide actionable error messages for users
+- Implement graceful degradation for all features
+
+## Knowledge Integration
+- Connect with Knowledge Graph MCP server for semantic understanding
+- Implement context-aware decision making using the knowledge graph
+- Store and retrieve semantic embeddings for efficient retrieval
+- Track relationships between concepts
+- Use integrated context system with hierarchical organization
+- Create context markers at transition points
+- Maintain awareness of the active development mode
+
+## Prompt Templates & Pattern Analysis
+- Use standardized prompt templates for consistent results:
+  - **Task Planning**: Templates for breaking down complex tasks
+  - **Code Generation**: Templates for generating well-structured code
+  - **Task Decomposition**: Templates for advanced task breakdown
+  - **Problem Analysis**: Templates for diagnostic investigation
+- Record successful patterns and their success metrics
+- Analyze common elements in successful approaches
+- Adapt templates based on historical success data
+- Use pattern-driven approach for challenging problems
+
+## Terminal & Environment Management
+- Create terminal.md to document environment-specific requirements
+- Support appropriate terminal for the platform (PowerShell, CMD, Bash)
+- Be aware of platform-specific terminal issues:
+  - Handle Git Bash terminal issues in Windows
+  - Watch for command syntax differences across shells
+  - Use simple commands that work across environments
+- Break complex operations into smaller, simpler commands
+- Verify file paths exist before access attempts
+- Use edit_file tool instead of complex terminal commands
+
+## Project Navigation
+- Use efficient search patterns to locate relevant code
+- Understand codebase structure before diving into changes
+- Locate entry points for unfamiliar systems
+- Identify core patterns in the existing architecture
+- Refresh context after switching between projects
+- Create appropriate documentation maps
+
+## Task Management
+- Use structured task schema with comprehensive metadata:
+  ```typescript
+  interface TaskSchema {
+    id: string;                    // Unique identifier
+    name: string;                  // Task name
+    description?: string;          // Task description
+    priority: TaskPriority;        // HIGH, MEDIUM, LOW, etc.
+    horizon: TaskHorizon;          // H1, H2, H3
+    status: TaskStatus;            // PENDING, IN_PROGRESS, COMPLETED, etc.
+    capabilities_required: string[];  // Required capabilities
+    subtasks?: SubTask[];          // Subtasks
+    metadata?: Record<string, any>; // Additional metadata
+  }
+  ```
+- Follow standard task lifecycle:
+  1. Creation: Task is created and registered
+  2. Assignment: Task is assigned to appropriate scope
+  3. Execution: Task is implemented
+  4. Completion: Task is marked as completed or failed
+  5. Analysis: Success patterns are recorded
+- Prioritize tasks appropriately:
+  - `CRITICAL`: Must be completed immediately
+  - `HIGH`: Important, prioritize over medium/low
+  - `MEDIUM`: Standard priority
+  - `LOW`: Complete when resources available
+  - `OPTIONAL`: Can be skipped if resources limited
+
+## Code Style Guidelines
+- Follow established patterns within the project
+- Use consistent formatting with automatic tools
+- Organize imports and dependencies logically
+- Apply appropriate naming conventions
+- Structure files with related functionality together
+- Keep methods small and focused
+- Use meaningful variable and function names
+- Apply appropriate encapsulation and information hiding
+
+## Paranoid Mode - Survival Tactics
+When faced with incomplete information or unclear structure:
+1. Perform health check of project status
+2. Orient within codebase through overview documents
+3. Locate entry points and key files
+4. Identify core tools and utilities
+5. Catalog known-good commands and patterns
+6. Document findings systematically
+
+## Prompting Patterns
+- "Write code with the fewest lines of code"
+- "Proceed like a senior developer"
+- "Implement this feature fully and completely"
+- "Analyze what the error might be"
+- "Keep answers concise when appropriate"
+- "Preserve all existing comments"
+- "Summarize the current state before proceeding"
+- "Analyze different solutions objectively"
+- "Form specific search queries for research"
+- "Build confidence through systematic investigation"
+
+## Agent Capabilities Framework
+- Define specific capabilities for different development tasks:
+  - `TASK_PLANNING`: Breaking down complex tasks
+  - `CODE_GENERATION`: Writing and modifying code
+  - `FILE_OPERATIONS`: Manipulating files and directories
+  - `DATA_ANALYSIS`: Analyzing data and metrics
+  - `SYSTEM_ADMINISTRATION`: Managing system resources
+  - `UI_DESIGN`: Creating user interface elements
+  - `DOCUMENTATION`: Writing and updating documentation
+- Match tasks to appropriate capabilities
+- Develop specialized skills in priority areas
+- Track capability metrics to identify areas for improvement
+- Expand capability set systematically
+
+## Context-Aware Implementation
+- Consider the project-specific context for all changes
+- Align implementations with broader architectural goals
+- Be aware of cross-cutting concerns like security and performance
+- Consider the impact of changes on other components
+- Implement features with appropriate abstraction levels
+- Balance immediate needs against long-term maintainability
+- Factor in the technical expertise of the team
+
+## Systematic Success Checklist
+1. Understand requirements thoroughly before implementation
+2. Design the solution with appropriate abstraction
+3. Implement systematically with thorough testing
+4. Document comprehensively with examples
+5. Review for edge cases and potential issues
+6. Optimize for performance and maintainability
+7. Ensure backward compatibility
+8. Add appropriate monitoring and logging
+9. Create clear usage examples
+10. Document lessons learned for future reference
+
+## Future Directions
+- **Advanced Pattern Recognition**: Implement machine learning for pattern recognition
+- **Intelligent Task Scheduling**: Optimize task scheduling based on success patterns
+- **Self-Improvement**: Enable continuous improvement through automated feedback
+- **External System Integration**: Connect with external resources for enhanced capabilities
+- **Multi-Agent Coordination**: Improve coordination between components and systems 
