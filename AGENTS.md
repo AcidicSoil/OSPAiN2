@@ -94,6 +94,29 @@
 >    - (Optional) Create a simple JSON index or MCP-style API endpoint for agent/AI access to docs.
 >
 > ---
+## 🧹 **Critical Curation & Refactoring Instructions**:
+
+- During audit and documentation, you **must**:
+    - Flag any module, function, or tool integration (e.g., Notion references) that appears outdated, poorly integrated, or inconsistent with the platform’s local-first, agentic mission.
+    - For each flagged area:
+        - Propose one of the following actions, with clear rationale:
+            1. **Retain & Refactor:** Describe why it’s still valuable, and *how* it could be refactored to fit cohesively (including any architectural changes needed).
+            2. **Replace:** Suggest a modern/local-first alternative, with justification (e.g., “Replace Notion with [Logseq](https://logseq.com/) for privacy, local graph support, extensibility”).
+            3. **Remove:** If the code is redundant or a dead end, mark for excision and explain why.
+    - Document *only* what survives this curation filter, unless otherwise instructed.
+    - Maintain a living “Exclusions & Replacements” log (e.g., `exclusions.md` in `/docs`) listing what was flagged, the rationale, and proposed action (including alternatives).
+
+- You are empowered to be ruthless but rational in your curation—do not preserve dead weight or half-integrated features without strong justification.
+
+Example Log Entry (for Notion references):
+## Exclusions & Replacements Log
+
+### Flagged: Notion Integration
+- **Location:** `/src/integrations/notion.ts`
+- **Reason:** Notion is cloud-based, not local-first, and duplicates knowledge graph features already present.
+- **Proposed Action:** Replace with Logseq or Obsidian integration, or remove entirely if redundant.
+- **Status:** Pending review.
+
 >
 > ## 🚦 **Workflow & Output Requirements**:
 >
