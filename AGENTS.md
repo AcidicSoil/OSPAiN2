@@ -1,11 +1,3 @@
-Perfect—your goal is a **thorough refactor/rework of OSPAiN2**, leveraging *newer, best-in-class technologies* to maximize development speed and feature completeness, **without reinventing the wheel**.
-
-## **Your Optimized Prompt: Modern Refactor of OSPAiN2**
-
----
-
-**Your Optimized Prompt:**
-
 > **You are an expert full-stack AI ecosystem architect.**
 >
 > My project, \[OSPAiN2 (GitHub: AcidicSoil/OSPAiN2)], is a local-first, agentic workflow automation platform integrating AI, task management, and knowledge graphs. I want a thorough re-architecture and refactor to leverage the latest stable tools and frameworks—**saving development time by using existing, well-maintained open-source solutions wherever possible.**
@@ -54,10 +46,3 @@ Perfect—your goal is a **thorough refactor/rework of OSPAiN2**, leveraging *ne
 
 **Pro Tip:**
 *Share this prompt with advanced AI (ChatGPT-4, Claude 3, or Gemini 1.5+) for system-level architectural design, then use follow-up prompts to iterate on specific modules or implementation details. For the **manifest**, ask for comparisons (“Why not X vs Y?”) to ensure the stack is robust and future-proof.*
-
----
-
-**Next Steps:**
-
-* Let me know if you want a **sample output** (architecture diagram, migration plan, code stub).
-* Or, specify any **must-use technologies** or **favorite tools** and I’ll tailor the prompt further!
