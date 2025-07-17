@@ -94,6 +94,31 @@
 >    - (Optional) Create a simple JSON index or MCP-style API endpoint for agent/AI access to docs.
 >
 > ---
+## 📚 Documentation Curation Objectives
+
+1. **Audit and inventory all Markdown and doc files in /docs and subfolders.**
+2. For each doc:
+    - Summarize its stated purpose and last known update.
+    - Flag any that:
+        - Are outdated, superseded, or reference deprecated/removed modules.
+        - Duplicate information present elsewhere (recommend consolidation target).
+        - Are incomplete, low-value, or speculative (recommend archive or removal).
+        - Reference external services that are not local-first or aligned (e.g., Notion—suggest replacement).
+    - Recommend one of: [Keep & Update, Merge, Archive, Remove, Replace, Rewrite].
+
+3. **Build a /docs/updates.md or /docs/audit-summary.md**
+   - Log every file with:
+        - Recommended action and rationale.
+        - Dependencies (what code/module does this doc relate to?).
+        - Any urgent TODOs for critical, missing, or broken docs.
+
+4. **Enforce a “living doc” approach:**
+    - For every doc marked “Keep,” ensure it references current module names and architecture.
+    - Move anything “Archive” to a /docs/legacy/ folder (don’t delete yet).
+    - For “Merge,” specify exact doc merge targets.
+    - For “Replace,” specify new tool/process (e.g., “Replace Notion references with Logseq or Obsidian”).
+
+
 ## 🧹 **Critical Curation & Refactoring Instructions**:
 
 - During audit and documentation, you **must**:
