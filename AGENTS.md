@@ -46,3 +46,71 @@
 
 **Pro Tip:**
 *Share this prompt with advanced AI (ChatGPT-4, Claude 3, or Gemini 1.5+) for system-level architectural design, then use follow-up prompts to iterate on specific modules or implementation details. For the **manifest**, ask for comparisons (“Why not X vs Y?”) to ensure the stack is robust and future-proof.*
+> **You are an expert full-stack AI ecosystem architect and technical documentation strategist.**
+>
+> My project, [OSPAiN2 (GitHub: AcidicSoil/OSPAiN2)], is a local-first, agentic workflow automation platform integrating AI, task management, and knowledge graphs. The system’s future depends on clear, agent-friendly, and human-friendly documentation to enable rapid onboarding, robust analysis, and future extensibility.
+>
+> ### Context:
+>
+> * **Current stack:** TypeScript, Node.js (Volta), React (migrating to Vite/T3), modular MCP servers, T2P engine, local knowledge graph.
+> * **Core goals:** Local-first, data sovereignty, modular agent workflows, unified knowledge graph, extensible hub UI.
+> * **Blockers:** Outdated dependencies (Create React App), frontend/backend coupling, slow integration pace, manual glue code.
+>
+> ---
+>
+> ## 📄 **Documentation Objectives**:
+>
+> 1. **Comprehensive module inventory**
+>    - Systematically audit the codebase to extract all top-level modules, packages, and components.
+>    - For each: document its purpose, primary responsibilities, key interfaces, and major dependencies in clear, plain English.
+>
+> 2. **Functional domain mapping**
+>    - Explicitly identify and describe agent-centric subsystems:
+>      - Memory (state, persistence, recall)
+>      - Planning/decision logic (schedulers, evaluators, orchestrators)
+>      - Evaluation/reasoning (scoring, feedback, error correction)
+>      - Communication/adapters (I/O, integration, plugin points)
+>      - Utility/toolkit layers (parsing, data handling, scheduling, etc.)
+>
+> 3. **Data & control flow**
+>    - Map how data and control signals move through the system, using diagrams and concise bullet-lists.
+>    - Document all extensibility points, plugin hooks, and API boundaries.
+>
+> 4. **Surface ambiguities & overlaps**
+>    - Identify and flag any modules or layers with unclear, overlapping, or conflicting responsibilities.
+>    - Suggest points for refactoring, clearer boundaries, or renaming.
+>
+> 5. **Manifest for open-source dependencies**
+>    - Create a table (format: [Name, Version, Source URL, Role, Reason]) for all reused OSS solutions, pinning versions and justifying inclusion.
+>
+> 6. **Privacy & local-first design**
+>    - For each subsystem, explain how local-first principles and data sovereignty are ensured.
+>    - Clearly mark any system boundaries where cloud or network access is possible or required.
+>
+> 7. **Technical documentation structure**
+>    - Organize all documentation in a `/docs` directory as Markdown files, using intuitive names (e.g., `architecture.md`, `modules.md`, `api.md`, `memory.md`, `extensibility.md`).
+>    - Use consistent front-matter for easy agentic parsing (e.g., section type, summary, related modules).
+>    - Prepare docs for static site deployment via MkDocs, Docusaurus, or similar SSGs.
+>    - (Optional) Create a simple JSON index or MCP-style API endpoint for agent/AI access to docs.
+>
+> ---
+>
+> ## 🚦 **Workflow & Output Requirements**:
+>
+> - **Begin by auditing and cataloguing the project as described.**
+> - Produce documentation incrementally—commit each well-formed Markdown file as soon as a logical section is complete.
+> - Structure all content to be clear to both human developers and AI agents (avoid jargon or “magic strings”; be explicit in definitions and boundaries).
+> - Output a summary report listing completed docs, remaining gaps, and proposed next actions.
+>
+> ---
+>
+> ## **System Constraints:**
+>
+> * All major systems and docs must remain local-first (no SaaS/cloud dependency unless self-hosted).
+> * Prefer TypeScript, Markdown, and open standards for all outputs and docs.
+> * Prioritize maintainability, extensibility, and auditability.
+>
+> ---
+>
+> **Pro Tip:**
+> After initial doc generation, request architectural critique, module overlap analysis, or migration roadmaps from an advanced agent to further refine the project.
