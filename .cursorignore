@@ -31,3 +31,17 @@ OSPAin2/node_modules
 
 OSPAin2/.next
 
+# Task-master files
+.kiro
+.roo
+.zed
+.windsurf
+.vscode
+.trae
+.taskmaster
+.gemini
+.gait
+.clinerules
+.claude
+.bak
+__mocks__

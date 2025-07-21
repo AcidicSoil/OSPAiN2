@@ -38,3 +38,31 @@ yarn-error.log*
 /tmp/
 
 .gait/custom-merge-driver.sh
+
+logs
+dev-debug.log
+# Dependency directories
+node_modules/
+.idea
+.vscode
+# OS specific
+
+# Task files
+# tasks.json
+# tasks/
+
+# Task-master files
+.kiro
+.roo
+.zed
+.windsurf
+.vscode
+.trae
+.taskmaster
+.gemini
+.gait
+.clinerules
+.claude
+.bak
+__mocks__
+
