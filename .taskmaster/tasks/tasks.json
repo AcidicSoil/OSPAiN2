@@ -1,0 +1,100 @@
+{
+  "tasks": [
+    {
+      "id": "1",
+      "title": "Phase 1: Establish the new project structure and development environment",
+      "description": "Set up the foundational structure for the OSPAiN2 project, including directory layout, build tools, and development environment configuration.",
+      "status": "pending",
+      "priority": "high",
+      "dependencies": []
+    },
+    {
+      "id": "2",
+      "title": "Phase 1: Migrate the frontend from CRA to Next.js/Vite",
+      "description": "Migrate the existing Create React App frontend to a modern, performant stack like Next.js or Vite.",
+      "status": "pending",
+      "priority": "high",
+      "dependencies": ["1"]
+    },
+    {
+      "id": "3",
+      "title": "Phase 1: Implement the new local-first knowledge graph",
+      "description": "Replace the Notion dependency with a new local-first knowledge graph implementation.",
+      "status": "pending",
+      "priority": "high",
+      "dependencies": ["1"]
+    },
+    {
+      "id": "4",
+      "title": "Phase 1: Build the foundational Agent Core Engine",
+      "description": "Build the initial version of the Agent Core Engine with a basic planner.",
+      "status": "pending",
+      "priority": "high",
+      "dependencies": ["1"]
+    },
+    {
+      "id": "5",
+      "title": "Phase 1: Set up the automated documentation pipeline",
+      "description": "Set up an automated documentation pipeline using MkDocs or a similar tool.",
+      "status": "pending",
+      "priority": "high",
+      "dependencies": ["1"]
+    },
+    {
+      "id": "6",
+      "title": "Phase 2: Integrate the chosen workflow orchestration engine",
+      "description": "Integrate a workflow orchestration engine like Temporal.io or n8n.",
+      "status": "pending",
+      "priority": "medium",
+      "dependencies": ["4"]
+    },
+    {
+      "id": "7",
+      "title": "Phase 2: Develop the standardized adapter system",
+      "description": "Develop a standardized adapter system for plugins and tools.",
+      "status": "pending",
+      "priority": "medium",
+      "dependencies": ["4"]
+    },
+    {
+      "id": "8",
+      "title": "Phase 2: Build out the initial set of core utility tools",
+      "description": "Build a set of core utility tools for common agent tasks.",
+      "status": "pending",
+      "priority": "medium",
+      "dependencies": ["4"]
+    },
+    {
+      "id": "9",
+      "title": "Phase 2: Enhance the Hub UI",
+      "description": "Enhance the Hub UI to visualize agent workflows and the knowledge graph.",
+      "status": "pending",
+      "priority": "medium",
+      "dependencies": ["2", "3"]
+    },
+    {
+      "id": "10",
+      "title": "Phase 3: Refine the Evaluation & Reasoning components",
+      "description": "Refine the Evaluation and Reasoning components of the Agent Core Engine.",
+      "status": "pending",
+      "priority": "low",
+      "dependencies": ["4"]
+    },
+    {
+      "id": "11",
+      "title": "Phase 3: Expand the library of available adapters and tools",
+      "description": "Expand the library of available adapters and tools.",
+      "status": "pending",
+      "priority": "low",
+      "dependencies": ["7"]
+    },
+    {
+      "id": "12",
+      "title": "Phase 3: Improve developer documentation",
+      "description": "Improve the developer documentation and create onboarding guides.",
+      "status": "pending",
+      "priority": "low",
+      "dependencies": ["5"]
+    }
+  ]
+}

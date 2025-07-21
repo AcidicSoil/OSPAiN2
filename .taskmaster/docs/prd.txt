@@ -1,0 +1,75 @@
+# Overview
+OSPAiN2 (Operating System for Personalized AI Networks V2) is a local-first, modular, and extensible platform for building, managing, and orchestrating autonomous AI agents. It addresses the need for a data-sovereign agent framework that avoids cloud dependency and provides a cohesive environment for complex workflows. It acts as a cognitive operating system, providing core services like memory, planning, and a unified knowledge graph, while allowing for flexible integration of various tools and utilities. The primary audience is initially the developer, with a long-term goal of supporting other developers building sophisticated, data-sovereign AI applications.
+
+# Core Features
+
+1.  **Agent Core Engine:**
+    *   **Planning & Orchestration:** A central engine to manage agent workflows, schedule tasks, and execute decisions. This should be a replaceable module, with the initial goal of integrating a modern, self-hosted solution like Temporal.io or n8n.
+    *   **Evaluation & Reasoning:** Components for scoring agent performance, providing self-correction feedback, and enabling logical reasoning.
+
+2.  **Unified Memory System:**
+    *   A local-first, unified knowledge graph that supports both persistent (long-term) and transient (short-term) memory.
+    *   This system will replace the legacy Notion integration with a robust, local-first alternative like a self-hosted Weaviate instance, TerminusDB, or a structured file-based system using Obsidian/Logseq principles.
+
+3.  **Modular Component Architecture:**
+    *   **Adapters & Integrations:** A standardized plugin system (e.g., MCP - Model Control Protocol servers) to allow for the easy addition of new tools, data sources, and external APIs.
+    *   **Utility Toolkit:** A curated collection of reusable modules for common agent tasks, such as data parsing, web scraping, file manipulation, and scheduling.
+
+4.  **Unified Hub UI:**
+    *   A web-based interface for monitoring agent status, managing tasks, visualizing the knowledge graph, and interacting with the system.
+    *   The current UI will be migrated from its legacy Create React App foundation to a modern, performant stack like Next.js (App Router) or a similar Vite-based framework, following T3 stack principles.
+
+5.  **Automated Documentation System:**
+    *   A system for generating, curating, and deploying documentation that is both human-friendly and machine-readable.
+    *   Docs will be written in Markdown, stored in the `/docs` directory, and deployed as a static site using MkDocs or Docusaurus.
+    *   An AI-driven curation process will be used to audit, update, and archive documentation to ensure it remains aligned with the evolving codebase.
+
+# User Experience (Developer Focus)
+
+*   **Developer Ergonomics:** The primary focus is on creating a highly maintainable, extensible, and easy-to-use platform for developers. This includes clear APIs, comprehensive documentation, and a streamlined local development setup.
+*   **Agent Environment:** The platform will provide a consistent and reliable "cognitive environment" for agents, with well-defined interfaces for accessing memory, planning, and tools.
+
+# Technical Architecture
+
+*   **Frontend:** Next.js (App Router) or Vite/T3-based framework.
+*   **Backend:** Node.js with TypeScript, powering a system of modular MCP servers.
+*   **Knowledge Graph:** Self-hosted Weaviate, TerminusDB, or similar local-first graph database.
+*   **Workflow Orchestration:** Self-hosted Temporal.io or n8n.
+*   **Local-First Mandate:** All core components MUST run locally. Any cloud/SaaS dependencies must be optional and self-hostable.
+
+# Development Roadmap
+
+*   **Phase 1 (MVP - Foundation & Refactor):**
+    1.  Establish the new project structure and development environment.
+    2.  Migrate the frontend from CRA to Next.js/Vite.
+    3.  Implement the new local-first knowledge graph, replacing the Notion dependency.
+    4.  Build the foundational Agent Core Engine with a basic planner.
+    5.  Set up the automated documentation pipeline with MkDocs.
+
+*   **Phase 2 (Expansion & Integration):**
+    1.  Integrate the chosen workflow orchestration engine (e.g., Temporal.io).
+    2.  Develop the standardized adapter system for plugins/tools.
+    3.  Build out the initial set of core utility tools.
+    4.  Enhance the Hub UI to visualize agent workflows and the knowledge graph.
+
+*   **Phase 3 (Maturity & Extensibility):**
+    1.  Refine the Evaluation & Reasoning components.
+    2.  Expand the library of available adapters and tools.
+    3.  Improve developer documentation and create onboarding guides for new developers.
+
+# Logical Dependency Chain
+
+1.  **Environment & Documentation:** Set up the new project structure and the automated documentation pipeline first to document all subsequent decisions.
+2.  **Core Memory System:** The knowledge graph is the foundation. This must be implemented before other components can be built on top of it.
+3.  **Agent Core Engine:** The basic agent orchestrator is the next logical step.
+4.  **Frontend Hub:** A basic UI shell should be developed in parallel to provide a window into the backend systems as they come online.
+5.  **Adapters & Utilities:** These modular components can be built once the core systems are stable.
+
+# Risks and Mitigations
+
+*   **Risk:** Scope creep from integrating too many new technologies at once.
+    *   **Mitigation:** Adhere strictly to the phased roadmap. Finalize tech stack choices for the MVP before beginning implementation.
+*   **Risk:** Complexity of migrating data or logic from the old system.
+    *   **Mitigation:** Prioritize a clean slate for the MVP. Develop dedicated, well-tested migration scripts for any essential data later.
+*   **Risk:** Underestimating the effort to integrate and maintain third-party open-source solutions.
+    *   **Mitigation:** Thoroughly evaluate and prototype with chosen OSS tools before committing to a full integration. Ensure the community and maintenance status of each tool is acceptable.
