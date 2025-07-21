@@ -1,0 +1,19 @@
+__mocks__ - sample data used for unit tests
+agents-system - Python agents framework with runners and utilities
+codefetch - script to download external repo snippets
+designs - design assets and diagrams for UI components
+development-modes - shell scripts for switching project modes
+docs - extensive markdown documentation and guides
+mcp-servers - TypeScript microservers implementing Model Context Protocol
+models - shared TypeScript types for reports
+node_modules - third-party packages (generated)
+out - compiled JS output from TypeScript
+prompt-engineering - prompt templates and examples
+scripts - helper scripts for environment and setup
+src - main TypeScript extension and server code
+startup - bootstrap scripts and environment checks
+t2p - CLI tool for todo and research workflows
+templates - text templates for prompts and reports
+test-agents - experiments for agent behaviors
+test - jest unit tests
+tools - misc tooling (cleanup, text processing)
