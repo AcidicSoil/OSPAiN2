@@ -14,7 +14,6 @@ Provide **deep code-analysis, refactor advice, and patch drafts** while remainin
 
 ## 3. Key Concepts (Glossary seeds)
 - **Agent Runner** – orchestration loop in `agents-system/`.
-- **MCP Server** – local micro-servers exposing tools via Model-Context Protocol.
 - **Knowledge Graph** – semantic chunk index (see `src/knowledge-graph/`).
 
 *(The audit phase will expand this list.)*
