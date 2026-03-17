@@ -18,6 +18,8 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ progress }) => {
   );
 };
 
+import DOMPurify from 'dompurify';
+
 interface MarkdownRendererProps {
   markdown: string;
 }
@@ -36,7 +38,9 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ markdown }) => {
     .replace(/^[0-9]+\. (.*$)/gim, '<li class="ml-6 list-decimal">$1</li>')
     .split('\n\n').join('<p class="my-2"></p>');
 
-  return <div dangerouslySetInnerHTML={{ __html: formattedText }} />;
+  const sanitizedHtml = DOMPurify.sanitize(formattedText);
+
+  return <div dangerouslySetInnerHTML={{ __html: sanitizedHtml }} />;
 };
 
 export const ResearchPanel: React.FC = () => {

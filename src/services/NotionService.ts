@@ -4,23 +4,10 @@ import {
   notionMapper, 
   notionValidator, 
   notionSchemaManager,
-  NotionPage
+  NotionPage,
+  NotionTask,
+  NotionSyncResult
 } from './notion';
-
-export interface NotionTask {
-  id: string;
-  title: string;
-  description?: string;
-  completed: boolean;
-  dueDate?: string;
-  source: 'notion';
-}
-
-export interface NotionSyncResult {
-  success: boolean;
-  tasks?: NotionTask[];
-  error?: string;
-}
 
 /**
  * Service for interacting with the Notion API through the MCP server

@@ -27,10 +27,11 @@ The repository has an explicit Prettier configuration:
 - `console` usage warns except `console.warn` and `console.error`
 
 ## Naming and organization patterns observed
-- Classes typically use PascalCase filenames and exports (e.g. `KnowledgeGraph.ts`, `EnhancedContextManager.ts`, `RuleValidator.ts`)
+- Classes and managers typically use PascalCase filenames and exports (for example `KnowledgeGraph.ts`, `EnhancedContextManager.ts`, `RuleValidator.ts`, `NotionService.ts`)
+- React components use TSX and PascalCase component filenames in `src/components/`
 - test files use `*.test.ts` and often live either in `__tests__` folders or adjacent test folders
-- source code is organized by domain/subsystem (`services`, `rules`, `context`, `knowledge`, `mcp`, `cli`, etc.)
-- root-level operational scripts use descriptive kebab-case filenames (e.g. `start-app.sh`, `cleanup-logs.sh`)
+- source code is organized by domain/subsystem (`services`, `rules`, `context`, `knowledge`, `cli`, `modes`, `research`, `components`, etc.)
+- root-level operational scripts use descriptive kebab-case filenames (for example `start-app.sh`, `cleanup-logs.sh`)
 
 ## Documentation/PR conventions from `AGENTS.md`
 - Keep communication concise and engineering-focused
@@ -40,7 +41,12 @@ The repository has an explicit Prettier configuration:
 
 ## Practical guidance
 When editing code in this repo:
-- preserve existing domain-oriented directory structure
+- preserve the existing domain-oriented directory structure
 - keep TypeScript changes compatible with strict mode
-- prefer small, scoped changes over broad rewrites
 - maintain single-quote/semi/trailing-comma formatting
+- prefer small, scoped changes over broad rewrites unless the task explicitly calls for structural overhaul
+- expect mixed legacy and in-progress modernization work; verify neighboring files before assuming a subsystem is current
+- when touching React/UI files, also inspect adjacent services and types, because current local work spans components, research, Notion services, and supporting TS type files
+
+## Current-state caution
+Legacy branding and architecture terminology in docs may not reflect the actual implementation direction. Prefer repository structure and active files over README wording when deciding local conventions.

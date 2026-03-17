@@ -1,3 +1,4 @@
+export * from './types';
 export * from './NotionMapper';
 export * from './NotionValidator';
 export * from './NotionSchemaManager';

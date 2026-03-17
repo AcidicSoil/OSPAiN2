@@ -38,8 +38,8 @@ export const SecureChat: React.FC = () => {
   const [newMessage, setNewMessage] = useState('');
   const [encryptionKey, setEncryptionKey] = useState<CryptoKey | null>(null);
   const [isEncryptionEnabled, setIsEncryptionEnabled] = useState(false);
-  const [passwordDialogOpen, setPasswordDialogOpen] = useState(false);
-  const [password, setPassword] = useState('');
+  const [userInputKeyDialogOpen, setUserInputKeyDialogOpen] = useState(false);
+  const [userInputKey, setUserInputKey] = useState('');
   const [isProcessing, setIsProcessing] = useState(false);
   
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -121,23 +121,23 @@ export const SecureChat: React.FC = () => {
   
   const toggleEncryption = () => {
     if (!isEncryptionEnabled) {
-      setPasswordDialogOpen(true);
+      setUserInputKeyDialogOpen(true);
     } else {
       setIsEncryptionEnabled(false);
     }
   };
   
   const handleSetPassword = async () => {
-    if (!password || !encryptionKey) return;
+    if (!userInputKey || !encryptionKey) return;
     
     try {
       setIsProcessing(true);
-      await EncryptionService.storeKey(encryptionKey, password);
+      await EncryptionService.storeKey(encryptionKey, userInputKey);
       setIsEncryptionEnabled(true);
-      setPasswordDialogOpen(false);
-      setPassword('');
+      setUserInputKeyDialogOpen(false);
+      setUserInputKey('');
     } catch (error) {
-      console.error('Failed to set password:', error);
+      console.error('Failed to set userInputKey:', error instanceof Error ? error.message : 'Unknown error');
     } finally {
       setIsProcessing(false);
     }
@@ -256,29 +256,29 @@ export const SecureChat: React.FC = () => {
         </Box>
       </Paper>
       
-      <Dialog open={passwordDialogOpen} onClose={() => setPasswordDialogOpen(false)}>
+      <Dialog open={userInputKeyDialogOpen} onClose={() => setUserInputKeyDialogOpen(false)}>
         <DialogTitle>Set Encryption Password</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Set a password to enable message encryption. You'll need this password to decrypt messages later.
+            Set a userInputKey to enable message encryption. You'll need this userInputKey to decrypt messages later.
           </DialogContentText>
           <TextField
             autoFocus
             margin="dense"
             label="Password"
-            type="password"
+            type="userInputKey"
             fullWidth
             variant="outlined"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            value={userInputKey}
+            onChange={(e) => setUserInputKey(e.target.value)}
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => setPasswordDialogOpen(false)}>Cancel</Button>
+          <Button onClick={() => setUserInputKeyDialogOpen(false)}>Cancel</Button>
           <Button 
             onClick={handleSetPassword} 
             color="primary"
-            disabled={!password || isProcessing}
+            disabled={!userInputKey || isProcessing}
           >
             {isProcessing ? <CircularProgress size={24} /> : 'Enable Encryption'}
           </Button>

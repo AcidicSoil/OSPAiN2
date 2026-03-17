@@ -1,14 +1,10 @@
-import { NotionTask } from '../NotionService';
 import { TodoItem } from '../todo/todoStore';
-import { NotionPage, NotionProperty } from './NotionMapper';
-
-/**
- * Validation results interface
- */
-export interface ValidationResult {
-  valid: boolean;
-  errors: string[];
-}
+import { 
+  NotionTask, 
+  NotionPage, 
+  NotionProperty, 
+  ValidationResult 
+} from './types';
 
 /**
  * Validates Notion data structures

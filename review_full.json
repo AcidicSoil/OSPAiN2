@@ -1,0 +1,208 @@
+{
+  "query": "review",
+  "status_filter": "open",
+  "total": 10,
+  "summary": {
+    "by_tier": {
+      "T1": 8,
+      "T2": 2
+    },
+    "by_detector": {
+      "review": 10
+    },
+    "files": 1
+  },
+  "by_file": {
+    ".": [
+      {
+        "id": "review::.::holistic::ai_generated_debt::scanner_skeleton::f7921e20",
+        "tier": 1,
+        "confidence": "high",
+        "summary": "RepositoryScanner is a non-functional skeleton.",
+        "detail": {
+          "holistic": true,
+          "dimension": "ai_generated_debt",
+          "related_files": [
+            "src/research/repository-scanner.ts"
+          ],
+          "evidence": [
+            "Methods all return 0 with TODOs"
+          ],
+          "suggestion": "Implement actual logic or remove.",
+          "reasoning": ""
+        }
+      },
+      {
+        "id": "review::.::holistic::convention_outlier::convention_drift::5b38897e",
+        "tier": 1,
+        "confidence": "high",
+        "summary": "Mixed coding conventions across modules.",
+        "detail": {
+          "holistic": true,
+          "dimension": "convention_outlier",
+          "related_files": [
+            "src/services/todo/todoStore.ts"
+          ],
+          "evidence": [
+            "Different indentation and formatting styles observed"
+          ],
+          "suggestion": "Enforce consistent coding standards.",
+          "reasoning": ""
+        }
+      },
+      {
+        "id": "review::.::holistic::dependency_health::outdated_deps::58f5f81e",
+        "tier": 1,
+        "confidence": "high",
+        "summary": "Use of outdated or unnecessary dependencies.",
+        "detail": {
+          "holistic": true,
+          "dimension": "dependency_health",
+          "related_files": [
+            "package.json"
+          ],
+          "evidence": [
+            "Several deprecated subdependencies found"
+          ],
+          "suggestion": "Update or remove deprecated dependencies.",
+          "reasoning": ""
+        }
+      },
+      {
+        "id": "review::.::holistic::high_level_elegance::naive_monitoring::49aec15e",
+        "tier": 1,
+        "confidence": "high",
+        "summary": "RuleTypeManager uses a naive setTimeout for monitoring.",
+        "detail": {
+          "holistic": true,
+          "dimension": "high_level_elegance",
+          "related_files": [
+            "src/rules/manager/RuleTypeManager.ts"
+          ],
+          "evidence": [
+            "monitorPerformance uses manual setTimeout"
+          ],
+          "suggestion": "Use proper profiling or event-driven metrics.",
+          "reasoning": ""
+        }
+      },
+      {
+        "id": "review::.::holistic::low_level_elegance::craft_issues::1803d2ab",
+        "tier": 1,
+        "confidence": "high",
+        "summary": "Low-level implementation craft issues.",
+        "detail": {
+          "holistic": true,
+          "dimension": "low_level_elegance",
+          "related_files": [
+            "src/services/todo/todoStore.ts"
+          ],
+          "evidence": [
+            "Redundant calculations in statistics logic"
+          ],
+          "suggestion": "Optimize low-level implementation logic.",
+          "reasoning": ""
+        }
+      },
+      {
+        "id": "review::.::holistic::mid_level_elegance::structural_sloppiness::395e5fb3",
+        "tier": 1,
+        "confidence": "high",
+        "summary": "Structural sloppiness in module organization.",
+        "detail": {
+          "holistic": true,
+          "dimension": "mid_level_elegance",
+          "related_files": [
+            "src/services/notion/index.ts"
+          ],
+          "evidence": [
+            "Redundant exports and confusing entry points"
+          ],
+          "suggestion": "Clean up module structural organization.",
+          "reasoning": ""
+        }
+      },
+      {
+        "id": "review::.::holistic::test_strategy::testing_debt::0adaa0e0",
+        "tier": 1,
+        "confidence": "high",
+        "summary": "Poor test coverage and missing test strategy.",
+        "detail": {
+          "holistic": true,
+          "dimension": "test_strategy",
+          "related_files": [
+            "src/research/run-scanner.ts"
+          ],
+          "evidence": [
+            "Lack of unit tests for critical scanner logic"
+          ],
+          "suggestion": "Implement comprehensive test suite.",
+          "reasoning": ""
+        }
+      },
+      {
+        "id": "review::.::holistic::type_safety::type_holes::bc75936b",
+        "tier": 1,
+        "confidence": "high",
+        "summary": "Incomplete type coverage and use of 'any'.",
+        "detail": {
+          "holistic": true,
+          "dimension": "type_safety",
+          "related_files": [
+            "src/services/NotionService.ts"
+          ],
+          "evidence": [
+            "Usage of 'any' in search results and other areas"
+          ],
+          "suggestion": "Define and use proper interfaces instead of 'any'.",
+          "reasoning": ""
+        }
+      },
+      {
+        "id": "review::.::holistic::abstraction_fitness::abstraction_leaks::02ce0ea1",
+        "tier": 2,
+        "confidence": "medium",
+        "summary": "Leaky abstractions in service layer.",
+        "detail": {
+          "holistic": true,
+          "dimension": "abstraction_fitness",
+          "related_files": [
+            "src/services/NotionService.ts"
+          ],
+          "evidence": [
+            "Internal implementation details exposed through interface"
+          ],
+          "suggestion": "Encapsulate implementation details.",
+          "reasoning": ""
+        }
+      },
+      {
+        "id": "review::.::holistic::api_surface_coherence::api_inconsistency::9569b69e",
+        "tier": 2,
+        "confidence": "medium",
+        "summary": "Inconsistent API surface across managers.",
+        "detail": {
+          "holistic": true,
+          "dimension": "api_surface_coherence",
+          "related_files": [
+            "src/rules/manager/RuleTypeManager.ts"
+          ],
+          "evidence": [
+            "Different naming conventions for similar operations"
+          ],
+          "suggestion": "Standardize API naming.",
+          "reasoning": ""
+        }
+      }
+    ]
+  },
+  "total_matching": 20,
+  "hidden": {
+    "by_detector": {
+      "review": 10
+    },
+    "total": 10
+  },
+  "noise_budget": 10,
+  "noise_global_budget": 0
+}

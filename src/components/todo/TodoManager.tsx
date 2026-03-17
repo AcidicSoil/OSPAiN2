@@ -17,7 +17,6 @@ import {
   List, 
   ListItem, 
   ListItemIcon, 
-  ListItemSecondaryAction, 
   ListItemText, 
   MenuItem, 
   Paper, 
@@ -93,10 +92,8 @@ export const TodoManager: React.FC = () => {
   const { 
     isConnected: isNotionConnected, 
     isLoading: isNotionLoading, 
-    tasks: notionTasks,
     syncTasks,
-    checkConnection,
-    refreshTasks 
+    checkConnection
   } = useNotion();
 
   const [open, setOpen] = useState(false);
