@@ -67,3 +67,5 @@ __mocks__
 .roomodes
 .gitmodules
 .gitattributes
+.desloppify/
+
